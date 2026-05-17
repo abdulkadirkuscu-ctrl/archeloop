@@ -1,3 +1,6 @@
+import Footer from "../components/Footer"
+import Nav from "../components/Nav"
+
 const practices = [
   {
     archetype: "Sovereign",
@@ -64,12 +67,7 @@ const practices = [
 export default function PracticesPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-zinc-950 via-stone-950 to-black text-white">
-      <nav className="flex justify-center gap-4 p-6 border-b border-zinc-800">
-        <a href="/" className="hover:text-yellow-300">Home</a>
-        <a href="/assessment" className="hover:text-yellow-300">Assessment</a>
-        <a href="/triggered" className="hover:text-yellow-300">I Am Triggered</a>
-        <a href="/practices" className="hover:text-yellow-300">Practices</a>
-      </nav>
+      <Nav />
 
       <div className="px-6 py-20">
         <div className="max-w-6xl mx-auto">
@@ -142,6 +140,7 @@ export default function PracticesPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

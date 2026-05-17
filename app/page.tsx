@@ -1,3 +1,5 @@
+import Footer from "./components/Footer"
+import Nav from "./components/Nav"
 export default function Home() {
   const archetypes = [
     {
@@ -75,17 +77,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
-      <nav className="flex justify-center gap-4 p-6 border-b border-zinc-800">
-        <a href="/" className="hover:text-yellow-300">Home</a>
-        <a href="/assessment" className="hover:text-yellow-300">Assessment</a>
-        <a href="/triggered" className="hover:text-yellow-300">I Am Triggered</a>
-        <a href="/practices" className="hover:text-yellow-300">Practices</a> 
-        <a href="/nervous-system" className="hover:text-yellow-300">
-  Nervous System
-</a><a href="/archetype-interactions" className="hover:text-yellow-300">
-  Interactions
-</a>
-      </nav>
+      <Nav />
 
       <section className="text-center px-6 py-32">
         <p className="uppercase tracking-[0.3em] text-gray-400 mb-5">
@@ -127,6 +119,16 @@ export default function Home() {
           <p className="text-center text-gray-300 text-lg max-w-3xl mx-auto mb-16">
             Every archetype has a healthy expression. But under stress,
             conditioning, shame, fear, or survival pressure, that energy can become distorted.
+            <div className="border border-yellow-400 rounded-3xl p-8 bg-black mb-16 text-center">
+  <h3 className="text-3xl font-bold mb-4">
+    You are not the loop.
+  </h3>
+
+  <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+    A loop is a pattern, not your identity. ArcheLoop helps you notice the
+    pattern, interrupt the automatic reaction, and make a more conscious choice.
+  </p>
+</div>
           </p>
 
           <div className="grid md:grid-cols-4 gap-6">
@@ -363,6 +365,7 @@ export default function Home() {
           </a>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }

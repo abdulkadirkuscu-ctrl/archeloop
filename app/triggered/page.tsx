@@ -1,5 +1,6 @@
 "use client"
-
+import Nav from "../components/Nav"
+import Footer from "../components/Footer"
 import { useState } from "react"
 
 const bodyAreas = [
@@ -20,19 +21,6 @@ const triggers = [
   "Visibility",
   "Abandonment",
 ]
-
-function Nav() {
-  return (
-    <nav className="flex justify-center gap-4 p-6 border-b border-zinc-800 flex-wrap">
-      <a href="/" className="hover:text-yellow-300">Home</a>
-      <a href="/assessment" className="hover:text-yellow-300">Assessment</a>
-      <a href="/triggered" className="hover:text-yellow-300">I Am Triggered</a>
-      <a href="/practices" className="hover:text-yellow-300">Practices</a>
-      <a href="/nervous-system" className="hover:text-yellow-300">Nervous System</a>
-      <a href="/archetype-interactions" className="hover:text-yellow-300">Interactions</a>
-    </nav>
-  )
-}
 
 function determineLoop(archetype: string, emotion: string) {
   if (archetype === "Magician") {
@@ -442,6 +430,7 @@ export default function TriggeredPage() {
           </button>
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

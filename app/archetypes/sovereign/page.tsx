@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer"
 export default function SovereignPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
@@ -203,6 +204,7 @@ export default function SovereignPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }

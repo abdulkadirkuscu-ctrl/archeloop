@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer"
 export default function LoverPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
@@ -196,6 +197,7 @@ export default function LoverPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }

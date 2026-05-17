@@ -1,5 +1,7 @@
 "use client"
 
+import Footer from "../components/Footer"
+import Nav from "../components/Nav"
 import { useState } from "react"
 import { questions } from "../data/questions"
 import { loops } from "../data/loops"
@@ -11,17 +13,6 @@ const answerOptions = [
   { label: "Agree", value: 4 },
   { label: "Strongly agree", value: 5 },
 ]
-
-function Nav() {
-  return (
-    <nav className="flex justify-center gap-4 p-6 border-b border-zinc-800">
-      <a href="/" className="hover:text-yellow-300">Home</a>
-      <a href="/assessment" className="hover:text-yellow-300">Assessment</a>
-      <a href="/triggered" className="hover:text-yellow-300">I Am Triggered</a>
-      <a href="/practices" className="hover:text-yellow-300">Practices</a>
-    </nav>
-  )
-}
 
 export default function AssessmentPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -40,107 +31,273 @@ export default function AssessmentPage() {
   }
 
   if (finished) {
-    const healthyElementScores: Record<string, number> = {
-      Fire: 0,
-      Air: 0,
-      Water: 0,
-      Earth: 0,
-    }
+    const archetypeToElement: Record<string, string> = {
+  Sovereign: "Fire",
+  Magician: "Air",
+  Lover: "Water",
+  Warrior: "Earth",
+}
 
-    const loopScores: Record<string, number> = {}
-    const healthyScores: Record<string, number> = {}
+const healthyScores: Record<string, number> = {}
+const healthyCounts: Record<string, number> = {}
 
-    responses.forEach((score, index) => {
-      const question = questions[index]
+const shadowScores: Record<string, number> = {}
+const shadowCounts: Record<string, number> = {}
 
-      if (question.mechanism === "Healthy") {
-        healthyElementScores[question.element] += score
+const loopScores: Record<string, number> = {}
 
-        healthyScores[question.archetype] =
-          (healthyScores[question.archetype] || 0) + score
-      } else {
-        healthyElementScores[question.element] += 6 - score
+responses.forEach((score, index) => {
+  const question = questions[index]
+  const archetype = question.archetype
 
-        loopScores[question.category] =
-          (loopScores[question.category] || 0) + score
-      }
-    })
+  if (question.mechanism === "Healthy") {
+    healthyScores[archetype] = (healthyScores[archetype] || 0) + score
+    healthyCounts[archetype] = (healthyCounts[archetype] || 0) + 1
+  } else {
+    shadowScores[archetype] = (shadowScores[archetype] || 0) + score
+    shadowCounts[archetype] = (shadowCounts[archetype] || 0) + 1
 
-    const totalHealthyEnergy = Object.values(healthyElementScores).reduce(
-      (a, b) => a + b,
-      0
-    )
+    loopScores[question.category] =
+      (loopScores[question.category] || 0) + score
+  }
+})
+const archetypes = ["Sovereign", "Magician", "Lover", "Warrior"]
 
-    const elementalPercentages = Object.entries(healthyElementScores).map(
-      ([element, score]) => ({
-        element,
-        percentage: Math.round((score / totalHealthyEnergy) * 100),
-      })
-    )
+const integratedScores = archetypes.map((archetype) => {
+  const healthyMax = (healthyCounts[archetype] || 1) * 5
+  const shadowMax = (shadowCounts[archetype] || 1) * 5
 
-    const sortedLoops = Object.entries(loopScores).sort(
-      (a, b) => b[1] - a[1]
-    )
+  const healthyPercent = Math.round(
+    ((healthyScores[archetype] || 0) / healthyMax) * 100
+  )
 
-    const primaryLoop = sortedLoops[0]
-    const secondaryLoop = sortedLoops[1]
+  const shadowPercent = Math.round(
+    ((shadowScores[archetype] || 0) / shadowMax) * 100
+  )
 
-    const primaryLoopInfo = primaryLoop
-      ? loops[primaryLoop[0] as keyof typeof loops]
-      : null
+  const integratedPercent = Math.max(
+    0,
+    Math.round(healthyPercent - shadowPercent * 0.6)
+  )
 
-    const weakestHealthyArchetype = Object.entries(healthyScores).sort(
-      (a, b) => a[1] - b[1]
-    )[0]
+  return {
+    archetype,
+    element: archetypeToElement[archetype],
+    healthyPercent,
+    shadowPercent,
+    integratedPercent,
+  }
+})
+const elementalPresenceRaw = integratedScores.map((item) => {
+  const presence = Math.max(
+    1,
+    Math.round(item.healthyPercent - item.shadowPercent * 0.35)
+  )
+
+  return {
+    element: item.element,
+    archetype: item.archetype,
+    percentage: presence,
+  }
+})
+
+const totalElementalPresence = elementalPresenceRaw.reduce(
+  (sum, item) => sum + item.percentage,
+  0
+)
+
+const elementalActivation = elementalPresenceRaw.map((item) => ({
+  element: item.element,
+  archetype: item.archetype,
+  percentage: Math.round(
+    (item.percentage / totalElementalPresence) * 100
+  ),
+}))
+
+const totalIntegrated = integratedScores.reduce(
+  (sum, item) => sum + item.integratedPercent,
+  0
+)
+
+const elementalPercentages = integratedScores.map((item) => ({
+  element: item.element,
+  percentage:
+    totalIntegrated > 0
+      ? Math.round((item.integratedPercent / totalIntegrated) * 100)
+      : 25,
+}))
+
+const sortedLoops = Object.entries(loopScores).sort(
+  (a, b) => b[1] - a[1]
+)
+
+const primaryLoop = sortedLoops[0]
+const secondaryLoop = sortedLoops[1]
+
+const primaryLoopInfo = primaryLoop
+  ? loops[primaryLoop[0] as keyof typeof loops]
+  : null
+
+const weakestHealthyArchetype = integratedScores.sort(
+  (a, b) => a.integratedPercent - b.integratedPercent
+)[0]
 
     return (
-      <main className="min-h-screen bg-black text-white">
-        <Nav />
+  <main className="min-h-screen bg-black text-white">
+    <Nav />
 
         <div className="px-6 py-20">
           <div className="max-w-3xl mx-auto">
-            <h1 className="text-5xl font-bold mb-6">Your Result</h1>
+            <h1 className="text-5xl font-bold mb-6">
+  Your Result
+</h1>
 
+<div className="border border-yellow-400 rounded-3xl p-8 bg-zinc-950 mb-8">
+  <h2 className="text-3xl font-bold mb-4">
+    Result Summary
+  </h2>
+
+  <p className="text-lg text-gray-300 leading-relaxed">
+    Your primary loop is{" "}
+    <span className="text-yellow-300 font-semibold">
+      {primaryLoopInfo?.title}
+    </span>.
+  </p>
+
+  <p className="text-lg text-gray-300 leading-relaxed mt-4">
+    This result suggests that one or more archetypal energies may be
+    active, blocked, suppressed, inflated, or conflicting under pressure.
+  </p>
+
+  <p className="text-lg text-gray-300 leading-relaxed mt-4">
+    ArcheLoop does not view this as your identity. A loop is a pattern —
+    and patterns can become conscious, interrupted, and integrated over time.
+  </p>
+
+  {primaryLoop && (
+    <div className="mt-8">
+      <a
+        href={`/loops/${primaryLoop[0]
+          .toLowerCase()
+          .replace(/\s+/g, "-")}`}
+        className="border border-yellow-400 text-yellow-300 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
+      >
+        Explore {primaryLoop[0]} Loop
+      </a>
+    </div>
+  )}
+</div>
             <div className="border rounded-2xl p-8 mb-6">
-              <h2 className="text-2xl font-semibold mb-4">
-                Elemental Balance
-              </h2>
+  <h2 className="text-2xl font-semibold mb-4">
+    Elemental Presence
+  </h2>
 
-              {elementalPercentages.map(({ element, percentage }) => (
-                <div key={element} className="mb-5">
-                  <div className="flex justify-between mb-1">
-                    <span>{element}</span>
-                    <span>{percentage}%</span>
-                  </div>
+ <p className="text-gray-400 mb-6">
+  This shows which elemental energies appear most available overall. It considers healthy expression and also reduces the score when shadow pressure is high. A low score does not mean the element is absent — it may be suppressed, distorted, or harder to access consciously.
+</p>
 
-                  <div className="h-4 bg-zinc-800 rounded-full overflow-hidden">
-                    <div
-                      className={`h-full rounded-full ${
-                        element === "Fire"
-                          ? "bg-yellow-400"
-                          : element === "Air"
-                          ? "bg-blue-400"
-                          : element === "Water"
-                          ? "bg-red-500"
-                          : "bg-green-500"
-                      }`}
-                      style={{ width: `${percentage}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
+  {elementalActivation.map(({ element, percentage }) => {
+    const colours: Record<string, string> = {
+      Fire: "bg-yellow-400",
+      Air: "bg-blue-300",
+      Water: "bg-red-400",
+      Earth: "bg-green-500",
+    }
 
+    return (
+      <div
+        key={element}
+        className="mb-5 border border-zinc-800 rounded-2xl p-5 bg-zinc-950"
+      >
+        <div className="flex justify-between mb-3">
+          <span className="text-lg font-semibold">
+            {element}
+          </span>
+
+          <span className="text-lg text-gray-300">
+            {percentage}%
+          </span>
+        </div>
+
+        <div className="h-4 bg-zinc-800 rounded-full overflow-hidden">
+          <div
+            className={`h-full rounded-full ${colours[element]}`}
+            style={{ width: `${percentage}%` }}
+          />
+        </div>
+      </div>
+    )
+  })}
+</div>
+            <div className="border rounded-2xl p-8 mb-6">
+  <h2 className="text-2xl font-semibold mb-4">
+    Integrated Elemental Energy
+  </h2>
+
+  <p className="text-gray-400 mb-6">
+    This does not mean an element is absent. It shows how much of each element appears currently integrated after shadow pressure is considered. A low score may mean the element is blocked, suppressed, conflicted, or operating through a shadow loop.
+  </p>
+
+  {elementalPercentages.map(({ element, percentage }) => {
+    const colours: Record<string, string> = {
+      Fire: "bg-yellow-400",
+      Air: "bg-blue-300",
+      Water: "bg-red-400",
+      Earth: "bg-green-500",
+    }
+
+    const glow: Record<string, string> = {
+      Fire: "shadow-yellow-400/30",
+      Air: "shadow-blue-300/30",
+      Water: "shadow-red-400/30",
+      Earth: "shadow-green-500/30",
+    }
+
+    return (
+      <div
+        key={element}
+        className="mb-6 border border-zinc-800 rounded-2xl p-5 bg-zinc-950"
+      >
+        <div className="flex justify-between mb-3">
+          <span className="text-lg font-semibold">
+            {element}
+          </span>
+
+          <span className="text-lg text-gray-300">
+            {percentage}%
+          </span>
+        </div>
+
+        <div className="h-4 bg-zinc-800 rounded-full overflow-hidden">
+          <div
+            className={`h-full rounded-full ${colours[element]} ${glow[element]} shadow-lg`}
+            style={{ width: `${percentage}%` }}
+          />
+        </div>
+      </div>
+    )
+  })}
+</div>
             <div className="border rounded-2xl p-8 mb-6">
               <h2 className="text-2xl font-semibold mb-4">
                 Healthy Archetype Scores
               </h2>
 
-              {Object.entries(healthyScores).map(([archetype, score]) => (
-                <p key={archetype} className="text-lg">
-                  Healthy {archetype}: {score} / 30
-                </p>
-              ))}
+              {integratedScores.map((item) => (
+  <div
+    key={item.archetype}
+    className="mb-5 border border-zinc-800 rounded-xl p-4"
+  >
+    <p className="text-lg font-semibold">
+      Healthy {item.archetype}: {item.healthyPercent}%
+    </p>
+
+    <p className="text-sm text-gray-400">
+      Shadow Pressure: {item.shadowPercent}% • Integrated Energy:{" "}
+      {item.integratedPercent}%
+    </p>
+  </div>
+))}
             </div>
 
             <div className="border rounded-2xl p-8">
@@ -224,8 +381,8 @@ export default function AssessmentPage() {
                     </h3>
 
                     <p>
-                      <strong>{weakestHealthyArchetype[0]}</strong> —{" "}
-                      {weakestHealthyArchetype[1]} / 30
+                      <strong>{weakestHealthyArchetype.archetype}</strong> —{" "}
+{weakestHealthyArchetype.integratedPercent}% integrated
                     </p>
 
                     <p className="text-gray-300 mt-2">
@@ -272,7 +429,6 @@ export default function AssessmentPage() {
       </main>
     )
   }
-
   return (
     <main className="min-h-screen bg-black text-white">
       <Nav />
@@ -306,6 +462,7 @@ export default function AssessmentPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   )
 }

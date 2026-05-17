@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer"
 export default function MagicianPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
@@ -255,6 +256,7 @@ export default function MagicianPage() {
 
         </div>
       </section>
+      <Footer />
     </main>
   )
 }
