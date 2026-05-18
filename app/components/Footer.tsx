@@ -4,16 +4,32 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-6">
         <div>
           <p className="text-xl font-bold text-yellow-300">ArcheLoop™</p>
+
           <p className="text-gray-400 mt-2">
             Understand. Interrupt. Integrate.
           </p>
         </div>
 
         <div className="flex gap-4 flex-wrap text-gray-300">
-          <a href="/about" className="hover:text-yellow-300">About</a>
-          <a href="/contact" className="hover:text-yellow-300">Contact</a>
-          <a href="/disclaimer" className="hover:text-yellow-300">Disclaimer</a>
-          <a href="/assessment" className="hover:text-yellow-300">Assessment</a>
+          <a href="/about" className="hover:text-yellow-300">
+            About
+          </a>
+
+          <a href="/contact" className="hover:text-yellow-300">
+            Contact
+          </a>
+
+          <a href="/disclaimer" className="hover:text-yellow-300">
+            Disclaimer
+          </a>
+
+          <a href="/privacy-policy" className="hover:text-yellow-300">
+            Privacy Policy
+          </a>
+
+          <a href="/assessment" className="hover:text-yellow-300">
+            Assessment
+          </a>
         </div>
       </div>
 
