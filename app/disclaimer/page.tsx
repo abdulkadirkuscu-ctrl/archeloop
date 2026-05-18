@@ -1,14 +1,9 @@
+import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 export default function DisclaimerPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
-      <nav className="flex justify-center gap-4 p-6 border-b border-zinc-800 flex-wrap">
-        <a href="/" className="hover:text-yellow-300">Home</a>
-        <a href="/about" className="hover:text-yellow-300">About</a>
-        <a href="/assessment" className="hover:text-yellow-300">Assessment</a>
-        <a href="/triggered" className="hover:text-yellow-300">I Am Triggered</a>
-        <a href="/contact" className="hover:text-yellow-300">Contact</a>
-      </nav>
+      <Nav />
 
       <section className="px-6 py-24">
         <div className="max-w-4xl mx-auto">

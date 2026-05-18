@@ -1,86 +1,137 @@
 import Footer from "../components/Footer"
 import Nav from "../components/Nav"
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
       <Nav />
 
-      <section className="px-6 py-24">
-        <div className="max-w-4xl mx-auto">
-          <p className="uppercase tracking-[0.3em] text-gray-400 mb-4">
-            About ArcheLoop
-          </p>
+      <section className="max-w-5xl mx-auto px-6 py-24">
+        <h1 className="text-5xl font-bold mb-10">
+          About ArcheLoop
+        </h1>
 
-          <h1 className="text-5xl md:text-6xl font-bold mb-8">
-            A system for understanding the patterns you keep repeating.
-          </h1>
+        <p className="text-2xl text-gray-300 leading-relaxed mb-12">
+          A symbolic self-awareness system for recognising and interrupting recurring shadow patterns.
+        </p>
 
-          <p className="text-xl text-gray-300 mb-10">
-            ArcheLoop was created by Abdulkadir Kuscu as a self-development
-            framework for identifying recurring emotional and behavioural patterns
-            through archetypes, shadow work, nervous system states, somatic awareness,
-            and elemental dynamics.
-          </p>
+        <div className="space-y-12 text-gray-300 leading-relaxed text-lg">
+          <div>
+            <h2 className="text-3xl font-semibold mb-4 text-white">
+              How ArcheLoop began
+            </h2>
 
-          <div className="space-y-12">
-            <section>
-              <h2 className="text-3xl font-bold mb-4">Why I created ArcheLoop</h2>
-              <p className="text-gray-300 text-lg">
-                I became fascinated by the way people repeat emotional patterns
-                even when they consciously want to change. Sometimes we know what
-                we should do, but something inside us freezes, hides, overthinks,
-                overreacts, shuts down, or keeps choosing the same familiar response.
-              </p>
-            </section>
+            <p className="mb-6">
+              ArcheLoop began through years of personal shadow work, self-observation,
+              journaling, archetypal psychology, nervous system work, and studying the
+              relationship between human behaviour, emotion, and unconscious patterns.
+            </p>
 
-            <section>
-              <h2 className="text-3xl font-bold mb-4">The idea behind the system</h2>
-              <p className="text-gray-300 text-lg">
-                ArcheLoop is based on the idea that our recurring patterns are not
-                random. They are often protective loops formed around fear, shame,
-                grief, anger, uncertainty, visibility, connection, and boundaries.
-                By naming the loop, we can begin to interrupt it.
-              </p>
-            </section>
+            <p className="mb-6">
+              For around two years, I worked closely with a shadow work coach exploring
+              recurring emotional reactions, childhood conditioning, identity patterns,
+              archetypes, and unconscious protective behaviours.
+            </p>
 
-            <section>
-              <h2 className="text-3xl font-bold mb-4">What makes ArcheLoop different</h2>
-              <p className="text-gray-300 text-lg">
-                ArcheLoop connects symbolic archetypes with practical nervous system
-                awareness. It is not just about knowing your type. It is about noticing
-                what happens in your body, what loop gets activated, and what energy
-                needs to be restored.
-              </p>
-            </section>
-
-            <section className="border border-yellow-400 rounded-3xl p-8">
-              <h2 className="text-3xl font-bold mb-4">The core philosophy</h2>
-              <p className="text-gray-300 text-lg">
-                You are not your loop. A loop is a pattern, not your identity.
-                ArcheLoop helps you understand the pattern, interrupt the reaction,
-                and integrate the part of you that has been suppressed, inflated,
-                or stuck.
-              </p>
-            </section>
+            <p>
+              Later, when I could no longer continue formal coaching, I carried on the
+              work independently — studying archetypes, elemental dynamics, symbolic
+              psychology, somatic awareness, and recurring behavioural loops in my own life.
+            </p>
           </div>
 
-          <div className="flex gap-4 flex-wrap mt-12">
-            <a
-              href="/assessment"
-              className="bg-white text-black px-6 py-3 rounded-full font-semibold"
-            >
-              Discover Your Shadow Loop
-            </a>
+          <div>
+            <h2 className="text-3xl font-semibold mb-4 text-white">
+              Naming the shadows
+            </h2>
 
-            <a
-              href="/"
-              className="border border-yellow-400 text-yellow-300 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
-            >
-              Return Home
-            </a>
+            <p className="mb-6">
+              During this process, I noticed that many painful experiences were not
+              isolated incidents. Different memories often carried the same emotional
+              structure underneath.
+            </p>
+
+            <p className="mb-6">
+              I began giving these repeating patterns names. One of the earliest was
+              what I called the “Obedient Boy Trap” — a pattern where loyalty,
+              suppression, and fear of disapproval kept healthy agency and boundaries
+              trapped long after childhood had ended.
+            </p>
+
+            <p>
+              Over time, I realised these patterns were not random. They appeared to
+              form through recurring interactions between archetypal energies:
+              suppression, compensation, inflation, collapse, and inner conflict.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-3xl font-semibold mb-4 text-white">
+              The ArcheLoop framework
+            </h2>
+
+            <p className="mb-6">
+              ArcheLoop eventually evolved into a system of four archetypal energies
+              and twelve core Shadow Loops.
+            </p>
+
+            <p className="mb-6">
+              The system is based on the idea that every person has access to all four
+              archetypal energies — Fire, Air, Water, and Earth — but different life
+              experiences can distort, suppress, inflate, or disconnect these energies
+              from one another.
+            </p>
+
+            <p>
+              Instead of seeing shadow work only as revisiting painful memories,
+              ArcheLoop attempts to provide a structured symbolic map that helps people
+              recognise the loop they are currently living inside.
+            </p>
+          </div>
+
+          <div className="border border-yellow-400 rounded-3xl p-8 bg-zinc-950">
+            <h2 className="text-3xl font-semibold mb-4 text-white">
+              Name it to break it
+            </h2>
+
+            <p className="mb-6">
+              One of the central ideas behind ArcheLoop is simple:
+            </p>
+
+            <p className="text-2xl text-yellow-300 font-semibold mb-6">
+              “You cannot interrupt a pattern you cannot see.”
+            </p>
+
+            <p className="mb-6">
+              By naming recurring shadow patterns, people often begin recognising them
+              in real time — in thoughts, relationships, emotional reactions,
+              behaviours, and nervous system states.
+            </p>
+
+            <p>
+              ArcheLoop is built around the belief that awareness creates choice.
+              You are not the loop. The loop is a pattern — and patterns can change.
+            </p>
           </div>
         </div>
+
+        <div className="flex gap-4 flex-wrap mt-12">
+          <a
+            href="/assessment"
+            className="bg-white text-black px-6 py-3 rounded-full font-semibold"
+          >
+            Discover Your Shadow Loop
+          </a>
+
+          <a
+            href="/"
+            className="border border-yellow-400 text-yellow-300 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
+          >
+            Return Home
+          </a>
+        </div>
       </section>
+
       <Footer />
     </main>
   )
