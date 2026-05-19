@@ -5,12 +5,12 @@ export default function Nav() {
     <nav className="flex flex-wrap items-center justify-center gap-5 p-6 border-b border-zinc-800 bg-black text-white sticky top-0 z-50">
       <a href="/" className="flex items-center gap-3 hover:opacity-80 transition">
         <Image
-          src="/images/logo.png"
-          alt="ArcheLoop Logo"
-          width={42}
-          height={42}
-          className="object-contain drop-shadow-[0_0_12px_rgba(255,215,100,0.25)]"
-        />
+  src="/images/logo.png"
+  alt="ArcheLoop Logo"
+  width={56}
+  height={56}
+  className="object-contain rounded-full drop-shadow-[0_0_18px_rgba(255,215,100,0.35)]"
+/>
 
         <span className="text-xl font-semibold tracking-wide text-yellow-300">
           ArcheLoop

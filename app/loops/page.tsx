@@ -1,74 +1,172 @@
-import Footer from "../components/Footer"
 import Nav from "../components/Nav"
+import Footer from "../components/Footer"
 
 const loops = [
-  ["🔥", "Dimmed Light", "Suppressed Fire"],
-  ["🔥", "Paper Crown", "Inflated Fire"],
-  ["🔥", "Stalled Flame", "Colliding Fire"],
+  {
+    name: "Dimmed Light",
+    element: "Fire",
+    image: "/images/loops/dimmed-light.png",
+    description:
+      "You hide your visibility, expression, or potential because being fully seen feels unsafe.",
+    slug: "dimmed-light",
+  },
+  {
+    name: "Paper Crown",
+    element: "Fire",
+    image: "/images/loops/paper-crown.png",
+    description:
+      "You rely on achievement, appearance, status, or performance to feel worthy or secure.",
+    slug: "paper-crown",
+  },
+  {
+    name: "Stalled Flame",
+    element: "Fire",
+    image: "/images/loops/stalled-flame.png",
+    description:
+      "You feel desire, vision, or ambition inside you, but hesitation interrupts movement.",
+    slug: "stalled-flame",
+  },
 
-  ["🌬", "Blank Page", "Suppressed Air"],
-  ["🌬", "Smoky Mirrors", "Inflated Air"],
-  ["🌬", "Mind Maze", "Colliding Air"],
+  {
+    name: "Blank Page",
+    element: "Air",
+    image: "/images/loops/blank-page.png",
+    description:
+      "Your mind goes empty when expression, clarity, or creative movement is needed.",
+    slug: "blank-page",
+  },
+  {
+    name: "Smoky Mirrors",
+    element: "Air",
+    image: "/images/loops/smoky-mirrors.png",
+    description:
+      "Perception becomes distorted through confusion, performance, rationalisation, or self-deception.",
+    slug: "smoky-mirrors",
+  },
+  {
+    name: "Mind Maze",
+    element: "Air",
+    image: "/images/loops/mind-maze.png",
+    description:
+      "Thought loops, over-analysis, and mental recursion interrupt action and clarity.",
+    slug: "mind-maze",
+  },
 
-  ["🌊", "Emotional Lockdown", "Suppressed Water"],
-  ["🌊", "Fantasy Fog", "Inflated Water"],
-  ["🌊", "Flooded Waters", "Colliding Water"],
+  {
+    name: "Emotional Lockdown",
+    element: "Water",
+    image: "/images/loops/emotional-lockdown.png",
+    description:
+      "Emotion is sealed away so you can function, but connection and feeling become harder to access.",
+    slug: "emotional-lockdown",
+  },
+  {
+    name: "Fantasy Fog",
+    element: "Water",
+    image: "/images/loops/fantasy-fog.png",
+    description:
+      "Longing, imagination, and emotional fantasy begin replacing grounded connection.",
+    slug: "fantasy-fog",
+  },
+  {
+    name: "Flooded Waters",
+    element: "Water",
+    image: "/images/loops/flooded-waters.png",
+    description:
+      "Emotion becomes overwhelming, intense, and difficult to contain or regulate.",
+    slug: "flooded-waters",
+  },
 
-  ["🌱", "Compliance", "Suppressed Earth"],
-  ["🌱", "Fortress", "Inflated Earth"],
-  ["🌱", "Barren Ground", "Colliding Earth"],
+  {
+    name: "Compliance",
+    element: "Earth",
+    image: "/images/loops/compliance.png",
+    description:
+      "You abandon your boundaries or anger in order to stay safe, approved of, or accepted.",
+    slug: "compliance",
+  },
+  {
+    name: "Fortress",
+    element: "Earth",
+    image: "/images/loops/fortress.png",
+    description:
+      "Protection becomes isolation. Distance feels safer than vulnerability or dependence.",
+    slug: "fortress",
+  },
+  {
+    name: "Barren Ground",
+    element: "Earth",
+    image: "/images/loops/barren-ground.png",
+    description:
+      "Life becomes endurance, duty, and survival while vitality, softness, and joy feel out of reach.",
+    slug: "barren-ground",
+  },
 ]
 
 export default function LoopsPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
-<Nav />
+    <main className="min-h-screen bg-black text-white">
+      <Nav />
 
-      <section className="px-6 py-24">
-
-        <div className="max-w-6xl mx-auto">
-
-          <p className="uppercase tracking-[0.3em] text-gray-400 mb-4">
-            Shadow Loop Library
-          </p>
-
-          <h1 className="text-5xl md:text-6xl font-bold mb-8">
-            The 12 Shadow Loops
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="mb-20">
+          <h1 className="text-6xl font-bold mb-6">
+            Shadow Loops
           </h1>
 
-          <p className="text-xl text-gray-300 max-w-3xl mb-16">
-            Each Shadow Loop represents a recurring emotional,
-            behavioural, and nervous system pattern connected
-            to an archetypal distortion.
+          <p className="text-xl text-gray-400 max-w-3xl leading-relaxed">
+            Shadow Loops are recurring emotional and behavioural patterns
+            formed through suppression, compensation, or collision between
+            archetypal energies.
           </p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-
-            {loops.map(([icon, title, type]) => (
-              <a
-                key={title}
-                href={`/loops/${title.toLowerCase().replace(/\s+/g, "-")}`}
-                className="border border-zinc-700 rounded-3xl p-8 bg-zinc-950 hover:border-yellow-400 transition-all block"
-              >
-                <div className="text-5xl mb-5">
-                  {icon}
-                </div>
-
-                <h2 className="text-3xl font-bold mb-3">
-                  {title}
-                </h2>
-
-                <p className="text-gray-400">
-                  {type}
-                </p>
-              </a>
-            ))}
-
-          </div>
-
         </div>
 
-      </section>
+        <div className="space-y-20">
+          {["Fire", "Air", "Water", "Earth"].map((element) => (
+  <section key={element}>
+    <h2 className="text-3xl font-bold mb-8">
+      {element} Loops
+    </h2>
+
+    <div className="grid md:grid-cols-3 gap-6">
+      {loops
+        .filter((loop) => loop.element === element)
+        .map((loop) => (
+          <a
+            key={loop.name}
+            href={`/loops/${loop.slug}`}
+            className="group relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950 hover:border-zinc-600 transition duration-300"
+          >
+            <div className="relative overflow-hidden">
+              <img
+                src={loop.image}
+                alt={loop.name}
+                className="w-full h-[360px] object-cover group-hover:scale-105 transition duration-700"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+              <div className="absolute bottom-0 left-0 p-6">
+                <p className="uppercase tracking-[0.25em] text-xs text-gray-400 mb-2">
+                  Shadow Loop
+                </p>
+
+                <h3 className="text-2xl font-bold mb-3">
+                  {loop.name}
+                </h3>
+
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {loop.description}
+                </p>
+              </div>
+            </div>
+          </a>
+        ))}
+    </div>
+  </section>
+))}
+        </div>
+      </div>
 
       <Footer />
     </main>
