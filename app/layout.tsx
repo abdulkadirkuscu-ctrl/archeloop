@@ -14,9 +14,42 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "ArcheLoop",
+  metadataBase: new URL("https://www.archeloop.com"),
+  title: {
+    default: "ArcheLoop | Understand. Interrupt. Integrate.",
+    template: "%s | ArcheLoop",
+  },
   description:
-    "A symbolic self-awareness system for recognising and interrupting recurring shadow patterns.",
+    "ArcheLoop is a symbolic self-awareness system for recognising emotional patterns, archetypes, shadow loops, nervous system responses, and relational dynamics.",
+  keywords: [
+    "ArcheLoop",
+    "shadow work",
+    "archetypes",
+    "shadow loops",
+    "nervous system",
+    "somatic awareness",
+    "self development",
+    "relational dynamics",
+    "body map",
+  ],
+  openGraph: {
+    title: "ArcheLoop | Understand. Interrupt. Integrate.",
+    description:
+      "A symbolic self-awareness system for recognising and interrupting recurring shadow patterns.",
+    url: "https://www.archeloop.com",
+    siteName: "ArcheLoop",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ArcheLoop | Understand. Interrupt. Integrate.",
+    description:
+      "A symbolic self-awareness system for recognising and interrupting recurring shadow patterns.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({

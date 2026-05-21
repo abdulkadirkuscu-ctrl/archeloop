@@ -26,6 +26,10 @@ export default function Nav() {
   Shadow Loops
 </a>
 
+<a href="/body-map" className="hover:text-yellow-300 transition">
+  Body Map
+</a>
+
 <a href="/break-the-loop" className="hover:text-yellow-300 transition">
   Break the Loop
 </a>
@@ -48,6 +52,10 @@ export default function Nav() {
 
 <a href="/archetype-interactions" className="hover:text-yellow-300 transition">
   Interactions
+</a>
+
+<a href="/relational-dynamics" className="hover:text-yellow-300 transition">
+  Relational Dynamics
 </a>
 
 <a href="/about" className="hover:text-yellow-300 transition">
