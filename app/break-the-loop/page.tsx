@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 
@@ -9,6 +10,11 @@ const steps = [
   ["5", "Return to Witness State", "What is actually happening right now, without story?"],
 ]
 
+export const metadata: Metadata = {
+  title: "Break the Loop Protocol",
+  description:
+    "A five-step ArcheLoop practice for recognising shadow loops, locating activation in the body, interrupting automatic reactions, and returning to conscious choice.",
+}
 export default function BreakTheLoopPage() {
   return (
     <main className="min-h-screen bg-black text-white">

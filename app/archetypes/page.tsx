@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 
@@ -31,7 +32,11 @@ const archetypes = [
       "The Warrior represents protection, boundaries, groundedness, survival, discipline, and embodied strength.",
   },
 ]
-
+export const metadata: Metadata = {
+  title: "The Four Archetypes",
+  description:
+    "Explore the four core ArcheLoop functions: Sovereign, Warrior, Lover, and Magician — adaptive intelligences connected to identity, protection, emotion, and perception.",
+}
 export default function ArchetypesPage() {
   return (
     <main className="min-h-screen bg-black text-white">

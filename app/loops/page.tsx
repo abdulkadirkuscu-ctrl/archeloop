@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 
@@ -103,6 +104,11 @@ const loops = [
   },
 ]
 
+export const metadata: Metadata = {
+  title: "The 12 Shadow Loops",
+  description:
+    "Explore the 12 ArcheLoop shadow patterns formed through suppression, inflation, compensation, and relational activation across the four archetypes.",
+}
 export default function LoopsPage() {
   return (
     <main className="min-h-screen bg-black text-white">

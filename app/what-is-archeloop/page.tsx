@@ -1,6 +1,12 @@
+import type { Metadata } from "next"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 
+export const metadata: Metadata = {
+  title: "What Is ArcheLoop?",
+  description:
+    "ArcheLoop is a symbolic self-awareness framework exploring archetypes, nervous system activation, relational dynamics, and recurring shadow loops.",
+}
 export default function WhatIsArcheLoopPage() {
   return (
     <main className="min-h-screen bg-black text-white">

@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 
@@ -16,6 +17,11 @@ const examples = [
   ["Emotional unpredictability", "Fortress / Emotional Lockdown", "withdrawal, guardedness, shutdown"],
   ["Fantasy or inflated stories", "Mind Maze / Warrior compensation", "reality-checking, tension, control"],
 ]
+export const metadata: Metadata = {
+  title: "Dynamic Relational Activation",
+  description:
+    "Explore how different interactions activate archetypal adaptations, nervous system responses, and recurring shadow loops.",
+}
 
 export default function RelationalDynamicsPage() {
   return (

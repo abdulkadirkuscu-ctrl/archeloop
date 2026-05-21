@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import Image from "next/image"
@@ -36,6 +37,11 @@ const mappings = [
       "Associated with grounding, boundaries, survival, protection, structure, and action.",
   },
 ]
+export const metadata: Metadata = {
+  title: "ArcheLoop Body Map",
+  description:
+    "Explore how archetypal activations and shadow loops appear through the body, nervous system, emotions, and relational dynamics.",
+}
 
 export default function BodyMapPage() {
   return (
