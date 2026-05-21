@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.archeloop.com
+
+# Sitemaps
+Sitemap: https://www.archeloop.com/sitemap.xml
