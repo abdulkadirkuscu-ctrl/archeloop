@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Footer from "./components/Footer"
 import Nav from "./components/Nav"
 export default function Home() {
@@ -60,20 +61,23 @@ export default function Home() {
     },
   ]
 
-  const loops = [
-    ["🔥", "Dimmed Light", "Suppressed Fire"],
-    ["🔥", "Paper Crown", "Inflated Fire"],
-    ["🔥", "Stalled Flame", "Colliding Fire"],
-    ["🌬", "Blank Page", "Suppressed Air"],
-    ["🌬", "Smoky Mirrors", "Inflated Air"],
-    ["🌬", "Mind Maze", "Colliding Air"],
-    ["🌊", "Emotional Lockdown", "Suppressed Water"],
-    ["🌊", "Fantasy Fog", "Inflated Water"],
-    ["🌊", "Flooded Waters", "Colliding Water"],
-    ["🌱", "Compliance", "Suppressed Earth"],
-    ["🌱", "Fortress", "Inflated Earth"],
-    ["🌱", "Barren Ground", "Colliding Earth"],
-  ]
+ const loops = [
+  ["/images/elements/fire.png", "Dimmed Light", "Suppressed Fire"],
+  ["/images/elements/fire.png", "Paper Crown", "Inflated Fire"],
+  ["/images/elements/fire.png", "Stalled Flame", "Colliding Fire"],
+
+  ["/images/elements/air.png", "Blank Page", "Suppressed Air"],
+  ["/images/elements/air.png", "Smoky Mirrors", "Inflated Air"],
+  ["/images/elements/air.png", "Mind Maze", "Colliding Air"],
+
+  ["/images/elements/water.png", "Emotional Lockdown", "Suppressed Water"],
+  ["/images/elements/water.png", "Fantasy Fog", "Inflated Water"],
+  ["/images/elements/water.png", "Flooded Waters", "Colliding Water"],
+
+  ["/images/elements/earth.png", "Compliance", "Suppressed Earth"],
+  ["/images/elements/earth.png", "Fortress", "Inflated Earth"],
+  ["/images/elements/earth.png", "Barren Ground", "Colliding Earth"],
+]
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
@@ -345,11 +349,16 @@ export default function Home() {
             <a
               key={title}
               href={`/loops/${title.toLowerCase().replace(/\s+/g, "-")}`}
-              className="border border-zinc-700 rounded-2xl p-6 bg-black hover:scale-[1.02] transition-transform block"
+             className="group border border-zinc-700 rounded-2xl p-4 bg-black hover:scale-[1.02] transition-transform block overflow-hidden"
             >
-              <div className="text-4xl mb-4">
-                {icon}
-              </div>
+<div className="relative h-40 rounded-2xl overflow-hidden mb-6 bg-zinc-950 border border-zinc-800">
+  <Image
+    src={icon}
+    alt={title}
+    fill
+    className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+  />
+</div>
 
               <h3 className="text-2xl font-bold mb-2">
                 {title}
