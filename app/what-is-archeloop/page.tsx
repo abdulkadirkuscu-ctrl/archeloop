@@ -1,3 +1,4 @@
+import Image from "next/image"
 import type { Metadata } from "next"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
@@ -52,9 +53,19 @@ export default function WhatIsArcheLoopPage() {
 
         <div className="grid md:grid-cols-2 gap-8 mb-24">
           <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
-            <h3 className="text-3xl font-bold mb-4 text-yellow-300">
-              🔥 Fire — Sovereign
-            </h3>
+            <div className="flex items-center gap-4 mb-4">
+  <Image
+    src="/images/elements/fire-element.png"
+    alt="Fire Element"
+    width={70}
+    height={70}
+    className="object-contain"
+  />
+
+  <h3 className="text-3xl font-bold">
+    Fire — Sovereign
+  </h3>
+</div>
 
             <p className="text-gray-300 leading-relaxed mb-4">
               Visibility, agency, confidence, direction, permission to exist.
@@ -66,9 +77,19 @@ export default function WhatIsArcheLoopPage() {
           </div>
 
           <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
-            <h3 className="text-3xl font-bold mb-4 text-blue-300">
-              🌬 Air — Magician
-            </h3>
+            <div className="flex items-center gap-4 mb-4">
+  <Image
+    src="/images/elements/air-element.png"
+    alt="Air Element"
+    width={70}
+    height={70}
+    className="object-contain"
+  />
+
+  <h3 className="text-3xl font-bold">
+    Air — Magician
+  </h3>
+</div>
 
             <p className="text-gray-300 leading-relaxed mb-4">
               Mind, perception, meaning, interpretation, awareness.
@@ -80,9 +101,19 @@ export default function WhatIsArcheLoopPage() {
           </div>
 
           <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
-            <h3 className="text-3xl font-bold mb-4 text-red-300">
-              🌊 Water — Lover
-            </h3>
+            <div className="flex items-center gap-4 mb-4">
+  <Image
+    src="/images/elements/water-element.png"
+    alt="Water Element"
+    width={70}
+    height={70}
+    className="object-contain"
+  />
+
+  <h3 className="text-3xl font-bold">
+    Water — Lover
+  </h3>
+</div>
 
             <p className="text-gray-300 leading-relaxed mb-4">
               Emotion, intimacy, creativity, connection, feeling.
@@ -94,9 +125,19 @@ export default function WhatIsArcheLoopPage() {
           </div>
 
           <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
-            <h3 className="text-3xl font-bold mb-4 text-green-300">
-              🌱 Earth — Warrior
-            </h3>
+            <div className="flex items-center gap-4 mb-4">
+  <Image
+    src="/images/elements/earth-element.png"
+    alt="Earth Element"
+    width={70}
+    height={70}
+    className="object-contain"
+  />
+
+  <h3 className="text-3xl font-bold">
+    Earth — Warrior
+  </h3>
+</div>
 
             <p className="text-gray-300 leading-relaxed mb-4">
               Boundaries, protection, discipline, survival, grounding.

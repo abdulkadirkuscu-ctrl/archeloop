@@ -82,62 +82,65 @@ export default function Home() {
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-40 text-center">
+      <section className="relative overflow-hidden px-6 py-36 text-center">
 
-  {/* Atmospheric background */}
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,215,140,0.12),transparent_45%)]" />
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,215,100,0.12),transparent_45%)]" />
 
-  <div className="absolute inset-0 opacity-40 bg-[linear-gradient(to_bottom,transparent,rgba(0,0,0,0.7))]" />
+  <div className="relative max-w-5xl mx-auto">
 
-  {/* Mist / glow */}
-  <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-yellow-200/10 blur-3xl rounded-full" />
-
-  <div className="relative z-10 max-w-5xl mx-auto">
-
-    <p className="uppercase tracking-[0.4em] text-gray-500 mb-6">
+    <p className="uppercase tracking-[0.4em] text-gray-500 mb-6 text-sm">
       ArcheLoop™
     </p>
 
-    <h1 className="text-6xl md:text-8xl font-bold leading-[1.05] mb-8">
-  Identify the emotional loops
-  <span className="block text-yellow-300">
-    you keep repeating.
-  </span>
-</h1>
+    <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
+      Identify the Shadow Loops
+      <br />
+      you keep repeating.
+    </h1>
 
-    <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto mb-12">
-  ArcheLoop helps you recognise triggers, nervous system responses,
-  relational patterns, and shadow loops — so you can interrupt the pattern
-  and return to conscious choice.
-</p>
+    <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
+      ArcheLoop helps you recognise emotional patterns,
+      nervous system responses, and relational dynamics —
+      so you can interrupt the loop instead of repeating it.
+    </p>
 
-    <div className="flex flex-wrap justify-center gap-5">
+    <div className="flex flex-wrap items-center justify-center gap-5 mb-16">
 
       <a
         href="/assessment"
-        className="bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-transform"
+        className="bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
       >
         Identify Your Loop
       </a>
 
       <a
-        href="/what-is-archeloop"
-        className="border border-zinc-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:border-yellow-300 hover:text-yellow-300 transition"
+        href="/triggered"
+        className="border border-zinc-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-yellow-300 hover:text-yellow-300 transition"
       >
-        What Is ArcheLoop?
+        I Am Triggered
       </a>
 
     </div>
 
-    <div className="mt-20 flex flex-wrap justify-center gap-6 text-sm uppercase tracking-[0.2em] text-gray-500">
+    <div className="flex flex-wrap items-center justify-center gap-3 text-sm text-gray-500">
 
-      <span>Shadow Work</span>
-      <span>Archetypes</span>
-      <span>Nervous System</span>
-      <span>Somatics</span>
-      <span>Symbolic Psychology</span>
+      {[
+        "Shadow Work",
+        "Nervous System",
+        "Relational Dynamics",
+        "Somatics",
+        "Archetypes",
+      ].map((item) => (
+        <span
+          key={item}
+          className="border border-zinc-800 rounded-full px-4 py-2 bg-zinc-950"
+        >
+          {item}
+        </span>
+      ))}
 
     </div>
+
   </div>
 </section>
 <section className="px-6 py-28">
@@ -329,10 +332,55 @@ export default function Home() {
     <p className="text-green-400 font-semibold">
       Explore Warrior →
     </p>
-  </a>
-
+   </a>
 </div>
-      <section className="px-6 py-28 bg-zinc-950 border-y border-zinc-800">
+
+<section className="w-full px-6 py-24 border-y border-zinc-800 bg-black">
+  <div className="max-w-6xl mx-auto text-center">
+    <p className="uppercase tracking-[0.3em] text-gray-500 mb-4">
+      The ArcheLoop Method
+    </p>
+
+    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+      Notice the loop. Interrupt the pattern. Integrate the energy.
+    </h2>
+
+    <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-14 leading-relaxed">
+      ArcheLoop helps you move from automatic reaction to conscious choice
+      by mapping what gets activated in your body, emotions, relationships,
+      and behaviour.
+    </p>
+
+    <div className="grid md:grid-cols-5 gap-5 text-left">
+      {[
+        ["1", "Notice", "What became activated?"],
+        ["2", "Map", "Where did you feel it in the body?"],
+        ["3", "Understand", "What loop started forming?"],
+        ["4", "Interrupt", "What action stops reinforcing it?"],
+        ["5", "Integrate", "What healthy energy restores balance?"],
+      ].map(([number, title, text]) => (
+        <div
+          key={title}
+          className="border border-zinc-800 rounded-3xl p-6 bg-zinc-950"
+        >
+          <p className="text-yellow-300 text-3xl font-bold mb-4">
+            {number}
+          </p>
+
+          <h3 className="text-xl font-bold mb-3">
+            {title}
+          </h3>
+
+          <p className="text-gray-400 leading-relaxed">
+            {text}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section className="px-6 py-28 bg-zinc-950 border-y border-zinc-800">
   <h2 className="text-5xl font-bold text-center mb-6">
     The 12 Shadow Loops
   </h2>
@@ -347,7 +395,7 @@ export default function Home() {
             <a
               key={title}
               href={`/loops/${title.toLowerCase().replace(/\s+/g, "-")}`}
-             className="group border border-zinc-700 rounded-2xl p-4 bg-black hover:scale-[1.02] transition-transform block overflow-hidden"
+             className="group border border-zinc-800 rounded-3xl p-4 bg-black/80 hover:border-yellow-300/40 hover:scale-[1.02] transition-all duration-300 block overflow-hidden shadow-lg"
             >
 <div className="relative h-40 rounded-2xl overflow-hidden mb-6 bg-zinc-950 border border-zinc-800">
   <Image
@@ -358,11 +406,11 @@ export default function Home() {
   />
 </div>
 
-              <h3 className="text-2xl font-bold mb-2">
+              <h3 className="text-2xl font-bold mb-3 group-hover:text-yellow-300 transition">
                 {title}
               </h3>
 
-              <p className="text-gray-400">
+              <p className="text-gray-400 leading-relaxed">
                 {type}
               </p>
 
@@ -429,39 +477,45 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="text-center px-6 py-32 bg-zinc-950 border-t border-zinc-800">
-        <h2 className="text-5xl font-bold mb-8">
-          Start breaking the loop
-        </h2>
+     <section className="px-6 py-36 text-center">
+  <div className="max-w-4xl mx-auto">
 
-        <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-          Discover which archetypal energies are healthy, suppressed,
-          inflated, or colliding inside your nervous system.
-        </p>
+    <p className="uppercase tracking-[0.3em] text-gray-500 mb-5">
+      Begin the Process
+    </p>
 
-        <div className="flex gap-4 justify-center flex-wrap">
-          <a
-            href="/triggered"
-            className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:opacity-80"
-          >
-            Take Assessment
-          </a>
+    <h2 className="text-5xl md:text-6xl font-bold leading-tight mb-8">
+      The loop can only change
+      <br />
+      once it becomes visible.
+    </h2>
 
-          <a
-            href="/triggered"
-            className="border border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-black"
-          >
-            I Am Triggered
-          </a>
+    <p className="text-xl text-gray-300 leading-relaxed mb-14 max-w-2xl mx-auto">
+      Identify the archetypal patterns, nervous system responses,
+      and relational dynamics shaping your reactions —
+      and begin interrupting the loop consciously.
+    </p>
 
-          <a
-            href="/practices"
-            className="border border-yellow-400 text-yellow-300 px-8 py-4 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
-          >
-            Explore Practices
-          </a>
-        </div>
-      </section>
+    <div className="flex flex-wrap items-center justify-center gap-5">
+
+      <a
+        href="/assessment"
+        className="bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
+      >
+        Take Assessment
+      </a>
+
+      <a
+        href="/triggered"
+        className="border border-zinc-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-yellow-300 hover:text-yellow-300 transition"
+      >
+        I Am Triggered
+      </a>
+
+    </div>
+
+  </div>
+</section>
       <Footer />
     </main>
   )
