@@ -28,7 +28,7 @@ export default async function LoopPage({
     )
   }
 
-  const [loopName, loop] = loopEntry
+  const [loopName, loop] = loopEntry as [string, any]
 const imagePath = `/images/loops/${slug}.png`
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
@@ -78,7 +78,72 @@ const imagePath = `/images/loops/${slug}.png`
               <p className="text-2xl text-yellow-300">“{loop.coreBelief}”</p>
             </div>
           </section>
+          
+{loop.protection && (
+  <section className="mb-16">
+    <h2 className="text-4xl font-bold mb-6">
+      What This Pattern May Be Protecting
+    </h2>
 
+    <div className="border border-zinc-700 rounded-2xl p-8 bg-zinc-950">
+      <p className="text-gray-300 text-lg leading-relaxed">
+        {loop.protection}
+      </p>
+    </div>
+  </section>
+)}
+
+{loop.signs && (
+  <section className="mb-16">
+    <h2 className="text-4xl font-bold mb-6">
+      Common Signs
+    </h2>
+
+    <div className="border border-zinc-700 rounded-2xl p-8 bg-zinc-950">
+      <ul className="space-y-3 text-gray-300">
+        {loop.signs.map((sign: string) => (
+          <li key={sign}>• {sign}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+{loop.relationalActivators && (
+  <section className="mb-16">
+    <h2 className="text-4xl font-bold mb-6">
+      Relational Activators
+    </h2>
+
+    <div className="border border-zinc-700 rounded-2xl p-8 bg-zinc-950">
+      <ul className="space-y-3 text-gray-300">
+        {loop.relationalActivators.map((item: string) => (
+          <li key={item}>• {item}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+{loop.secondaryLoops && (
+  <section className="mb-16">
+    <h2 className="text-4xl font-bold mb-6">
+      Secondary Activations
+    </h2>
+
+    <div className="border border-zinc-700 rounded-2xl p-8 bg-zinc-950">
+      <p className="text-gray-300 mb-4">
+        Under pressure, this pattern may also activate:
+      </p>
+
+      <ul className="space-y-3 text-gray-300">
+        {loop.secondaryLoops.map((item: string) => (
+          <li key={item}>• {item}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
           <section className="mb-16">
             <h2 className="text-4xl font-bold mb-6">Loop Breaker Practice</h2>
             <div className="bg-white text-black rounded-3xl p-8">

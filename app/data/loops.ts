@@ -31,6 +31,27 @@ export const loops = {
     integrationKey: "Healthy Lover",
     integrationReason:
       "Authentic emotional connection softens the need to perform for worth.",
+      protection:
+  "This pattern may be protecting against feelings of inadequacy, failure, invisibility, rejection, or loss of value.",
+
+signs: [
+  "Worth may begin to feel connected to achievement.",
+  "Comparison or status pressure can intensify.",
+  "Performance may become linked to self-value.",
+  "The system may seek validation through success or image.",
+],
+
+relationalActivators: [
+  "Status-driven people",
+  "Competitive environments",
+  "People who tie worth to achievement",
+  "Situations involving comparison or validation",
+],
+
+secondaryLoops: [
+  "Compliance",
+  "Dimmed Light",
+],
   },
 
   "Stalled Flame": {
