@@ -14,7 +14,7 @@ export default function Nav() {
           />
         </a>
 
-        <div className="hidden md:flex items-center gap-6 text-sm text-gray-300">
+        <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-gray-300">
           <a href="/what-is-archeloop" className="hover:text-yellow-300 transition">
             What Is ArcheLoop
           </a>
@@ -38,7 +38,7 @@ export default function Nav() {
 
         <a
           href="/triggered"
-          className="hidden md:inline-flex bg-yellow-300 text-black px-5 py-2 rounded-full font-semibold hover:bg-yellow-200 transition"
+         className="inline-flex bg-yellow-300 text-black px-5 py-2 rounded-full font-semibold hover:bg-yellow-200 transition"
         >
           I Am Triggered
         </a>
