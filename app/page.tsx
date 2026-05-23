@@ -62,23 +62,22 @@ export default function Home() {
   ]
 
  const loops = [
-  ["/images/elements/fire.png", "Dimmed Light", "Suppressed Fire"],
-  ["/images/elements/fire.png", "Paper Crown", "Inflated Fire"],
-  ["/images/elements/fire.png", "Stalled Flame", "Colliding Fire"],
+  ["/images/elements/fire.png", "Dimmed Light", "You shrink your visibility to feel safe."],
+  ["/images/elements/fire.png", "Paper Crown", "Your worth becomes tied to performance."],
+  ["/images/elements/fire.png", "Stalled Flame", "You hesitate to fully commit or act."],
 
-  ["/images/elements/air.png", "Blank Page", "Suppressed Air"],
-  ["/images/elements/air.png", "Smoky Mirrors", "Inflated Air"],
-  ["/images/elements/air.png", "Mind Maze", "Colliding Air"],
+  ["/images/elements/air.png", "Blank Page", "You freeze when trying to express yourself."],
+  ["/images/elements/air.png", "Smoky Mirrors", "You lose trust in your own perception."],
+  ["/images/elements/air.png", "Mind Maze", "You become trapped in overthinking."],
 
-  ["/images/elements/water.png", "Emotional Lockdown", "Suppressed Water"],
-  ["/images/elements/water.png", "Fantasy Fog", "Inflated Water"],
-  ["/images/elements/water.png", "Flooded Waters", "Colliding Water"],
+  ["/images/elements/water.png", "Emotional Lockdown", "You disconnect from emotion to stay safe."],
+  ["/images/elements/water.png", "Fantasy Fog", "You escape reality through imagination or fantasy."],
+  ["/images/elements/water.png", "Flooded Waters", "Your emotions become overwhelming and consuming."],
 
-  ["/images/elements/earth.png", "Compliance", "Suppressed Earth"],
-  ["/images/elements/earth.png", "Fortress", "Inflated Earth"],
-  ["/images/elements/earth.png", "Barren Ground", "Colliding Earth"],
+  ["/images/elements/earth.png", "Compliance", "You abandon yourself to maintain safety or approval."],
+  ["/images/elements/earth.png", "Fortress", "You protect yourself by shutting people out."],
+  ["/images/elements/earth.png", "Barren Ground", "You feel emotionally disconnected and depleted."],
 ]
-
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
       <Nav />
@@ -100,18 +99,17 @@ export default function Home() {
     </p>
 
     <h1 className="text-6xl md:text-8xl font-bold leading-[1.05] mb-8">
-      Break unconscious
-      <span className="block text-yellow-300">
-        shadow loops
-      </span>
-      before they keep
-      repeating your life
-    </h1>
+  Identify the emotional loops
+  <span className="block text-yellow-300">
+    you keep repeating.
+  </span>
+</h1>
 
-    <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
-      A symbolic self-awareness system for recognising recurring emotional,
-      behavioural, nervous system, and archetypal patterns.
-    </p>
+    <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto mb-12">
+  ArcheLoop helps you recognise triggers, nervous system responses,
+  relational patterns, and shadow loops — so you can interrupt the pattern
+  and return to conscious choice.
+</p>
 
     <div className="flex flex-wrap justify-center gap-5">
 
@@ -119,7 +117,7 @@ export default function Home() {
         href="/assessment"
         className="bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 transition-transform"
       >
-        Discover Your Shadow Loop
+        Identify Your Loop
       </a>
 
       <a
@@ -335,14 +333,14 @@ export default function Home() {
 
 </div>
       <section className="px-6 py-28 bg-zinc-950 border-y border-zinc-800">
-        <h2 className="text-5xl font-bold text-center mb-6">
-          The 12 Shadow Loops
-        </h2>
+  <h2 className="text-5xl font-bold text-center mb-6">
+    The 12 Shadow Loops
+  </h2>
 
-        <p className="text-center text-gray-300 max-w-3xl mx-auto mb-16">
-          Each loop reflects a repeated nervous system pattern connected
-          to an archetype and elemental distortion.
-        </p>
+  <p className="text-center text-gray-300 max-w-3xl mx-auto mb-16">
+    Shadow Loops are repeating emotional patterns we enter under
+    stress, pressure, conflict, or emotional overwhelm.
+  </p>
 
         <div className="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto">
           {loops.map(([icon, title, type]) => (
@@ -443,7 +441,7 @@ export default function Home() {
 
         <div className="flex gap-4 justify-center flex-wrap">
           <a
-            href="/assessment"
+            href="/triggered"
             className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:opacity-80"
           >
             Take Assessment

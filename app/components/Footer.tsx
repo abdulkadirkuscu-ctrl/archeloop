@@ -30,6 +30,12 @@ export default function Footer() {
           <a href="/assessment" className="hover:text-yellow-300">
             Assessment
           </a>
+
+          <a href="/archetypes" className="hover:text-yellow-300">Archetypes</a>
+<a href="/body-map" className="hover:text-yellow-300">Body Map</a>
+<a href="/relational-dynamics" className="hover:text-yellow-300">Relational Dynamics</a>
+<a href="/nervous-system" className="hover:text-yellow-300">Nervous System</a>
+<a href="/practices" className="hover:text-yellow-300">Practices</a>
         </div>
       </div>
 

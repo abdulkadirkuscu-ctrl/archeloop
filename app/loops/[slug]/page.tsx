@@ -1,6 +1,7 @@
 import Footer from "../../components/Footer"
 import Nav from "../../components/Nav"
 import { loops } from "../../data/loops"
+import Image from "next/image"
 
 function slugify(name: string) {
   return name.toLowerCase().replace(/\s+/g, "-")
@@ -28,7 +29,7 @@ export default async function LoopPage({
   }
 
   const [loopName, loop] = loopEntry
-
+const imagePath = `/images/loops/${slug}.png`
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
       <Nav />
@@ -44,7 +45,16 @@ export default async function LoopPage({
           <p className="text-xl text-gray-300 max-w-3xl mb-12">
             {loop.description}
           </p>
-
+<div className="relative w-full h-[520px] rounded-3xl overflow-hidden border border-zinc-800 mb-16 bg-zinc-950">
+  <Image
+    src={imagePath}
+    alt={loop.title}
+    fill
+    sizes="(max-width: 768px) 100vw, 900px"
+    className="object-cover"
+    priority
+  />
+</div>
           <div className="grid md:grid-cols-3 gap-6 mb-16">
             <div className="border border-zinc-700 rounded-2xl p-6 bg-zinc-950">
               <h2 className="text-2xl font-bold mb-3">Archetype</h2>
