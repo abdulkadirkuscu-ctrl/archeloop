@@ -20,6 +20,13 @@ export const loops = {
   "Feeling unsafe when fully seen",
   "Minimising gifts, needs, or presence",
 ],
+coreQuestion:
+  "Where do I suppress or reduce myself to feel safe, accepted, or avoid conflict?",
+prompts: [
+  "Where do I make myself smaller?",
+  "When do I hide visibility or expression?",
+  "What feels unsafe about being fully seen?",
+],
 nervousSystem:
   "Often associated with freeze responses, with fawn possible when visibility threatens belonging.",
 protection:
@@ -57,6 +64,13 @@ secondaryLoops: [
   "Pressure to prove, perform, or appear successful",
   "Comparison becoming emotionally intense",
   "Difficulty resting without guilt",
+],
+coreQuestion:
+  "Where do I seek external validation, status, achievement, or performance to feel worthy?",
+prompts: [
+  "What do I feel I must prove?",
+  "Who am I without achievement or recognition?",
+  "When do I perform instead of simply being?",
 ],
 nervousSystem:
   "Often associated with fight responses, with fawn possible through approval-seeking and performance.",
@@ -96,6 +110,13 @@ secondaryLoops: [
   "Feeling desire or vision without momentum",
   "Starting to act, then freezing or pulling back",
 ],
+coreQuestion:
+  "Where do hesitation, fear, or self-protection interrupt movement and action?",
+prompts: [
+  "What desire keeps getting delayed?",
+  "Where do I stop myself before beginning?",
+  "What happens when I feel momentum?",
+],
 nervousSystem:
   "Often associated with flight and freeze responses when action, risk, or visibility feels unsafe.",
 protection:
@@ -133,6 +154,13 @@ secondaryLoops: [
   "Difficulty speaking or expressing clearly",
   "Creative or verbal shutdown",
   "Knowing something internally but being unable to say it",
+],
+coreQuestion:
+  "Where does my mind go blank when expression, clarity, or communication is needed?",
+prompts: [
+  "When do I lose trust in my own thinking?",
+  "What situations make me mentally freeze?",
+  "Where do I struggle to access my voice?",
 ],
 nervousSystem:
   "Often associated with freeze responses, especially cognitive shutdown or speech freezing.",
@@ -172,6 +200,13 @@ secondaryLoops: [
   "Feeling mentally unclear or hard to ground",
   "Thinking instead of feeling what is true",
 ],
+coreQuestion:
+  "Where do I distrust my own perception or become lost in distortion, confusion, or mixed signals?",
+prompts: [
+  "What feels mentally foggy or unclear?",
+  "Where do I second-guess reality?",
+  "When do I rationalise instead of seeing clearly?",
+],
 nervousSystem:
   "Often associated with flight responses, with fight possible through intellectual defensiveness.",
 protection:
@@ -209,6 +244,13 @@ secondaryLoops: [
   "Rehearsing scenarios repeatedly",
   "Seeking certainty before making a move",
   "Feeling trapped in analysis or mental loops",
+],
+coreQuestion:
+  "Where do overthinking, analysis, or mental looping disconnect me from action or clarity?",
+prompts: [
+  "What thoughts keep repeating without resolution?",
+  "Where do I become mentally trapped?",
+  "When does thinking replace movement?",
 ],
 nervousSystem:
   "Often associated with flight responses, with freeze possible when thought overwhelms action.",
@@ -248,6 +290,13 @@ secondaryLoops: [
   "Avoiding vulnerability or emotional conversations",
   "Not knowing what you feel",
 ],
+coreQuestion:
+  "Where do I shut down emotion in order to stay functional, safe, or in control?",
+prompts: [
+  "What emotions feel unsafe to express?",
+  "Where have I disconnected from vulnerability?",
+  "What am I containing but not processing?",
+],
 nervousSystem:
   "Often associated with freeze responses, especially emotional shutdown or numbness.",
 protection:
@@ -285,6 +334,13 @@ secondaryLoops: [
   "Longing replacing grounded connection",
   "Feeling attached to fantasy more than reality",
   "Escaping into emotional imagination",
+],
+coreQuestion:
+  "Where do fantasy, longing, or imagination replace grounded emotional reality?",
+prompts: [
+  "What am I hoping for instead of facing?",
+  "Where do I escape into possibility or illusion?",
+  "What reality feels difficult to accept?",
 ],
 nervousSystem:
   "Often associated with flight responses, with freeze possible when reality interrupts fantasy.",
@@ -324,6 +380,13 @@ secondaryLoops: [
   "Seeking reassurance intensely",
   "Feeling consumed by emotional activation",
 ],
+coreQuestion:
+  "Where do emotions become overwhelming, consuming, or difficult to regulate?",
+prompts: [
+  "What emotions feel too big to hold?",
+  "When do I lose grounding emotionally?",
+  "What pulls me into emotional intensity?",
+],
 nervousSystem:
   "Often associated with fight and flight responses, with freeze possible after emotional overwhelm.",
 protection:
@@ -361,6 +424,13 @@ secondaryLoops: [
   "Suppressing needs to avoid conflict",
   "Over-adapting to keep peace or approval",
   "Feeling resentment after agreeing",
+],
+coreQuestion:
+  "Where do I abandon my boundaries, truth, or anger to maintain approval, safety, or connection?",
+prompts: [
+  "Where do I say yes when I mean no?",
+  "What conflict am I avoiding?",
+  "What part of myself gets sacrificed for acceptance?",
 ],
 
 nervousSystem: "Often associated with fawn responses, with freeze possible during confrontation.",
@@ -403,6 +473,13 @@ secondaryLoops: [
   "Using control, withdrawal, or independence to feel safe",
   "Pushing people away before vulnerability appears",
 ],
+coreQuestion:
+  "Where has protection become isolation, distance, or emotional self-containment?",
+prompts: [
+  "Where do I keep people out?",
+  "What feels unsafe about relying on others?",
+  "When does independence become disconnection?",
+],
 nervousSystem:
   "Often associated with fight and freeze responses, with flight possible through avoidance of intimacy.",
 protection:
@@ -440,6 +517,13 @@ secondaryLoops: [
   "Functioning without vitality or joy",
   "Living in endurance, duty, or survival mode",
   "Difficulty accessing rest, pleasure, or aliveness",
+],
+coreQuestion:
+  "Where has life become survival, endurance, or emotional dryness instead of vitality and connection?",
+prompts: [
+  "Where am I only functioning?",
+  "What part of me feels emotionally depleted?",
+  "When did joy begin feeling distant?",
 ],
 nervousSystem:
   "Often associated with freeze responses, especially shutdown, depletion, or collapse after chronic stress.",

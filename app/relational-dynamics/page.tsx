@@ -114,22 +114,81 @@ export default function RelationalDynamicsPage() {
             </div>
           ))}
         </div>
+<section className="mt-24 px-6 py-28 border-t border-zinc-800 bg-[#0B1018]">
+  <div className="max-w-6xl mx-auto">
+    <div className="text-center mb-16">
+      <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+        Loop Interaction Examples
+      </p>
 
-        <div className="border border-zinc-800 rounded-3xl p-10 bg-zinc-950">
-          <h2 className="text-4xl font-bold mb-6">
-            This is not blame. It is pattern recognition.
-          </h2>
+      <h2 className="text-4xl md:text-6xl font-bold mb-8">
+        One loop can activate another.
+      </h2>
 
-          <p className="text-xl text-gray-300 leading-relaxed">
-            Relational dynamics do not mean another person “causes” your loop.
-            They mean certain interactions can activate adaptive responses
-            inside your body, mind, emotions, and archetypal system. Awareness
-            creates the possibility of choice.
-          </p>
+      <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+        ArcheLoop looks at relational patterns dynamically: how one person’s
+        activated state may trigger, intensify, protect, or compensate inside
+        another system.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-2 gap-6">
+      {[
+        [
+          "Fantasy Fog ↔ Fortress",
+          "Longing, projection, or emotional fantasy may activate distance, guardedness, or withdrawal. Withdrawal may then intensify longing.",
+        ],
+        [
+          "Flooded Waters ↔ Emotional Lockdown",
+          "Emotional intensity may activate shutdown. Shutdown may then increase urgency, protest, or fear of disconnection.",
+        ],
+        [
+          "Paper Crown ↔ Compliance",
+          "Achievement pressure, status, or conditional approval may activate adaptation, pleasing, or self-suppression.",
+        ],
+        [
+          "Mind Maze ↔ Stalled Flame",
+          "Over-analysis may interrupt action. Lack of movement may then create more uncertainty and mental looping.",
+        ],
+      ].map(([title, description]) => (
+        <div
+          key={title}
+          className="group relative overflow-hidden border border-zinc-800 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-8 hover:border-yellow-300/40 transition-all duration-500"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.08),transparent_55%)] opacity-0 group-hover:opacity-100 transition duration-500" />
+
+          <div className="relative z-10">
+            <h3 className="text-3xl font-bold mb-5 group-hover:text-yellow-300 transition">
+              {title}
+            </h3>
+
+            <p className="text-gray-300 leading-relaxed">
+              {description}
+            </p>
+          </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+</section>
 
-      <Footer />
+<div className="max-w-5xl mx-auto mt-12 mb-28 px-6">
+  <div className="border border-zinc-800 rounded-3xl p-10 bg-zinc-950">
+    <h2 className="text-4xl font-bold mb-6">
+      This is not blame. It is pattern recognition.
+    </h2>
+
+    <p className="text-xl text-gray-300 leading-relaxed">
+      Relational dynamics do not mean another person “causes” your loop.
+      They mean certain interactions can activate adaptive responses
+      inside your body, mind, emotions, and archetypal system. Awareness
+      creates the possibility of choice.
+    </p>
+  </div>
+</div>
+
+<Footer />
     </main>
   )
 }

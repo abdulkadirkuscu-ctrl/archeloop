@@ -86,7 +86,33 @@ export default async function LoopPage({
               </p>
             </div>
           </section>
+{loop.coreQuestion && (
+  <section className="mb-16">
+    <h2 className="text-4xl font-bold mb-6">
+      Core Reflection Question
+    </h2>
 
+    <div className="border border-yellow-300/20 rounded-3xl p-8 bg-gradient-to-b from-zinc-950 to-black">
+      <p className="text-2xl text-yellow-300 leading-relaxed mb-8">
+        “{loop.coreQuestion}”
+      </p>
+
+      {loop.prompts && (
+        <div>
+          <p className="uppercase tracking-[0.25em] text-gray-500 text-sm mb-4">
+            Additional Prompts
+          </p>
+
+          <ul className="space-y-3 text-gray-300">
+            {loop.prompts.map((prompt: string) => (
+              <li key={prompt}>• {prompt}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </section>
+)}
           {loop.signs && (
             <section className="mb-16">
               <h2 className="text-4xl font-bold mb-6">

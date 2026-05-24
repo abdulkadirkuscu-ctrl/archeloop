@@ -72,7 +72,7 @@ export default function WhatIsArcheLoopPage() {
             </p>
 
             <p className="text-lg italic text-gray-400">
-              “Am I allowed to shine?”
+              "Am I allowed to exist visibly?"
             </p>
           </div>
 
@@ -96,7 +96,7 @@ export default function WhatIsArcheLoopPage() {
             </p>
 
             <p className="text-lg italic text-gray-400">
-              “Can I trust my mind?”
+              "Can I trust perception and expression?"
             </p>
           </div>
 
@@ -120,7 +120,7 @@ export default function WhatIsArcheLoopPage() {
             </p>
 
             <p className="text-lg italic text-gray-400">
-              “Am I safe to love?”
+              "Am I safe to emotionally connect?"
             </p>
           </div>
 
@@ -144,7 +144,7 @@ export default function WhatIsArcheLoopPage() {
             </p>
 
             <p className="text-lg italic text-gray-400">
-              “Am I allowed to protect myself?”
+             "Am I allowed to protect and ground what matters?"
             </p>
           </div>
         </div>
