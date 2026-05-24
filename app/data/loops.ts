@@ -14,6 +14,27 @@ export const loops = {
     integrationKey: "Healthy Sovereign",
     integrationReason:
       "Healthy self-trust and safe visibility restore collapsed Fire energy.",
+      signs: [
+  "Shrinking around visibility or attention",
+  "Holding back expression, creativity, or ambition",
+  "Feeling unsafe when fully seen",
+  "Minimising gifts, needs, or presence",
+],
+nervousSystem:
+  "Often associated with freeze responses, with fawn possible when visibility threatens belonging.",
+protection:
+  "This pattern may be protecting against shame, rejection, criticism, envy, or the fear of being exposed.",
+relationalActivators: [
+  "Critical or shaming environments",
+  "Attention, praise, or visibility",
+  "People who minimise your expression",
+  "Situations where being seen feels unsafe",
+],
+secondaryLoops: [
+  "Blank Page",
+  "Emotional Lockdown",
+  "Compliance",
+],
   },
 
   "Paper Crown": {
@@ -31,26 +52,26 @@ export const loops = {
     integrationKey: "Healthy Lover",
     integrationReason:
       "Authentic emotional connection softens the need to perform for worth.",
-      protection:
-  "This pattern may be protecting against feelings of inadequacy, failure, invisibility, rejection, or loss of value.",
-
-signs: [
-  "Worth may begin to feel connected to achievement.",
-  "Comparison or status pressure can intensify.",
-  "Performance may become linked to self-value.",
-  "The system may seek validation through success or image.",
+      signs: [
+  "Feeling worth tied to achievement or image",
+  "Pressure to prove, perform, or appear successful",
+  "Comparison becoming emotionally intense",
+  "Difficulty resting without guilt",
 ],
-
+nervousSystem:
+  "Often associated with fight responses, with fawn possible through approval-seeking and performance.",
+protection:
+  "This pattern may be protecting against inadequacy, failure, invisibility, rejection, or loss of value.",
 relationalActivators: [
   "Status-driven people",
   "Competitive environments",
-  "People who tie worth to achievement",
+  "Conditional approval",
   "Situations involving comparison or validation",
 ],
-
 secondaryLoops: [
+  "Emotional Lockdown",
   "Compliance",
-  "Dimmed Light",
+  "Barren Ground",
 ],
   },
 
@@ -69,6 +90,27 @@ secondaryLoops: [
     integrationKey: "Healthy Warrior",
     integrationReason:
       "Grounded action interrupts paralysis and restores movement.",
+      signs: [
+  "Wanting to move forward but repeatedly delaying",
+  "Waiting for certainty before acting",
+  "Feeling desire or vision without momentum",
+  "Starting to act, then freezing or pulling back",
+],
+nervousSystem:
+  "Often associated with flight and freeze responses when action, risk, or visibility feels unsafe.",
+protection:
+  "This pattern may be protecting against failure, judgement, uncertainty, overwhelm, or the consequences of action.",
+relationalActivators: [
+  "Pressure-heavy environments",
+  "High expectations",
+  "Fear of failure or success",
+  "Situations requiring decisive movement",
+],
+secondaryLoops: [
+  "Mind Maze",
+  "Blank Page",
+  "Dimmed Light",
+],
   },
 
   "Blank Page": {
@@ -86,6 +128,27 @@ secondaryLoops: [
     integrationKey: "Healthy Magician",
     integrationReason:
       "Safe expression and trusted perception restore healthy Air flow.",
+      signs: [
+  "Mind going blank under pressure",
+  "Difficulty speaking or expressing clearly",
+  "Creative or verbal shutdown",
+  "Knowing something internally but being unable to say it",
+],
+nervousSystem:
+  "Often associated with freeze responses, especially cognitive shutdown or speech freezing.",
+protection:
+  "This pattern may be protecting against judgement, exposure, misunderstanding, criticism, or expressive vulnerability.",
+relationalActivators: [
+  "Public speaking or visibility",
+  "Critical conversations",
+  "Emotional confrontation",
+  "Situations requiring spontaneous expression",
+],
+secondaryLoops: [
+  "Mind Maze",
+  "Dimmed Light",
+  "Emotional Lockdown",
+],
   },
 
   "Smoky Mirrors": {
@@ -103,6 +166,27 @@ secondaryLoops: [
     integrationKey: "Healthy Lover",
     integrationReason:
       "Emotional honesty softens defensive mental control patterns.",
+      signs: [
+  "Losing trust in perception or interpretation",
+  "Rationalising, over-explaining, or distorting reality",
+  "Feeling mentally unclear or hard to ground",
+  "Thinking instead of feeling what is true",
+],
+nervousSystem:
+  "Often associated with flight responses, with fight possible through intellectual defensiveness.",
+protection:
+  "This pattern may be protecting against uncertainty, emotional truth, shame, vulnerability, or loss of control.",
+relationalActivators: [
+  "Ambiguous communication",
+  "Emotional confrontation",
+  "Contradiction or criticism",
+  "Situations where reality feels difficult to face",
+],
+secondaryLoops: [
+  "Mind Maze",
+  "Fortress",
+  "Emotional Lockdown",
+],
   },
 
   "Mind Maze": {
@@ -120,6 +204,27 @@ secondaryLoops: [
     integrationKey: "Healthy Warrior",
     integrationReason:
       "Grounded action interrupts excessive mental looping and restores movement.",
+      signs: [
+  "Overthinking instead of acting",
+  "Rehearsing scenarios repeatedly",
+  "Seeking certainty before making a move",
+  "Feeling trapped in analysis or mental loops",
+],
+nervousSystem:
+  "Often associated with flight responses, with freeze possible when thought overwhelms action.",
+protection:
+  "This pattern may be protecting against uncertainty, mistakes, failure, emotional risk, or loss of control.",
+relationalActivators: [
+  "Ambiguity or mixed signals",
+  "Important decisions",
+  "Pressure to act without certainty",
+  "Emotionally unpredictable situations",
+],
+secondaryLoops: [
+  "Stalled Flame",
+  "Blank Page",
+  "Fortress",
+],
   },
 
   "Emotional Lockdown": {
@@ -137,6 +242,27 @@ secondaryLoops: [
     integrationKey: "Healthy Lover",
     integrationReason:
       "Safe emotional contact restores connection to feeling and intimacy.",
+      signs: [
+  "Feeling emotionally numb or distant",
+  "Functioning while disconnected from feeling",
+  "Avoiding vulnerability or emotional conversations",
+  "Not knowing what you feel",
+],
+nervousSystem:
+  "Often associated with freeze responses, especially emotional shutdown or numbness.",
+protection:
+  "This pattern may be protecting against overwhelm, rejection, vulnerability, betrayal, or emotional instability.",
+relationalActivators: [
+  "Emotional intensity",
+  "Vulnerability or intimacy",
+  "Conflict-heavy dynamics",
+  "People who dismiss or punish emotion",
+],
+secondaryLoops: [
+  "Fortress",
+  "Barren Ground",
+  "Blank Page",
+],
   },
 
   "Fantasy Fog": {
@@ -154,6 +280,27 @@ secondaryLoops: [
     integrationKey: "Healthy Warrior",
     integrationReason:
       "Grounded embodiment helps reconnect fantasy to reality and action.",
+      signs: [
+  "Idealising people or imagined futures",
+  "Longing replacing grounded connection",
+  "Feeling attached to fantasy more than reality",
+  "Escaping into emotional imagination",
+],
+nervousSystem:
+  "Often associated with flight responses, with freeze possible when reality interrupts fantasy.",
+protection:
+  "This pattern may be protecting against loneliness, rejection, disappointment, emotional deprivation, or unavailable connection.",
+relationalActivators: [
+  "Unavailable people",
+  "Ambiguous relationships",
+  "Loneliness or emotional deprivation",
+  "Situations where real intimacy feels uncertain",
+],
+secondaryLoops: [
+  "Fortress",
+  "Flooded Waters",
+  "Emotional Lockdown",
+],
   },
 
   "Flooded Waters": {
@@ -171,6 +318,27 @@ secondaryLoops: [
     integrationKey: "Healthy Warrior",
     integrationReason:
       "Grounded structure and nervous system regulation stabilize emotional flooding.",
+      signs: [
+  "Emotion feeling too intense to contain",
+  "Relational fear becoming urgent or overwhelming",
+  "Seeking reassurance intensely",
+  "Feeling consumed by emotional activation",
+],
+nervousSystem:
+  "Often associated with fight and flight responses, with freeze possible after emotional overwhelm.",
+protection:
+  "This pattern may be protecting against abandonment, emotional instability, rejection, loss of connection, or unmet attachment needs.",
+relationalActivators: [
+  "Emotional distance",
+  "Rejection or abandonment cues",
+  "Inconsistent communication",
+  "Conflict or relational uncertainty",
+],
+secondaryLoops: [
+  "Fortress",
+  "Emotional Lockdown",
+  "Fantasy Fog",
+],
   },
 
   Compliance: {
@@ -188,6 +356,30 @@ secondaryLoops: [
     integrationKey: "Healthy Warrior",
     integrationReason:
       "Boundaries and grounded action restore collapsed Earth energy.",
+      signs: [
+  "Difficulty saying no",
+  "Suppressing needs to avoid conflict",
+  "Over-adapting to keep peace or approval",
+  "Feeling resentment after agreeing",
+],
+
+nervousSystem: "Often associated with fawn responses, with freeze possible during confrontation.",
+
+protection:
+  "This pattern may be protecting against conflict, rejection, punishment, emotional withdrawal, or loss of belonging.",
+
+relationalActivators: [
+  "Dominant personalities",
+  "Criticism or anger",
+  "Emotional unpredictability",
+  "Situations where approval feels conditional",
+],
+
+secondaryLoops: [
+  "Dimmed Light",
+  "Emotional Lockdown",
+  "Barren Ground",
+],
   },
 
   Fortress: {
@@ -205,6 +397,27 @@ secondaryLoops: [
     integrationKey: "Healthy Lover",
     integrationReason:
       "Safe emotional connection softens defensive isolation and rigidity.",
+      signs: [
+  "Emotional distance or guardedness",
+  "Difficulty asking for help or receiving care",
+  "Using control, withdrawal, or independence to feel safe",
+  "Pushing people away before vulnerability appears",
+],
+nervousSystem:
+  "Often associated with fight and freeze responses, with flight possible through avoidance of intimacy.",
+protection:
+  "This pattern may be protecting against betrayal, engulfment, dependency, emotional exposure, or loss of control.",
+relationalActivators: [
+  "Emotional demands",
+  "Vulnerability or dependency",
+  "Inconsistent trust",
+  "Relationships that feel intrusive or unpredictable",
+],
+secondaryLoops: [
+  "Emotional Lockdown",
+  "Barren Ground",
+  "Smoky Mirrors",
+],
   },
 
   "Barren Ground": {
@@ -222,5 +435,26 @@ secondaryLoops: [
     integrationKey: "Healthy Lover",
     integrationReason:
       "Restoration, nourishment, and emotional connection replenish exhausted Earth energy.",
+      signs: [
+  "Feeling emotionally depleted or flat",
+  "Functioning without vitality or joy",
+  "Living in endurance, duty, or survival mode",
+  "Difficulty accessing rest, pleasure, or aliveness",
+],
+nervousSystem:
+  "Often associated with freeze responses, especially shutdown, depletion, or collapse after chronic stress.",
+protection:
+  "This pattern may be protecting against exhaustion, disappointment, unmet needs, emotional deprivation, or the fear that stopping will cause collapse.",
+relationalActivators: [
+  "Chronic responsibility",
+  "Emotionally dry environments",
+  "Lack of reciprocity or nourishment",
+  "Survival pressure or burnout",
+],
+secondaryLoops: [
+  "Emotional Lockdown",
+  "Compliance",
+  "Dimmed Light",
+],
   },
 }

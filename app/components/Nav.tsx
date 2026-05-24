@@ -31,6 +31,7 @@ export default function Nav() {
       <a href="/assessment" className="hover:text-yellow-300 transition">
         Assessment
       </a>
+      <a href="/report">Report</a>
 
       <a href="/about" className="hover:text-yellow-300 transition">
         About

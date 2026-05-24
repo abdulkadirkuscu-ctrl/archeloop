@@ -143,6 +143,100 @@ export default function Home() {
 
   </div>
 </section>
+
+<section className="px-6 py-24 bg-[#0B1018] border-y border-zinc-800">
+  <div className="max-w-6xl mx-auto text-center">
+    <p className="uppercase tracking-[0.3em] text-gray-500 mb-4">
+      Start Here
+    </p>
+
+    <h2 className="text-4xl md:text-5xl font-bold mb-12">
+      Where should you begin?
+    </h2>
+
+    <div className="grid md:grid-cols-3 gap-6 text-left">
+      <a
+        href="/triggered"
+        className="group border border-zinc-800 rounded-3xl p-8 bg-black/60 hover:border-yellow-300/50 transition"
+      >
+        <h3 className="text-3xl font-bold mb-4 group-hover:text-yellow-300 transition">
+          I feel triggered right now
+        </h3>
+        <p className="text-gray-400 leading-relaxed mb-6">
+          Use the guided check-in to identify what loop may be active in this moment.
+        </p>
+        <p className="text-yellow-300 font-semibold">Identify my loop →</p>
+      </a>
+
+      <a
+        href="/assessment"
+        className="group border border-zinc-800 rounded-3xl p-8 bg-black/60 hover:border-yellow-300/50 transition"
+      >
+        <h3 className="text-3xl font-bold mb-4 group-hover:text-yellow-300 transition">
+          I want to understand my patterns
+        </h3>
+        <p className="text-gray-400 leading-relaxed mb-6">
+          Take the assessment to explore your dominant archetypal and shadow-loop patterns.
+        </p>
+        <p className="text-yellow-300 font-semibold">Take assessment →</p>
+      </a>
+
+      <a
+        href="/what-is-archeloop"
+        className="group border border-zinc-800 rounded-3xl p-8 bg-black/60 hover:border-yellow-300/50 transition"
+      >
+        <h3 className="text-3xl font-bold mb-4 group-hover:text-yellow-300 transition">
+          I want to explore the system
+        </h3>
+        <p className="text-gray-400 leading-relaxed mb-6">
+          Learn how ArcheLoop maps archetypes, nervous system responses, and relational dynamics.
+        </p>
+        <p className="text-yellow-300 font-semibold">Explore ArcheLoop →</p>
+      </a>
+    </div>
+  </div>
+</section>
+<section className="px-6 py-24">
+  <div className="max-w-5xl mx-auto text-center">
+
+    <p className="uppercase tracking-[0.3em] text-gray-500 mb-4">
+      Emotional Recognition
+    </p>
+
+    <h2 className="text-4xl md:text-5xl font-bold mb-8">
+      You may recognise yourself in…
+    </h2>
+
+    <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-14">
+      ArcheLoop is designed to help recognise recurring emotional,
+      relational, and nervous system patterns that often operate automatically.
+    </p>
+
+    <div className="grid md:grid-cols-2 gap-6 text-left">
+
+      {[
+        "Overthinking instead of acting",
+        "Feeling emotionally flooded or emotionally numb",
+        "Seeking validation through achievement or performance",
+        "Shutting down during conflict or pressure",
+        "Losing trust in your own perception",
+        "Wanting connection but fearing vulnerability",
+        "Feeling trapped in recurring emotional patterns",
+        "Repeating relationship dynamics despite awareness",
+      ].map((item) => (
+        <div
+          key={item}
+          className="border border-zinc-800 rounded-3xl p-6 bg-zinc-950"
+        >
+          <p className="text-lg text-gray-200 leading-relaxed">
+            • {item}
+          </p>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
 <section className="px-6 py-28">
   <div className="max-w-6xl mx-auto">
 
@@ -398,12 +492,13 @@ export default function Home() {
              className="group border border-zinc-800 rounded-3xl p-4 bg-black/80 hover:border-yellow-300/40 hover:scale-[1.02] transition-all duration-300 block overflow-hidden shadow-lg"
             >
 <div className="relative h-40 rounded-2xl overflow-hidden mb-6 bg-zinc-950 border border-zinc-800">
-  <Image
-    src={icon}
-    alt={title}
-    fill
-    className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
-  />
+ <Image
+  src={icon}
+  alt={title}
+  fill
+  sizes="(max-width: 768px) 100vw, 33vw"
+  className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+/>
 </div>
 
               <h3 className="text-2xl font-bold mb-3 group-hover:text-yellow-300 transition">
@@ -515,6 +610,45 @@ export default function Home() {
     </div>
 
   </div>
+  <section className="px-6 py-28 border-t border-zinc-800 bg-[#0B1018]">
+  <div className="max-w-4xl mx-auto text-center">
+
+    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+      Join ArcheLoop
+    </p>
+
+    <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+      Receive future ArcheLoop tools,
+      reports, practices, and early access.
+    </h2>
+
+    <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto mb-12">
+      ArcheLoop is evolving into a deeper symbolic self-awareness system.
+      Join the mailing list for future releases, practices, assessments,
+      reports, and app updates.
+    </p>
+
+    <form className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto mb-6">
+      <input
+        type="email"
+        placeholder="Enter your email"
+        className="flex-1 bg-black border border-zinc-700 rounded-full px-6 py-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-yellow-300"
+      />
+
+      <button
+        type="submit"
+        className="bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold hover:bg-yellow-200 transition"
+      >
+        Join ArcheLoop
+      </button>
+    </form>
+
+    <p className="text-sm text-gray-500">
+      No spam. Only meaningful updates, tools, and future releases.
+    </p>
+
+  </div>
+</section>
 </section>
       <Footer />
     </main>

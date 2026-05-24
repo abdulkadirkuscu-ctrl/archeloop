@@ -1,6 +1,13 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
+
+export const metadata: Metadata = {
+  title: "The 12 Shadow Loops",
+  description:
+    "Explore the 12 ArcheLoop shadow patterns formed through suppression, compensation, collision, and relational activation.",
+}
 
 const loops = [
   {
@@ -27,7 +34,6 @@ const loops = [
       "You feel desire, vision, or ambition inside you, but hesitation interrupts movement.",
     slug: "stalled-flame",
   },
-
   {
     name: "Blank Page",
     element: "Air",
@@ -52,7 +58,6 @@ const loops = [
       "Thought loops, over-analysis, and mental recursion interrupt action and clarity.",
     slug: "mind-maze",
   },
-
   {
     name: "Emotional Lockdown",
     element: "Water",
@@ -77,7 +82,6 @@ const loops = [
       "Emotion becomes overwhelming, intense, and difficult to contain or regulate.",
     slug: "flooded-waters",
   },
-
   {
     name: "Compliance",
     element: "Earth",
@@ -104,75 +108,82 @@ const loops = [
   },
 ]
 
-export const metadata: Metadata = {
-  title: "The 12 Shadow Loops",
-  description:
-    "Explore the 12 ArcheLoop shadow patterns formed through suppression, inflation, compensation, and relational activation across the four archetypes.",
-}
 export default function LoopsPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
       <Nav />
 
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="mb-20">
-          <h1 className="text-6xl font-bold mb-6">
-            Shadow Loops
-          </h1>
+      <section className="px-6 py-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+              ArcheLoop
+            </p>
 
-          <p className="text-xl text-gray-400 max-w-3xl leading-relaxed">
-            Shadow Loops are recurring emotional and behavioural patterns
-            formed through suppression, compensation, or collision between
-            archetypal energies.
-          </p>
+            <h1 className="text-5xl md:text-7xl font-bold mb-8">
+              The 12 Shadow Loops
+            </h1>
+
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Shadow Loops are recurring emotional and behavioural patterns
+              formed through suppression, compensation, or collision between
+              archetypal energies.
+            </p>
+          </div>
+
+          <div className="space-y-24">
+            {["Fire", "Air", "Water", "Earth"].map((element) => (
+              <section key={element}>
+                <h2 className="text-4xl font-bold mb-8">
+                  {element} Loops
+                </h2>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                  {loops
+                    .filter((loop) => loop.element === element)
+                    .map((loop) => (
+                      <a
+                        key={loop.slug}
+                        href={`/loops/${loop.slug}`}
+                        className="group relative overflow-hidden border border-zinc-800 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black hover:border-yellow-300/40 transition-all duration-500"
+                      >
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.08),transparent_55%)] opacity-0 group-hover:opacity-100 transition duration-500" />
+
+                        <div className="relative h-72 overflow-hidden">
+                          <Image
+                            src={loop.image}
+                            alt={loop.name}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                          />
+                        </div>
+
+                        <div className="relative z-10 p-8">
+                          <p className="uppercase tracking-[0.25em] text-gray-500 text-sm mb-4">
+                            Shadow Loop
+                          </p>
+
+                          <h3 className="text-3xl font-bold mb-5 group-hover:text-yellow-300 transition">
+                            {loop.name}
+                          </h3>
+
+                          <p className="text-gray-300 leading-relaxed mb-8">
+                            {loop.description}
+                          </p>
+
+                          <p className="text-yellow-300 font-semibold">
+                            Explore Loop →
+                          </p>
+                        </div>
+                      </a>
+                    ))}
+                </div>
+              </section>
+            ))}
+          </div>
         </div>
-
-        <div className="space-y-20">
-          {["Fire", "Air", "Water", "Earth"].map((element) => (
-  <section key={element}>
-    <h2 className="text-3xl font-bold mb-8">
-      {element} Loops
-    </h2>
-
-    <div className="grid md:grid-cols-3 gap-6">
-      {loops
-        .filter((loop) => loop.element === element)
-        .map((loop) => (
-          <a
-            key={loop.name}
-            href={`/loops/${loop.slug}`}
-            className="group relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-950 hover:border-zinc-600 transition duration-300"
-          >
-            <div className="relative overflow-hidden">
-              <img
-                src={loop.image}
-                alt={loop.name}
-                className="w-full h-[360px] object-cover group-hover:scale-105 transition duration-700"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-
-              <div className="absolute bottom-0 left-0 p-6">
-                <p className="uppercase tracking-[0.25em] text-xs text-gray-400 mb-2">
-                  Shadow Loop
-                </p>
-
-                <h3 className="text-2xl font-bold mb-3">
-                  {loop.name}
-                </h3>
-
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  {loop.description}
-                </p>
-              </div>
-            </div>
-          </a>
-        ))}
-    </div>
-  </section>
-))}
-        </div>
-      </div>
+      </section>
 
       <Footer />
     </main>
