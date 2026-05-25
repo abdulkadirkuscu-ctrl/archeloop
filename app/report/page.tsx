@@ -204,35 +204,331 @@ export default function ReportPage() {
   </div>
 </section>
 
-      <section className="px-6 py-28 border-y border-zinc-800 bg-[#0B1018]">
+<section className="px-6 py-28">
+  <div className="max-w-7xl mx-auto">
 
-        <div className="max-w-5xl mx-auto text-center">
+    <div className="text-center mb-20">
+      <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+        Inside The Report
+      </p>
 
-          <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
-            Coming Soon
+      <h2 className="text-4xl md:text-6xl font-bold mb-8">
+        A symbolic map of your inner patterns.
+      </h2>
+
+      <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+        ArcheLoop reports are designed to transform recurring emotional,
+        behavioural, relational, and nervous system patterns into a structured
+        symbolic profile.
+      </p>
+    </div>
+
+    <div className="grid lg:grid-cols-3 gap-6">
+
+      {/* CARD 1 */}
+      <div className="group relative overflow-hidden border border-zinc-800 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-8 hover:border-yellow-300/40 transition-all duration-700">
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.08),transparent_60%)] opacity-0 group-hover:opacity-100 transition duration-700" />
+
+        <div className="relative z-10">
+
+          <p className="uppercase tracking-[0.25em] text-yellow-300 text-sm mb-4">
+            Primary Pattern
           </p>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-8">
-            ArcheLoop reports are currently in development.
-          </h2>
+          <h3 className="text-3xl font-bold mb-6">
+            Dimmed Light Loop
+          </h3>
 
-          <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
-            Future reports may include personalised archetype maps,
-            shadow-loop analysis, nervous system patterns,
-            relational dynamics, body maps, and symbolic integration guidance.
+          <div className="space-y-4 mb-8">
+
+            <div className="flex justify-between border-b border-zinc-800 pb-3">
+              <span className="text-gray-400">Element</span>
+              <span className="text-yellow-300 font-semibold">Fire</span>
+            </div>
+
+            <div className="flex justify-between border-b border-zinc-800 pb-3">
+              <span className="text-gray-400">Archetype</span>
+              <span className="font-semibold">Sovereign</span>
+            </div>
+
+            <div className="flex justify-between border-b border-zinc-800 pb-3">
+              <span className="text-gray-400">Pattern</span>
+              <span className="font-semibold">Suppression</span>
+            </div>
+
+          </div>
+
+          <p className="text-gray-300 leading-relaxed">
+            Visibility, expression, or self-trust may collapse when attention,
+            pressure, shame, or emotional exposure feel unsafe.
           </p>
-
-          <a
-            href="/contact"
-            className="inline-flex bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
-          >
-            Join Early Access
-          </a>
 
         </div>
 
-      </section>
+      </div>
 
+      {/* CARD 2 */}
+      <div className="group relative overflow-hidden border border-zinc-800 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-8 hover:border-blue-400/40 transition-all duration-700">
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.08),transparent_60%)] opacity-0 group-hover:opacity-100 transition duration-700" />
+
+        <div className="relative z-10">
+
+          <p className="uppercase tracking-[0.25em] text-blue-400 text-sm mb-4">
+            Nervous System
+          </p>
+
+          <h3 className="text-3xl font-bold mb-6">
+            Activation Mapping
+          </h3>
+
+          <div className="space-y-5">
+
+            <div>
+              <div className="flex justify-between mb-2">
+                <span>Fight</span>
+                <span>26%</span>
+              </div>
+
+              <div className="h-3 rounded-full bg-zinc-800 overflow-hidden">
+                <div className="h-full w-[26%] bg-blue-400 rounded-full" />
+              </div>
+            </div>
+
+            <div>
+              <div className="flex justify-between mb-2">
+                <span>Freeze</span>
+                <span>58%</span>
+              </div>
+
+              <div className="h-3 rounded-full bg-zinc-800 overflow-hidden">
+                <div className="h-full w-[58%] bg-blue-400 rounded-full" />
+              </div>
+            </div>
+
+            <div>
+              <div className="flex justify-between mb-2">
+                <span>Fawn</span>
+                <span>71%</span>
+              </div>
+
+              <div className="h-3 rounded-full bg-zinc-800 overflow-hidden">
+                <div className="h-full w-[71%] bg-blue-400 rounded-full" />
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* CARD 3 */}
+      <div className="group relative overflow-hidden border border-zinc-800 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-8 hover:border-rose-500/40 transition-all duration-700">
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(225,29,72,0.08),transparent_60%)] opacity-0 group-hover:opacity-100 transition duration-700" />
+
+        <div className="relative z-10">
+
+          <p className="uppercase tracking-[0.25em] text-rose-500 text-sm mb-4">
+            Relational Dynamics
+          </p>
+
+          <h3 className="text-3xl font-bold mb-6">
+            Trigger Patterns
+          </h3>
+
+          <div className="space-y-4">
+
+            <div className="border border-zinc-800 rounded-2xl p-4">
+              <p className="text-sm text-gray-500 mb-2">
+                Trigger
+              </p>
+
+              <p className="font-semibold">
+                Emotional unpredictability
+              </p>
+            </div>
+
+            <div className="border border-zinc-800 rounded-2xl p-4">
+              <p className="text-sm text-gray-500 mb-2">
+                Activated Loop
+              </p>
+
+              <p className="font-semibold">
+                Emotional Lockdown
+              </p>
+            </div>
+
+            <div className="border border-zinc-800 rounded-2xl p-4">
+              <p className="text-sm text-gray-500 mb-2">
+                Integration Path
+              </p>
+
+              <p className="font-semibold text-rose-400">
+                Healthy Lover
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+   <section className="px-6 py-28 border-y border-zinc-800 bg-[#0B1018]">
+
+  <div className="max-w-6xl mx-auto">
+
+    <div className="text-center mb-16">
+
+      <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+        Founding Edition
+      </p>
+
+      <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+        Unlock your full
+        <br />
+        ArcheLoop pattern report.
+      </h2>
+
+      <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+        Receive a deeper symbolic analysis of your emotional patterns,
+        archetypal dynamics, nervous system responses, elemental balance,
+        relational activators, and integration pathways.
+      </p>
+
+    </div>
+
+    <div className="grid lg:grid-cols-2 gap-8 mb-14">
+
+      {/* LEFT */}
+      <div className="border border-zinc-800 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-10">
+
+        <p className="uppercase tracking-[0.25em] text-yellow-300 text-sm mb-5">
+          Included In The Report
+        </p>
+
+        <div className="space-y-5">
+
+          {[
+            "Primary and secondary shadow loops",
+            "Elemental balance analysis",
+            "Archetype integration mapping",
+            "Nervous system activation patterns",
+            "Relational trigger dynamics",
+            "Body map interpretation",
+            "Loop interruption practices",
+            "Personalised integration guidance",
+          ].map((item) => (
+            <div
+              key={item}
+              className="flex items-center gap-4 border border-zinc-800 rounded-2xl p-4"
+            >
+              <div className="h-2 w-2 rounded-full bg-yellow-300" />
+
+              <p className="text-gray-300">
+                {item}
+              </p>
+            </div>
+          ))}
+
+        </div>
+
+      </div>
+
+      {/* RIGHT */}
+      <div className="relative overflow-hidden border border-yellow-300/20 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-10">
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,215,0,0.08),transparent_60%)]" />
+
+        <div className="relative z-10">
+
+          <p className="uppercase tracking-[0.25em] text-yellow-300 text-sm mb-5">
+            ArcheLoop Founding Report
+          </p>
+
+          <h3 className="text-5xl font-bold mb-6">
+            Founding Access
+          </h3>
+
+          <p className="text-xl text-gray-300 leading-relaxed mb-10">
+            A limited number of Founding Edition reports are currently
+available for early users helping shape the future ArcheLoop system.
+          </p>
+
+          <div className="space-y-4 mb-10">
+
+            <div className="flex justify-between border-b border-zinc-800 pb-3">
+              <span className="text-gray-400">
+                Delivery
+              </span>
+
+              <span className="font-semibold">
+                PDF Report
+              </span>
+            </div>
+
+            <div className="flex justify-between border-b border-zinc-800 pb-3">
+              <span className="text-gray-400">
+                Length
+              </span>
+
+              <span className="font-semibold">
+                15–25 Pages
+              </span>
+            </div>
+
+            <div className="flex justify-between border-b border-zinc-800 pb-3">
+              <span className="text-gray-400">
+                Access
+              </span>
+
+              <span className="font-semibold">
+                Founding Edition
+              </span>
+            </div>
+
+          </div>
+
+          <div className="flex flex-wrap gap-4">
+
+            <a
+              href="/assessment"
+              className="bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold hover:bg-yellow-200 transition"
+            >
+              Take Assessment
+            </a>
+
+            <a
+              href="/founding-access"
+              className="border border-zinc-700 px-8 py-4 rounded-full font-semibold hover:border-yellow-300 hover:text-yellow-300 transition"
+            >
+              Request Founding Access
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <p className="text-center text-sm text-gray-500 max-w-3xl mx-auto">
+      ArcheLoop reports are educational symbolic self-awareness tools and are
+      not medical, psychiatric, therapeutic, or diagnostic services.
+    </p>
+
+  </div>
+
+</section>
       <Footer />
     </main>
   )
