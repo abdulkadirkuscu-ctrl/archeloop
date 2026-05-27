@@ -3,10 +3,23 @@ import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import { loops } from "../data/loops"
 
-export default function ReportPreviewPage() {
-  const primaryLoop = loops["Emotional Lockdown"]
-  const detail = loopDetails["Emotional Lockdown"]
-  const secondaryLoop = loops["Fortress"]
+export default async function ReportPreviewPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ loop?: string }>
+}) {
+  const params = await searchParams
+
+  const selectedLoopName =
+    params?.loop && params.loop in loopDetails
+      ? params.loop
+      : "Emotional Lockdown"
+
+  const primaryLoop = loops[selectedLoopName as keyof typeof loops]
+  const detail = loopDetails[selectedLoopName as keyof typeof loopDetails]
+
+  const secondaryLoopName = detail.relatedDynamics?.[0] || "Fortress"
+  const secondaryLoop = loops[secondaryLoopName as keyof typeof loops]
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
@@ -33,6 +46,26 @@ export default function ReportPreviewPage() {
           </p>
         </div>
       </section>
+
+<section className="px-6 py-12 border-b border-zinc-800 bg-black">
+  <div className="max-w-6xl mx-auto">
+    <p className="uppercase tracking-[0.3em] text-gray-500 text-sm mb-6 text-center">
+      Test Report Loop
+    </p>
+
+    <div className="flex flex-wrap justify-center gap-3">
+      {Object.keys(loopDetails).map((loopName) => (
+        <a
+          key={loopName}
+          href={`/report-preview?loop=${encodeURIComponent(loopName)}`}
+          className="border border-zinc-800 rounded-full px-5 py-3 text-sm text-gray-300 hover:border-yellow-300 hover:text-yellow-300 transition"
+        >
+          {loopName}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
 
 <section className="px-6 py-28 border-b border-zinc-800 bg-[#0B1018]">
   <div className="max-w-6xl mx-auto">
@@ -250,7 +283,8 @@ export default function ReportPreviewPage() {
       </h2>
 
       <p className="text-gray-300 leading-relaxed">
-        {primaryLoop.bodyMapInterpretation}
+        {detail.bodyMapInterpretation ||
+  `${primaryLoop.body} may become a key area of activation when this loop is under pressure. The body may hold tension, shutdown, urgency, or protective contraction depending on the loop pattern.`}
       </p>
     </div>
 
@@ -264,7 +298,8 @@ export default function ReportPreviewPage() {
       </h2>
 
       <p className="text-gray-300 leading-relaxed">
-        {primaryLoop.secondaryInteraction}
+        {detail.secondaryInteraction ||
+  `When ${primaryLoop.title} combines with ${secondaryLoop.title}, the system may move between the primary protective pattern and a secondary response that reinforces the loop under pressure.`}
       </p>
     </div>
 
@@ -325,7 +360,8 @@ export default function ReportPreviewPage() {
       </h2>
 
       <p className="text-xl text-gray-300 leading-relaxed">
-        {primaryLoop.integrationBlueprint}
+        {detail.integrationBlueprint ||
+  `${detail.coreStructure.integrationShift} This process usually begins through small, repeatable moments of awareness, regulation, and behaviour change rather than forcing the system to transform all at once.`}
       </p>
     </div>
 
