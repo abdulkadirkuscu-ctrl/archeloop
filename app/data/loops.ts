@@ -410,6 +410,14 @@ healingFocus:
 
 identityProtection:
   "Protects against vulnerability, rejection, emotional overwhelm, dependency, and relational unpredictability.",
+  bodyMapInterpretation:
+  "Emotional activation may concentrate around the heart and lower emotional centres, creating numbness, emotional containment, chest heaviness, or difficulty accessing feeling safely.",
+
+secondaryInteraction:
+  "When Emotional Lockdown combines with Fortress patterns, emotional suppression may become reinforced through distance, rigid independence, guardedness, or withdrawal from vulnerability.",
+
+integrationBlueprint:
+  "Healing often begins through safe emotional pacing rather than forced vulnerability. Small moments of honest feeling, grounded relational safety, nervous system regulation, and emotional permission gradually restore connection without overwhelm.",
   },
 
   "Fantasy Fog": {
