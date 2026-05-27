@@ -34,6 +34,24 @@ export default function ReportPreviewPage() {
         </div>
       </section>
 
+<section className="px-6 py-28 border-b border-zinc-800 bg-[#0B1018]">
+  <div className="max-w-6xl mx-auto">
+    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
+      Structural Dynamic
+    </p>
+
+    <h2 className="text-4xl md:text-6xl font-bold mb-10 text-center">
+      How this loop forms.
+    </h2>
+
+    <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+      <p className="text-xl text-gray-300 leading-relaxed">
+        {detail.structuralDynamic}
+      </p>
+    </div>
+  </div>
+</section>
+
       <section className="px-6 py-28">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-10">
@@ -88,6 +106,37 @@ export default function ReportPreviewPage() {
           </div>
         </div>
       </section>
+
+<section className="px-6 py-28 border-b border-zinc-800">
+  <div className="max-w-6xl mx-auto">
+    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
+      Core Structure
+    </p>
+
+    <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
+      The architecture beneath the pattern.
+    </h2>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {Object.entries(detail.coreStructure).map(([label, value]) => (
+        <div
+          key={label}
+          className="border border-zinc-800 rounded-2xl bg-black p-6"
+        >
+          <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-3">
+            {label
+  .replace(/([A-Z])/g, " $1")
+  .replace(/^./, (str) => str.toUpperCase())}
+          </p>
+
+          <p className="text-lg text-gray-200 leading-relaxed">
+            {value}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
       <section className="px-6 py-28 border-y border-zinc-800 bg-[#0B1018]">
         <div className="max-w-6xl mx-auto">
