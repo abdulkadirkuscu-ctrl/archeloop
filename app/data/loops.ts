@@ -42,6 +42,20 @@ secondaryLoops: [
   "Emotional Lockdown",
   "Compliance",
 ],
+relationshipPattern:
+  "May become smaller, quieter, or less expressive around people whose attention, judgement, or expectations feel unsafe.",
+
+communicationStyle:
+  "Tends to soften, minimise, or hold back truth in order to avoid shame, criticism, rejection, or exposure.",
+
+escalationPattern:
+  "Visibility → self-consciousness → shrinking → silence → resentment or loss of self-expression.",
+
+healingFocus:
+  "Rebuilding safe visibility through small acts of expression, self-trust, and unapologetic presence.",
+
+identityProtection:
+  "Protects against rejection, shame, envy, criticism, and the fear that being fully seen will cost connection.",
   },
 
   "Paper Crown": {
@@ -87,6 +101,20 @@ secondaryLoops: [
   "Compliance",
   "Barren Ground",
 ],
+relationshipPattern:
+  "May seek validation, admiration, achievement, or external proof of worth to feel secure in relationships.",
+
+communicationStyle:
+  "Tends to present competence, success, or control while hiding insecurity, need, or emotional vulnerability.",
+
+escalationPattern:
+  "Inadequacy → proving → pressure → comparison → emotional exhaustion or disconnection from authentic self.",
+
+healingFocus:
+  "Separating worth from performance and reconnecting with value that does not depend on achievement or recognition.",
+
+identityProtection:
+  "Protects against feeling ordinary, inadequate, unseen, unsuccessful, or unworthy without external validation.",
   },
 
   "Stalled Flame": {
@@ -132,6 +160,20 @@ secondaryLoops: [
   "Blank Page",
   "Dimmed Light",
 ],
+relationshipPattern:
+  "May hold desire, ambition, or direction internally while hesitating to move openly toward what matters.",
+
+communicationStyle:
+  "Tends to speak about possibility, intention, or future action while avoiding the decisive step that creates movement.",
+
+escalationPattern:
+  "Desire → doubt → hesitation → overthinking → paralysis or delayed action.",
+
+healingFocus:
+  "Restoring momentum through small visible actions before confidence feels complete.",
+
+identityProtection:
+  "Protects against failure, judgement, disappointment, exposure, and the consequences of wanting something clearly.",
   },
 
   "Blank Page": {
@@ -177,6 +219,20 @@ secondaryLoops: [
   "Dimmed Light",
   "Emotional Lockdown",
 ],
+relationshipPattern:
+  "May struggle to access words, thoughts, or clarity when pressure, conflict, visibility, or emotional intensity is present.",
+
+communicationStyle:
+  "Tends to pause, freeze, go blank, lose language, or retreat from expression when clarity is most needed.",
+
+escalationPattern:
+  "Pressure → mental blankness → self-doubt → silence → shame or avoidance.",
+
+healingFocus:
+  "Rebuilding trust in perception, language, and expression through low-pressure communication.",
+
+identityProtection:
+  "Protects against judgement, criticism, misunderstanding, exposure, and the fear of saying the wrong thing.",
   },
 
   "Smoky Mirrors": {
@@ -222,6 +278,20 @@ secondaryLoops: [
   "Fortress",
   "Emotional Lockdown",
 ],
+relationshipPattern:
+  "May become caught in interpretation, mixed signals, mental control, or story-making when emotional truth feels difficult to face.",
+
+communicationStyle:
+  "Tends to rationalise, explain, reframe, question, or control the narrative to avoid uncertainty or vulnerability.",
+
+escalationPattern:
+  "Uncertainty → interpretation → distortion → over-explanation → mistrust of reality or emotional avoidance.",
+
+healingFocus:
+  "Returning to grounded reality, emotional honesty, and direct perception without needing to control the whole story.",
+
+identityProtection:
+  "Protects against uncertainty, emotional exposure, shame, loss of control, and painful relational truth.",
   },
 
   "Mind Maze": {
@@ -267,6 +337,20 @@ secondaryLoops: [
   "Blank Page",
   "Fortress",
 ],
+relationshipPattern:
+  "May become mentally preoccupied with choices, conversations, meanings, or possible outcomes instead of acting directly.",
+
+communicationStyle:
+  "Tends to over-explain, rehearse, analyse, or delay expression until certainty feels possible.",
+
+escalationPattern:
+  "Ambiguity → analysis → second-guessing → mental looping → avoidance of action.",
+
+healingFocus:
+  "Letting clarity emerge through movement, grounded choice, and one next step rather than endless thought.",
+
+identityProtection:
+  "Protects against mistakes, uncertainty, emotional risk, regret, and the fear of choosing wrongly.",
   },
 
   "Emotional Lockdown": {
@@ -312,6 +396,20 @@ secondaryLoops: [
   "Barren Ground",
   "Blank Page",
 ],
+relationshipPattern:
+  "May appear emotionally distant, difficult to read, or self-contained during vulnerable or emotionally intense moments.",
+
+communicationStyle:
+  "Tends to minimise emotion, intellectualise feeling, change the subject, or avoid emotionally loaded conversations.",
+
+escalationPattern:
+  "Emotional intensity → shutdown → numbness → distance → isolation or unprocessed feeling.",
+
+healingFocus:
+  "Building safe emotional contact in small doses without forcing vulnerability or overwhelming the nervous system.",
+
+identityProtection:
+  "Protects against vulnerability, rejection, emotional overwhelm, dependency, and relational unpredictability.",
   },
 
   "Fantasy Fog": {
@@ -357,6 +455,20 @@ secondaryLoops: [
   "Flooded Waters",
   "Emotional Lockdown",
 ],
+relationshipPattern:
+  "May become attached to potential, imagined connection, idealised futures, or emotionally unavailable dynamics.",
+
+communicationStyle:
+  "Tends to speak from longing, hope, fantasy, or possibility while avoiding direct contact with present reality.",
+
+escalationPattern:
+  "Longing → idealisation → fantasy attachment → reality avoidance → disappointment or emotional confusion.",
+
+healingFocus:
+  "Grounding emotional longing into present reality, embodied truth, and one concrete relational action.",
+
+identityProtection:
+  "Protects against loneliness, disappointment, emotional deprivation, rejection, and the pain of unavailable connection.",
   },
 
   "Flooded Waters": {
@@ -402,6 +514,20 @@ secondaryLoops: [
   "Emotional Lockdown",
   "Fantasy Fog",
 ],
+relationshipPattern:
+  "May experience relational uncertainty, distance, or rejection cues as emotionally urgent or overwhelming.",
+
+communicationStyle:
+  "Tends to seek reassurance, express intensity quickly, or communicate from emotional urgency when activated.",
+
+escalationPattern:
+  "Relational cue → emotional surge → urgency → reassurance seeking or reaction → exhaustion or regret.",
+
+healingFocus:
+  "Developing emotional containment, grounding, and pacing before responding from intensity.",
+
+identityProtection:
+  "Protects against abandonment, rejection, emotional loss, disconnection, and unmet attachment needs.",
   },
 
   Compliance: {
@@ -450,6 +576,20 @@ secondaryLoops: [
   "Emotional Lockdown",
   "Barren Ground",
 ],
+relationshipPattern:
+  "May over-adapt to others, suppress needs, or maintain peace at the cost of honesty, anger, or boundaries.",
+
+communicationStyle:
+  "Tends to agree, soften, apologise, or avoid direct disagreement even when something feels wrong internally.",
+
+escalationPattern:
+  "Pressure → agreement → self-abandonment → resentment → exhaustion or quiet withdrawal.",
+
+healingFocus:
+  "Restoring boundaries, honest no, grounded anger, and the capacity to stay connected without self-erasure.",
+
+identityProtection:
+  "Protects against conflict, rejection, punishment, abandonment, and the fear that honesty will cost belonging.",
   },
 
   Fortress: {
@@ -495,6 +635,20 @@ secondaryLoops: [
   "Barren Ground",
   "Smoky Mirrors",
 ],
+relationshipPattern:
+  "May create distance, independence, control, or emotional walls when closeness begins to feel risky.",
+
+communicationStyle:
+  "Tends to become guarded, brief, defensive, detached, or overly controlled when vulnerability is requested.",
+
+escalationPattern:
+  "Vulnerability → threat response → control or withdrawal → isolation → reinforced mistrust.",
+
+healingFocus:
+  "Softening protection gradually through safe support, trust-building, and low-risk emotional openness.",
+
+identityProtection:
+  "Protects against betrayal, engulfment, dependency, emotional exposure, and loss of control.",
   },
 
   "Barren Ground": {
@@ -540,5 +694,19 @@ secondaryLoops: [
   "Compliance",
   "Dimmed Light",
 ],
+relationshipPattern:
+  "May keep functioning, carrying responsibility, or enduring pressure while becoming emotionally depleted or disconnected from nourishment.",
+
+communicationStyle:
+  "Tends to understate exhaustion, keep going, avoid asking for help, or speak from duty rather than need.",
+
+escalationPattern:
+  "Responsibility → endurance → depletion → emotional dryness → collapse or loss of vitality.",
+
+healingFocus:
+  "Restoring nourishment, support, rest, reciprocity, and permission to stop carrying everything alone.",
+
+identityProtection:
+  "Protects against collapse, disappointment, unmet needs, dependency, and the fear that stopping will make everything fall apart.",
   },
 }
