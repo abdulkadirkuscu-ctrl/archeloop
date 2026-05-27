@@ -1,6 +1,5 @@
 "use client"
 
-import ElementalWheel from "../components/ElementalWheel"
 import Footer from "../components/Footer"
 import Nav from "../components/Nav"
 import { useState } from "react"
@@ -137,11 +136,12 @@ export default function AssessmentPage() {
       (a, b) => a.integratedPercent - b.integratedPercent
     )[0]
 
-    const colours: Record<string, string> = {
-      Fire: "bg-yellow-400",
-      Air: "bg-blue-300",
-      Water: "bg-red-400",
-      Earth: "bg-green-500",
+    const premiumDataReady = {
+      integratedScores,
+      elementalActivation,
+      elementalPercentages,
+      secondaryLoop,
+      weakestHealthyArchetype,
     }
 
     return (
@@ -149,402 +149,180 @@ export default function AssessmentPage() {
         <Nav />
 
         <div className="px-6 py-20">
-          <div className="max-w-3xl mx-auto">
-            <h1 className="text-5xl font-bold mb-6">Your Result</h1>
-
-            <div className="relative overflow-hidden border border-yellow-300/30 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-10 mb-10">
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.12),transparent_55%)]" />
-
-  <div className="relative z-10">
-    <p className="uppercase tracking-[0.35em] text-yellow-300 text-sm mb-5">
-      ArcheLoop Profile Preview
-    </p>
-
-    <h1 className="text-5xl md:text-6xl font-bold mb-6">
-      Your primary loop is{" "}
-      <span className="text-yellow-300">
-        {primaryLoopInfo?.title}
-      </span>
-    </h1>
-
-    <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mb-8">
-      This does not define who you are. It reflects a protective pattern
-      that may activate under stress, pressure, emotion, or relational dynamics.
-    </p>
-
-    {primaryLoop && (
-      <a
-        href={`/loops/${primaryLoop[0]
-          .toLowerCase()
-          .replace(/\s+/g, "-")}`}
-        className="inline-flex bg-yellow-300 text-black px-7 py-3 rounded-full font-semibold hover:bg-yellow-200 transition"
-      >
-        Explore {primaryLoop[0]} Loop
-      </a>
-    )}
-  </div>
-</div>
-
-          {primaryLoopInfo && (
-  <div className="border border-zinc-800 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-8 mb-10">
-    <p className="uppercase tracking-[0.3em] text-gray-500 text-sm mb-4">
-      Primary Pattern Map
-    </p>
-
-    <h2 className="text-4xl font-bold mb-5">
-      {primaryLoopInfo.title}
-    </h2>
-
-    <p className="text-xl text-gray-300 leading-relaxed mb-8">
-      {primaryLoopInfo.description}
-    </p>
-
-    <div className="grid md:grid-cols-2 gap-5 mb-8">
-      <div className="border border-zinc-800 rounded-2xl p-5">
-        <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
-          Archetype
-        </p>
-        <p className="text-2xl font-semibold">{primaryLoopInfo.archetype}</p>
-      </div>
-
-      <div className="border border-zinc-800 rounded-2xl p-5">
-        <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
-          Element
-        </p>
-        <p className="text-2xl font-semibold">{primaryLoopInfo.element}</p>
-      </div>
-
-      <div className="border border-zinc-800 rounded-2xl p-5">
-        <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
-          Mechanism
-        </p>
-        <p className="text-2xl font-semibold">{primaryLoopInfo.mechanism}</p>
-      </div>
-
-      <div className="border border-zinc-800 rounded-2xl p-5">
-        <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
-          Body Map
-        </p>
-        <p className="text-2xl font-semibold">{primaryLoopInfo.body}</p>
-      </div>
-    </div>
-
-    <div className="border border-yellow-300/20 rounded-2xl p-6 mb-6 bg-black/40">
-      <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-3">
-        Core Belief
-      </p>
-      <p className="text-2xl text-yellow-300">
-        “{primaryLoopInfo.coreBelief}”
-      </p>
-    </div>
-
-    <div className="grid md:grid-cols-2 gap-5">
-      <div className="bg-white text-black rounded-2xl p-6">
-        <p className="font-semibold mb-3">
-          Loop Breaker Practice
-        </p>
-        <p>{primaryLoopInfo.loopBreaker}</p>
-      </div>
-
-      <div className="border border-zinc-800 rounded-2xl p-6">
-        <p className="font-semibold mb-3">
-          Integration Key
-        </p>
-        <p className="text-yellow-300 mb-2">
-          Restoring Energy: {primaryLoopInfo.integrationKey}
-        </p>
-        <p className="text-gray-300">
-          {primaryLoopInfo.integrationReason}
-        </p>
-      </div>
-    </div>
-
-    {weakestHealthyArchetype && (
-      <div className="border border-zinc-800 rounded-2xl p-6 mt-6">
-        <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-3">
-          Integration Pathway
-        </p>
-
-        <p className="text-xl">
-          <strong>{weakestHealthyArchetype.archetype}</strong> appears as the
-          lowest integrated archetypal energy in this result.
-        </p>
-
-        <p className="text-gray-300 mt-3">
-          This may indicate where strengthening, grounding, or conscious
-          integration could support breaking the loop.
-        </p>
-      </div>
-    )}
-  </div>
-)}
-
-            <div className="border border-yellow-300/20 rounded-3xl bg-gradient-to-b from-zinc-950 to-black p-8 mb-8">
-              <p className="uppercase tracking-[0.3em] text-yellow-300 text-sm mb-4">
-                Deeper Report Coming Soon
-              </p>
-
-              <h2 className="text-3xl font-bold mb-4">
-                This result is the beginning of your ArcheLoop profile.
-              </h2>
-
-              <p className="text-gray-300 leading-relaxed mb-6">
-                Future reports will expand this into a personalised map of your
-                primary and secondary loops, elemental balance, nervous system
-                patterns, relational activators, body map, and integration
-                pathway.
-              </p>
-
-              <a
-                href="/report"
-                className="inline-flex bg-yellow-300 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-200 transition"
-              >
-                View Report Preview
-              </a>
-            </div>
-
-<div className="mb-12">
-  <div className="mb-8">
-    <p className="uppercase tracking-[0.3em] text-gray-500 text-sm mb-3">
-      Elemental System
-    </p>
-
-    <h2 className="text-4xl font-bold mb-4">
-      Integrated Elemental Presence
-    </h2>
-
-    <p className="text-xl text-gray-300 leading-relaxed max-w-3xl">
-      ArcheLoop maps how different elemental energies appear within your current
-      psychological system — including visibility, perception, emotional
-      connection, grounding, protection, and regulation.
-    </p>
-  </div>
-
- <div className="mb-12">
-  <ElementalWheel scores={elementalPercentages} />
-</div>
-
-<div className="grid md:grid-cols-2 gap-5">
-    {elementalPercentages.map(({ element, percentage }) => {
-      const descriptions: Record<string, string> = {
-        Fire: "Visibility • Identity • Expression",
-        Air: "Perception • Thought • Communication",
-        Water: "Emotion • Vulnerability • Connection",
-        Earth: "Grounding • Boundaries • Protection",
-      }
-
-      return (
-        <div
-          key={element}
-          className="border border-zinc-800 rounded-[2rem] p-7 bg-gradient-to-b from-zinc-950 to-black"
-        >
-          <div className="flex justify-between items-center mb-5">
-            <div>
-              <h3 className="text-3xl font-bold">{element}</h3>
-              <p className="text-gray-400 mt-2">
-                {descriptions[element]}
-              </p>
-            </div>
-
-            <div className="text-4xl font-bold text-yellow-300">
-              {percentage}%
-            </div>
-          </div>
-
-          <div className="w-full h-3 bg-zinc-800 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-yellow-300 rounded-full transition-all duration-700"
-              style={{ width: `${percentage}%` }}
-            />
-          </div>
-        </div>
-      )
-    })}
-  </div>
-</div>
-
-           <div className="mb-12">
-  <div className="mb-8">
-    <p className="uppercase tracking-[0.3em] text-gray-500 text-sm mb-3">
-      Archetype Profile
-    </p>
-
-    <h2 className="text-4xl font-bold mb-4">
-      Integrated Archetypal Energy
-    </h2>
-
-    <p className="text-xl text-gray-300 leading-relaxed max-w-3xl">
-      ArcheLoop explores how different archetypal energies appear across
-      visibility, grounding, emotion, protection, perception, and expression.
-    </p>
-  </div>
-
-  <div className="grid md:grid-cols-2 gap-5">
-    {integratedScores.map((item) => (
-      <div
-        key={item.archetype}
-        className="border border-zinc-800 rounded-[2rem] p-7 bg-gradient-to-b from-zinc-950 to-black"
-      >
-        <div className="flex justify-between items-start mb-6">
-          <div>
-            <h3 className="text-3xl font-bold mb-2">
-              {item.archetype}
-            </h3>
-
-            <p className="text-gray-400">
-              Healthy expression vs shadow pressure
+          <div className="max-w-4xl mx-auto">
+            <p className="uppercase tracking-[0.35em] text-gray-500 text-sm mb-5">
+              ArcheLoop Profile Preview
             </p>
-          </div>
 
-          <div className="text-4xl font-bold text-yellow-300">
-            {item.integratedPercent}%
-          </div>
-        </div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-8">
+              Your Result
+            </h1>
 
-        <div className="space-y-4">
-          <div>
-            <div className="flex justify-between text-sm mb-2">
-              <span className="text-gray-400">Healthy Energy</span>
-              <span>{item.healthyPercent}%</span>
-            </div>
+            {primaryLoopInfo && primaryLoop && (
+              <>
+                <section className="relative overflow-hidden border border-yellow-300/30 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-10 mb-10">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.12),transparent_55%)]" />
 
-            <div className="w-full h-2 bg-zinc-800 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-white rounded-full"
-                style={{ width: `${item.healthyPercent}%` }}
-              />
-            </div>
-          </div>
+                  <div className="relative z-10">
+                    <p className="uppercase tracking-[0.3em] text-yellow-300 text-sm mb-5">
+                      Primary Loop
+                    </p>
 
-          <div>
-            <div className="flex justify-between text-sm mb-2">
-              <span className="text-gray-400">Shadow Pressure</span>
-              <span>{item.shadowPercent}%</span>
-            </div>
+                    <h2 className="text-4xl md:text-6xl font-bold mb-6">
+                      Your primary loop is{" "}
+                      <span className="text-yellow-300">
+                        {primaryLoopInfo.title}
+                      </span>
+                    </h2>
 
-            <div className="w-full h-2 bg-zinc-800 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-red-400 rounded-full"
-                style={{ width: `${item.shadowPercent}%` }}
-              />
-            </div>
-          </div>
+                    <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mb-8">
+                      {primaryLoopInfo.description}
+                    </p>
 
-          <div>
-            <div className="flex justify-between text-sm mb-2">
-              <span className="text-gray-400">Integrated Energy</span>
-              <span>{item.integratedPercent}%</span>
-            </div>
+                    <p className="text-gray-400 leading-relaxed max-w-3xl">
+                      This does not define who you are. It reflects a protective
+                      pattern that may activate under stress, pressure, emotion,
+                      or relational dynamics.
+                    </p>
+                  </div>
+                </section>
 
-            <div className="w-full h-2 bg-zinc-800 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-yellow-300 rounded-full"
-                style={{ width: `${item.integratedPercent}%` }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
+                <section className="border border-zinc-800 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-8 mb-10">
+                  <p className="uppercase tracking-[0.3em] text-gray-500 text-sm mb-6">
+                    Primary Pattern Snapshot
+                  </p>
+
+                  <div className="grid md:grid-cols-2 gap-5 mb-8">
+                    <div className="border border-zinc-800 rounded-2xl p-5">
+                      <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
+                        Archetype
+                      </p>
+                      <p className="text-2xl font-semibold">
+                        {primaryLoopInfo.archetype}
+                      </p>
+                    </div>
+
+                    <div className="border border-zinc-800 rounded-2xl p-5">
+                      <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
+                        Element
+                      </p>
+                      <p className="text-2xl font-semibold">
+                        {primaryLoopInfo.element}
+                      </p>
+                    </div>
+
+                    <div className="border border-zinc-800 rounded-2xl p-5">
+                      <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
+                        Mechanism
+                      </p>
+                      <p className="text-2xl font-semibold">
+                        {primaryLoopInfo.mechanism}
+                      </p>
+                    </div>
+
+                    <div className="border border-zinc-800 rounded-2xl p-5">
+                      <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
+                        Core Belief
+                      </p>
+                      <p className="text-xl font-semibold text-yellow-300">
+                        “{primaryLoopInfo.coreBelief}”
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="bg-white text-black rounded-2xl p-6">
+                    <p className="font-semibold mb-3">
+                      First Loop Breaker
+                    </p>
+
+                    <p className="leading-relaxed">
+                      {primaryLoopInfo.loopBreaker}
+                    </p>
+                  </div>
+                </section>
+
+                <section className="border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-8 mb-10">
+                  <p className="uppercase tracking-[0.3em] text-yellow-300 text-sm mb-5">
+                    Unlock The Full Report
+                  </p>
+
+                  <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                    Want the deeper map?
+                  </h2>
+
+                  <p className="text-xl text-gray-300 leading-relaxed mb-8 max-w-3xl">
+                    Your full ArcheLoop Report expands this preview into a
+                    personalised 25–30 page pattern map, including secondary
+                    loops, elemental balance, nervous system patterns,
+                    relational activators, body map interpretation, loop
+                    interaction dynamics, and integration guidance.
+                  </p>
+
+                  <div className="grid md:grid-cols-2 gap-4 mb-8">
+                    {[
+                      "Secondary loop activations",
+                      "Elemental balance",
+                      "Nervous system patterns",
+                      "Relational activators",
+                      "Body map interpretation",
+                      "Loop interaction dynamics",
+                      "Integration pathway",
+                      "Personalised loop breakers",
+                    ].map((item) => (
+                      <div
+                        key={item}
+                        className="border border-zinc-800 rounded-2xl p-4 text-gray-300 bg-black/40"
+                      >
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-wrap gap-4">
+                    <a
+                      href="/report"
+                      className="bg-yellow-300 text-black px-7 py-3 rounded-full font-semibold hover:bg-yellow-200 transition"
+                    >
+                      Unlock Full Report
+                    </a>
+
+                    <a
+                      href={`/loops/${primaryLoop[0]
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")}`}
+                      className="border border-zinc-700 px-7 py-3 rounded-full font-semibold hover:border-yellow-300 hover:text-yellow-300 transition"
+                    >
+                      Explore {primaryLoopInfo.title}
+                    </a>
+                  </div>
+                </section>
+
+               <div className="hidden">
+  {JSON.stringify(premiumDataReady)}
 </div>
-
-            <div className="mb-12">
-  <div className="mb-8">
-    <p className="uppercase tracking-[0.3em] text-gray-500 text-sm mb-3">
-      Loop Interaction
-    </p>
-
-    <h2 className="text-4xl font-bold mb-4">
-      Primary and Secondary Activations
-    </h2>
-
-    <p className="text-xl text-gray-300 leading-relaxed max-w-3xl">
-      ArcheLoop looks not only at your primary loop, but also at the secondary
-      patterns that may activate under stress, pressure, emotion, or relational
-      dynamics.
-    </p>
-  </div>
-
-  <div className="grid md:grid-cols-2 gap-5">
-    {primaryLoop && (
-      <a
-        href={`/loops/${primaryLoop[0].toLowerCase().replace(/\s+/g, "-")}`}
-        className="group relative overflow-hidden border border-yellow-300/30 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-7 hover:border-yellow-300/60 transition-all duration-500"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.1),transparent_55%)] opacity-0 group-hover:opacity-100 transition duration-500" />
-
-        <div className="relative z-10">
-          <p className="uppercase tracking-[0.25em] text-yellow-300 text-sm mb-4">
-            Primary Adaptation
-          </p>
-
-          <h3 className="text-4xl font-bold mb-4 group-hover:text-yellow-300 transition">
-            {primaryLoop[0]}
-          </h3>
-
-          <p className="text-gray-300 mb-6">
-            This appears to be the strongest activated loop in your current
-            response pattern.
-          </p>
-
-          <p className="text-yellow-300 font-semibold">
-            Explore {primaryLoop[0]} →
-          </p>
-        </div>
-      </a>
-    )}
-
-    {secondaryLoop && (
-      <a
-        href={`/loops/${secondaryLoop[0].toLowerCase().replace(/\s+/g, "-")}`}
-        className="group relative overflow-hidden border border-zinc-800 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-7 hover:border-yellow-300/40 transition-all duration-500"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.08),transparent_55%)] opacity-0 group-hover:opacity-100 transition duration-500" />
-
-        <div className="relative z-10">
-          <p className="uppercase tracking-[0.25em] text-gray-500 text-sm mb-4">
-            Secondary Activation
-          </p>
-
-          <h3 className="text-4xl font-bold mb-4 group-hover:text-yellow-300 transition">
-            {secondaryLoop[0]}
-          </h3>
-
-          <p className="text-gray-300 mb-6">
-            This may appear as a related protective pattern or compensatory
-            response under pressure.
-          </p>
-
-          <p className="text-yellow-300 font-semibold">
-            Explore {secondaryLoop[0]} →
-          </p>
-        </div>
-      </a>
-    )}
-  </div>
-</div>
+              </>
+            )}
 
             <div className="flex gap-4 mt-8 flex-wrap">
-              <a href="/" className="bg-white text-black px-6 py-3 rounded-full font-semibold">
+              <a
+                href="/"
+                className="bg-white text-black px-6 py-3 rounded-full font-semibold"
+              >
                 Return Home
               </a>
 
-              <a href="/triggered" className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black">
+              <a
+                href="/triggered"
+                className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black"
+              >
                 I Am Triggered
               </a>
 
-              {primaryLoopInfo && (
-                <a
-                  href={`/archetypes/${primaryLoopInfo.archetype.toLowerCase()}`}
-                  className="border border-blue-400 text-blue-300 px-6 py-3 rounded-full font-semibold hover:bg-blue-400 hover:text-black"
-                >
-                  Explore {primaryLoopInfo.archetype}
-                </a>
-              )}
-
-              <a href="/practices" className="border border-yellow-400 text-yellow-300 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black">
-                Explore Practices
+              <a
+                href="/report"
+                className="border border-yellow-400 text-yellow-300 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
+              >
+                View Report Page
               </a>
             </div>
           </div>
@@ -562,58 +340,59 @@ export default function AssessmentPage() {
       <div className="px-6 py-20">
         <div className="max-w-3xl mx-auto">
           <div className="mb-8">
-  <div className="flex justify-between text-sm text-gray-500 mb-3">
-    <span>
-      Question {currentQuestion + 1} of {questions.length}
-    </span>
+            <div className="flex justify-between text-sm text-gray-500 mb-3">
+              <span>
+                Question {currentQuestion + 1} of {questions.length}
+              </span>
 
-    <span>
-      {Math.round(((currentQuestion + 1) / questions.length) * 100)}%
-    </span>
-  </div>
+              <span>
+                {Math.round(((currentQuestion + 1) / questions.length) * 100)}%
+              </span>
+            </div>
 
-  <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
-    <div
-      className="h-full bg-yellow-300 rounded-full transition-all duration-500"
-      style={{
-        width: `${((currentQuestion + 1) / questions.length) * 100}%`,
-      }}
-    />
-  </div>
-</div>
+            <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-yellow-300 rounded-full transition-all duration-500"
+                style={{
+                  width: `${((currentQuestion + 1) / questions.length) * 100}%`,
+                }}
+              />
+            </div>
+          </div>
 
           <h1 className="text-4xl font-bold mb-10">
             Discover Your Shadow Loop
           </h1>
 
-<div className="border rounded-2xl p-8 mb-8">
-  <h2 className="text-2xl font-semibold mb-8">
-    {questions[currentQuestion].text}
-  </h2>
+          <div className="border rounded-2xl p-8 mb-8">
+            <h2 className="text-2xl font-semibold mb-8">
+              {questions[currentQuestion].text}
+            </h2>
 
-  <div className="grid gap-3">
-    {answerOptions.map((answer) => (
-      <button
-        key={answer.value}
-        onClick={() => handleAnswer(answer.value)}
-        className="border rounded-xl p-4 text-left hover:bg-white hover:text-black"
-      >
-        {answer.label}
-      </button>
-    ))}
-  </div>
-</div>
+            <div className="grid gap-3">
+              {answerOptions.map((answer) => (
+                <button
+                  key={answer.value}
+                  onClick={() => handleAnswer(answer.value)}
+                  className="border rounded-xl p-4 text-left hover:bg-white hover:text-black"
+                >
+                  {answer.label}
+                </button>
+              ))}
+            </div>
+          </div>
 
-<div className="border border-yellow-300/20 rounded-3xl bg-gradient-to-b from-zinc-950 to-black p-6">
-  <p className="uppercase tracking-[0.3em] text-yellow-300 text-xs mb-3">
-    Future Report Preview
-  </p>
+          <div className="border border-yellow-300/20 rounded-3xl bg-gradient-to-b from-zinc-950 to-black p-6">
+            <p className="uppercase tracking-[0.3em] text-yellow-300 text-xs mb-3">
+              Future Report Preview
+            </p>
 
-  <p className="text-gray-300 leading-relaxed">
-    Your answers will eventually help shape your ArcheLoop Personal Pattern Report,
-    mapping shadow loops, archetypal patterns, nervous system responses, and integration pathways.
-  </p>
-</div>
+            <p className="text-gray-300 leading-relaxed">
+              Your answers will eventually help shape your ArcheLoop Personal
+              Pattern Report, mapping shadow loops, archetypal patterns, nervous
+              system responses, and integration pathways.
+            </p>
+          </div>
         </div>
       </div>
 
