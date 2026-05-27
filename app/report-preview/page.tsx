@@ -1,9 +1,11 @@
+import { loopDetails } from "../data/loopDetails"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import { loops } from "../data/loops"
 
 export default function ReportPreviewPage() {
   const primaryLoop = loops["Emotional Lockdown"]
+  const detail = loopDetails["Emotional Lockdown"]
   const secondaryLoop = loops["Fortress"]
 
   return (
@@ -173,7 +175,7 @@ export default function ReportPreviewPage() {
             </h2>
 
             <div className="space-y-4">
-              {primaryLoop.relationalActivators.map((item) => (
+              {detail.relationalActivators.map((item) => (
                 <div
                   key={item}
                   className="border border-zinc-800 rounded-2xl p-4 text-gray-300 bg-black/40"
@@ -185,6 +187,40 @@ export default function ReportPreviewPage() {
           </div>
         </div>
       </section>
+
+<section className="px-6 py-28 border-y border-zinc-800 bg-[#0B1018]">
+  <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
+
+    <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+      <p className="uppercase tracking-[0.3em] text-gray-500 text-sm mb-5">
+        Body Map Interpretation
+      </p>
+
+      <h2 className="text-3xl font-bold mb-5">
+        Where the loop may live in the body.
+      </h2>
+
+      <p className="text-gray-300 leading-relaxed">
+        {primaryLoop.bodyMapInterpretation}
+      </p>
+    </div>
+
+    <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+      <p className="uppercase tracking-[0.3em] text-gray-500 text-sm mb-5">
+        Secondary Loop Interaction
+      </p>
+
+      <h2 className="text-3xl font-bold mb-5">
+        How protective patterns reinforce each other.
+      </h2>
+
+      <p className="text-gray-300 leading-relaxed">
+        {primaryLoop.secondaryInteraction}
+      </p>
+    </div>
+
+  </div>
+</section>
 
       <section className="px-6 py-28 border-y border-zinc-800 bg-[#0B1018]">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
@@ -227,6 +263,26 @@ export default function ReportPreviewPage() {
         </div>
       </section>
 
+<section className="px-6 py-28">
+  <div className="max-w-5xl mx-auto">
+
+    <div className="border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-10">
+      <p className="uppercase tracking-[0.3em] text-yellow-300 text-sm mb-5">
+        Integration Blueprint
+      </p>
+
+      <h2 className="text-4xl md:text-5xl font-bold mb-8">
+        Rebuilding safety beyond the loop.
+      </h2>
+
+      <p className="text-xl text-gray-300 leading-relaxed">
+        {primaryLoop.integrationBlueprint}
+      </p>
+    </div>
+
+  </div>
+</section>
+
       <section className="px-6 py-28">
         <div className="max-w-5xl mx-auto text-center">
           <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
@@ -243,12 +299,12 @@ export default function ReportPreviewPage() {
             </p>
 
             <p className="text-lg leading-relaxed">
-              {primaryLoop.loopBreaker}
+              {detail.loopBreaker}
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-5 text-left">
-            {primaryLoop.prompts.map((prompt) => (
+            {detail.prompts.map((prompt) => (
               <div
                 key={prompt}
                 className="border border-zinc-800 rounded-2xl p-5 bg-black"
