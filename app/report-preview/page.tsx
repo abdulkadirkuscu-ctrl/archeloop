@@ -1,3 +1,4 @@
+import { archetypeInsights } from "../data/archetypeInsights"
 import { loopDetails } from "../data/loopDetails"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
@@ -17,6 +18,8 @@ export default async function ReportPreviewPage({
 
   const primaryLoop = loops[selectedLoopName as keyof typeof loops]
   const detail = loopDetails[selectedLoopName as keyof typeof loopDetails]
+  const primaryArchetype = primaryLoop.archetype as keyof typeof archetypeInsights
+const archetypeInsight = archetypeInsights[primaryArchetype]
 
   const secondaryLoopName = detail.relatedDynamics?.[0] || "Fortress"
   const secondaryLoop = loops[secondaryLoopName as keyof typeof loops]
@@ -63,6 +66,50 @@ const integrationBlueprintText =
           </p>
         </div>
       </section>
+
+<section className="px-6 py-28 border-b border-zinc-800 bg-[#0B1018]">
+  <div className="max-w-6xl mx-auto">
+    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
+      Archetype Integration
+    </p>
+
+    <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
+      How {primaryLoop.archetype} energy may be organising this pattern.
+    </h2>
+
+    <div className="grid md:grid-cols-3 gap-6">
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Low Integration
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {archetypeInsight.low}
+        </p>
+      </div>
+
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Shadow Activation
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {archetypeInsight.highShadow}
+        </p>
+      </div>
+
+      <div className="border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-8">
+        <h3 className="text-2xl font-bold mb-4 text-yellow-300">
+          Healthy Integration
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {archetypeInsight.healthy}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section className="px-6 py-12 border-b border-zinc-800 bg-black">
   <div className="max-w-6xl mx-auto">
