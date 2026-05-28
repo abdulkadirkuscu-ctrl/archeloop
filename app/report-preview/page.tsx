@@ -8,10 +8,13 @@ import { elementInsights } from "../data/elementInsights"
 export default async function ReportPreviewPage({
   searchParams,
 }: {
-  searchParams?: Promise<{ loop?: string }>
+  searchParams?: Promise<{ loop?: string; scores?: string }>
 }) {
   const params = await searchParams
 
+  const archetypeScores = params?.scores
+  ? JSON.parse(params.scores)
+  : []
   const selectedLoopName =
     params?.loop && params.loop in loopDetails
       ? params.loop
@@ -44,7 +47,31 @@ const integrationBlueprintText =
   typeof detail.integrationBlueprint === "string"
     ? detail.integrationBlueprint
     : `${detail.coreStructure.integrationShift} This process usually begins through small, repeatable moments of awareness, regulation, and behaviour change rather than forcing the system to transform all at once.`
+ 
+ function ScoreBar({
+  label,
+  value,
+}: {
+  label: string
+  value: number
+}) {
   return (
+    <div>
+      <div className="flex justify-between text-sm mb-2">
+        <span className="text-gray-300">{label}</span>
+        <span className="text-yellow-300">{value}%</span>
+      </div>
+
+      <div className="h-3 bg-zinc-800 rounded-full overflow-hidden">
+        <div
+          className="h-full bg-yellow-300 rounded-full"
+          style={{ width: `${value}%` }}
+        />
+      </div>
+    </div>
+  )
+}
+    return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
       <Nav />
 
@@ -90,113 +117,6 @@ const integrationBlueprintText =
         </div>
       </section>
 
-<section className="px-6 py-28 border-b border-zinc-800 bg-[#0B1018]">
-  <div className="max-w-6xl mx-auto">
-    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
-      Archetype Integration
-    </p>
-
-    <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
-      How {primaryLoop.archetype} energy may be organising this pattern.
-    </h2>
-
-    <div className="grid md:grid-cols-3 gap-6">
-      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
-        <h3 className="text-2xl font-bold mb-4">
-          Low Integration
-        </h3>
-
-        <p className="text-gray-300 leading-relaxed">
-          {archetypeInsight.low}
-        </p>
-      </div>
-
-      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
-        <h3 className="text-2xl font-bold mb-4">
-          Shadow Activation
-        </h3>
-
-        <p className="text-gray-300 leading-relaxed">
-          {archetypeInsight.highShadow}
-        </p>
-      </div>
-
-      <div className="border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-8">
-        <h3 className="text-2xl font-bold mb-4 text-yellow-300">
-          Healthy Integration
-        </h3>
-
-        <p className="text-gray-300 leading-relaxed">
-          {archetypeInsight.healthy}
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section className="px-6 py-28 border-b border-zinc-800">
-  <div className="max-w-6xl mx-auto">
-    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
-      Elemental Balance
-    </p>
-
-    <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
-      How {primaryLoop.element} may be moving through this pattern.
-    </h2>
-
-    <div className="grid md:grid-cols-3 gap-6">
-      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
-        <h3 className="text-2xl font-bold mb-4">
-          Low Presence
-        </h3>
-
-        <p className="text-gray-300 leading-relaxed">
-          {elementInsight.low}
-        </p>
-      </div>
-
-      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
-        <h3 className="text-2xl font-bold mb-4">
-          High Activation
-        </h3>
-
-        <p className="text-gray-300 leading-relaxed">
-          {elementInsight.high}
-        </p>
-      </div>
-
-      <div className="border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-8">
-        <h3 className="text-2xl font-bold mb-4 text-yellow-300">
-          Healthy Balance
-        </h3>
-
-        <p className="text-gray-300 leading-relaxed">
-          {elementInsight.healthy}
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section className="px-6 py-12 border-b border-zinc-800 bg-black">
-  <div className="max-w-6xl mx-auto">
-    <p className="uppercase tracking-[0.3em] text-gray-500 text-sm mb-6 text-center">
-      Test Report Loop
-    </p>
-
-    <div className="flex flex-wrap justify-center gap-3">
-      {Object.keys(loopDetails).map((loopName) => (
-        <a
-          key={loopName}
-          href={`/report-preview?loop=${encodeURIComponent(loopName)}`}
-          className="border border-zinc-800 rounded-full px-5 py-3 text-sm text-gray-300 hover:border-yellow-300 hover:text-yellow-300 transition"
-        >
-          {loopName}
-        </a>
-      ))}
-    </div>
-  </div>
-</section>
 
 <section className="px-6 py-28 border-b border-zinc-800 bg-[#0B1018]">
   <div className="max-w-6xl mx-auto">
@@ -298,6 +218,151 @@ const integrationBlueprintText =
           </p>
         </div>
       ))}
+    </div>
+  </div>
+</section>
+
+{archetypeScores.length > 0 && (
+  <section className="px-6 py-28 border-b border-zinc-800 bg-black">
+    <div className="max-w-6xl mx-auto">
+      <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
+        Archetype Score Map
+      </p>
+
+      <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
+        Your archetypal energy profile.
+      </h2>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        {archetypeScores.map((item: any) => (
+          <div
+            key={item.archetype}
+            className="border border-zinc-800 rounded-[2rem] bg-zinc-950 p-8"
+          >
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h3 className="text-3xl font-bold">
+                  {item.archetype}
+                </h3>
+                <p className="text-gray-500">
+                  {item.element}
+                </p>
+              </div>
+
+              <p className="text-4xl font-bold text-yellow-300">
+                {item.integratedPercent}%
+              </p>
+            </div>
+
+            <div className="space-y-5">
+              <ScoreBar
+                label="Healthy Capacity"
+                value={item.healthyPercent}
+              />
+
+              <ScoreBar
+                label="Shadow Activation"
+                value={item.shadowPercent}
+              />
+
+              <ScoreBar
+                label="Integrated Energy"
+                value={item.integratedPercent}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<section className="px-6 py-28 border-b border-zinc-800 bg-[#0B1018]">
+  <div className="max-w-6xl mx-auto">
+    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
+      Archetype Integration
+    </p>
+
+    <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
+      How {primaryLoop.archetype} energy may be organising this pattern.
+    </h2>
+
+    <div className="grid md:grid-cols-3 gap-6">
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Low Integration
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {archetypeInsight.low}
+        </p>
+      </div>
+
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Shadow Activation
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {archetypeInsight.highShadow}
+        </p>
+      </div>
+
+      <div className="border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-8">
+        <h3 className="text-2xl font-bold mb-4 text-yellow-300">
+          Healthy Integration
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {archetypeInsight.healthy}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section className="px-6 py-28 border-b border-zinc-800">
+  <div className="max-w-6xl mx-auto">
+    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
+      Elemental Balance
+    </p>
+
+    <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
+      How {primaryLoop.element} may be moving through this pattern.
+    </h2>
+
+    <div className="grid md:grid-cols-3 gap-6">
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Low Presence
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {elementInsight.low}
+        </p>
+      </div>
+
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          High Activation
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {elementInsight.high}
+        </p>
+      </div>
+
+      <div className="border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-8">
+        <h3 className="text-2xl font-bold mb-4 text-yellow-300">
+          Healthy Balance
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {elementInsight.healthy}
+        </p>
+      </div>
     </div>
   </div>
 </section>
