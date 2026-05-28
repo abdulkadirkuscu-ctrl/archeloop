@@ -3,6 +3,7 @@ import { loopDetails } from "../data/loopDetails"
 import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import { loops } from "../data/loops"
+import { elementInsights } from "../data/elementInsights"
 
 export default async function ReportPreviewPage({
   searchParams,
@@ -20,6 +21,8 @@ export default async function ReportPreviewPage({
   const detail = loopDetails[selectedLoopName as keyof typeof loopDetails]
   const primaryArchetype = primaryLoop.archetype as keyof typeof archetypeInsights
 const archetypeInsight = archetypeInsights[primaryArchetype]
+const primaryElement = primaryLoop.element as keyof typeof elementInsights
+const elementInsight = elementInsights[primaryElement]
 
   const secondaryLoopName = detail.relatedDynamics?.[0] || "Fortress"
   const secondaryLoop = loops[secondaryLoopName as keyof typeof loops]
@@ -105,6 +108,50 @@ const integrationBlueprintText =
 
         <p className="text-gray-300 leading-relaxed">
           {archetypeInsight.healthy}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section className="px-6 py-28 border-b border-zinc-800">
+  <div className="max-w-6xl mx-auto">
+    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
+      Elemental Balance
+    </p>
+
+    <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
+      How {primaryLoop.element} may be moving through this pattern.
+    </h2>
+
+    <div className="grid md:grid-cols-3 gap-6">
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Low Presence
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {elementInsight.low}
+        </p>
+      </div>
+
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          High Activation
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {elementInsight.high}
+        </p>
+      </div>
+
+      <div className="border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-8">
+        <h3 className="text-2xl font-bold mb-4 text-yellow-300">
+          Healthy Balance
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed">
+          {elementInsight.healthy}
         </p>
       </div>
     </div>
