@@ -280,7 +280,7 @@ export default function AssessmentPage() {
 
                   <div className="flex flex-wrap gap-4">
                     <a
-                      href="/report"
+                      href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}`}
                       className="bg-yellow-300 text-black px-7 py-3 rounded-full font-semibold hover:bg-yellow-200 transition"
                     >
                       Unlock Full Report
@@ -319,7 +319,7 @@ export default function AssessmentPage() {
               </a>
 
               <a
-                href="/report"
+                href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}`}
                 className="border border-yellow-400 text-yellow-300 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
               >
                 View Report Page
