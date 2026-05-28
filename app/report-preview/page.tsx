@@ -1,3 +1,4 @@
+import { loopFormulas } from "../data/loopFormulas"
 import { archetypeInsights } from "../data/archetypeInsights"
 import { loopDetails } from "../data/loopDetails"
 import Nav from "../components/Nav"
@@ -22,6 +23,7 @@ export default async function ReportPreviewPage({
 
   const primaryLoop = loops[selectedLoopName as keyof typeof loops]
   const detail = loopDetails[selectedLoopName as keyof typeof loopDetails]
+  const formula = loopFormulas[selectedLoopName as keyof typeof loopFormulas]
   const primaryArchetype = primaryLoop.archetype as keyof typeof archetypeInsights
 const archetypeInsight = archetypeInsights[primaryArchetype]
 const primaryElement = primaryLoop.element as keyof typeof elementInsights
@@ -132,6 +134,73 @@ const integrationBlueprintText =
       <p className="text-xl text-gray-300 leading-relaxed">
         {detail.structuralDynamic}
       </p>
+    </div>
+  </div>
+</section>
+
+<section className="px-6 py-28 border-b border-zinc-800 bg-[#0B1018]">
+  <div className="max-w-6xl mx-auto">
+    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
+      Loop Formula
+    </p>
+
+    <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
+      How this pattern protects you.
+    </h2>
+
+    <div className="grid md:grid-cols-2 gap-6 mb-6">
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Healthy Expression
+        </h3>
+        <p className="text-gray-300 leading-relaxed">
+          {formula.healthyExpression}
+        </p>
+      </div>
+
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Collapsed Energy
+        </h3>
+        <p className="text-gray-300 leading-relaxed">
+          {formula.collapsedEnergy}
+        </p>
+      </div>
+
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+        <h3 className="text-2xl font-bold mb-4">
+          Protective Adaptation
+        </h3>
+        <p className="text-gray-300 leading-relaxed">
+          {formula.protectiveAdaptation}
+        </p>
+      </div>
+
+      <div className="border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-8">
+        <h3 className="text-2xl font-bold mb-4 text-yellow-300">
+          Integration Shift
+        </h3>
+        <p className="text-gray-300 leading-relaxed">
+          {formula.integrationShift}
+        </p>
+      </div>
+    </div>
+
+    <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
+      <h3 className="text-2xl font-bold mb-6">
+        Observable Behaviours
+      </h3>
+
+      <div className="grid md:grid-cols-3 gap-4">
+        {formula.observableBehaviours.map((item) => (
+          <div
+            key={item}
+            className="border border-zinc-800 rounded-2xl p-4 text-gray-300 bg-zinc-950"
+          >
+            {item}
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
