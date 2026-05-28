@@ -56,17 +56,37 @@ const integrationBlueprintText =
             Premium Report Preview
           </p>
 
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-            Your ArcheLoop
-            <br />
-            Pattern Report
-          </h1>
+         <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
+  {primaryLoop.title}
+  <br />
+  Pattern Report
+</h1>
 
           <p className="text-xl text-gray-300 leading-relaxed max-w-3xl">
-            This report maps the deeper structure beneath your emotional
-            reactions, protective responses, relational activators, and
-            integration pathway.
-          </p>
+ This report maps the deeper structure beneath your {primaryLoop.title}, including emotional reactions, protective responses, relational activators, nervous system patterns, and integration pathway.
+</p>
+<div className="grid md:grid-cols-3 gap-4 mt-10 max-w-3xl">
+  <div className="border border-zinc-800 rounded-2xl p-5 bg-black/40">
+    <p className="text-gray-500 uppercase tracking-[0.25em] text-xs mb-2">
+      Archetype
+    </p>
+    <p className="text-xl font-semibold">{primaryLoop.archetype}</p>
+  </div>
+
+  <div className="border border-zinc-800 rounded-2xl p-5 bg-black/40">
+    <p className="text-gray-500 uppercase tracking-[0.25em] text-xs mb-2">
+      Element
+    </p>
+    <p className="text-xl font-semibold">{primaryLoop.element}</p>
+  </div>
+
+  <div className="border border-zinc-800 rounded-2xl p-5 bg-black/40">
+    <p className="text-gray-500 uppercase tracking-[0.25em] text-xs mb-2">
+      Mechanism
+    </p>
+    <p className="text-xl font-semibold">{primaryLoop.mechanism}</p>
+  </div>
+</div>
         </div>
       </section>
 
