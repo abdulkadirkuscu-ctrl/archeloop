@@ -21,6 +21,23 @@ export default async function ReportPreviewPage({
   const secondaryLoopName = detail.relatedDynamics?.[0] || "Fortress"
   const secondaryLoop = loops[secondaryLoopName as keyof typeof loops]
 
+  const bodyMapText =
+  "bodyMapInterpretation" in detail &&
+  typeof detail.bodyMapInterpretation === "string"
+    ? detail.bodyMapInterpretation
+    : `${primaryLoop.body} may become a key area of activation when this loop is under pressure. The body may hold tension, shutdown, urgency, or protective contraction depending on the loop pattern.`
+
+const secondaryInteractionText =
+  "secondaryInteraction" in detail &&
+  typeof detail.secondaryInteraction === "string"
+    ? detail.secondaryInteraction
+    : `When ${primaryLoop.title} combines with ${secondaryLoop.title}, the system may move between the primary protective pattern and a secondary response that reinforces the loop under pressure.`
+
+const integrationBlueprintText =
+  "integrationBlueprint" in detail &&
+  typeof detail.integrationBlueprint === "string"
+    ? detail.integrationBlueprint
+    : `${detail.coreStructure.integrationShift} This process usually begins through small, repeatable moments of awareness, regulation, and behaviour change rather than forcing the system to transform all at once.`
   return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
       <Nav />
@@ -282,10 +299,9 @@ export default async function ReportPreviewPage({
         Where the loop may live in the body.
       </h2>
 
-      <p className="text-gray-300 leading-relaxed">
-        {detail.bodyMapInterpretation ||
-  `${primaryLoop.body} may become a key area of activation when this loop is under pressure. The body may hold tension, shutdown, urgency, or protective contraction depending on the loop pattern.`}
-      </p>
+     <p className="text-gray-300 leading-relaxed">
+  {bodyMapText}
+</p>
     </div>
 
     <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
@@ -298,9 +314,8 @@ export default async function ReportPreviewPage({
       </h2>
 
       <p className="text-gray-300 leading-relaxed">
-        {detail.secondaryInteraction ||
-  `When ${primaryLoop.title} combines with ${secondaryLoop.title}, the system may move between the primary protective pattern and a secondary response that reinforces the loop under pressure.`}
-      </p>
+  {secondaryInteractionText}
+</p>
     </div>
 
   </div>
@@ -360,9 +375,8 @@ export default async function ReportPreviewPage({
       </h2>
 
       <p className="text-xl text-gray-300 leading-relaxed">
-        {detail.integrationBlueprint ||
-  `${detail.coreStructure.integrationShift} This process usually begins through small, repeatable moments of awareness, regulation, and behaviour change rather than forcing the system to transform all at once.`}
-      </p>
+  {integrationBlueprintText}
+</p>
     </div>
 
   </div>
