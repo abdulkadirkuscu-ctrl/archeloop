@@ -19,16 +19,24 @@ export default function AssessmentPage() {
   const [responses, setResponses] = useState<number[]>([])
   const [finished, setFinished] = useState(false)
 
-  function handleAnswer(value: number) {
-    const updatedResponses = [...responses, value]
-    setResponses(updatedResponses)
 
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1)
-    } else {
-      setFinished(true)
-    }
+  function handleAnswer(value: number) {
+  const updatedResponses = [...responses]
+  updatedResponses[currentQuestion] = value
+  setResponses(updatedResponses)
+
+  if (currentQuestion < questions.length - 1) {
+    setCurrentQuestion(currentQuestion + 1)
+  } else {
+    setFinished(true)
   }
+}
+
+function goBack() {
+  if (currentQuestion > 0) {
+    setCurrentQuestion(currentQuestion - 1)
+  }
+}
 
   if (finished) {
     const archetypeToElement: Record<string, string> = {
@@ -364,6 +372,14 @@ export default function AssessmentPage() {
             Discover Your Shadow Loop
           </h1>
 
+{currentQuestion > 0 && (
+  <button
+    onClick={goBack}
+    className="mb-6 border border-zinc-700 px-5 py-2 rounded-full text-sm text-gray-300 hover:border-yellow-300 hover:text-yellow-300 transition"
+  >
+    ← Back
+  </button>
+)}
           <div className="border rounded-2xl p-8 mb-8">
             <h2 className="text-2xl font-semibold mb-8">
               {questions[currentQuestion].text}
@@ -371,14 +387,18 @@ export default function AssessmentPage() {
 
             <div className="grid gap-3">
               {answerOptions.map((answer) => (
-                <button
-                  key={answer.value}
-                  onClick={() => handleAnswer(answer.value)}
-                  className="border rounded-xl p-4 text-left hover:bg-white hover:text-black"
-                >
-                  {answer.label}
-                </button>
-              ))}
+  <button
+    key={answer.value}
+    onClick={() => handleAnswer(answer.value)}
+    className={`border rounded-xl p-4 text-left transition ${
+      responses[currentQuestion] === answer.value
+        ? "bg-yellow-300 text-black border-yellow-300"
+        : "hover:bg-white hover:text-black"
+    }`}
+  >
+    {answer.label}
+  </button>
+))}
             </div>
           </div>
 
