@@ -7,11 +7,11 @@ import { questions, assessmentOrder } from "../data/questions"
 import { loops } from "../data/loops"
 
 const answerOptions = [
-  { label: "Strongly disagree", value: 1 },
-  { label: "Disagree", value: 2 },
-  { label: "Neutral", value: 3 },
-  { label: "Agree", value: 4 },
   { label: "Strongly agree", value: 5 },
+  { label: "Agree", value: 4 },
+  { label: "Neutral", value: 3 },
+  { label: "Disagree", value: 2 },
+  { label: "Strongly disagree", value: 1 },
 ]
 function scoreToPercent(score: number) {
   const scale: Record<number, number> = {
@@ -200,9 +200,71 @@ const elementalPresenceRaw = integratedScores.map((item) => {
           : 25,
     }))
 
-    const sortedLoops = Object.entries(loopScores).sort((a, b) => b[1] - a[1])
-    const primaryLoop = sortedLoops[0]
-    const secondaryLoop = sortedLoops[1]
+    const loopToArchetype: Record<string, string> = {
+  "Dimmed Light": "Sovereign",
+  "Paper Crown": "Sovereign",
+  "Stalled Flame": "Sovereign",
+
+  "Blank Page": "Magician",
+  "Smoky Mirrors": "Magician",
+  "Mind Maze": "Magician",
+
+  "Emotional Lockdown": "Lover",
+  "Fantasy Fog": "Lover",
+  "Flooded Waters": "Lover",
+
+  Compliance: "Warrior",
+  Fortress: "Warrior",
+  "Barren Ground": "Warrior",
+}
+
+const loopToFormation: Record<string, "suppressionPercent" | "compensationPercent" | "collisionPercent"> = {
+  "Dimmed Light": "suppressionPercent",
+  "Paper Crown": "compensationPercent",
+  "Stalled Flame": "collisionPercent",
+
+  "Blank Page": "suppressionPercent",
+  "Smoky Mirrors": "compensationPercent",
+  "Mind Maze": "collisionPercent",
+
+  "Emotional Lockdown": "suppressionPercent",
+  "Fantasy Fog": "compensationPercent",
+  "Flooded Waters": "collisionPercent",
+
+  Compliance: "suppressionPercent",
+  Fortress: "compensationPercent",
+  "Barren Ground": "collisionPercent",
+}
+
+const weightedLoopScores = Object.entries(loopScores).map(([loopName, rawScore]) => {
+  const archetype = loopToArchetype[loopName]
+  const formationKey = loopToFormation[loopName]
+  const archetypeScore = integratedScores.find((item) => item.archetype === archetype)
+
+  const loopAverage = Math.round(rawScore / 3)
+  const formationScore = archetypeScore ? archetypeScore[formationKey] : loopAverage
+  const lowIntegrationPressure = archetypeScore
+    ? 100 - archetypeScore.integratedPercent
+    : 50
+
+  const finalScore = Math.round(
+    loopAverage * 0.5 +
+      formationScore * 0.3 +
+      lowIntegrationPressure * 0.2
+  )
+
+  return [loopName, finalScore] as [string, number]
+})
+
+const sortedLoops = weightedLoopScores.sort((a, b) => b[1] - a[1])
+
+const loopLandscape = sortedLoops.map(([loop, score]) => ({
+  loop,
+  score,
+}))
+
+const primaryLoop = sortedLoops[0]
+const secondaryLoop = sortedLoops[1]
 
     const primaryLoopInfo = primaryLoop
       ? loops[primaryLoop[0] as keyof typeof loops]
@@ -356,7 +418,7 @@ const elementalPresenceRaw = integratedScores.map((item) => {
 
                   <div className="flex flex-wrap gap-4">
                     <a
-                      href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}&scores=${encodeURIComponent(JSON.stringify(integratedScores))}`}
+                    href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}&scores=${encodeURIComponent(JSON.stringify(integratedScores))}&loops=${encodeURIComponent(JSON.stringify(loopLandscape))}`}
                       className="bg-yellow-300 text-black px-7 py-3 rounded-full font-semibold hover:bg-yellow-200 transition"
                     >
                       Unlock Full Report
