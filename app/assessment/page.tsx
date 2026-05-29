@@ -13,6 +13,17 @@ const answerOptions = [
   { label: "Agree", value: 4 },
   { label: "Strongly agree", value: 5 },
 ]
+function scoreToPercent(score: number) {
+  const scale: Record<number, number> = {
+    1: 0,
+    2: 25,
+    3: 50,
+    4: 75,
+    5: 100,
+  }
+
+  return scale[score] ?? 0
+}
 const orderedQuestions = assessmentOrder
   .map((id) => questions.find((q) => q.id === id))
   .filter(Boolean)
@@ -72,10 +83,11 @@ const collisionCounts: Record<string, number> = {}
 
 const loopScores: Record<string, number> = {}
 
-responses.forEach((score, index) => {
+responses.forEach((rawScore, index) => {
   const question = orderedQuestions[index]
   if (!question) return
 
+  const score = scoreToPercent(rawScore)
   const archetype = question.archetype
 
   if (question.mechanism === "Healthy") {
@@ -113,26 +125,22 @@ responses.forEach((score, index) => {
 const archetypes = ["Sovereign", "Magician", "Lover", "Warrior"]
 
 const integratedScores = archetypes.map((archetype) => {
-  const healthyMax = (healthyCounts[archetype] || 1) * 5
-  const suppressionMax = (suppressionCounts[archetype] || 1) * 5
-  const compensationMax = (compensationCounts[archetype] || 1) * 5
-  const collisionMax = (collisionCounts[archetype] || 1) * 5
 
   const healthyPercent = Math.round(
-    ((healthyScores[archetype] || 0) / healthyMax) * 100
-  )
+  (healthyScores[archetype] || 0) / (healthyCounts[archetype] || 1)
+)
 
-  const suppressionPercent = Math.round(
-    ((suppressionScores[archetype] || 0) / suppressionMax) * 100
-  )
+const suppressionPercent = Math.round(
+  (suppressionScores[archetype] || 0) / (suppressionCounts[archetype] || 1)
+)
 
-  const compensationPercent = Math.round(
-    ((compensationScores[archetype] || 0) / compensationMax) * 100
-  )
+const compensationPercent = Math.round(
+  (compensationScores[archetype] || 0) / (compensationCounts[archetype] || 1)
+)
 
-  const collisionPercent = Math.round(
-    ((collisionScores[archetype] || 0) / collisionMax) * 100
-  )
+const collisionPercent = Math.round(
+  (collisionScores[archetype] || 0) / (collisionCounts[archetype] || 1)
+)
 
   const shadowPercent = Math.round(
     (suppressionPercent + compensationPercent + collisionPercent) / 3
