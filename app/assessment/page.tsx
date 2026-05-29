@@ -3,7 +3,7 @@
 import Footer from "../components/Footer"
 import Nav from "../components/Nav"
 import { useState } from "react"
-import { questions } from "../data/questions"
+import { questions, assessmentOrder } from "../data/questions"
 import { loops } from "../data/loops"
 
 const answerOptions = [
@@ -13,6 +13,9 @@ const answerOptions = [
   { label: "Agree", value: 4 },
   { label: "Strongly agree", value: 5 },
 ]
+const orderedQuestions = assessmentOrder
+  .map((id) => questions.find((q) => q.id === id))
+  .filter(Boolean)
 
 export default function AssessmentPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -25,7 +28,7 @@ export default function AssessmentPage() {
   updatedResponses[currentQuestion] = value
   setResponses(updatedResponses)
 
-  if (currentQuestion < questions.length - 1) {
+  if (currentQuestion < orderedQuestions.length - 1) {
     setCurrentQuestion(currentQuestion + 1)
   } else {
     setFinished(true)
@@ -35,6 +38,15 @@ export default function AssessmentPage() {
 function goBack() {
   if (currentQuestion > 0) {
     setCurrentQuestion(currentQuestion - 1)
+  }
+}
+
+function goNext() {
+  if (
+    responses[currentQuestion] &&
+    currentQuestion < questions.length - 1
+  ) {
+    setCurrentQuestion(currentQuestion + 1)
   }
 }
 
@@ -288,7 +300,7 @@ function goBack() {
 
                   <div className="flex flex-wrap gap-4">
                     <a
-                      href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}`}
+                      href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}&scores=${encodeURIComponent(JSON.stringify(integratedScores))}`}
                       className="bg-yellow-300 text-black px-7 py-3 rounded-full font-semibold hover:bg-yellow-200 transition"
                     >
                       Unlock Full Report
@@ -327,7 +339,7 @@ function goBack() {
               </a>
 
               <a
-                href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}`}
+               href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}&scores=${encodeURIComponent(JSON.stringify(integratedScores))}`}
                 className="border border-yellow-400 text-yellow-300 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
               >
                 View Report Page
@@ -350,11 +362,11 @@ function goBack() {
           <div className="mb-8">
             <div className="flex justify-between text-sm text-gray-500 mb-3">
               <span>
-                Question {currentQuestion + 1} of {questions.length}
+               Question {currentQuestion + 1} of {orderedQuestions.length}
               </span>
 
               <span>
-                {Math.round(((currentQuestion + 1) / questions.length) * 100)}%
+               {Math.round(((currentQuestion + 1) / orderedQuestions.length) * 100)}%
               </span>
             </div>
 
@@ -372,17 +384,32 @@ function goBack() {
             Discover Your Shadow Loop
           </h1>
 
-{currentQuestion > 0 && (
-  <button
-    onClick={goBack}
-    className="mb-6 border border-zinc-700 px-5 py-2 rounded-full text-sm text-gray-300 hover:border-yellow-300 hover:text-yellow-300 transition"
-  >
-    ← Back
-  </button>
-)}
+<div className="flex justify-between mb-6">
+  {currentQuestion > 0 ? (
+    <button
+      onClick={goBack}
+      className="border border-zinc-700 px-5 py-2 rounded-full text-sm text-gray-300 hover:border-yellow-300 hover:text-yellow-300 transition"
+    >
+      ← Back
+    </button>
+  ) : (
+    <div />
+  )}
+
+  {responses[currentQuestion] && currentQuestion < questions.length - 1 && (
+    <button
+      onClick={goNext}
+      className="border border-zinc-700 px-5 py-2 rounded-full text-sm text-gray-300 hover:border-yellow-300 hover:text-yellow-300 transition"
+    >
+      Next →
+    </button>
+  )}
+</div>
+
+
           <div className="border rounded-2xl p-8 mb-8">
             <h2 className="text-2xl font-semibold mb-8">
-              {questions[currentQuestion].text}
+             {orderedQuestions[currentQuestion]?.text}
             </h2>
 
             <div className="grid gap-3">
