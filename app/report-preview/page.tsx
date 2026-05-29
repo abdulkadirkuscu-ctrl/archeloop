@@ -310,9 +310,10 @@ const integrationBlueprintText =
         </p>
       </div>
 
-      <p className="text-2xl font-bold text-yellow-300">
-        Integration: {item.integratedPercent}%
-      </p>
+<p className="text-2xl font-bold text-yellow-300">
+  Current Integration: {item.integratedPercent}%
+</p>
+
     </div>
 
     <div className="space-y-6">
@@ -322,9 +323,9 @@ const integrationBlueprintText =
         </p>
 
         <ScoreBar
-          label="Healthy Capacity"
-          value={item.healthyPercent}
-        />
+  label="Score"
+  value={item.healthyPercent}
+/>
       </div>
 
       <div>
@@ -334,32 +335,23 @@ const integrationBlueprintText =
 
         <div className="space-y-5">
           <ScoreBar
-            label="Collapsed / Suppressed"
+            label="Collapsed"
             value={item.suppressionPercent || 0}
           />
 
           <ScoreBar
-            label="Inflated / Compensated"
+            label="Compensated"
             value={item.compensationPercent || 0}
           />
 
           <ScoreBar
-            label="Collision / Conflict"
+            label="Collision"
             value={item.collisionPercent || 0}
           />
         </div>
       </div>
 
-      <div>
-        <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-4">
-          Current Integration
-        </p>
-
-        <ScoreBar
-          label="Integrated Expression"
-          value={item.integratedPercent}
-        />
-      </div>
+      
     </div>
   </div>
 ))}
