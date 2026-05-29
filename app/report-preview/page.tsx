@@ -268,11 +268,13 @@ const integrationBlueprintText =
           key={label}
           className="border border-zinc-800 rounded-2xl bg-black p-6"
         >
-          <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-3">
-            {label
-  .replace(/([A-Z])/g, " $1")
-  .replace(/^./, (str) => str.toUpperCase())}
-          </p>
+         <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-3">
+  {label === "overactiveArchetype"
+    ? "Protective Archetype"
+    : label
+        .replace(/([A-Z])/g, " $1")
+        .replace(/^./, (str) => str.toUpperCase())}
+</p>
 
           <p className="text-lg text-gray-200 leading-relaxed">
             {value}
