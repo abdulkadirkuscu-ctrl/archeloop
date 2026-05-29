@@ -150,27 +150,21 @@ const integrationBlueprintText =
 
     <div className="grid md:grid-cols-2 gap-6 mb-6">
       <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
-        <h3 className="text-2xl font-bold mb-4">
-          Healthy Expression
-        </h3>
+        <h3 className="text-2xl font-bold mb-4">Healthy Expression</h3>
         <p className="text-gray-300 leading-relaxed">
           {formula.healthyExpression}
         </p>
       </div>
 
       <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
-        <h3 className="text-2xl font-bold mb-4">
-          Collapsed Energy
-        </h3>
+        <h3 className="text-2xl font-bold mb-4">Collapsed Energy</h3>
         <p className="text-gray-300 leading-relaxed">
           {formula.collapsedEnergy}
         </p>
       </div>
 
       <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
-        <h3 className="text-2xl font-bold mb-4">
-          Protective Adaptation
-        </h3>
+        <h3 className="text-2xl font-bold mb-4">Protective Adaptation</h3>
         <p className="text-gray-300 leading-relaxed">
           {formula.protectiveAdaptation}
         </p>
@@ -187,9 +181,7 @@ const integrationBlueprintText =
     </div>
 
     <div className="border border-zinc-800 rounded-[2rem] bg-black p-8">
-      <h3 className="text-2xl font-bold mb-6">
-        Observable Behaviours
-      </h3>
+      <h3 className="text-2xl font-bold mb-6">Observable Behaviours</h3>
 
       <div className="grid md:grid-cols-3 gap-4">
         {formula.observableBehaviours.map((item) => (
@@ -303,44 +295,74 @@ const integrationBlueprintText =
       </h2>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {archetypeScores.map((item: any) => (
-          <div
-            key={item.archetype}
-            className="border border-zinc-800 rounded-[2rem] bg-zinc-950 p-8"
-          >
-            <div className="flex justify-between items-center mb-8">
-              <div>
-                <h3 className="text-3xl font-bold">
-                  {item.archetype}
-                </h3>
-                <p className="text-gray-500">
-                  {item.element}
-                </p>
-              </div>
+      {archetypeScores.map((item: any) => (
+  <div
+    key={item.archetype}
+    className="border border-zinc-800 rounded-[2rem] bg-zinc-950 p-8"
+  >
+    <div className="flex justify-between items-center mb-8">
+      <div>
+        <h3 className="text-3xl font-bold">
+          {item.archetype}
+        </h3>
+        <p className="text-gray-500">
+          {item.element}
+        </p>
+      </div>
 
-              <p className="text-4xl font-bold text-yellow-300">
-                {item.integratedPercent}%
-              </p>
-            </div>
+      <p className="text-2xl font-bold text-yellow-300">
+        Integration: {item.integratedPercent}%
+      </p>
+    </div>
 
-            <div className="space-y-5">
-              <ScoreBar
-                label="Healthy Capacity"
-                value={item.healthyPercent}
-              />
+    <div className="space-y-6">
+      <div>
+        <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-4">
+          Healthy Expression
+        </p>
 
-              <ScoreBar
-                label="Shadow Activation"
-                value={item.shadowPercent}
-              />
+        <ScoreBar
+          label="Healthy Capacity"
+          value={item.healthyPercent}
+        />
+      </div>
 
-              <ScoreBar
-                label="Integrated Energy"
-                value={item.integratedPercent}
-              />
-            </div>
-          </div>
-        ))}
+      <div>
+        <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-4">
+          Shadow Expression
+        </p>
+
+        <div className="space-y-5">
+          <ScoreBar
+            label="Collapsed / Suppressed"
+            value={item.suppressionPercent || 0}
+          />
+
+          <ScoreBar
+            label="Inflated / Compensated"
+            value={item.compensationPercent || 0}
+          />
+
+          <ScoreBar
+            label="Collision / Conflict"
+            value={item.collisionPercent || 0}
+          />
+        </div>
+      </div>
+
+      <div>
+        <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-4">
+          Current Integration
+        </p>
+
+        <ScoreBar
+          label="Integrated Expression"
+          value={item.integratedPercent}
+        />
+      </div>
+    </div>
+  </div>
+))}
       </div>
     </div>
   </section>
