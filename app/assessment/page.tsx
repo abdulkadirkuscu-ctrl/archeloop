@@ -59,66 +59,114 @@ function goNext() {
     }
 
     const healthyScores: Record<string, number> = {}
-    const healthyCounts: Record<string, number> = {}
-    const shadowScores: Record<string, number> = {}
-    const shadowCounts: Record<string, number> = {}
-    const loopScores: Record<string, number> = {}
+const healthyCounts: Record<string, number> = {}
 
-    responses.forEach((score, index) => {
-      const question = questions[index]
-      const archetype = question.archetype
+const suppressionScores: Record<string, number> = {}
+const suppressionCounts: Record<string, number> = {}
 
-      if (question.mechanism === "Healthy") {
-        healthyScores[archetype] = (healthyScores[archetype] || 0) + score
-        healthyCounts[archetype] = (healthyCounts[archetype] || 0) + 1
-      } else {
-        shadowScores[archetype] = (shadowScores[archetype] || 0) + score
-        shadowCounts[archetype] = (shadowCounts[archetype] || 0) + 1
-        loopScores[question.category] =
-          (loopScores[question.category] || 0) + score
-      }
-    })
+const compensationScores: Record<string, number> = {}
+const compensationCounts: Record<string, number> = {}
 
-    const archetypes = ["Sovereign", "Magician", "Lover", "Warrior"]
+const collisionScores: Record<string, number> = {}
+const collisionCounts: Record<string, number> = {}
 
-    const integratedScores = archetypes.map((archetype) => {
-      const healthyMax = (healthyCounts[archetype] || 1) * 5
-      const shadowMax = (shadowCounts[archetype] || 1) * 5
+const loopScores: Record<string, number> = {}
 
-      const healthyPercent = Math.round(
-        ((healthyScores[archetype] || 0) / healthyMax) * 100
-      )
+responses.forEach((score, index) => {
+  const question = orderedQuestions[index]
+  if (!question) return
 
-      const shadowPercent = Math.round(
-        ((shadowScores[archetype] || 0) / shadowMax) * 100
-      )
+  const archetype = question.archetype
 
-      const integratedPercent = Math.max(
-        0,
-        Math.round(healthyPercent - shadowPercent * 0.6)
-      )
+  if (question.mechanism === "Healthy") {
+    healthyScores[archetype] = (healthyScores[archetype] || 0) + score
+    healthyCounts[archetype] = (healthyCounts[archetype] || 0) + 1
+  }
 
-      return {
-        archetype,
-        element: archetypeToElement[archetype],
-        healthyPercent,
-        shadowPercent,
-        integratedPercent,
-      }
-    })
+  if (question.mechanism === "Suppression") {
+    suppressionScores[archetype] =
+      (suppressionScores[archetype] || 0) + score
+    suppressionCounts[archetype] =
+      (suppressionCounts[archetype] || 0) + 1
+  }
 
-    const elementalPresenceRaw = integratedScores.map((item) => {
-      const presence = Math.max(
-        1,
-        Math.round(item.healthyPercent - item.shadowPercent * 0.35)
-      )
+  if (question.mechanism === "Compensation") {
+    compensationScores[archetype] =
+      (compensationScores[archetype] || 0) + score
+    compensationCounts[archetype] =
+      (compensationCounts[archetype] || 0) + 1
+  }
 
-      return {
-        element: item.element,
-        archetype: item.archetype,
-        percentage: presence,
-      }
-    })
+  if (question.mechanism === "Collision") {
+    collisionScores[archetype] =
+      (collisionScores[archetype] || 0) + score
+    collisionCounts[archetype] =
+      (collisionCounts[archetype] || 0) + 1
+  }
+
+  if (question.mechanism !== "Healthy") {
+    loopScores[question.category] =
+      (loopScores[question.category] || 0) + score
+  }
+})
+
+const archetypes = ["Sovereign", "Magician", "Lover", "Warrior"]
+
+const integratedScores = archetypes.map((archetype) => {
+  const healthyMax = (healthyCounts[archetype] || 1) * 5
+  const suppressionMax = (suppressionCounts[archetype] || 1) * 5
+  const compensationMax = (compensationCounts[archetype] || 1) * 5
+  const collisionMax = (collisionCounts[archetype] || 1) * 5
+
+  const healthyPercent = Math.round(
+    ((healthyScores[archetype] || 0) / healthyMax) * 100
+  )
+
+  const suppressionPercent = Math.round(
+    ((suppressionScores[archetype] || 0) / suppressionMax) * 100
+  )
+
+  const compensationPercent = Math.round(
+    ((compensationScores[archetype] || 0) / compensationMax) * 100
+  )
+
+  const collisionPercent = Math.round(
+    ((collisionScores[archetype] || 0) / collisionMax) * 100
+  )
+
+  const shadowPercent = Math.round(
+    (suppressionPercent + compensationPercent + collisionPercent) / 3
+  )
+
+  const integratedPercent = Math.max(
+    0,
+    Math.round(healthyPercent - shadowPercent * 0.6)
+  )
+
+  return {
+    archetype,
+    element: archetypeToElement[archetype],
+    healthyPercent,
+    shadowPercent,
+    suppressionPercent,
+    compensationPercent,
+    collisionPercent,
+    integratedPercent,
+  }
+})
+
+const elementalPresenceRaw = integratedScores.map((item) => {
+  const presence = Math.max(
+    1,
+    Math.round(item.healthyPercent - item.shadowPercent * 0.35)
+  )
+
+  return {
+    element: item.element,
+    archetype: item.archetype,
+    percentage: presence,
+  }
+})
 
     const totalElementalPresence = elementalPresenceRaw.reduce(
       (sum, item) => sum + item.percentage,
