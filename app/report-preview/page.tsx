@@ -278,10 +278,14 @@ const integrationBlueprintText =
         >
          <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-3">
   {label === "overactiveArchetype"
-    ? "Protective Archetype"
-    : label
-        .replace(/([A-Z])/g, " $1")
-        .replace(/^./, (str) => str.toUpperCase())}
+  ? "Protective Archetype"
+  : label === "suppressedElement"
+  ? "Collapsed Element"
+  : label === "compensationPattern"
+  ? "Protective Adaptation"
+  : label
+      .replace(/([A-Z])/g, " $1")
+      .replace(/^./, (str) => str.toUpperCase())}
 </p>
 
           <p className="text-lg text-gray-200 leading-relaxed">
@@ -333,7 +337,7 @@ const integrationBlueprintText =
         </p>
 
         <ScoreBar
-  label="Score"
+  label="Healthy"
   value={item.healthyPercent}
 />
       </div>
