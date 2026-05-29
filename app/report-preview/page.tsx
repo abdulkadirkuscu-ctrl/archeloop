@@ -111,9 +111,13 @@ const integrationBlueprintText =
 
   <div className="border border-zinc-800 rounded-2xl p-5 bg-black/40">
     <p className="text-gray-500 uppercase tracking-[0.25em] text-xs mb-2">
-      Mechanism
+      Pattern Formation
     </p>
-    <p className="text-xl font-semibold">{primaryLoop.mechanism}</p>
+    <p className="text-xl font-semibold">{primaryLoop.mechanism === "Suppression"
+  ? "Collapsed"
+  : primaryLoop.mechanism === "Compensation"
+  ? "Compensated"
+  : primaryLoop.mechanism}</p>
   </div>
 </div>
         </div>
@@ -229,9 +233,13 @@ const integrationBlueprintText =
 
               <div className="border border-zinc-800 rounded-2xl p-5 bg-black/40">
                 <p className="text-gray-500 uppercase tracking-[0.25em] text-xs mb-2">
-                  Mechanism
+                  Pattern Formation
                 </p>
-                <p className="text-2xl font-semibold">{primaryLoop.mechanism}</p>
+                <p className="text-2xl font-semibold">{primaryLoop.mechanism === "Suppression"
+  ? "Collapsed"
+  : primaryLoop.mechanism === "Compensation"
+  ? "Compensated"
+  : primaryLoop.mechanism}</p>
               </div>
             </div>
           </div>
