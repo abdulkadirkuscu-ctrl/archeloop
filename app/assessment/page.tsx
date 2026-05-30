@@ -285,6 +285,37 @@ const secondaryLoop = sortedLoops[1]
     const hasFoundingAccess =
   accessCode.trim().toUpperCase() === "FOUNDING50"
 
+
+
+  async function saveReportAndRedirect() {
+  try {
+    const res = await fetch("/api/reports", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        reportData: {
+          primaryLoop: primaryLoop[0],
+          integratedScores,
+          loopLandscape,
+        },
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.error || "Could not create report.");
+      return;
+    }
+
+    window.location.href = `/report/${data.reportId}`;
+  } catch {
+    alert("Something went wrong while creating your report.");
+  }
+}
+
     return (
       <main className="min-h-screen bg-black text-white">
         <Nav />
@@ -456,12 +487,13 @@ If you have received a Founding Access code, enter it below to unlock your repor
   />
 
   {hasFoundingAccess ? (
-    <a
-      href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}&scores=${encodeURIComponent(JSON.stringify(integratedScores))}&loops=${encodeURIComponent(JSON.stringify(loopLandscape))}`}
-      className="block text-center bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
-    >
-      Unlock My Full ArcheLoop Report
-    </a>
+    <button
+  type="button"
+  onClick={saveReportAndRedirect}
+  className="block w-full text-center bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
+>
+  Unlock My Full ArcheLoop Report
+</button>
   ) : (
     <button
       disabled
