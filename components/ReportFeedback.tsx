@@ -10,6 +10,7 @@ export default function ReportFeedback() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [testimonialPermission, setTestimonialPermission] = useState("");
 
   async function submitFeedback() {
     if (!accuracyScore) {
@@ -30,6 +31,7 @@ export default function ReportFeedback() {
         leastAccurate,
         recommend,
         email,
+        testimonialPermission,
       }),
     });
 
@@ -135,6 +137,28 @@ alert(data.error || "Something went wrong. Please try again.");
           ))}
         </div>
       </div>
+      <div className="mt-8">
+  <p className="font-medium text-white">
+    Can we anonymously use part of your feedback?
+  </p>
+
+  <div className="mt-4 flex flex-wrap gap-3">
+    {["Yes", "No"].map((option) => (
+      <button
+        key={option}
+        type="button"
+        onClick={() => setTestimonialPermission(option)}
+        className={`rounded-full border px-5 py-2 ${
+          testimonialPermission === option
+            ? "border-white bg-white text-black"
+            : "border-gray-600 bg-black text-white"
+        }`}
+      >
+        {option}
+      </button>
+    ))}
+  </div>
+</div>
 
       <div className="mt-8">
         <label className="font-medium text-white">

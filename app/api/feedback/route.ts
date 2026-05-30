@@ -21,7 +21,9 @@ export async function POST(req: Request) {
         most_accurate: body.mostAccurate || null,
         least_accurate: body.leastAccurate || null,
         recommend: body.recommend || null,
+        testimonial_permission: body.testimonialPermission || null,
         email: body.email || null,
+        
       });
 
     if (error) {
