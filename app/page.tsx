@@ -1,5 +1,6 @@
 import Nav from "./components/Nav"
 import Footer from "./components/Footer"
+import FoundingCounter from "../components/FoundingCounter";
 
 const patterns = [
   "Overthinking instead of taking action",
@@ -14,22 +15,22 @@ const patterns = [
 
 const states = [
   {
-    title: "Ashamed / Exposed",
-    text: "Feeling pressured, inadequate, judged, unseen, or not enough.",
+    title: "Inadequate / Exposed",
+    text: "Feeling pressured, unseen, judged, criticised, or not enough.",
   },
   {
-    title: "Foggy / Confused",
-    text: "Feeling mentally overwhelmed, uncertain, trapped in thought, or disconnected from clarity.",
+    title: "Confused / Overthinking",
+    text: "Feeling mentally overwhelmed, foggy, uncertain, or trapped in thought.",
   },
   {
     title: "Hurt / Longing",
-    text: "Feeling rejected, emotionally overwhelmed, abandoned, sensitive, or craving connection.",
+    text: "Feeling emotionally overwhelmed, rejected, abandoned, or craving connection.",
   },
   {
     title: "Defensive / Tense",
-    text: "Feeling irritated, guarded, trapped, pressured, angry, or unable to relax.",
+    text: "Feeling irritated, guarded, trapped, angry, or unable to relax.",
   },
-]
+];
 
 const steps = [
   {
@@ -59,7 +60,7 @@ export default function Home() {
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-36 text-center border-b border-zinc-800">
+     <section className="relative overflow-hidden px-6 pt-16 pb-24 text-center border-b border-zinc-800">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.14),transparent_45%)]" />
 
         <div className="relative max-w-5xl mx-auto">
@@ -79,22 +80,25 @@ export default function Home() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-5">
-            <a
-              href="/assessment"
-              className="bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
-            >
-              Identify My Loop
-            </a>
+  <a
+    href="/assessment"
+    className="bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
+  >
+    Identify My Loop
+  </a>
 
-            <a
-              href="/triggered"
-              className="border border-zinc-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-yellow-300 hover:text-yellow-300 transition"
-            >
-              I Am Triggered
-            </a>
-          </div>
+  <a
+    href="/triggered"
+    className="border border-zinc-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-yellow-300 hover:text-yellow-300 transition"
+  >
+    I Am Triggered
+  </a>
+</div>
+
+<FoundingCounter />
         </div>
       </section>
+      
 
       <section className="px-6 py-28 border-b border-zinc-800 bg-[#0B1018]">
         <div className="max-w-5xl mx-auto text-center">
@@ -162,6 +166,9 @@ export default function Home() {
           <h2 className="text-4xl md:text-6xl font-bold mb-8">
             What feels strongest right now?
           </h2>
+         <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-12">
+  The I Am Triggered check-in helps identify what is active beneath the reaction so you can interrupt the pattern before it becomes a loop.
+</p>
 
           <div className="grid md:grid-cols-4 gap-5 mt-14 text-left">
             {states.map((state) => (
@@ -176,23 +183,23 @@ export default function Home() {
           </div>
 
           <a
-            href="/triggered"
-            className="inline-flex mt-12 border border-zinc-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-yellow-300 hover:text-yellow-300 transition"
-          >
-            Use Triggered Check-In
-          </a>
+  href="/triggered"
+  className="inline-flex mt-12 bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
+>
+  Use Triggered Check-In
+</a>
         </div>
       </section>
 
-      <section className="px-6 py-28 border-y border-zinc-800 bg-[#0B1018]">
+     <section
+  id="how-it-works"
+  className="px-6 py-28 border-y border-zinc-800 bg-[#0B1018]"
+>
         <div className="max-w-5xl mx-auto text-center">
           <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
             How ArcheLoop Works
           </p>
-<section
-  id="how-it-works"
-  className="px-6 py-28 border-y border-zinc-800 bg-[#0B1018]"
-></section>
+
           <h2 className="text-4xl md:text-6xl font-bold mb-8">
             Body. State. Response. Loop.
           </h2>
@@ -232,9 +239,9 @@ export default function Home() {
             ArcheLoop Report
           </p>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-8">
-            Get your personal pattern profile.
-          </h2>
+         <h2 className="text-4xl md:text-6xl font-bold mb-8">
+  See the pattern beneath the pattern.
+</h2>
 
           <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
             Take the 60-question assessment to receive your profile preview,
