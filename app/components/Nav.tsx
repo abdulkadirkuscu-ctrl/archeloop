@@ -1,10 +1,7 @@
 import Link from "next/link"
 
 const navItems = [
-  {
-    label: "How It Works",
-    href: "/#how-it-works",
-  },
+  
   {
   label: "Shadow Loops",
   href: "/loops",
