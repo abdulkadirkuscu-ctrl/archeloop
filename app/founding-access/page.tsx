@@ -6,7 +6,7 @@ export default function FoundingAccessPage() {
     <main className="min-h-screen bg-black text-white">
       <Nav />
 
-      <section className="px-6 py-32">
+      <section className="px-4 sm:px-6 py-20 sm:py-32 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
             <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
@@ -27,7 +27,7 @@ export default function FoundingAccessPage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-10 mb-16">
-            <div className="border border-zinc-800 rounded-[2rem] bg-zinc-950 p-10">
+            <div className="border border-zinc-800 rounded-3xl bg-zinc-950 p-6 sm:p-10">
               <p className="uppercase tracking-[0.25em] text-gray-500 text-sm mb-8">
                 What You Receive
               </p>
@@ -59,7 +59,7 @@ export default function FoundingAccessPage() {
               </div>
             </div>
 
-            <div className="border border-yellow-300/30 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-10 flex flex-col justify-center text-center">
+            <div className="border border-yellow-300/30 rounded-3xl bg-gradient-to-b from-yellow-300/10 to-black p-6 sm:p-10 flex flex-col justify-center text-center">
               <p className="uppercase tracking-[0.35em] text-yellow-300 text-sm mb-5">
                 Founding Access Code
               </p>
@@ -74,12 +74,12 @@ export default function FoundingAccessPage() {
                 honest feedback.
               </p>
 
-              <div className="inline-block rounded-2xl border border-yellow-300/40 bg-black px-10 py-6 mb-8 self-center">
+              <div className="inline-block max-w-full rounded-2xl border border-yellow-300/40 bg-black px-5 sm:px-10 py-6 mb-8 self-center">
                 <p className="text-gray-400 uppercase tracking-[0.25em] text-xs mb-3">
                   Access Code
                 </p>
 
-                <p className="text-4xl font-bold text-yellow-300 tracking-widest">
+                <p className="text-2xl sm:text-4xl font-bold text-yellow-300 tracking-widest break-words">
                   FOUNDING50
                 </p>
               </div>

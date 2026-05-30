@@ -210,6 +210,12 @@ export default function Home() {
             how your system protects itself, and which loop may be running.
           </p>
 
+<a
+  href="/loops"
+  className="inline-flex mt-10 bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
+>
+  Explore The 12 Shadow Loops
+</a>
           <div className="grid gap-6 md:grid-cols-4 mt-12 text-left">
             {steps.map((step) => (
               <div
@@ -240,7 +246,7 @@ export default function Home() {
           </p>
 
          <h2 className="text-4xl md:text-6xl font-bold mb-8">
-  See the pattern beneath the pattern.
+  Discover the pattern beneath your reactions.
 </h2>
 
           <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
