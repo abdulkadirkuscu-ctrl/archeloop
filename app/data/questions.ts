@@ -691,3 +691,24 @@ export const questions = [
     text: "I continue carrying burdens without allowing adequate rest, support, or nourishment.",
   },
 ]
+export const assessmentOrder = [
+  "HF1", "HA1", "HW1", "HE1",
+  "HF2", "HA2", "HW2", "HE2",
+  "HF3", "HA3", "HW3", "HE3",
+
+  "DL1", "BP1", "EL1", "CL1",
+  "PC1", "SM1", "FF1", "FO1",
+  "SF1", "MM1", "FW1", "BG1",
+
+  "HF4", "HA4", "HW4", "HE4",
+  "HF5", "HA5", "HW5", "HE5",
+  "HF6", "HA6", "HW6", "HE6",
+
+  "DL2", "BP2", "EL2", "CL2",
+  "PC2", "SM2", "FF2", "FO2",
+  "SF2", "MM2", "FW2", "BG2",
+
+  "DL3", "BP3", "EL3", "CL3",
+  "PC3", "SM3", "FF3", "FO3",
+  "SF3", "MM3", "FW3", "BG3",
+]

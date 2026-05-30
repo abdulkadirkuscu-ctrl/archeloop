@@ -32,6 +32,7 @@ export default function AssessmentPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [responses, setResponses] = useState<number[]>([])
   const [finished, setFinished] = useState(false)
+  const [accessCode, setAccessCode] = useState("")
 
 
   function handleAnswer(value: number) {
@@ -281,6 +282,8 @@ const secondaryLoop = sortedLoops[1]
       secondaryLoop,
       weakestHealthyArchetype,
     }
+    const hasFoundingAccess =
+  accessCode.trim().toUpperCase() === "FOUNDING50"
 
     return (
       <main className="min-h-screen bg-black text-white">
@@ -350,13 +353,20 @@ const secondaryLoop = sortedLoops[1]
                     </div>
 
                     <div className="border border-zinc-800 rounded-2xl p-5">
-                      <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
-                        Mechanism
-                      </p>
-                      <p className="text-2xl font-semibold">
-                        {primaryLoopInfo.mechanism}
-                      </p>
-                    </div>
+  <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
+    Pattern Formation
+  </p>
+
+  <p className="text-2xl font-semibold">
+    {primaryLoopInfo?.mechanism === "Suppression"
+      ? "Collapsed"
+      : primaryLoopInfo?.mechanism === "Compensation"
+      ? "Compensated"
+      : primaryLoopInfo?.mechanism === "Collision"
+      ? "Collision"
+      : "Unknown"}
+  </p>
+</div>
 
                     <div className="border border-zinc-800 rounded-2xl p-5">
                       <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
@@ -389,8 +399,7 @@ const secondaryLoop = sortedLoops[1]
                   </h2>
 
                   <p className="text-xl text-gray-300 leading-relaxed mb-8 max-w-3xl">
-                    Your full ArcheLoop Report expands this preview into a
-                    personalised 25–30 page pattern map, including secondary
+                    Your full ArcheLoop Report expands this preview into a comprehensive pattern map, including secondary
                     loops, elemental balance, nervous system patterns,
                     relational activators, body map interpretation, loop
                     interaction dynamics, and integration guidance.
@@ -417,12 +426,56 @@ const secondaryLoop = sortedLoops[1]
                   </div>
 
                   <div className="flex flex-wrap gap-4">
-                    <a
-                    href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}&scores=${encodeURIComponent(JSON.stringify(integratedScores))}&loops=${encodeURIComponent(JSON.stringify(loopLandscape))}`}
-                      className="bg-yellow-300 text-black px-7 py-3 rounded-full font-semibold hover:bg-yellow-200 transition"
-                    >
-                      Unlock Full Report
-                    </a>
+                   <div className="border border-zinc-800 rounded-[2rem] bg-black p-8 mt-8">
+
+  <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-4">
+    Founding Access
+  </p>
+
+  <h3 className="text-2xl font-bold mb-4">
+  First 50 Reports Free
+</h3>
+
+<p className="text-xl font-semibold text-yellow-300 mb-4">
+  Unlock Your Full ArcheLoop Report
+</p>
+
+  <p className="text-gray-400 leading-relaxed mb-6">
+   The first 50 ArcheLoop reports are currently available free as part of the
+Founding Access programme.
+
+If you have received a Founding Access code, enter it below to unlock your report.
+  </p>
+
+  <input
+    type="text"
+    value={accessCode}
+    onChange={(e) => setAccessCode(e.target.value)}
+    placeholder="Enter access code"
+    className="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-5 py-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-yellow-300 mb-5"
+  />
+
+  {hasFoundingAccess ? (
+    <a
+      href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}&scores=${encodeURIComponent(JSON.stringify(integratedScores))}&loops=${encodeURIComponent(JSON.stringify(loopLandscape))}`}
+      className="block text-center bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
+    >
+      Unlock My Full ArcheLoop Report
+    </a>
+  ) : (
+    <button
+      disabled
+      className="w-full bg-zinc-800 text-gray-500 px-8 py-4 rounded-full font-semibold text-lg cursor-not-allowed"
+    >
+      Enter Code To Unlock Report
+    </button>
+  )}
+
+  <p className="text-xs text-gray-600 mt-5">
+    No payment is required during the founding phase. Access is limited while early feedback is collected.
+  </p>
+
+</div>
 
                     <a
                       href={`/loops/${primaryLoop[0]

@@ -158,13 +158,13 @@ export default function ReportPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
-              Report Access
+              Inside Your Premium Report
             </p>
 
             <h2 className="text-4xl md:text-6xl font-bold mb-8">
-              What becomes visible
+              Go beyond a single loop and uncover the deeper architecture shaping your emotional patterns, protective strategies, nervous system responses, and relational dynamics.
               <br />
-              in the full report?
+      
             </h2>
           </div>
 
@@ -212,48 +212,149 @@ export default function ReportPage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+    {/* FOUNDING ACCESS */}
 
-      <section className="px-6 py-28 border-y border-zinc-800 bg-[#0B1018]">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
-            Founding Edition
-          </p>
+<section className="px-6 py-28 border-y border-zinc-800 bg-[#0B1018]">
+  <div className="max-w-6xl mx-auto">
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
-            Unlock your deeper
-            <br />
-            pattern map.
-          </h2>
+    <div className="text-center mb-16">
+      <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+        Founding Access
+      </p>
 
-          <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto mb-12">
-            Founding Edition reports are available for early users helping
-            shape the future ArcheLoop system.
-          </p>
+      <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+        Become one of the first
+        <br />
+        ArcheLoop members.
+      </h2>
 
-          <div className="flex flex-wrap justify-center gap-5">
-            <a
-              href="/assessment"
-              className="bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
-            >
-              Find My Loop
-            </a>
+      <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+        Help shape the future of ArcheLoop while receiving your full premium report,
+        early feature access, and priority invitations to future releases.
+      </p>
+    </div>
 
-            <a
-              href="/founding-access"
-              className="border border-zinc-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-yellow-300 hover:text-yellow-300 transition"
-            >
-              Request Founding Access
-            </a>
-          </div>
+    <div className="grid lg:grid-cols-2 gap-8 mb-16">
 
-          <p className="text-center text-sm text-gray-500 max-w-3xl mx-auto mt-10">
-            ArcheLoop reports are educational self-development tools and are
-            not medical, psychiatric, therapeutic, or diagnostic services.
-          </p>
+      <div className="border border-zinc-800 rounded-[2rem] bg-black p-10">
+        <p className="uppercase tracking-[0.25em] text-gray-500 text-sm mb-6">
+          What You Receive
+        </p>
+
+        <div className="space-y-4 text-gray-300">
+
+          <p>✓ Full Premium ArcheLoop Report</p>
+
+          <p>✓ Loop Landscape Analysis</p>
+
+          <p>✓ Archetype Score Map</p>
+
+          <p>✓ Nervous System Pattern Mapping</p>
+
+          <p>✓ Relational Activators</p>
+
+          <p>✓ Body Map Interpretation</p>
+
+          <p>✓ Integration Blueprint</p>
+
+          <p>✓ Personalised Loop Breakers</p>
+
+          <p>✓ Early Access To Future Features</p>
+
+          <p>✓ Priority Access To I Am Triggered™</p>
+
         </div>
-      </section>
+      </div>
 
+      <div className="border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-10">
+
+        <p className="uppercase tracking-[0.25em] text-yellow-300 text-sm mb-6">
+          Founding Member Opportunity
+        </p>
+
+        <h3 className="text-3xl font-bold mb-6">
+          Help build ArcheLoop.
+        </h3>
+
+        <p className="text-gray-300 leading-relaxed mb-8">
+          Founding Members help improve the assessment through real-world
+          feedback while gaining access to the most advanced version of the
+          ArcheLoop system before public launch.
+        </p>
+
+        <div className="space-y-3 text-gray-300">
+
+          <p>✓ Early member access</p>
+
+          <p>✓ Priority feature invitations</p>
+
+          <p>✓ Future Triggered Tracker access</p>
+
+          <p>✓ Opportunity to shape the platform</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div className="text-center">
+
+      <div className="flex flex-wrap justify-center gap-5">
+
+        <a
+          href="/assessment"
+          className="bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
+        >
+          Find My Loop
+        </a>
+
+        <a
+          href="/founding-access"
+          className="border border-zinc-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-yellow-300 hover:text-yellow-300 transition"
+        >
+          Request Founding Access
+        </a>
+
+      </div>
+
+      <p className="text-center text-sm text-gray-500 max-w-3xl mx-auto mt-10">
+        ArcheLoop reports are educational self-development tools and are not
+        medical, psychiatric, therapeutic, or diagnostic services.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+{/* COMING SOON */}
+
+<section className="px-6 py-24 bg-black">
+  <div className="max-w-4xl mx-auto text-center">
+
+    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+      Coming Soon
+    </p>
+
+    <h2 className="text-4xl md:text-6xl font-bold mb-8">
+      I Am Triggered™
+    </h2>
+
+    <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+      Track which shadow loops activate throughout the week.
+      Discover recurring triggers, emotional patterns, relational activators,
+      and integration progress over time.
+    </p>
+
+    <p className="text-gray-500 mt-8">
+      The assessment reveals your architecture.
+      <br />
+      Triggered reveals what is happening right now.
+    </p>
+
+  </div>
+</section>
       <Footer />
     </main>
   )

@@ -5,16 +5,21 @@ import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import { loops } from "../data/loops"
 import { elementInsights } from "../data/elementInsights"
+import ReportFeedback from "../../components/ReportFeedback";
+import TriggeredWaitlist from "../../components/TriggeredWaitlist";
 
 export default async function ReportPreviewPage({
   searchParams,
 }: {
-  searchParams?: Promise<{ loop?: string; scores?: string }>
+  searchParams?: Promise<{ loop?: string; scores?: string; loops?: string }>
 }) {
   const params = await searchParams
 
   const archetypeScores = params?.scores
   ? JSON.parse(params.scores)
+  : []
+  const loopLandscape = params?.loops
+  ? JSON.parse(params.loops)
   : []
   const selectedLoopName =
     params?.loop && params.loop in loopDetails
@@ -26,6 +31,16 @@ export default async function ReportPreviewPage({
   const formula = loopFormulas[selectedLoopName as keyof typeof loopFormulas]
   const primaryArchetype = primaryLoop.archetype as keyof typeof archetypeInsights
 const archetypeInsight = archetypeInsights[primaryArchetype]
+const lowestIntegratedArchetype =
+  [...archetypeScores].sort(
+    (a: any, b: any) => a.integratedPercent - b.integratedPercent
+  )[0]
+
+const highestIntegratedArchetype =
+  [...archetypeScores].sort(
+    (a: any, b: any) => b.integratedPercent - a.integratedPercent
+  )[0]
+  const dominantLoopFamily = primaryLoop.archetype
 const primaryElement = primaryLoop.element as keyof typeof elementInsights
 const elementInsight = elementInsights[primaryElement]
 
@@ -73,6 +88,25 @@ const integrationBlueprintText =
     </div>
   )
 }
+if (!lowestIntegratedArchetype) {
+  return (
+    <main className="min-h-screen bg-black px-6 py-24 text-white">
+      <div className="mx-auto max-w-3xl rounded-2xl border border-gray-700 p-8 text-center">
+        <h1 className="text-3xl font-semibold">No report data found</h1>
+        <p className="mt-4 text-gray-400">
+          Please complete the ArcheLoop assessment first to generate your report.
+        </p>
+        <a
+          href="/assessment"
+          className="mt-6 inline-block rounded-lg bg-white px-6 py-3 font-medium text-black"
+        >
+          Start Assessment
+        </a>
+      </div>
+    </main>
+  );
+}
+
     return (
     <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
       <Nav />
@@ -84,6 +118,16 @@ const integrationBlueprintText =
           <p className="uppercase tracking-[0.35em] text-yellow-300 text-sm mb-6">
             Premium Report Preview
           </p>
+
+<div className="border border-yellow-300/25 rounded-[2rem] bg-yellow-300/10 p-6 mb-10">
+  <p className="text-yellow-300 font-semibold mb-2">
+    Save Your Report
+  </p>
+
+  <p className="text-gray-300 leading-relaxed">
+    This report is generated from your assessment link. Bookmark this page or save it as a PDF from your browser if you want to return to it later.
+  </p>
+</div>
 
          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
   {primaryLoop.title}
@@ -260,7 +304,186 @@ const integrationBlueprintText =
         </div>
       </section>
 
-<section className="px-6 py-28 border-b border-zinc-800">
+<section className="px-6 py-20 border-b border-zinc-800 bg-black">
+  <div className="max-w-5xl mx-auto">
+
+    <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
+      Why This Loop Appeared
+    </p>
+
+    <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+      Understanding the result.
+    </h2>
+
+    <div className="border border-zinc-800 rounded-[2rem] p-10 bg-zinc-950">
+
+      <p className="text-lg leading-8 text-gray-300">
+
+  <span className="text-white font-semibold">
+    Lowest Integrated Archetype:
+  </span>{" "}
+  
+  {lowestIntegratedArchetype.archetype} ({lowestIntegratedArchetype.integratedPercent}%)
+
+</p>
+
+<p className="text-lg leading-8 text-gray-300 mt-8">
+
+  This archetype currently shows the lowest level of integrated
+  expression and may represent the primary area of collapse,
+  restriction, avoidance, or developmental pressure within the system.
+
+</p>
+<p className="text-lg leading-8 text-gray-300 mt-8">
+  This may be different from the dominant loop family, because one part of the system may be most restricted while another part becomes the main protective strategy.
+</p>
+
+<p className="text-lg leading-8 text-gray-300 mt-10">
+
+  <span className="text-white font-semibold">
+    Dominant Loop Family:
+  </span>{" "}
+  {dominantLoopFamily}
+
+</p>
+
+<p className="text-lg leading-8 text-gray-300 mt-8">
+
+  The strongest shadow activation emerged within the{" "}
+  <span className="text-white font-semibold">
+    {dominantLoopFamily}
+  </span>{" "}
+  loop family, indicating that this archetype currently provides
+  the dominant protective strategy used by the system under pressure.
+
+</p>
+
+<p className="text-lg leading-8 text-gray-300 mt-10">
+
+  <span className="text-white font-semibold">
+    Primary Loop Formation:
+  </span>{" "}
+  {primaryLoop.mechanism === "Suppression"
+    ? "Collapsed"
+    : primaryLoop.mechanism === "Compensation"
+    ? "Compensated"
+    : "Collision"}
+
+</p>
+
+<p className="text-lg leading-8 text-gray-300 mt-8">
+
+  Among all loop activations,{" "}
+  <span className="text-white font-semibold">
+    {primaryLoop.title}
+  </span>{" "}
+  produced the strongest overall activation score and therefore
+  emerged as the dominant loop pattern at this time.
+
+</p>
+     
+    </div>
+  </div>
+</section>
+
+{loopLandscape.length > 0 && (
+  <section className="px-6 py-28 border-b border-zinc-800 bg-[#0B1018]">
+    <div className="max-w-6xl mx-auto">
+      <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
+        Loop Landscape
+      </p>
+
+      <h2 className="text-4xl md:text-6xl font-bold mb-6 text-center">
+        Your dominant loop ecosystem.
+      </h2>
+
+      <p className="text-gray-400 text-center max-w-3xl mx-auto mb-14 leading-relaxed">
+        These are the strongest shadow loop activations detected in your current assessment.
+        Your primary loop is the strongest pattern, while the others may activate under
+        different forms of stress, pressure, vulnerability, conflict, visibility, or relational activation.
+      </p>
+
+      <div className="grid gap-5">
+        {loopLandscape.slice(0, 5).map((item: any, index: number) => (
+          <div
+            key={item.loop}
+            className={`border rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 ${
+              index === 0
+                ? "border-yellow-300/40 bg-gradient-to-r from-yellow-300/10 to-black"
+                : "border-zinc-800 bg-black"
+            }`}
+          >
+            <div className="flex items-center gap-5">
+              <div
+                className={`w-14 h-14 rounded-full flex items-center justify-center font-bold ${
+                  index === 0
+                    ? "bg-yellow-300 text-black"
+                    : "bg-zinc-900 text-gray-300 border border-zinc-700"
+                }`}
+              >
+                {index + 1}
+              </div>
+
+              <div>
+                <p className="text-sm uppercase tracking-[0.25em] text-gray-500 mb-2">
+                  {index === 0 ? "Primary Pattern" : "Supporting Pattern"}
+                </p>
+
+                <h3 className="text-2xl md:text-3xl font-bold">
+                  {item.loop}
+                </h3>
+              </div>
+            </div>
+
+            <div className="md:w-64">
+              <div className="flex justify-between text-sm mb-2">
+                <span className="text-gray-400">Activation</span>
+                <span className="text-yellow-300 font-semibold">
+                  {item.score}%
+                </span>
+              </div>
+
+              <div className="h-3 bg-zinc-800 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-yellow-300 rounded-full"
+                  style={{ width: `${item.score}%` }}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+            </div>
+
+      <div className="mt-12 border border-zinc-800 rounded-[2rem] bg-black p-8 max-w-4xl mx-auto">
+        <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-4">
+          Loop Family Insight
+        </p>
+
+        <p className="text-lg text-gray-300 leading-8">
+          Your strongest shadow activation currently appears within the{" "}
+          <span className="text-white font-semibold">
+            {primaryLoop.archetype}
+          </span>{" "}
+          archetype family.
+
+          This suggests that challenges related to{" "}
+          <span className="text-white font-semibold">
+            {primaryLoop.element}
+          </span>{" "}
+          energy may be playing a central role in the current pattern.
+
+          Rather than reflecting a single isolated loop, the assessment indicates
+          a broader ecosystem of related protective responses that emerge under
+          stress, vulnerability, relational activation, uncertainty, or pressure.
+        </p>
+      </div>
+
+    </div>
+  </section>
+)}
+
+
+   <section className="px-6 py-28 border-b border-zinc-800">
   <div className="max-w-6xl mx-auto">
     <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
       Core Structure
@@ -276,17 +499,17 @@ const integrationBlueprintText =
           key={label}
           className="border border-zinc-800 rounded-2xl bg-black p-6"
         >
-         <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-3">
-  {label === "overactiveArchetype"
-  ? "Protective Archetype"
-  : label === "suppressedElement"
-  ? "Collapsed Element"
-  : label === "compensationPattern"
-  ? "Protective Adaptation"
-  : label
-      .replace(/([A-Z])/g, " $1")
-      .replace(/^./, (str) => str.toUpperCase())}
-</p>
+          <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-3">
+            {label === "overactiveArchetype"
+              ? "Protective Archetype"
+              : label === "suppressedElement"
+              ? "Collapsed Element"
+              : label === "compensationPattern"
+              ? "Protective Adaptation"
+              : label
+                  .replace(/([A-Z])/g, " $1")
+                  .replace(/^./, (str) => str.toUpperCase())}
+          </p>
 
           <p className="text-lg text-gray-200 leading-relaxed">
             {value}
@@ -344,25 +567,32 @@ const integrationBlueprintText =
 
       <div>
         <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-4">
-          Shadow Expression
-        </p>
+  Shadow Expression
+</p>
 
-        <div className="space-y-5">
-          <ScoreBar
-            label="Collapsed"
-            value={item.suppressionPercent || 0}
-          />
+<div className="space-y-5">
+  <ScoreBar
+    label="Shadow Pressure"
+    value={item.shadowPercent || 0}
+  />
 
-          <ScoreBar
-            label="Compensated"
-            value={item.compensationPercent || 0}
-          />
+  <div className="border-t border-zinc-800 pt-5 space-y-5">
+    <ScoreBar
+      label="Collapsed"
+      value={item.suppressionPercent || 0}
+    />
 
-          <ScoreBar
-            label="Collision"
-            value={item.collisionPercent || 0}
-          />
-        </div>
+    <ScoreBar
+      label="Compensated"
+      value={item.compensationPercent || 0}
+    />
+
+    <ScoreBar
+      label="Collision"
+      value={item.collisionPercent || 0}
+    />
+  </div>
+</div>
       </div>
 
       
@@ -693,6 +923,9 @@ const integrationBlueprintText =
         </div>
       </section>
 
+<TriggeredWaitlist />
+
+<ReportFeedback />
       <Footer />
     </main>
   )
