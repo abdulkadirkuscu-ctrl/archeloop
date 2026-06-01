@@ -1,11 +1,10 @@
 import Link from "next/link"
 
 const navItems = [
-  
   {
-  label: "Shadow Loops",
-  href: "/loops",
-},
+    label: "Shadow Loops",
+    href: "/loops",
+  },
   {
     label: "Assessment",
     href: "/assessment",
@@ -13,6 +12,10 @@ const navItems = [
   {
     label: "Report",
     href: "/report",
+  },
+  {
+    label: "Integration",
+    href: "/integration",
   },
 ]
 
@@ -37,11 +40,11 @@ export default function Nav() {
         </div>
 
         <Link
-          href="/triggered"
-          className="rounded-full border border-yellow-300 px-5 py-2 text-sm font-semibold text-yellow-300 transition hover:bg-yellow-300 hover:text-black"
-        >
-          I Am Triggered
-        </Link>
+  href="/triggered"
+  className="rounded-full bg-yellow-300 px-5 py-2 text-sm font-semibold text-black transition hover:bg-yellow-200"
+>
+  I Am Triggered
+</Link>
       </nav>
     </header>
   )
