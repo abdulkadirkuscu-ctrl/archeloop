@@ -1,23 +1,20 @@
-import Script from "next/script"
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
-import {
-  Space_Grotesk,
-  Manrope,
-} from "next/font/google"
+import { Space_Grotesk, Manrope } from "next/font/google";
 
-import "./globals.css"
+import CookieConsent from "./components/CookieConsent";
+import "./globals.css";
 
 const headingFont = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-heading",
   weight: ["400", "500", "600", "700"],
-})
+});
 
 const bodyFont = Manrope({
   subsets: ["latin"],
   variable: "--font-body",
-})
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.archeloop.com"),
@@ -56,42 +53,22 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html
       lang="en"
       className={`${headingFont.variable} ${bodyFont.variable} h-full antialiased`}
     >
-      <head>
-
-        {/* Google Analytics */}
-
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-D3WC89FT4W"
-        />
-
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-D3WC89FT4W');
-          `}
-        </Script>
-
-      </head>
-
       <body className="min-h-full flex flex-col">
         {children}
+        <CookieConsent />
       </body>
     </html>
-  )
+  );
 }

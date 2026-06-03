@@ -694,7 +694,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     element: "Water",
     archetype: "Lover",
     path: "Connection Path™",
-    integratedState: "Grounded Intimacy",
+    integratedState: "Genuine Connection",
     overview:
       "Fantasy Fog forms when longing replaces connection. Instead of engaging with reality, the person retreats into imagined futures, idealised relationships, emotional fantasy, or unattainable possibilities.",
     coreBelief: "Fantasy is safer than reality.",
@@ -748,7 +748,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "Where can I choose real connection today?",
         ],
         successMarker:
-          "I can separate fantasy from grounded connection.",
+  "I can separate fantasy from genuine connection.",
       },
       {
         title: "Embodiment",
@@ -763,7 +763,7 @@ export const integrationJourneys: IntegrationJourney[] = [
         ],
         prompts: [
           "What kind of connection is available here?",
-          "What does grounded intimacy require from me?",
+          "What does genuine connection require from me?",
           "What would my integrated Lover choose?",
         ],
         successMarker:
@@ -1066,12 +1066,12 @@ export const integrationJourneys: IntegrationJourney[] = [
       "I do not need walls to remain safe. I can protect myself and still allow connection. Strength does not require isolation.",
   },
   {
-    slug: "self-worth-path",
+    slug: "vitality-path",
     loop: "Barren Ground",
     element: "Earth",
     archetype: "Warrior",
-    path: "Self-Worth Path™",
-    integratedState: "Inner Value",
+    path: "Vitality Path™",
+    integratedState: "Inner Vitality",
     overview:
       "Barren Ground forms when survival replaces vitality. Life becomes duty, endurance, and responsibility while softness, joy, desire, pleasure, and aliveness feel distant or unavailable.",
     coreBelief:
@@ -1131,9 +1131,10 @@ export const integrationJourneys: IntegrationJourney[] = [
       },
       {
         title: "Embodiment",
-        objective: "Live from inner value rather than survival alone.",
+        objective:
+  "Live from inner vitality rather than survival alone.",
         realisation:
-          "My worth exists beyond productivity.",
+  "Vitality is not a luxury. It is part of being alive.",
         practices: [
           "Build routines that include rest and vitality.",
           "Choose meaning, not only obligation.",
@@ -1146,7 +1147,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "What would my integrated Warrior protect and nourish?",
         ],
         successMarker:
-          "I can live from inner value rather than only endurance.",
+  "I can live from inner vitality rather than only endurance.",
       },
     ],
     integratedIdentity: [

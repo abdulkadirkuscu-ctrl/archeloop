@@ -1,5 +1,6 @@
-import Nav from "../components/Nav"
-import Footer from "../components/Footer"
+import Nav from "../components/Nav";
+import Link from "next/link";
+import Footer from "../components/Footer";
 
 const journeyGroups = [
   {
@@ -28,21 +29,21 @@ const journeyGroups = [
     theme: "Feeling, connection, and regulation",
     journeys: [
       ["Emotional Lockdown", "Vulnerability Path™", "Emotional Openness"],
-      ["Fantasy Fog", "Connection Path™", "Grounded Intimacy"],
+      ["Fantasy Fog", "Connection Path™", "Genuine Connection"],
       ["Flooded Waters", "Emotional Regulation Path™", "Emotional Flow"],
     ],
   },
   {
     element: "Earth",
     archetype: "Warrior",
-    theme: "Boundaries, trust, and worth",
+    theme: "Boundaries, trust, and vitality",
     journeys: [
       ["Compliance", "Boundaries Path™", "Self-Respect"],
       ["Fortress", "Trust Path™", "Connected Strength"],
-      ["Barren Ground", "Self-Worth Path™", "Inner Value"],
+      ["Barren Ground", "Vitality Path™", "Inner Vitality"],
     ],
   },
-]
+];
 
 const features = [
   "Trigger Tracking",
@@ -53,22 +54,22 @@ const features = [
   "Progress Tracking",
   "Archetypal Development",
   "Personal Integration Dashboard",
-]
+];
 
 export default function IntegrationPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#030712] text-stone-100">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-32 border-b border-zinc-800">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.14),transparent_45%)]" />
+      <section className="relative overflow-hidden px-6 py-28">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
 
-        <div className="relative max-w-5xl mx-auto text-center">
-          <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+        <div className="relative mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
             ArcheLoop Integration™
           </p>
 
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
+          <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
             Identify.
             <br />
             Track.
@@ -76,7 +77,7 @@ export default function IntegrationPage() {
             Integrate.
           </h1>
 
-          <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+          <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
             Most people discover their patterns. Few people change them.
             ArcheLoop Integration™ is designed to help transform recurring
             Shadow Loops into healthy archetypal expression through awareness,
@@ -85,36 +86,32 @@ export default function IntegrationPage() {
 
           <a
             href="#journeys"
-            className="inline-flex mt-10 bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
+            className="mt-10 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
           >
             Explore The 12 Integration Journeys
           </a>
         </div>
       </section>
 
-      <section className="px-6 py-28 border-b border-zinc-800">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+      <section className="px-6 py-24">
+        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
+          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
             Why Integration Matters
           </p>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
             Awareness is only the beginning.
           </h2>
 
-          <div className="space-y-6 text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
+          <div className="mx-auto mt-10 max-w-4xl space-y-7 text-xl leading-relaxed text-stone-300">
             <p>
               The ArcheLoop Assessment helps identify the loops shaping your
               emotions, behaviours, relationships, and reactions.
             </p>
 
-            <p>
-              The ArcheLoop Report helps explain why those loops formed.
-            </p>
+            <p>The ArcheLoop Report helps explain why those loops formed.</p>
 
-            <p>
-              ArcheLoop Integration™ is designed to help transform them.
-            </p>
+            <p>ArcheLoop Integration™ is designed to help transform them.</p>
 
             <p>
               Every Shadow Loop contains an invitation. The loop reveals where
@@ -125,64 +122,67 @@ export default function IntegrationPage() {
         </div>
       </section>
 
-      <section
-        id="journeys"
-        className="px-6 py-28 border-b border-zinc-800 bg-[#0B1018]"
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+      <section id="journeys" className="px-6 py-28">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 text-center">
+            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
               The 12 Integration Journeys™
             </p>
 
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 className="mt-5 text-4xl font-bold md:text-6xl">
               Every loop has a path forward.
             </h2>
 
-            <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
               Each Shadow Loop reveals where energy became distorted. Each
               Integration Journey points toward the healthy expression waiting
               underneath.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid gap-8 md:grid-cols-2">
             {journeyGroups.map((group) => (
               <div
                 key={group.element}
-                className="border border-zinc-800 rounded-[2rem] bg-black/60 p-8"
+                className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]"
               >
-                <p className="uppercase tracking-[0.25em] text-gray-500 text-sm mb-3">
+                <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
                   {group.archetype}
                 </p>
 
-                <h3 className="text-3xl font-bold mb-3 text-yellow-300">
+                <h3 className="mt-3 text-4xl font-bold text-yellow-300">
                   {group.element}
                 </h3>
 
-                <p className="text-gray-400 mb-8">
-                  {group.theme}
-                </p>
+                <p className="mt-3 text-stone-400">{group.theme}</p>
 
-                <div className="space-y-5">
-                  {group.journeys.map(([loop, path, state]) => (
-                    <div
-                      key={loop}
-                      className="rounded-2xl border border-zinc-800 bg-zinc-950 p-5"
-                    >
-                      <p className="text-white font-semibold">
-                        {loop}
-                      </p>
+                <div className="mt-8 space-y-5">
+                  {group.journeys.map(([loop, path, state]) => {
+                    const slug = path
+                      .replace("™", "")
+                      .toLowerCase()
+                      .replaceAll(" ", "-");
 
-                      <p className="mt-2 text-yellow-300">
-                        {path}
-                      </p>
+                    return (
+                      <Link
+                        key={loop}
+                        href={`/integration/${slug}`}
+                        className="block rounded-2xl border border-yellow-300/10 bg-black/30 p-5 transition hover:border-yellow-300/60 hover:bg-[#111827]"
+                      >
+                        <p className="font-semibold text-stone-100">{loop}</p>
 
-                      <p className="mt-2 text-sm text-gray-400">
-                        Integrated State: {state}
-                      </p>
-                    </div>
-                  ))}
+                        <p className="mt-2 text-yellow-300">{path}</p>
+
+                        <p className="mt-2 text-sm text-stone-400">
+                          Integrated State: {state}
+                        </p>
+
+                        <p className="mt-4 text-sm text-yellow-300/60">
+                          View Journey →
+                        </p>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             ))}
@@ -190,27 +190,28 @@ export default function IntegrationPage() {
         </div>
       </section>
 
-      <section className="px-6 py-28 border-b border-zinc-800">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+      <section className="px-6 py-28">
+        <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/10 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
+          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
             Coming Soon
           </p>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
             The ArcheLoop Integration Platform
           </h2>
 
-          <p className="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto mb-16">
-            Future ArcheLoop Integration members will be able to track recurring
-            triggers, identify dominant loops, follow personalised Integration
-            Journeys, and monitor progress over time.
+          <p className="mx-auto mt-8 max-w-4xl text-xl leading-relaxed text-stone-300">
+            Future ArcheLoop Integration members will be able to follow
+            personalised Integration Journeys™, access guided practices, track
+            long-term archetypal development, and transform recurring Shadow
+            Loops into healthy expression over time.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6 text-left">
+          <div className="mt-14 grid gap-5 text-left md:grid-cols-2">
             {features.map((feature) => (
               <div
                 key={feature}
-                className="border border-zinc-800 rounded-2xl bg-zinc-950 p-6 text-gray-300"
+                className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5 text-stone-300"
               >
                 ✓ {feature}
               </div>
@@ -219,19 +220,19 @@ export default function IntegrationPage() {
         </div>
       </section>
 
-      <section className="px-6 py-32">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-8">
+      <section className="px-6 py-24">
+        <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+          <h2 className="text-4xl font-bold md:text-6xl">
             The journey does not end with the report.
           </h2>
 
-          <p className="text-xl text-gray-300 leading-relaxed mb-12">
+          <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
             The report reveals the loop. Integration transforms it.
           </p>
 
           <a
             href="/assessment"
-            className="inline-flex bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
+            className="mt-10 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
           >
             Take The Assessment
           </a>
@@ -240,5 +241,5 @@ export default function IntegrationPage() {
 
       <Footer />
     </main>
-  )
+  );
 }

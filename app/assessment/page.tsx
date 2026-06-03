@@ -557,25 +557,47 @@ If you have received a Founding Access code, enter it below to unlock your repor
   }
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      <Nav />
+  <main className="min-h-screen bg-[#030712] text-stone-100">
+    <Nav />
 
-      <div className="px-6 py-20">
-        <div className="max-w-3xl mx-auto">
+    <section className="relative overflow-hidden px-6 py-8">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.16),transparent_42%)]" />
+
+      <div className="relative mx-auto max-w-4xl space-y-8">
+<div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-6 shadow-[0_0_60px_rgba(216,183,120,0.08)]">
+          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+            ArcheLoop Assessment
+          </p>
+
+          <h1 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
+            Discover Your Shadow Loop
+          </h1>
+
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-stone-300">
+            Answer each question honestly. Your responses help reveal the
+            protective patterns, archetypal dynamics, and Shadow Loops that may
+            activate under stress.
+          </p>
+        </div>
+
+       <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-5 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
           <div className="mb-8">
-            <div className="flex justify-between text-sm text-gray-500 mb-3">
+            <div className="mb-3 flex justify-between text-sm text-yellow-300/60">
               <span>
-               Question {currentQuestion + 1} of {orderedQuestions.length}
+                Question {currentQuestion + 1} of {orderedQuestions.length}
               </span>
 
               <span>
-               {Math.round(((currentQuestion + 1) / orderedQuestions.length) * 100)}%
+                {Math.round(
+                  ((currentQuestion + 1) / orderedQuestions.length) * 100
+                )}
+                %
               </span>
             </div>
 
-            <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
+            <div className="h-3 overflow-hidden rounded-full bg-black/50">
               <div
-                className="h-full bg-yellow-300 rounded-full transition-all duration-500"
+                className="h-full rounded-full bg-yellow-300 transition-all duration-500"
                 style={{
                   width: `${((currentQuestion + 1) / questions.length) * 100}%`,
                 }}
@@ -583,70 +605,71 @@ If you have received a Founding Access code, enter it below to unlock your repor
             </div>
           </div>
 
-          <h1 className="text-4xl font-bold mb-10">
-            Discover Your Shadow Loop
-          </h1>
+          <div className="mb-6 flex justify-between">
+            {currentQuestion > 0 ? (
+              <button
+                onClick={goBack}
+                className="rounded-full border border-yellow-300/20 bg-black/30 px-5 py-2 text-sm text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+              >
+                ← Back
+              </button>
+            ) : (
+              <div />
+            )}
 
-<div className="flex justify-between mb-6">
-  {currentQuestion > 0 ? (
-    <button
-      onClick={goBack}
-      className="border border-zinc-700 px-5 py-2 rounded-full text-sm text-gray-300 hover:border-yellow-300 hover:text-yellow-300 transition"
-    >
-      ← Back
-    </button>
-  ) : (
-    <div />
-  )}
+            {responses[currentQuestion] &&
+              currentQuestion < questions.length - 1 && (
+                <button
+                  onClick={goNext}
+                  className="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-5 py-2 text-sm text-yellow-200 transition hover:border-yellow-300/60"
+                >
+                  Next →
+                </button>
+              )}
+          </div>
 
-  {responses[currentQuestion] && currentQuestion < questions.length - 1 && (
-    <button
-      onClick={goNext}
-      className="border border-zinc-700 px-5 py-2 rounded-full text-sm text-gray-300 hover:border-yellow-300 hover:text-yellow-300 transition"
-    >
-      Next →
-    </button>
-  )}
-</div>
-
-
-          <div className="border rounded-2xl p-8 mb-8">
-            <h2 className="text-2xl font-semibold mb-8">
-             {orderedQuestions[currentQuestion]?.text}
+          <div className="rounded-[1.5rem] border border-yellow-300/10 bg-black/30 p-5">
+            <h2 className="mb-5 text-2xl font-semibold leading-snug text-stone-100">
+              {orderedQuestions[currentQuestion]?.text}
             </h2>
 
             <div className="grid gap-3">
-              {answerOptions.map((answer) => (
-  <button
-    key={answer.value}
-    onClick={() => handleAnswer(answer.value)}
-    className={`border rounded-xl p-4 text-left transition ${
-      responses[currentQuestion] === answer.value
-        ? "bg-yellow-300 text-black border-yellow-300"
-        : "hover:bg-white hover:text-black"
-    }`}
-  >
-    {answer.label}
-  </button>
-))}
+              {answerOptions.map((answer) => {
+                const active = responses[currentQuestion] === answer.value;
+
+                return (
+                  <button
+                    key={answer.value}
+                    onClick={() => handleAnswer(answer.value)}
+                    className={`rounded-2xl border px-5 py-3 text-left font-medium transition ${
+                      active
+                        ? "border-yellow-300 bg-yellow-300 text-black shadow-[0_0_35px_rgba(216,183,120,0.18)]"
+                        : "border-yellow-300/10 bg-[#0B1018] text-stone-300 hover:border-yellow-300/50 hover:bg-[#111827]"
+                    }`}
+                  >
+                    {answer.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
+        </div>
 
-          <div className="border border-yellow-300/20 rounded-3xl bg-gradient-to-b from-zinc-950 to-black p-6">
-            <p className="uppercase tracking-[0.3em] text-yellow-300 text-xs mb-3">
-              Future Report Preview
-            </p>
+        <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-7 shadow-[0_0_55px_rgba(216,183,120,0.07)]">
+          <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+            Future Report Preview
+          </p>
 
-            <p className="text-gray-300 leading-relaxed">
-              Your answers will eventually help shape your ArcheLoop Personal
-              Pattern Report, mapping shadow loops, archetypal patterns, nervous
-              system responses, and integration pathways.
-            </p>
-          </div>
+          <p className="mt-4 leading-relaxed text-stone-300">
+            Your answers will help shape your ArcheLoop Personal Pattern
+            Report, mapping Shadow Loops, archetypal patterns, nervous system
+            responses, and integration pathways.
+          </p>
         </div>
       </div>
+    </section>
 
-      <Footer />
-    </main>
-  )
+    <Footer />
+  </main>
+);
 }
