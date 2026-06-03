@@ -1,13 +1,13 @@
-import type { Metadata } from "next"
-import Image from "next/image"
-import Nav from "../components/Nav"
-import Footer from "../components/Footer"
+import type { Metadata } from "next";
+import Image from "next/image";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
   title: "The 12 Shadow Loops",
   description:
     "Explore the 12 ArcheLoop shadow patterns formed through suppression, compensation, collision, and relational activation.",
-}
+};
 
 const loops = [
   {
@@ -106,48 +106,73 @@ const loops = [
       "Life becomes endurance, duty, and survival while vitality, softness, and joy feel out of reach.",
     slug: "barren-ground",
   },
-]
+];
 
 export default function LoopsPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
+    <main className="min-h-screen bg-[#030712] text-stone-100">
       <Nav />
 
-      <section className="px-6 py-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
+      <section className="relative overflow-hidden px-6 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+
+        <div className="relative mx-auto max-w-7xl space-y-16">
+          <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
               ArcheLoop
             </p>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-8">
+            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
               The 12 Shadow Loops
             </h1>
 
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
               Shadow Loops are recurring emotional and behavioural patterns
-              formed through suppression, compensation, or collision between
+              formed through collapse, compensation, or collision between
               archetypal energies.
             </p>
+
+            <a
+              href="/assessment"
+              className="mt-10 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+            >
+              Find My Loop
+            </a>
           </div>
 
-          <div className="space-y-24">
+          <div className="space-y-20">
             {["Fire", "Air", "Water", "Earth"].map((element) => (
-              <section key={element}>
-                <h2 className="text-4xl font-bold mb-8">
-                  {element} Loops
-                </h2>
+              <section
+                key={element}
+                className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_60px_rgba(216,183,120,0.06)]"
+              >
+                <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+                      Elemental Pattern
+                    </p>
 
-                <div className="grid md:grid-cols-3 gap-6">
+                    <h2 className="mt-3 text-4xl font-bold text-yellow-300">
+                      {element} Loops
+                    </h2>
+                  </div>
+
+                  <p className="max-w-xl text-stone-400">
+                    Explore the three Shadow Loops connected to this archetypal
+                    element.
+                  </p>
+                </div>
+
+                <div className="grid gap-6 md:grid-cols-3">
                   {loops
                     .filter((loop) => loop.element === element)
                     .map((loop) => (
                       <a
                         key={loop.slug}
                         href={`/loops/${loop.slug}`}
-                        className="group relative overflow-hidden border border-zinc-800 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black hover:border-yellow-300/40 transition-all duration-500"
+                        className="group relative overflow-hidden rounded-[2rem] border border-yellow-300/10 bg-black/30 transition duration-500 hover:border-yellow-300/50 hover:shadow-[0_0_55px_rgba(216,183,120,0.10)]"
                       >
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.08),transparent_55%)] opacity-0 group-hover:opacity-100 transition duration-500" />
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.12),transparent_55%)] opacity-0 transition duration-500 group-hover:opacity-100" />
 
                         <div className="relative h-72 overflow-hidden">
                           <Image
@@ -155,24 +180,24 @@ export default function LoopsPage() {
                             alt={loop.name}
                             fill
                             sizes="(max-width: 768px) 100vw, 33vw"
-                            className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                            className="object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
                           />
                         </div>
 
-                        <div className="relative z-10 p-8">
-                          <p className="uppercase tracking-[0.25em] text-gray-500 text-sm mb-4">
+                        <div className="relative z-10 p-7">
+                          <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
                             Shadow Loop
                           </p>
 
-                          <h3 className="text-3xl font-bold mb-5 group-hover:text-yellow-300 transition">
+                          <h3 className="mt-4 text-3xl font-bold transition group-hover:text-yellow-300">
                             {loop.name}
                           </h3>
 
-                          <p className="text-gray-300 leading-relaxed mb-8">
+                          <p className="mt-5 leading-relaxed text-stone-300">
                             {loop.description}
                           </p>
 
-                          <p className="text-yellow-300 font-semibold">
+                          <p className="mt-8 font-semibold text-yellow-300">
                             Explore Loop →
                           </p>
                         </div>
@@ -187,5 +212,5 @@ export default function LoopsPage() {
 
       <Footer />
     </main>
-  )
+  );
 }

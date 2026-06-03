@@ -25,6 +25,7 @@ type RankedItem = {
 
 export default function ProgressDashboardPage() {
   const [activations, setActivations] = useState<Activation[]>([]);
+  const [integratedVision, setIntegratedVision] = useState("");
 
   useEffect(() => {
     const saved = JSON.parse(
@@ -33,6 +34,7 @@ export default function ProgressDashboardPage() {
 
     setActivations(saved);
   }, []);
+
 
   const stats = useMemo(() => {
     const topLoops = topCommon(activations.map((a) => a.primaryLoop), 3);
@@ -61,6 +63,19 @@ export default function ProgressDashboardPage() {
       emergingState: mostCommon(activations.map((a) => a.integratedIdentity)),
     };
   }, [activations]);
+
+
+  useEffect(() => {
+  if (!stats.currentJourney?.label || stats.currentJourney.label === "—") {
+    setIntegratedVision("");
+    return;
+  }
+
+  const storageKey = `archeloop-integrated-vision-${stats.currentJourney.label}`;
+  const savedVision = localStorage.getItem(storageKey);
+
+  setIntegratedVision(savedVision || "");
+}, [stats.currentJourney?.label]);
 
   return (
     <main className="min-h-screen bg-[#030712] text-stone-100">
@@ -121,6 +136,42 @@ export default function ProgressDashboardPage() {
                   {stats.patternInsight}
                 </p>
               </div>
+
+
+<div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.10)]">
+  <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+    My Integrated Vision™
+  </p>
+
+  <h2 className="mt-4 text-3xl font-semibold text-stone-100">
+    {stats.emergingState.label !== "—"
+      ? `Becoming ${stats.emergingState.label}`
+      : "Your future self vision"}
+  </h2>
+
+  {integratedVision ? (
+    <p className="mt-5 whitespace-pre-line text-lg leading-relaxed text-stone-300">
+      {integratedVision}
+    </p>
+  ) : (
+    <p className="mt-5 text-lg leading-relaxed text-stone-300">
+      Visit your {stats.currentJourney.label} page to write the vision of the
+      integrated self you are becoming.
+    </p>
+  )}
+
+  {stats.currentJourney.label !== "—" && (
+    <Link
+      href={`/integration/${stats.currentJourney.label
+        .replace("™", "")
+        .toLowerCase()
+        .replaceAll(" ", "-")}`}
+      className="mt-6 inline-flex rounded-full border border-yellow-300/20 bg-yellow-300/10 px-5 py-2 text-sm text-yellow-200 transition hover:border-yellow-300/60"
+    >
+      Open {stats.currentJourney.label}
+    </Link>
+  )}
+</div>
 
               <div className="grid gap-4 md:grid-cols-3">
                 <StatCard

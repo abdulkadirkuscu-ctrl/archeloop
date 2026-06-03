@@ -153,7 +153,7 @@ export default function TriggeredPage() {
 
   if (finished && loop) {
     return (
-      <main className="min-h-screen bg-black text-white">
+      <main className="min-h-screen bg-[#030712] text-stone-100">
         <Nav />
 
         <section className="px-6 py-24">
@@ -257,18 +257,18 @@ export default function TriggeredPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#030712] text-stone-100">
       <Nav />
 
       <section className="px-6 py-24">
 
         <div className="max-w-4xl mx-auto">
 
-          <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
-            I Am Triggered
-          </p>
+         <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70 mb-5">
+  I Am Triggered™
+</p>
 
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
             What is active right now?
           </h1>
 
@@ -311,7 +311,7 @@ export default function TriggeredPage() {
           </div>
 
           {body && (
-            <div className="border border-zinc-800 rounded-[2rem] p-8 mb-8 bg-zinc-950">
+            <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 mb-8 shadow-[0_0_40px_rgba(216,183,120,0.04)]">
 
               <h2 className="text-2xl font-semibold mb-6">
                 2. What feels strongest?
@@ -384,6 +384,28 @@ export default function TriggeredPage() {
             </div>
           )}
 
+<div className="mb-8 rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8 shadow-[0_0_60px_rgba(216,183,120,0.08)]">
+  <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+    Upgrade Available
+  </p>
+
+  <h3 className="mt-4 text-3xl font-bold">
+    Unlock Triggered Pro™
+  </h3>
+
+  <p className="mt-4 leading-relaxed text-stone-300">
+    Discover primary and secondary loops, integration journeys,
+    trigger history, progress tracking, and your personalised
+    transformation pathway.
+  </p>
+
+  <a
+    href="/triggered-intelligence"
+    className="mt-6 inline-flex rounded-full border border-yellow-300/20 bg-yellow-300/10 px-5 py-3 text-yellow-200 transition hover:border-yellow-300/60"
+  >
+    Explore Triggered Pro™
+  </a>
+</div>
           <button
             disabled={!body || !state || !response}
             onClick={() => setFinished(true)}

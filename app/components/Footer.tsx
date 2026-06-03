@@ -23,10 +23,13 @@ export default function Footer() {
             Disclaimer
           </a>
 
-          <a href="/privacy-policy" className="hover:text-yellow-300">
-            Privacy Policy
-          </a>
+<a href="/privacy-policy" className="hover:text-yellow-300">
+  Privacy Policy
+</a>
 
+<a href="/terms-and-conditions" className="hover:text-yellow-300">
+  Terms & Conditions
+</a>
           <a href="/assessment" className="hover:text-yellow-300">
             Assessment
           </a>

@@ -23,7 +23,14 @@ export type IntegrationJourney = {
     successMarker: string;
   }[];
   integratedIdentity: string[];
-  finalStatement: string;
+integratedSelf?: {
+  thinks: string[];
+  feels: string[];
+  values: string[];
+  fears: string[];
+  actions: string[];
+};
+finalStatement: string;
 };
 
 export const integrationJourneys: IntegrationJourney[] = [
@@ -123,6 +130,40 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Trusts their own voice.",
       "Allows themselves to be seen.",
     ],
+
+    integratedSelf: {
+  thinks: [
+    "My voice matters.",
+    "I do not need permission to be visible.",
+    "Being seen does not mean I am unsafe.",
+    "I can take up space without performing.",
+  ],
+  feels: [
+    "Present while being seen.",
+    "Grounded in their own worth.",
+    "Open to visibility without needing approval.",
+    "Steady enough to receive feedback.",
+  ],
+  values: [
+    "Authentic expression.",
+    "Self-respect.",
+    "Visibility without performance.",
+    "Honest presence.",
+  ],
+  fears: [
+    "Living hidden.",
+    "Abandoning their voice.",
+    "Shrinking to stay safe.",
+    "Letting fear decide how visible they are.",
+  ],
+  actions: [
+    "Shares an honest opinion.",
+    "Speaks before overthinking.",
+    "Allows themselves to be seen.",
+    "Asks directly for what they need.",
+    "Stays present during discomfort.",
+  ],
+},
     finalStatement:
       "Being visible is not the danger. Abandoning myself is the danger. I can be seen without losing who I am.",
     },
@@ -216,6 +257,39 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Receives recognition without becoming dependent on it.",
       "Creates from authenticity.",
     ],
+    integratedSelf: {
+  thinks: [
+    "My authority comes from within.",
+    "I do not need approval to lead.",
+    "I can be respected without performing.",
+    "Recognition is welcome, but it is not my foundation.",
+  ],
+  feels: [
+    "Secure in their own value.",
+    "Calm without constant validation.",
+    "Grounded in authentic authority.",
+    "Able to lead without proving.",
+  ],
+  values: [
+    "Inner authority.",
+    "Integrity.",
+    "Authentic leadership.",
+    "Worth that is not outsourced.",
+  ],
+  fears: [
+    "Living for approval.",
+    "Performing instead of leading.",
+    "Losing themselves to image.",
+    "Mistaking recognition for worth.",
+  ],
+  actions: [
+    "Leads from values.",
+    "Acts without waiting for approval.",
+    "Celebrates effort over validation.",
+    "Makes decisions from inner authority.",
+    "Allows recognition without depending on it.",
+  ],
+},
     finalStatement:
       "The crown becomes real when worth no longer depends on performance. I can achieve because I choose to, not because I need proof that I matter.",
   },
@@ -308,6 +382,39 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Turns vision into steps.",
       "Trusts movement more than hesitation.",
     ],
+    integratedSelf: {
+  thinks: [
+    "Small action creates momentum.",
+    "Purpose returns through movement.",
+    "I do not need perfect motivation to begin.",
+    "Progress matters more than intensity.",
+  ],
+  feels: [
+    "Reconnected to direction.",
+    "Willing to begin again.",
+    "Steady rather than defeated.",
+    "More alive through action.",
+  ],
+  values: [
+    "Purpose.",
+    "Momentum.",
+    "Meaningful progress.",
+    "Consistent action.",
+  ],
+  fears: [
+    "Remaining stuck.",
+    "Letting discouragement decide.",
+    "Abandoning their own fire.",
+    "Waiting forever to feel ready.",
+  ],
+  actions: [
+    "Takes one meaningful step.",
+    "Reconnects with personal goals.",
+    "Chooses progress over perfection.",
+    "Moves before motivation is complete.",
+    "Returns to purpose after setbacks.",
+  ],
+},
     finalStatement:
       "The flame does not grow by waiting. It grows through movement. I do not need certainty before I act. I become clear by moving.",
     },
@@ -404,6 +511,39 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Shares without needing certainty.",
       "Communicates authentically.",
     ],
+    integratedSelf: {
+  thinks: [
+    "My voice matters.",
+    "Expression creates clarity.",
+    "I do not need perfection before I begin.",
+    "I discover my ideas by expressing them.",
+  ],
+  feels: [
+    "Open to creative movement.",
+    "Comfortable being heard.",
+    "Less frozen by uncertainty.",
+    "Connected to their own voice.",
+  ],
+  values: [
+    "Authentic expression.",
+    "Creativity.",
+    "Contribution.",
+    "Imperfect action.",
+  ],
+  fears: [
+    "Living silently.",
+    "Withholding what wants to move through them.",
+    "Waiting forever for perfect words.",
+    "Abandoning creative truth.",
+  ],
+  actions: [
+    "Shares ideas.",
+    "Creates before feeling ready.",
+    "Speaks without over-rehearsing.",
+    "Writes the first draft.",
+    "Allows expression to be imperfect.",
+  ],
+},
     finalStatement:
       "The problem was never a lack of ideas. The problem was fear of expression. I do not discover my voice before I speak. I discover my voice by speaking.",
   },
@@ -485,6 +625,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "Where does truth create freedom?",
           "What would my integrated Magician name clearly?",
         ],
+        
         successMarker:
           "I can live according to truth.",
       },
@@ -497,6 +638,39 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Acts from reality.",
       "Takes responsibility without self-deception.",
     ],
+    integratedSelf: {
+  thinks: [
+    "Truth creates freedom.",
+    "I can face reality without collapsing.",
+    "I do not need to distort what I already know.",
+    "Clarity begins when I stop explaining away the truth.",
+  ],
+  feels: [
+    "Clearer when reality is named.",
+    "Relieved by honesty.",
+    "Braver around uncomfortable truths.",
+    "Less attached to self-deception.",
+  ],
+  values: [
+    "Truth.",
+    "Integrity.",
+    "Reality.",
+    "Self-responsibility.",
+  ],
+  fears: [
+    "Living inside a false story.",
+    "Avoiding what they already know.",
+    "Choosing comfort over truth.",
+    "Losing freedom through distortion.",
+  ],
+  actions: [
+    "Names what is true.",
+    "Stops over-explaining.",
+    "Makes reality-based decisions.",
+    "Takes responsibility without distortion.",
+    "Chooses honesty over image.",
+  ],
+},
     finalStatement:
       "The truth was never the threat. Avoiding the truth was the threat. Freedom begins where distortion ends.",
   },
@@ -592,6 +766,39 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Uses thought as a tool, not a prison.",
       "Trusts direct experience.",
     ],
+    integratedSelf: {
+  thinks: [
+    "Clarity comes from choosing the next step.",
+    "I do not need complete certainty to move.",
+    "Thinking supports action; it does not replace it.",
+    "A decision can be good enough.",
+  ],
+  feels: [
+    "Mentally clearer.",
+    "Less trapped in over-analysis.",
+    "Steady enough to choose.",
+    "Calmer with uncertainty.",
+  ],
+  values: [
+    "Clarity.",
+    "Discernment.",
+    "Decisive movement.",
+    "Mental spaciousness.",
+  ],
+  fears: [
+    "Losing life to endless thinking.",
+    "Mistaking rumination for wisdom.",
+    "Remaining paralysed by options.",
+    "Waiting for impossible certainty.",
+  ],
+  actions: [
+    "Chooses one next step.",
+    "Reduces information intake.",
+    "Makes a decision with available information.",
+    "Writes down what is known and unknown.",
+    "Returns from thought into action.",
+  ],
+},
     finalStatement:
       "Clarity is not found at the end of endless thinking. Clarity emerges through engagement with reality. I do not think my way to certainty. I move my way to clarity.",
   },
@@ -685,6 +892,39 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Allows emotional intimacy.",
       "Remains open-hearted without becoming overwhelmed.",
     ],
+    integratedSelf: {
+  thinks: [
+    "My feelings are allowed to exist.",
+    "Vulnerability can be safe with the right people.",
+    "I do not have to disconnect to protect myself.",
+    "Emotional openness is strength, not weakness.",
+  ],
+  feels: [
+    "Softer without losing boundaries.",
+    "More emotionally available.",
+    "Able to feel without shutting down.",
+    "Connected to their own heart.",
+  ],
+  values: [
+    "Vulnerability.",
+    "Emotional honesty.",
+    "Softness with safety.",
+    "Open-hearted connection.",
+  ],
+  fears: [
+    "Living emotionally closed.",
+    "Never letting themselves be known.",
+    "Confusing numbness with safety.",
+    "Losing connection through self-protection.",
+  ],
+  actions: [
+    "Names one real feeling.",
+    "Allows safe vulnerability.",
+    "Stays emotionally present.",
+    "Lets someone know what matters.",
+    "Softens without abandoning boundaries.",
+  ],
+},
     finalStatement:
       "The goal is not to feel less. The goal is to feel safely. I can remain open without losing myself.",
   },
@@ -778,6 +1018,39 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Allows relationships to be human, not perfect.",
       "Values presence over fantasy.",
     ],
+    integratedSelf: {
+  thinks: [
+    "Real connection is built in reality.",
+    "Fantasy is not the same as intimacy.",
+    "I can desire connection without losing discernment.",
+    "I deserve relationships that are present and mutual.",
+  ],
+  feels: [
+    "Grounded in real connection.",
+    "Less attached to imagined potential.",
+    "More present with what is actually happening.",
+    "Open without becoming lost.",
+  ],
+  values: [
+    "Genuine connection.",
+    "Mutuality.",
+    "Presence.",
+    "Emotional reality.",
+  ],
+  fears: [
+    "Mistaking fantasy for love.",
+    "Chasing unavailable connection.",
+    "Abandoning reality for hope.",
+    "Losing themselves in projection.",
+  ],
+  actions: [
+    "Looks at what is actually present.",
+    "Checks whether connection is mutual.",
+    "Chooses reality over fantasy.",
+    "Communicates directly.",
+    "Builds connection through real interaction.",
+  ],
+},
     finalStatement:
       "Fantasy may feel safer, but intimacy only exists in reality. I choose connection that can actually meet me.",
   },
@@ -872,6 +1145,40 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Creates safety inside the body.",
       "Allows emotional flow without collapse.",
     ],
+    
+    integratedSelf: {
+  thinks: [
+    "Feelings move through me; they do not have to control me.",
+    "I can feel deeply and remain present.",
+    "Intensity is information, not instruction.",
+    "Regulation helps emotion become wisdom.",
+  ],
+  feels: [
+    "Emotionally alive but not overwhelmed.",
+    "Able to stay with intensity.",
+    "More regulated during emotional waves.",
+    "Connected to feeling without drowning in it.",
+  ],
+  values: [
+    "Emotional regulation.",
+    "Emotional truth.",
+    "Inner steadiness.",
+    "Healthy expression.",
+  ],
+  fears: [
+    "Being ruled by emotional intensity.",
+    "Hurting themselves or others through reactivity.",
+    "Losing clarity inside feeling.",
+    "Drowning in what needs to move.",
+  ],
+  actions: [
+    "Pauses before reacting.",
+    "Names the feeling.",
+    "Regulates the body first.",
+    "Allows emotion to move safely.",
+    "Responds after the wave softens.",
+  ],
+},
     finalStatement:
       "I do not need to suppress emotion. I do not need to drown in emotion. I can let emotion move through me.",
   },
@@ -968,6 +1275,39 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Chooses integrity over approval.",
       "Protects connection without self-abandonment.",
     ],
+    integratedSelf: {
+  thinks: [
+    "My needs matter.",
+    "Saying no can protect connection.",
+    "I do not have to abandon myself to be accepted.",
+    "Peace without self-respect is not real peace.",
+  ],
+  feels: [
+    "More grounded in boundaries.",
+    "Less controlled by guilt.",
+    "Worthy of space and choice.",
+    "Able to disappoint others without collapsing.",
+  ],
+  values: [
+    "Boundaries.",
+    "Self-respect.",
+    "Honest consent.",
+    "Mutual relationship.",
+  ],
+  fears: [
+    "Living in self-abandonment.",
+    "Being loved only when compliant.",
+    "Losing themselves to harmony.",
+    "Saying yes while meaning no.",
+  ],
+  actions: [
+    "Says no clearly.",
+    "Names a boundary.",
+    "Checks their own needs before agreeing.",
+    "Allows discomfort without people-pleasing.",
+    "Chooses self-respect over automatic compliance.",
+  ],
+},
     finalStatement:
       "I can disappoint others without abandoning myself. Boundaries do not destroy connection. They protect the self that enters connection.",
   },
@@ -1062,6 +1402,39 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Protects boundaries without building walls around everything.",
       "Lets connection and strength coexist.",
     ],
+    integratedSelf: {
+  thinks: [
+    "I can protect myself without isolating.",
+    "Trust can be gradual and discerning.",
+    "Strength includes allowing support.",
+    "Connection does not have to mean losing control.",
+  ],
+  feels: [
+    "Strong without being closed.",
+    "Open with discernment.",
+    "Less guarded when safety is present.",
+    "Able to receive support.",
+  ],
+  values: [
+    "Trust.",
+    "Connected strength.",
+    "Discernment.",
+    "Protection without isolation.",
+  ],
+  fears: [
+    "Living behind walls forever.",
+    "Mistaking isolation for strength.",
+    "Rejecting support that could help.",
+    "Becoming unreachable.",
+  ],
+  actions: [
+    "Asks for help.",
+    "Shares one vulnerable truth.",
+    "Allows safe support.",
+    "Sets boundaries without shutting down.",
+    "Stays connected while protecting themselves.",
+  ],
+},
     finalStatement:
       "I do not need walls to remain safe. I can protect myself and still allow connection. Strength does not require isolation.",
   },
@@ -1158,6 +1531,39 @@ export const integrationJourneys: IntegrationJourney[] = [
       "Reconnects with desire.",
       "Lives rather than only survives.",
     ],
+    integratedSelf: {
+  thinks: [
+    "My energy matters.",
+    "Rest is part of strength.",
+    "I am allowed to feel alive, not just responsible.",
+    "Vitality is not a luxury; it is part of being human.",
+  ],
+  feels: [
+    "More nourished.",
+    "Less depleted by constant responsibility.",
+    "Connected to aliveness.",
+    "Able to restore before pushing.",
+  ],
+  values: [
+    "Vitality.",
+    "Restoration.",
+    "Aliveness.",
+    "Sustainable strength.",
+  ],
+  fears: [
+    "Existing only to endure.",
+    "Becoming empty from over-responsibility.",
+    "Losing joy and life force.",
+    "Confusing exhaustion with strength.",
+  ],
+  actions: [
+    "Restores energy before pushing.",
+    "Identifies what is draining them.",
+    "Chooses nourishment.",
+    "Reconnects with joy.",
+    "Takes responsibility without abandoning vitality.",
+  ],
+},
     finalStatement:
       "I am not here only to survive. I am here to live. My value exists before productivity, and my life is allowed to contain joy.",
   },

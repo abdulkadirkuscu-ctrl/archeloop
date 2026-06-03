@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { detectLoop } from "../data/intelligenceEngine";
 import { generateInsight } from "../data/insightGenerator";
 import {
@@ -24,6 +24,7 @@ export default function TriggeredIntelligencePage() {
   const [person, setPerson] = useState(people[0]);
   const [environment, setEnvironment] = useState(environments[0]);
   const [thought, setThought] = useState(thoughtPatterns[0].value);
+  const [integratedVision, setIntegratedVision] = useState("");
 
   const result = detectLoop({
     bodyActivation: [bodyZone],
@@ -40,6 +41,13 @@ export default function TriggeredIntelligencePage() {
     result.journey,
     result.integratedIdentity
   );
+
+  useEffect(() => {
+  const storageKey = `archeloop-integrated-vision-${result.journey}`;
+  const savedVision = localStorage.getItem(storageKey);
+
+  setIntegratedVision(savedVision || "");
+}, [result.journey]);
 
   function saveActivation() {
     const savedActivations = JSON.parse(
@@ -244,6 +252,40 @@ export default function TriggeredIntelligencePage() {
               <ResultItem label="Integration Journey" value={result.journey} />
               <ResultItem label="Integrated State" value={result.integratedIdentity} />
             </div>
+
+
+<PremiumPanel title="Integration Reflection™">
+  <p className="text-lg font-semibold text-stone-100">
+    What would {result.integratedIdentity} do right now?
+  </p>
+
+  {integratedVision ? (
+    <div className="mt-4 rounded-2xl border border-yellow-300/10 bg-yellow-300/5 p-4">
+      <p className="text-sm uppercase tracking-[0.18em] text-yellow-300/60">
+        My Integrated Vision™
+      </p>
+
+      <p className="mt-3 leading-relaxed text-stone-300">
+        {integratedVision}
+      </p>
+    </div>
+  ) : (
+    <p className="mt-4 leading-relaxed text-stone-300">
+      Visit your {result.journey} page to write your personal integrated
+      vision.
+    </p>
+  )}
+
+  <Link
+    href={`/integration/${result.journey
+      .replace("™", "")
+      .toLowerCase()
+      .replaceAll(" ", "-")}`}
+    className="mt-5 inline-flex rounded-full border border-yellow-300/20 bg-yellow-300/10 px-5 py-2 text-sm text-yellow-200 transition hover:border-yellow-300/60"
+  >
+    Open {result.journey}
+  </Link>
+</PremiumPanel>
 
             <PremiumPanel title="ArcheLoop Insight">
               <p className="leading-relaxed whitespace-pre-line text-stone-300">

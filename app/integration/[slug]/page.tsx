@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { integrationJourneys } from "../../data/integrationJourneys";
+import IntegratedVision from "../../components/IntegratedVision";
 
 type Props = {
   params: Promise<{
@@ -123,6 +124,48 @@ export default async function IntegrationJourneyPage({ params }: Props) {
             </div>
           </div>
 
+<IntegratedVision
+  integratedState={journey.integratedState}
+  journeyPath={journey.path}
+/>
+
+{journey.integratedSelf && (
+  <PremiumCard title="Meet Your Integrated Self™">
+    <p className="text-lg leading-relaxed text-stone-300">
+      This is the version of you that begins to emerge as{" "}
+      <span className="text-yellow-300">{journey.integratedState}</span>{" "}
+      becomes embodied.
+    </p>
+
+    <div className="mt-8 grid gap-5 md:grid-cols-2">
+      <IntegratedSelfBlock
+        title={`How ${journey.integratedState} Thinks`}
+        items={journey.integratedSelf.thinks}
+      />
+
+      <IntegratedSelfBlock
+        title={`How ${journey.integratedState} Feels`}
+        items={journey.integratedSelf.feels}
+      />
+
+      <IntegratedSelfBlock
+        title={`What ${journey.integratedState} Values`}
+        items={journey.integratedSelf.values}
+      />
+
+      <IntegratedSelfBlock
+        title={`What ${journey.integratedState} Fears`}
+        items={journey.integratedSelf.fears}
+      />
+
+      <IntegratedSelfBlock
+        title={`What ${journey.integratedState} Would Do`}
+        items={journey.integratedSelf.actions}
+      />
+    </div>
+  </PremiumCard>
+)}
+
           <PremiumCard title="Integrated Identity">
             <ul className="grid gap-3 text-stone-300 md:grid-cols-2">
               {journey.integratedIdentity.map((item) => (
@@ -208,6 +251,28 @@ function ListBlock({ title, items }: { title: string; items: string[] }) {
       <p className="font-semibold text-yellow-300">{title}</p>
 
       <ul className="mt-3 space-y-3 text-stone-300">
+        {items.map((item) => (
+          <li key={item} className="leading-relaxed">
+            • {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function IntegratedSelfBlock({
+  title,
+  items,
+}: {
+  title: string;
+  items: string[];
+}) {
+  return (
+    <div className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5">
+      <p className="font-semibold text-yellow-300">{title}</p>
+
+      <ul className="mt-4 space-y-3 text-stone-300">
         {items.map((item) => (
           <li key={item} className="leading-relaxed">
             • {item}
