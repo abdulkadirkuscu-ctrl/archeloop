@@ -1,6 +1,7 @@
 import Nav from "../components/Nav";
 import Link from "next/link";
 import Footer from "../components/Footer";
+import { supabaseServer } from "../../lib/supabaseServer";
 
 const journeyGroups = [
   {
@@ -46,22 +47,41 @@ const journeyGroups = [
 ];
 
 const features = [
-  "Trigger Tracking",
-  "Loop Analytics",
-  "Integration Journeys",
-  "Reflection Prompts",
-  "Daily Practices",
-  "Progress Tracking",
-  "Archetypal Development",
-  "Personal Integration Dashboard",
+  "Triggered Pro™",
+  "Progress Dashboard™",
+  "Full Integration Journeys™",
+  "My Integrated Vision™",
+  "Meet Your Integrated Self™",
+  "Practices & Reflection Prompts",
+  "Trigger History",
+  "Personal Integration Tracking",
 ];
 
-export default function IntegrationPage() {
+const transformationSteps = [
+  {
+    title: "Notice the loop in real life",
+    text: "Use Triggered Pro™ to log real-life activations and identify which Shadow Loops™ are repeating most often.",
+  },
+  {
+    title: "Understand the pattern over time",
+    text: "Use the Progress Dashboard™ to see recurring triggers, people, environments, loops, and integration focus.",
+  },
+  {
+    title: "Practise your Integration Journey™",
+    text: "Follow the path from your Shadow Loop™ toward your Integrated Self™ through practices, prompts, and reflection.",
+  },
+];
+
+export default async function IntegrationPage() {
+  await supabaseServer.from("archeloop_events").insert({
+    event_name: "integration_opened",
+    event_value: "integration_page",
+  });
   return (
     <main className="min-h-screen bg-[#030712] text-stone-100">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-28">
+      <section className="relative overflow-hidden px-6 py-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
 
         <div className="relative mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
@@ -70,73 +90,149 @@ export default function IntegrationPage() {
           </p>
 
           <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
-            Identify.
+            The report shows the loop.
             <br />
-            Track.
-            <br />
-            Integrate.
+            Integration helps you change it.
           </h1>
 
           <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Most people discover their patterns. Few people change them.
-            ArcheLoop Integration™ is designed to help transform recurring
-            Shadow Loops into healthy archetypal expression through awareness,
-            reflection, and intentional practice.
+            ArcheLoop Integration™ is the monthly transformation system that
+            helps you track real-life activations, follow your Integration
+            Journey™, practise new responses, and move toward your Integrated
+            Self™.
           </p>
 
-          <a
-            href="#journeys"
-            className="mt-10 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-          >
-            Explore The 12 Integration Journeys
-          </a>
-        </div>
-      </section>
+          <div className="mx-auto mt-10 max-w-md rounded-[2rem] border border-yellow-300/20 bg-black/30 p-6">
+            <p className="text-lg text-stone-500 line-through">£29/month</p>
 
-      <section className="px-6 py-24">
-        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-            Why Integration Matters
-          </p>
-
-          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
-            Awareness is only the beginning.
-          </h2>
-
-          <div className="mx-auto mt-10 max-w-4xl space-y-7 text-xl leading-relaxed text-stone-300">
-            <p>
-              The ArcheLoop Assessment helps identify the loops shaping your
-              emotions, behaviours, relationships, and reactions.
+            <p className="mt-1 text-3xl font-bold text-yellow-300">
+              Free Founding Access
             </p>
 
-            <p>The ArcheLoop Report helps explain why those loops formed.</p>
-
-            <p>ArcheLoop Integration™ is designed to help transform them.</p>
-
-            <p>
-              Every Shadow Loop contains an invitation. The loop reveals where
-              energy became stuck. The Integration Journey reveals the path
-              forward.
+            <p className="mt-3 text-sm leading-relaxed text-stone-400">
+              Available while ArcheLoop™ is being refined with early users.
             </p>
+            <div className="mt-6 rounded-2xl border border-yellow-300/10 bg-black/30 p-5 text-left">
+  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-yellow-300/70">
+    Founding Access Notice
+  </p>
+
+  <p className="mt-3 text-sm leading-relaxed text-stone-400">
+    ArcheLoop Integration™ is temporarily available during Founding Access
+    while the platform is being refined and tested with early users.
+  </p>
+
+  <p className="mt-3 text-sm leading-relaxed text-stone-500">
+    Future access to ArcheLoop Integration™, Triggered Pro™, Progress
+    Dashboard™, and Integration Journeys™ may require an active subscription
+    after public launch. Founding Access does not guarantee free lifetime
+    access.
+  </p>
+</div>
+
+<p className="mt-5 text-sm text-stone-500">
+  Future public pricing: £29/month
+</p>
+          </div>
+
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <a
+              href="/triggered-intelligence"
+              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+            >
+             Start With Triggered Pro™
+            </a>
+
+            <a
+              href="#journeys"
+              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+            >
+              Preview Integration Journeys™
+            </a>
           </div>
         </div>
       </section>
 
-      <section id="journeys" className="px-6 py-28">
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
+          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+            What Integration Does
+          </p>
+
+          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+            From awareness into transformation.
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+            Your ArcheLoop Report™ helps you understand the Shadow Loop™.
+            ArcheLoop Integration™ helps you notice it, interrupt it, practise
+            beyond it, and track your progress over time.
+          </p>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {transformationSteps.map((step) => (
+              <div
+                key={step.title}
+                className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-6 text-left"
+              >
+                <h3 className="text-2xl font-bold text-yellow-300">
+                  {step.title}
+                </h3>
+
+                <p className="mt-4 leading-relaxed text-stone-300">
+                  {step.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-20">
+        <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/10 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
+          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+            What Integration Includes
+          </p>
+
+          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+            One system for real-life pattern change.
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+            Everything inside ArcheLoop Integration™ is designed to help you
+            move from understanding your Shadow Loop™ to practising your
+            Integrated Self™.
+          </p>
+
+          <div className="mt-12 grid gap-5 text-left md:grid-cols-2">
+            {features.map((feature) => (
+              <div
+                key={feature}
+                className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5 text-stone-300"
+              >
+                ✓ {feature}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="journeys" className="px-6 py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 text-center">
             <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-              The 12 Integration Journeys™
+              Integration Journeys™
             </p>
 
             <h2 className="mt-5 text-4xl font-bold md:text-6xl">
-              Every loop has a path forward.
+              Every Shadow Loop™ has a path forward.
             </h2>
 
             <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-              Each Shadow Loop reveals where energy became distorted. Each
-              Integration Journey points toward the healthy expression waiting
-              underneath.
+              Preview the pathway from Shadow Loop™ to Integrated State. Full
+              journeys include awareness, interruption, embodiment, practices,
+              reflection prompts, Integrated Self™ guidance, and integration
+              statements.
             </p>
           </div>
 
@@ -178,7 +274,7 @@ export default function IntegrationPage() {
                         </p>
 
                         <p className="mt-4 text-sm text-yellow-300/60">
-                          View Journey →
+                          Preview Journey →
                         </p>
                       </Link>
                     );
@@ -190,52 +286,37 @@ export default function IntegrationPage() {
         </div>
       </section>
 
-      <section className="px-6 py-28">
-        <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/10 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-            Coming Soon
-          </p>
-
-          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
-            The ArcheLoop Integration Platform
-          </h2>
-
-          <p className="mx-auto mt-8 max-w-4xl text-xl leading-relaxed text-stone-300">
-            Future ArcheLoop Integration members will be able to follow
-            personalised Integration Journeys™, access guided practices, track
-            long-term archetypal development, and transform recurring Shadow
-            Loops into healthy expression over time.
-          </p>
-
-          <div className="mt-14 grid gap-5 text-left md:grid-cols-2">
-            {features.map((feature) => (
-              <div
-                key={feature}
-                className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5 text-stone-300"
-              >
-                ✓ {feature}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="px-6 py-24">
-        <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+            Begin Integration
+          </p>
+
           <h2 className="text-4xl font-bold md:text-6xl">
-            The journey does not end with the report.
+            Start practising beyond the loop.
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-            The report reveals the loop. Integration transforms it.
+            Start Integration™ by logging your first activation in Triggered Pro™, then use your
+            Progress Dashboard™ and Integration Journey™ to track the path
+            toward your Integrated Self™.
           </p>
 
-          <a
-            href="/assessment"
-            className="mt-10 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-          >
-            Take The Assessment
-          </a>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <a
+              href="/triggered-intelligence"
+              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+            >
+             Start With Triggered Pro™
+            </a>
+
+            <a
+              href="/progress-dashboard"
+              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+            >
+              View Progress Dashboard™
+            </a>
+          </div>
         </div>
       </section>
 

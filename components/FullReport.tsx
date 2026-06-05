@@ -6,7 +6,6 @@ import Footer from "../app/components/Footer"
 import { loops } from "../app/data/loops"
 import { elementInsights } from "../app/data/elementInsights"
 import ReportFeedback from "./ReportFeedback"
-import TriggeredWaitlist from "./TriggeredWaitlist"
 
 export default function FullReport({
   reportData,
@@ -115,7 +114,7 @@ if (!lowestIntegratedArchetype) {
 
         <div className="relative max-w-6xl mx-auto">
           <p className="uppercase tracking-[0.35em] text-yellow-300 text-sm mb-6">
-            Premium Report Preview
+            Your ArcheLoop Report™
           </p>
 
 <div className="border border-yellow-300/25 rounded-[2rem] bg-yellow-300/10 p-6 mb-10">
@@ -887,42 +886,106 @@ if (!lowestIntegratedArchetype) {
   </div>
 </section>
 
-      <section className="px-6 py-28">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
-            First Practices
-          </p>
+     <section className="px-6 py-28 border-y border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black">
+  <div className="max-w-6xl mx-auto text-center">
+    <p className="uppercase tracking-[0.35em] text-yellow-300/70 text-sm mb-5">
+      Your Next Step
+    </p>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-8">
-            Begin interrupting the loop.
-          </h2>
+    <h2 className="text-4xl md:text-6xl font-bold mb-8">
+      Understanding creates awareness.
+      <br />
+      Integration creates transformation.
+    </h2>
 
-          <div className="bg-white text-black rounded-[2rem] p-8 text-left mb-10">
-            <p className="font-semibold mb-3">
-              Loop Breaker
-            </p>
+    <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-300 mb-12">
+      Your ArcheLoop Report™ has shown you the structure beneath your Shadow
+      Loop™. ArcheLoop Integration™ helps you notice the pattern in real life,
+      follow your Integration Journey™, and practise becoming your Integrated
+      Self™.
+    </p>
 
-            <p className="text-lg leading-relaxed">
-              {detail.loopBreaker}
-            </p>
-          </div>
+    <div className="grid gap-6 md:grid-cols-3 text-left mb-12">
+      <div className="rounded-[2rem] border border-yellow-300/10 bg-black/40 p-6">
+        <h3 className="text-2xl font-bold text-yellow-300 mb-4">
+          Triggered Pro™
+        </h3>
+        <p className="text-gray-300 leading-relaxed">
+          Log real-life activations and discover which Shadow Loops™ are
+          repeating most often.
+        </p>
+      </div>
 
-          <div className="grid md:grid-cols-3 gap-5 text-left">
-            {detail.prompts.map((prompt) => (
-              <div
-                key={prompt}
-                className="border border-zinc-800 rounded-2xl p-5 bg-black"
-              >
-                <p className="text-gray-300">
-                  {prompt}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <div className="rounded-[2rem] border border-yellow-300/10 bg-black/40 p-6">
+        <h3 className="text-2xl font-bold text-yellow-300 mb-4">
+          Progress Dashboard™
+        </h3>
+        <p className="text-gray-300 leading-relaxed">
+          Track recurring triggers, people, environments, loops, and integration
+          progress over time.
+        </p>
+      </div>
 
-<TriggeredWaitlist />
+      <div className="rounded-[2rem] border border-yellow-300/10 bg-black/40 p-6">
+        <h3 className="text-2xl font-bold text-yellow-300 mb-4">
+          Integration Journey™
+        </h3>
+        <p className="text-gray-300 leading-relaxed">
+          Follow the path from your Shadow Loop™ toward your Integrated Self™
+          through practices, prompts, and reflection.
+        </p>
+      </div>
+    </div>
+
+    <div className="mx-auto max-w-3xl rounded-[2rem] border border-yellow-300/25 bg-black/50 p-8">
+  <p className="text-lg text-gray-500 line-through">
+    £29/month
+  </p>
+
+  <p className="mt-2 text-3xl font-bold text-yellow-300">
+    Free Founding Access
+  </p>
+
+  <p className="mt-4 text-gray-300">
+    ArcheLoop Integration™ is the transformation system that helps you
+    practise beyond the loop through Triggered Pro™, Progress Dashboard™,
+    Integration Journeys™, My Integrated Vision™, and personal integration
+    tracking.
+  </p>
+
+  <div className="mt-8 rounded-2xl border border-yellow-300/10 bg-black/30 p-5 text-left">
+    <p className="text-sm font-semibold uppercase tracking-[0.25em] text-yellow-300/70">
+      Founding Access Notice
+    </p>
+
+    <p className="mt-3 text-sm leading-relaxed text-stone-400">
+      ArcheLoop Integration™ is temporarily available during Founding Access
+      while the platform is being refined and tested with early users.
+    </p>
+
+    <p className="mt-3 text-sm leading-relaxed text-stone-500">
+      Future access to ArcheLoop Integration™, Triggered Pro™, Progress
+      Dashboard™, and Integration Journeys™ may require an active
+      subscription after public launch. Founding Access does not guarantee
+      free lifetime access.
+    </p>
+  </div>
+
+<p className="mt-6 text-sm text-stone-500">
+  Future public pricing: £29/month
+</p>
+
+  <div className="mt-8 flex flex-wrap justify-center gap-4">
+    <a
+      href="/integration"
+      className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+    >
+      Continue To Integration™
+    </a>
+  </div>
+</div>
+  </div>
+</section>
 
 <ReportFeedback />
       <Footer />

@@ -19,5 +19,10 @@ export default async function SavedReportPage({
     notFound();
   }
 
+  await supabaseServer.from("archeloop_events").insert({
+  event_name: "report_viewed",
+  event_value: data.report_data?.primaryLoop || null,
+});
+
   return <FullReport reportData={data.report_data} />;
 }

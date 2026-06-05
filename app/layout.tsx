@@ -19,11 +19,11 @@ const bodyFont = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.archeloop.com"),
   title: {
-    default: "ArcheLoop | Understand. Interrupt. Integrate.",
+    default: "ArcheLoop | Discover Your Shadow Loop",
     template: "%s | ArcheLoop",
   },
   description:
-    "ArcheLoop is a symbolic self-awareness system for recognising emotional patterns, archetypes, shadow loops, nervous system responses, and relational dynamics.",
+    "Discover your Shadow Loop, understand why it keeps repeating, and follow a path to break the loop.",
   keywords: [
     "ArcheLoop",
     "shadow work",
@@ -34,20 +34,21 @@ export const metadata: Metadata = {
     "self development",
     "relational dynamics",
     "body map",
+    "integration journey",
   ],
   openGraph: {
-    title: "ArcheLoop | Understand. Interrupt. Integrate.",
+    title: "ArcheLoop | Discover Your Shadow Loop",
     description:
-      "A symbolic self-awareness system for recognising and interrupting recurring shadow patterns.",
+      "Discover your Shadow Loop, understand why it keeps repeating, and follow a path to break the loop.",
     url: "https://www.archeloop.com",
     siteName: "ArcheLoop",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ArcheLoop | Understand. Interrupt. Integrate.",
+    title: "ArcheLoop | Discover Your Shadow Loop",
     description:
-      "A symbolic self-awareness system for recognising and interrupting recurring shadow patterns.",
+      "Discover your Shadow Loop, understand why it keeps repeating, and follow a path to break the loop.",
   },
   robots: {
     index: true,

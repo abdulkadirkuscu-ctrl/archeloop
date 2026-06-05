@@ -1,10 +1,10 @@
-import Footer from "../components/Footer"
-import Nav from "../components/Nav"
+import Footer from "../components/Footer";
+import Nav from "../components/Nav";
+
 export default function NervousSystemPage() {
   const states = [
     {
       name: "Fight",
-      colour: "border-red-500",
       description:
         "Fight activates when the nervous system believes protection requires force, control, confrontation, or intensity.",
       patterns: [
@@ -20,10 +20,8 @@ export default function NervousSystemPage() {
       regulation:
         "Slow the body before trying to solve the situation. Ground through movement, breath, and physical safety.",
     },
-
     {
       name: "Flight",
-      colour: "border-blue-400",
       description:
         "Flight activates when the nervous system believes safety comes from escape, overthinking, movement, or staying mentally ahead.",
       patterns: [
@@ -33,35 +31,31 @@ export default function NervousSystemPage() {
         "Perfectionism",
         "Difficulty slowing down",
       ],
-      archetypes:
-        "Often activated through distorted Magician energy.",
+      archetypes: "Often activated through distorted Magician energy.",
       loops: ["Mind Maze", "Smoky Mirrors", "Blank Page"],
       regulation:
         "Return attention to the body. Focus on one grounded action instead of solving everything mentally.",
     },
-
     {
-      name: "Freeze",
-      colour: "border-cyan-400",
-      description:
-        "Freeze activates when the nervous system perceives overwhelm and becomes immobilised between action and shutdown.",
-      patterns: [
-        "Mental fog",
-        "Difficulty moving",
-        "Feeling stuck",
-        "Disconnection",
-        "Collapse into inaction",
-      ],
-      archetypes:
-        "Often appears when Air and Earth collide under stress.",
-      loops: ["Blank Page", "Mind Maze", "Barren Ground"],
-      regulation:
-        "Reduce pressure. Start with very small movement, gentle grounding, and nervous system safety.",
-    },
-
+  name: "Freeze",
+  description:
+    "Freeze activates when the nervous system perceives overwhelm and movement, expression, or decision-making become difficult. It can include immobilisation, shutdown, numbness, or collapse-like heaviness.",
+  patterns: [
+    "Mental fog",
+    "Difficulty moving",
+    "Feeling stuck",
+    "Disconnection or numbness",
+    "Heavy body or low energy",
+    "Collapse into inaction",
+  ],
+  archetypes:
+    "Often appears when Magician clarity, Warrior movement, or Sovereign direction becomes interrupted under stress.",
+  loops: ["Blank Page", "Mind Maze", "Barren Ground", "Stalled Flame"],
+  regulation:
+    "Reduce pressure. Start with very small movement, gentle grounding, nervous system safety, and restoration before performance.",
+},
     {
       name: "Fawn",
-      colour: "border-yellow-400",
       description:
         "Fawn activates when the nervous system prioritises approval, harmony, or adaptation to avoid rejection or conflict.",
       patterns: [
@@ -77,76 +71,62 @@ export default function NervousSystemPage() {
       regulation:
         "Practise safe boundaries slowly. Build tolerance for honesty, disagreement, and taking up space.",
     },
-
-    {
-      name: "Collapse",
-      colour: "border-zinc-500",
-      description:
-        "Collapse occurs when the nervous system becomes exhausted after prolonged overwhelm, survival stress, helplessness, or depletion.",
-      patterns: [
-        "Emotional numbness",
-        "Exhaustion",
-        "Hopelessness",
-        "Heavy body",
-        "Difficulty accessing motivation",
-      ],
-      archetypes:
-        "Often linked to depleted Warrior, suppressed Lover, or collapsed Sovereign energy.",
-      loops: ["Barren Ground", "Emotional Lockdown", "Dimmed Light"],
-      regulation:
-        "Prioritise restoration before performance. Safety, nourishment, rest, and support become essential.",
-    },
-  ]
+  ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
-<Nav />
+    <main className="min-h-screen bg-[#030712] text-stone-100">
+      <Nav />
 
-      <section className="px-6 py-24">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
 
-          <p className="uppercase tracking-[0.3em] text-gray-400 mb-4">
-            Nervous System Patterns
-          </p>
+        <div className="relative mx-auto max-w-6xl space-y-12">
+          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+              Nervous System Patterns
+            </p>
 
-          <h1 className="text-6xl font-bold mb-8">
-            Understanding Survival States
-          </h1>
+            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
+              Understanding Survival States
+            </h1>
 
-          <p className="text-xl text-gray-300 max-w-3xl mb-16">
-            Shadow loops are not only psychological patterns.
-            They are also nervous system responses shaped by stress,
-            survival, emotion, memory, and protection.
-          </p>
+            <p className="mt-8 max-w-4xl text-xl leading-relaxed text-stone-300">
+             Shadow Loops are not only psychological patterns. They can also
+connect with familiar survival responses such as fight, flight,
+freeze, and fawn — protective states shaped by stress, emotion,
+memory, and relational safety.
+            </p>
+          </div>
 
-          <div className="space-y-10">
-
+          <div className="space-y-8">
             {states.map((state) => (
               <div
                 key={state.name}
-                className={`border ${state.colour} rounded-3xl p-8 bg-zinc-950`}
+                className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_55px_rgba(216,183,120,0.06)]"
               >
+                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+                  Survival State
+                </p>
 
-                <h2 className="text-4xl font-bold mb-5">
+                <h2 className="mt-3 text-4xl font-bold text-yellow-300">
                   {state.name}
                 </h2>
 
-                <p className="text-gray-300 text-lg mb-8">
+                <p className="mt-5 max-w-4xl text-lg leading-relaxed text-stone-300">
                   {state.description}
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-8 mb-8">
-
+                <div className="mt-8 grid gap-8 md:grid-cols-2">
                   <div>
-                    <h3 className="text-2xl font-semibold mb-4">
+                    <h3 className="text-2xl font-semibold text-stone-100">
                       Common Patterns
                     </h3>
 
-                    <ul className="space-y-3">
+                    <ul className="mt-5 space-y-3">
                       {state.patterns.map((pattern) => (
                         <li
                           key={pattern}
-                          className="border border-zinc-800 rounded-xl p-4"
+                          className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
                         >
                           {pattern}
                         </li>
@@ -155,78 +135,73 @@ export default function NervousSystemPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-semibold mb-4">
+                    <h3 className="text-2xl font-semibold text-stone-100">
                       Archetypal Connection
                     </h3>
 
-                    <p className="text-gray-300 mb-6">
+                    <p className="mt-5 leading-relaxed text-stone-300">
                       {state.archetypes}
                     </p>
 
-                    <h3 className="text-2xl font-semibold mb-4">
+                    <h3 className="mt-8 text-2xl font-semibold text-stone-100">
                       Common Loops
                     </h3>
 
-                    <div className="flex gap-3 flex-wrap">
+                    <div className="mt-5 flex flex-wrap gap-3">
                       {state.loops.map((loop) => (
                         <a
                           key={loop}
                           href={`/loops/${loop
                             .toLowerCase()
                             .replace(/\s+/g, "-")}`}
-                          className="border border-zinc-700 rounded-full px-4 py-2 hover:bg-white hover:text-black transition"
+                          className="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-4 py-2 text-sm text-yellow-200 transition hover:border-yellow-300/60"
                         >
                           {loop}
                         </a>
                       ))}
                     </div>
                   </div>
-
                 </div>
 
-                <div className="bg-white text-black rounded-2xl p-6">
-                  <h3 className="text-2xl font-bold mb-3">
+                <div className="mt-8 rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-6">
+                  <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/70">
                     Regulation Focus
-                  </h3>
+                  </p>
 
-                  <p className="text-lg">
+                  <p className="mt-4 text-lg leading-relaxed text-stone-100">
                     {state.regulation}
                   </p>
                 </div>
-
               </div>
             ))}
-
           </div>
 
-          <div className="flex gap-4 flex-wrap mt-16">
-
+          <div className="flex flex-wrap gap-4">
             <a
               href="/assessment"
-              className="bg-white text-black px-6 py-3 rounded-full font-semibold"
+              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
             >
-              Take Assessment
+              Find My Loop
             </a>
 
             <a
               href="/triggered"
-              className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black"
+              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
             >
               I Am Triggered
             </a>
 
             <a
               href="/"
-              className="border border-yellow-400 text-yellow-300 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
+              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
             >
               Return Home
             </a>
-
           </div>
-
         </div>
       </section>
+
       <Footer />
     </main>
-  )
+  );
 }

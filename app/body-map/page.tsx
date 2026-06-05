@@ -1,7 +1,7 @@
-import type { Metadata } from "next"
-import Nav from "../components/Nav"
-import Footer from "../components/Footer"
-import Image from "next/image"
+import type { Metadata } from "next";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import Image from "next/image";
 
 const mappings = [
   {
@@ -36,109 +36,102 @@ const mappings = [
     description:
       "Associated with grounding, boundaries, survival, protection, structure, and action.",
   },
-]
+];
+
 export const metadata: Metadata = {
   title: "ArcheLoop Body Map",
   description:
     "Explore how archetypal activations and shadow loops appear through the body, nervous system, emotions, and relational dynamics.",
-}
+};
 
 export default function BodyMapPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#030712] text-stone-100">
       <Nav />
 
-      {/* HERO */}
+      <section className="relative overflow-hidden px-6 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
 
-      <section className="max-w-6xl mx-auto px-6 pt-24 pb-20 text-center">
-        <p className="uppercase tracking-[0.35em] text-gray-500 mb-4">
-          Somatic Awareness
-        </p>
+        <div className="relative mx-auto max-w-6xl space-y-14">
+          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+              Somatic Awareness
+            </p>
 
-        <h1 className="text-6xl md:text-7xl font-bold mb-8">
-          The ArcheLoop Body Map
-        </h1>
+            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
+              The ArcheLoop Body Map
+            </h1>
 
-        <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-          Shadow loops are not only thoughts. They appear through body
-          sensations, nervous system activation, emotional responses,
-          and relational environments.
-        </p>
-      </section>
+            <p className="mx-auto mt-8 max-w-4xl text-xl leading-relaxed text-stone-300">
+              Shadow Loops are not only thoughts. They appear through body
+              sensations, nervous system activation, emotional responses, and
+              relational environments.
+            </p>
+          </div>
 
-      {/* BODY IMAGE */}
+          <div className="mx-auto max-w-4xl overflow-hidden rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-4 shadow-[0_0_60px_rgba(216,183,120,0.06)]">
+            <Image
+              src="/images/body-map/body-map-main.png"
+              alt="ArcheLoop Body Map"
+              width={1400}
+              height={1800}
+              priority
+              className="w-full rounded-[2rem] object-cover"
+            />
+          </div>
 
-      <section className="max-w-4xl mx-auto px-6 mb-24">
-        <div className="relative rounded-[2rem] overflow-hidden border border-zinc-800 bg-zinc-950">
-          <Image
-            src="/images/body-map/body-map-main.png"
-            alt="ArcheLoop Body Map"
-            width={1400}
-            height={1800}
-            className="w-full object-cover"
-          />
-        </div>
-      </section>
+          <div className="grid gap-8 md:grid-cols-2">
+            {mappings.map((item) => (
+              <div
+                key={item.archetype}
+                className="overflow-hidden rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] shadow-[0_0_45px_rgba(216,183,120,0.05)]"
+              >
+                <div className="relative h-48">
+                  <Image
+                    src={item.image}
+                    alt={item.archetype}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover opacity-90"
+                  />
+                </div>
 
-      {/* MAPPINGS */}
+                <div className="p-8">
+                  <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+                    {item.element} Element
+                  </p>
 
-      <section className="max-w-6xl mx-auto px-6 pb-24">
-        <div className="grid md:grid-cols-2 gap-8">
+                  <h2 className="mt-3 text-4xl font-bold text-yellow-300">
+                    {item.archetype}
+                  </h2>
 
-          {mappings.map((item) => (
-            <div
-              key={item.archetype}
-              className="border border-zinc-800 rounded-3xl bg-zinc-950 overflow-hidden"
-            >
-              <div className="relative h-48">
-                <Image
-                  src={item.image}
-                  alt={item.archetype}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover opacity-90"
-                />
+                  <p className="mt-4 text-lg text-yellow-300/80">
+                    {item.area}
+                  </p>
+
+                  <p className="mt-5 text-lg leading-relaxed text-stone-300">
+                    {item.description}
+                  </p>
+                </div>
               </div>
+            ))}
+          </div>
 
-              <div className="p-8">
-                <p className="uppercase tracking-[0.25em] text-gray-500 mb-3">
-                  {item.element} Element
-                </p>
+          <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.12)]">
+            <h2 className="text-4xl font-bold leading-tight md:text-5xl">
+              The body often recognises the loop before the mind does.
+            </h2>
 
-                <h2 className="text-4xl font-bold mb-4">
-                  {item.archetype}
-                </h2>
-
-                <p className="text-yellow-300 mb-5 text-lg">
-                  {item.area}
-                </p>
-
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          ))}
-
-        </div>
-      </section>
-
-      {/* FINAL */}
-
-      <section className="max-w-5xl mx-auto px-6 pb-28 text-center">
-        <div className="border border-yellow-400 rounded-[2rem] bg-zinc-950 p-10">
-          <h2 className="text-4xl font-bold mb-6">
-            The body often recognises the loop before the mind does.
-          </h2>
-
-          <p className="text-xl text-gray-300 leading-relaxed">
-            ArcheLoop uses body awareness as part of recognising relational
-            activation, nervous system shifts, and recurring archetypal adaptations.
-          </p>
+            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+              ArcheLoop uses body awareness as part of recognising relational
+              activation, nervous system shifts, and recurring archetypal
+              adaptations.
+            </p>
+          </div>
         </div>
       </section>
 
       <Footer />
     </main>
-  )
+  );
 }

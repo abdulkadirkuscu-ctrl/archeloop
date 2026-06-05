@@ -1,78 +1,101 @@
-import Nav from "../components/Nav"
-import Footer from "../components/Footer"
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+
 export default function DisclaimerPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
+    <main className="min-h-screen bg-[#030712] text-stone-100">
       <Nav />
 
-      <section className="px-6 py-24">
-        <div className="max-w-4xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
 
-          <p className="uppercase tracking-[0.3em] text-gray-400 mb-4">
-            Disclaimer
-          </p>
-
-          <h1 className="text-5xl md:text-6xl font-bold mb-10">
-            ArcheLoop is an educational self-development tool.
-          </h1>
-
-          <div className="space-y-8 text-lg text-gray-300">
-
-            <p>
-              ArcheLoop is designed for educational, reflective, and personal
-              development purposes only.
+        <div className="relative max-w-5xl mx-auto space-y-10">
+          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+              Disclaimer
             </p>
 
-            <p>
-              ArcheLoop does not provide medical, psychiatric, psychological,
-              legal, or therapeutic advice, diagnosis, or treatment.
+            <h1 className="mt-6 text-5xl md:text-7xl font-bold leading-tight">
+              ArcheLoop is an educational self-development tool.
+            </h1>
+
+            <p className="mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
+              ArcheLoop is designed to support self-awareness, reflection,
+              personal growth, and understanding of recurring emotional and
+              behavioural patterns.
             </p>
-
-            <p>
-              The archetypes, shadow loops, nervous system states, elemental
-              dynamics, and practices presented on this website are symbolic
-              frameworks intended to support self-awareness and reflection.
-            </p>
-
-            <p>
-              ArcheLoop should not be used as a substitute for professional
-              mental health care, medical treatment, crisis support, or therapy.
-            </p>
-
-            <p>
-              If you are experiencing significant emotional distress, mental
-              health symptoms, trauma, or crisis-related experiences, please
-              seek support from a qualified healthcare professional.
-            </p>
-
-            <div className="border border-yellow-400 rounded-3xl p-8 mt-10">
-              <p className="text-xl">
-                By using ArcheLoop, you acknowledge that all decisions,
-                interpretations, and actions remain your own responsibility.
-              </p>
-            </div>
-
           </div>
 
-          <div className="flex gap-4 flex-wrap mt-12">
+          <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
+            <div className="space-y-6 text-lg leading-relaxed text-stone-300">
+              <p>
+                ArcheLoop is designed for educational, reflective, and personal
+                development purposes only.
+              </p>
+
+              <p>
+                ArcheLoop does not provide medical, psychiatric,
+                psychological, legal, or therapeutic advice, diagnosis, or
+                treatment.
+              </p>
+
+              <p>
+                The archetypes, Shadow Loops, nervous system states,
+                elemental dynamics, integration journeys, and practices
+                presented on this website are symbolic frameworks intended to
+                support self-awareness and reflection.
+              </p>
+
+              <p>
+                ArcheLoop should not be used as a substitute for professional
+                mental health care, medical treatment, crisis support, therapy,
+                counselling, or legal advice.
+              </p>
+
+              <p>
+                If you are experiencing significant emotional distress,
+                mental health symptoms, trauma, or crisis-related experiences,
+                please seek support from a qualified healthcare professional.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.12)]">
+            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+              Personal Responsibility
+            </p>
+
+            <p className="mt-6 text-2xl leading-relaxed text-stone-100">
+              By using ArcheLoop, you acknowledge that all interpretations,
+              decisions, actions, and outcomes remain your own responsibility.
+            </p>
+
+            <p className="mt-6 text-stone-300 leading-relaxed">
+              ArcheLoop provides symbolic frameworks for reflection. It does
+              not determine your choices, diagnose conditions, or replace
+              professional guidance.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-4">
             <a
               href="/"
-              className="bg-white text-black px-6 py-3 rounded-full font-semibold"
+              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
             >
               Return Home
             </a>
 
             <a
               href="/assessment"
-              className="border border-yellow-400 text-yellow-300 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
+              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
             >
-              Take Assessment
+              Find My Loop
             </a>
           </div>
-
         </div>
       </section>
+
       <Footer />
     </main>
-  )
+  );
 }

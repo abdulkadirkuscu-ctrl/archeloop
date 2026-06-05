@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { integrationJourneys } from "../../data/integrationJourneys";
-import IntegratedVision from "../../components/IntegratedVision";
+import { supabaseServer } from "../../../lib/supabaseServer";
 
 type Props = {
   params: Promise<{
@@ -19,6 +19,11 @@ export default async function IntegrationJourneyPage({ params }: Props) {
   if (!journey) {
     notFound();
   }
+
+  await supabaseServer.from("archeloop_events").insert({
+  event_name: "journey_viewed",
+  event_value: journey.slug,
+});
 
   return (
     <main className="min-h-screen bg-[#030712] text-stone-100">
@@ -56,138 +61,99 @@ export default async function IntegrationJourneyPage({ params }: Props) {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            <InfoCard title="Core Belief" value={journey.coreBelief} />
-            <InfoCard title="Core Fear" value={journey.coreFear} />
-            <InfoCard title="Hidden Longing" value={journey.hiddenLonging} />
-          </div>
+<div className="rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.12)]">
+  <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+    ArcheLoop Integration™
+  </p>
 
-          <PremiumCard title="Loop Structure">
-            <div className="grid gap-5 md:grid-cols-2">
-              <MiniBlock title="Body Activation" value={journey.bodyActivation} />
-              <MiniBlock title="Primary State" value={journey.primaryState} />
-              <MiniBlock title="Collapse" value={journey.suppression} />
-              <MiniBlock title="Compensate" value={journey.compensation} />
-              <MiniBlock title="Collide" value={journey.collision} />
-            </div>
-          </PremiumCard>
+  <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+    Continue into the full {journey.path}
+  </h2>
 
-          <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
-              Transformation Process
-            </p>
+  <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+    This preview shows the direction of your path. The full Integration Journey™
+    helps you understand the loop structure, practise interruption, write your
+    My Integrated Vision™, and move toward {journey.integratedState}.
+  </p>
 
-            <h2 className="mt-4 text-4xl font-bold">
-              Integration Stages
-            </h2>
+  <div className="mt-10 grid gap-4 text-left md:grid-cols-2">
+    {[
+      "Loop structure",
+      "Core belief",
+      "Core fear",
+      "Hidden longing",
+      "Awareness stage",
+      "Interruption stage",
+      "Embodiment stage",
+      "Practices & reflection prompts",
+      "Meet Your Integrated Self™",
+      "My Integrated Vision™",
+      "Final integration statement",
+      "Triggered Pro™ & Progress Dashboard™",
+    ].map((item) => (
+      <div
+        key={item}
+        className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
+      >
+        ✓ {item}
+      </div>
+    ))}
+  </div>
 
-            <div className="mt-8 grid gap-8">
-              {journey.stages.map((stage, index) => (
-                <div
-                  key={stage.title}
-                  className="rounded-[2rem] border border-yellow-300/10 bg-[#07111f] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]"
-                >
-                  <div className="flex items-center gap-4">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-300 text-sm font-bold text-black">
-                      {index + 1}
-                    </span>
+  <div className="mx-auto mt-10 max-w-2xl rounded-[2rem] border border-yellow-300/20 bg-black/30 p-6">
+  <p className="text-lg text-stone-500 line-through">£29/month</p>
 
-                    <h3 className="text-2xl font-semibold text-yellow-300">
-                      {stage.title}
-                    </h3>
-                  </div>
+  <p className="mt-1 text-3xl font-bold text-yellow-300">
+    Free Founding Access
+  </p>
 
-                  <p className="mt-5 text-lg text-stone-200">
-                    {stage.objective}
-                  </p>
+  <p className="mt-3 text-sm leading-relaxed text-stone-400">
+    ArcheLoop Integration™ is temporarily available while the platform is being
+    refined with early users.
+  </p>
 
-                  <p className="mt-4 rounded-2xl border border-yellow-300/10 bg-black/30 p-4 italic text-stone-300">
-                    {stage.realisation}
-                  </p>
-
-                  <div className="mt-7 grid gap-6 md:grid-cols-2">
-                    <ListBlock title="Practices" items={stage.practices} />
-                    <ListBlock title="Reflection Prompts" items={stage.prompts} />
-                  </div>
-
-                  <div className="mt-7 rounded-2xl border border-yellow-300/20 bg-yellow-300/5 p-5">
-                    <p className="text-sm uppercase tracking-[0.2em] text-yellow-300/70">
-                      Success Marker
-                    </p>
-
-                    <p className="mt-3 text-stone-100">
-                      {stage.successMarker}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-<IntegratedVision
-  integratedState={journey.integratedState}
-  journeyPath={journey.path}
-/>
-
-{journey.integratedSelf && (
-  <PremiumCard title="Meet Your Integrated Self™">
-    <p className="text-lg leading-relaxed text-stone-300">
-      This is the version of you that begins to emerge as{" "}
-      <span className="text-yellow-300">{journey.integratedState}</span>{" "}
-      becomes embodied.
+  <div className="mt-6 rounded-2xl border border-yellow-300/10 bg-black/30 p-5 text-left">
+    <p className="text-sm font-semibold uppercase tracking-[0.25em] text-yellow-300/70">
+      Founding Access Notice
     </p>
 
-    <div className="mt-8 grid gap-5 md:grid-cols-2">
-      <IntegratedSelfBlock
-        title={`How ${journey.integratedState} Thinks`}
-        items={journey.integratedSelf.thinks}
-      />
+    <p className="mt-3 text-sm leading-relaxed text-stone-400">
+      This Integration Journey™ is temporarily available during Founding Access
+      while ArcheLoop™ is being refined and tested with early users.
+    </p>
 
-      <IntegratedSelfBlock
-        title={`How ${journey.integratedState} Feels`}
-        items={journey.integratedSelf.feels}
-      />
+    <p className="mt-3 text-sm leading-relaxed text-stone-500">
+      Future access to ArcheLoop Integration™, Triggered Pro™, Progress
+      Dashboard™, and Integration Journeys™ may require an active subscription
+      after public launch. Founding Access does not guarantee free lifetime
+      access.
+    </p>
+  </div>
 
-      <IntegratedSelfBlock
-        title={`What ${journey.integratedState} Values`}
-        items={journey.integratedSelf.values}
-      />
+  <p className="mt-5 text-sm text-stone-500">
+    Future public pricing: £29/month
+  </p>
+</div>
 
-      <IntegratedSelfBlock
-        title={`What ${journey.integratedState} Fears`}
-        items={journey.integratedSelf.fears}
-      />
+  <div className="mt-10 flex flex-wrap justify-center gap-4">
+    <Link
+      href="/triggered-intelligence"
+      className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+    >
+      Start With Triggered Pro™
+    </Link>
 
-      <IntegratedSelfBlock
-        title={`What ${journey.integratedState} Would Do`}
-        items={journey.integratedSelf.actions}
-      />
-    </div>
-  </PremiumCard>
-)}
+    <Link
+      href="/progress-dashboard"
+      className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+    >
+      View Progress Dashboard™
+    </Link>
+  </div>
+</div>
+          
 
-          <PremiumCard title="Integrated Identity">
-            <ul className="grid gap-3 text-stone-300 md:grid-cols-2">
-              {journey.integratedIdentity.map((item) => (
-                <li
-                  key={item}
-                  className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </PremiumCard>
-
-          <div className="rounded-[2rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-[#050814] p-10 shadow-[0_0_80px_rgba(216,183,120,0.12)]">
-            <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-              Final Integration Statement
-            </p>
-
-            <p className="mt-5 text-2xl leading-relaxed text-stone-100">
-              {journey.finalStatement}
-            </p>
-          </div>
+         
         </div>
       </section>
 
@@ -201,84 +167,5 @@ function Badge({ children }: { children: React.ReactNode }) {
     <span className="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-4 py-2 text-sm text-yellow-200">
       {children}
     </span>
-  );
-}
-
-function PremiumCard({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-      <h2 className="text-3xl font-semibold text-yellow-300">
-        {title}
-      </h2>
-
-      <div className="mt-6">{children}</div>
-    </div>
-  );
-}
-
-function InfoCard({ title, value }: { title: string; value: string }) {
-  return (
-    <div className="rounded-[2rem] border border-yellow-300/15 bg-gradient-to-br from-[#0B1018] to-[#050814] p-6 shadow-[0_0_35px_rgba(216,183,120,0.05)]">
-      <p className="text-sm uppercase tracking-[0.2em] text-yellow-300/60">
-        {title}
-      </p>
-
-      <p className="mt-4 leading-relaxed text-stone-100">
-        {value}
-      </p>
-    </div>
-  );
-}
-
-function MiniBlock({ title, value }: { title: string; value: string }) {
-  return (
-    <div className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5">
-      <p className="text-sm text-yellow-300/70">{title}</p>
-      <p className="mt-3 leading-relaxed text-stone-300">{value}</p>
-    </div>
-  );
-}
-
-function ListBlock({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div>
-      <p className="font-semibold text-yellow-300">{title}</p>
-
-      <ul className="mt-3 space-y-3 text-stone-300">
-        {items.map((item) => (
-          <li key={item} className="leading-relaxed">
-            • {item}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function IntegratedSelfBlock({
-  title,
-  items,
-}: {
-  title: string;
-  items: string[];
-}) {
-  return (
-    <div className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5">
-      <p className="font-semibold text-yellow-300">{title}</p>
-
-      <ul className="mt-4 space-y-3 text-stone-300">
-        {items.map((item) => (
-          <li key={item} className="leading-relaxed">
-            • {item}
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }

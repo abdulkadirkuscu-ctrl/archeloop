@@ -1,11 +1,10 @@
-import Footer from "../components/Footer"
-import Nav from "../components/Nav"
+import Footer from "../components/Footer";
+import Nav from "../components/Nav";
 
 const practices = [
   {
     archetype: "Sovereign",
     element: "Fire",
-    colour: "border-yellow-400",
     title: "Strengthen Healthy Sovereign",
     description:
       "Restore visibility, self-trust, permission, and grounded authority.",
@@ -20,7 +19,6 @@ const practices = [
   {
     archetype: "Magician",
     element: "Air",
-    colour: "border-blue-400",
     title: "Strengthen Healthy Magician",
     description:
       "Restore clarity, perception, language, insight, and trusted thinking.",
@@ -35,7 +33,6 @@ const practices = [
   {
     archetype: "Lover",
     element: "Water",
-    colour: "border-red-400",
     title: "Strengthen Healthy Lover",
     description:
       "Restore emotional flow, connection, creativity, intimacy, and feeling.",
@@ -50,7 +47,6 @@ const practices = [
   {
     archetype: "Warrior",
     element: "Earth",
-    colour: "border-green-500",
     title: "Strengthen Healthy Warrior",
     description:
       "Restore boundaries, protection, grounded action, discipline, and strength.",
@@ -62,51 +58,56 @@ const practices = [
       "State one boundary clearly and calmly.",
     ],
   },
-]
+];
 
 export default function PracticesPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-zinc-950 via-stone-950 to-black text-white">
+    <main className="min-h-screen bg-[#030712] text-stone-100">
       <Nav />
 
-      <div className="px-6 py-20">
-        <div className="max-w-6xl mx-auto">
-          <p className="uppercase tracking-widest text-gray-400 mb-4">
-            Integration Practices
-          </p>
+      <section className="relative overflow-hidden px-6 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
 
-          <h1 className="text-5xl font-bold mb-6">
-            Strengthen Your Archetypal Energy
-          </h1>
+        <div className="relative mx-auto max-w-6xl space-y-12">
+          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+              Integration Practices
+            </p>
 
-          <p className="text-gray-300 text-lg max-w-3xl mb-12">
-            These practices help restore healthy expression in each archetype.
-            Use them when an energy feels suppressed, inflated, distorted, or stuck.
-          </p>
+            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
+              Strengthen Your Archetypal Energy
+            </h1>
 
-          <div className="grid md:grid-cols-2 gap-6">
+            <p className="mt-8 max-w-4xl text-xl leading-relaxed text-stone-300">
+              These practices help restore healthy expression in each archetype.
+              Use them when an energy feels suppressed, inflated, distorted, or
+              stuck.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2">
             {practices.map((practice) => (
               <div
                 key={practice.archetype}
-                className={`border ${practice.colour} rounded-2xl p-8 bg-zinc-950`}
+                className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_55px_rgba(216,183,120,0.06)]"
               >
-                <p className="text-sm text-gray-400 mb-2">
+                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
                   {practice.archetype} / {practice.element}
                 </p>
 
-                <h2 className="text-3xl font-bold mb-4">
+                <h2 className="mt-4 text-3xl font-bold text-yellow-300">
                   {practice.title}
                 </h2>
 
-                <p className="text-gray-300 mb-6">
+                <p className="mt-5 leading-relaxed text-stone-300">
                   {practice.description}
                 </p>
 
-                <ul className="space-y-3">
+                <ul className="mt-7 space-y-3">
                   {practice.exercises.map((exercise) => (
                     <li
                       key={exercise}
-                      className="border border-zinc-800 rounded-xl p-4"
+                      className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 leading-relaxed text-stone-300"
                     >
                       {exercise}
                     </li>
@@ -116,31 +117,43 @@ export default function PracticesPage() {
             ))}
           </div>
 
-          <div className="flex gap-4 mt-16 flex-wrap justify-center">
-            <a
-              href="/"
-              className="border border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-black"
-            >
-              Return Home
-            </a>
+          <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.12)]">
+            <h2 className="text-4xl font-bold leading-tight md:text-5xl">
+              Practice is how the loop begins to change.
+            </h2>
 
-            <a
-              href="/assessment"
-              className="bg-white text-black px-8 py-4 rounded-full font-semibold"
-            >
-              Take Assessment
-            </a>
+            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+              Small, repeatable actions help the integrated self become more
+              familiar than the old protective pattern.
+            </p>
 
-            <a
-              href="/triggered"
-              className="border border-yellow-400 text-yellow-300 px-8 py-4 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
-            >
-              I Am Triggered
-            </a>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <a
+                href="/"
+                className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+              >
+                Return Home
+              </a>
+
+              <a
+                href="/assessment"
+                className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              >
+                Find My Loop
+              </a>
+
+              <a
+                href="/triggered"
+                className="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+              >
+                I Am Triggered
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
       <Footer />
     </main>
-  )
+  );
 }

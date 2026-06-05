@@ -1,24 +1,21 @@
 import { NextResponse } from "next/server";
-import { supabaseServer } from "@/lib/supabaseServer";
+import { supabaseServer } from "../../../lib/supabaseServer";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    if (!body.email) {
+    if (!body.eventName) {
       return NextResponse.json(
-        { error: "Email is required" },
+        { error: "Event name is required" },
         { status: 400 }
       );
     }
 
-    const { error } = await supabaseServer
-      .from("archeloop_waitlist")
-      .insert({
-        email: body.email,
-        source: body.source || "report",
-        primary_loop: body.primaryLoop || null,
-      });
+    const { error } = await supabaseServer.from("archeloop_events").insert({
+      event_name: body.eventName,
+      event_value: body.eventValue || null,
+    });
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });

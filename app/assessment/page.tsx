@@ -5,6 +5,7 @@ import Nav from "../components/Nav"
 import { useState } from "react"
 import { questions, assessmentOrder } from "../data/questions"
 import { loops } from "../data/loops"
+import { trackEvent } from "../../lib/trackEvent"
 
 const answerOptions = [
   { label: "Strongly agree", value: 5 },
@@ -35,15 +36,20 @@ export default function AssessmentPage() {
   const [accessCode, setAccessCode] = useState("")
 
 
-  function handleAnswer(value: number) {
-  const updatedResponses = [...responses]
-  updatedResponses[currentQuestion] = value
-  setResponses(updatedResponses)
+function handleAnswer(value: number) {
+  if (currentQuestion === 0 && responses.length === 0) {
+    trackEvent("assessment_started");
+  }
+
+  const updatedResponses = [...responses];
+  updatedResponses[currentQuestion] = value;
+  setResponses(updatedResponses);
 
   if (currentQuestion < orderedQuestions.length - 1) {
-    setCurrentQuestion(currentQuestion + 1)
+    setCurrentQuestion(currentQuestion + 1);
   } else {
-    setFinished(true)
+    trackEvent("assessment_completed");
+    setFinished(true);
   }
 }
 
@@ -310,6 +316,8 @@ const secondaryLoop = sortedLoops[1]
       return;
     }
 
+    trackEvent("report_unlocked", primaryLoop[0]);
+    
     window.location.href = `/report/${data.reportId}`;
   } catch {
     alert("Something went wrong while creating your report.");
@@ -317,244 +325,207 @@ const secondaryLoop = sortedLoops[1]
 }
 
     return (
-      <main className="min-h-screen bg-black text-white">
-        <Nav />
+  <main className="min-h-screen bg-[#030712] text-stone-100">
+    <Nav />
 
-        <div className="px-6 py-20">
-          <div className="max-w-4xl mx-auto">
-            <p className="uppercase tracking-[0.35em] text-gray-500 text-sm mb-5">
-              ArcheLoop Profile Preview
+    <section className="px-6 py-24">
+      <div className="mx-auto max-w-5xl text-center">
+        <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+          Find My Loop™ Complete
+        </p>
+
+        <h1 className="mt-5 text-5xl font-bold md:text-7xl">
+          Your ArcheLoop Report™
+          <br />
+          is ready.
+        </h1>
+
+        <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
+          Your 60-question assessment has been analysed. We identified your
+          Shadow Loop™, archetypal pattern, nervous system pattern, Integrated
+          Self™, and recommended Integration Journey™.
+        </p>
+      </div>
+    </section>
+
+    {primaryLoopInfo && primaryLoop && (
+      <section className="px-6 pb-20">
+        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
+          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+            Primary Shadow Loop™
+          </p>
+
+          <h2 className="mt-5 text-4xl font-bold text-yellow-300 md:text-6xl">
+            {primaryLoopInfo.title}
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+            {primaryLoopInfo.description}
+          </p>
+
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-stone-500">
+            This is only the first layer. The full ArcheLoop Report™ reveals why
+            this loop formed, what activates it, how it affects relationships,
+            and the integration pathway beyond it.
+          </p>
+        </div>
+      </section>
+    )}
+
+    <section className="px-6 py-20">
+      <div className="mx-auto max-w-7xl">
+        <div className="text-center">
+          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+            Choose Your Next Step
+          </p>
+
+          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+            Understand the loop or begin integration.
+          </h2>
+        </div>
+
+        <div className="mt-12 grid gap-8 md:grid-cols-2">
+          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-[#0B1018] p-8">
+            <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+              Product 1
             </p>
 
-            <h1 className="text-5xl md:text-6xl font-bold mb-8">
-              Your Result
-            </h1>
+            <h3 className="mt-4 text-4xl font-bold text-yellow-300">
+              ArcheLoop Report™
+            </h3>
 
-            {primaryLoopInfo && primaryLoop && (
-              <>
-                <section className="relative overflow-hidden border border-yellow-300/30 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-10 mb-10">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.12),transparent_55%)]" />
+            <p className="mt-4 text-lg text-stone-500 line-through">£29</p>
 
-                  <div className="relative z-10">
-                    <p className="uppercase tracking-[0.3em] text-yellow-300 text-sm mb-5">
-                      Primary Loop
-                    </p>
+            <p className="text-2xl font-semibold text-yellow-300">
+              Free Founding Access
+            </p>
 
-                    <h2 className="text-4xl md:text-6xl font-bold mb-6">
-                      Your primary loop is{" "}
-                      <span className="text-yellow-300">
-                        {primaryLoopInfo.title}
-                      </span>
-                    </h2>
+            <p className="mt-5 leading-relaxed text-stone-300">
+              Unlock your full personalised report and understand the deeper
+              structure beneath your Shadow Loop™.
+            </p>
 
-                    <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mb-8">
-                      {primaryLoopInfo.description}
-                    </p>
+            <div className="mt-7 grid gap-3 text-left">
+              {[
+                "Primary & Secondary Shadow Loops™",
+                "Core belief and core fear",
+                "Nervous system pattern",
+                "Relationship dynamics",
+                "Body map interpretation",
+                "Integration blueprint",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
+                >
+                  ✓ {item}
+                </div>
+              ))}
+            </div>
+          </div>
 
-                    <p className="text-gray-400 leading-relaxed max-w-3xl">
-                      This does not define who you are. It reflects a protective
-                      pattern that may activate under stress, pressure, emotion,
-                      or relational dynamics.
-                    </p>
-                  </div>
-                </section>
+          <div className="rounded-[2.5rem] border border-yellow-300/30 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.08)]">
+            <p className="text-sm uppercase tracking-[0.3em] text-yellow-300">
+              Recommended
+            </p>
 
-                <section className="border border-zinc-800 rounded-[2rem] bg-gradient-to-b from-zinc-950 to-black p-8 mb-10">
-                  <p className="uppercase tracking-[0.3em] text-gray-500 text-sm mb-6">
-                    Primary Pattern Snapshot
-                  </p>
-
-                  <div className="grid md:grid-cols-2 gap-5 mb-8">
-                    <div className="border border-zinc-800 rounded-2xl p-5">
-                      <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
-                        Archetype
-                      </p>
-                      <p className="text-2xl font-semibold">
-                        {primaryLoopInfo.archetype}
-                      </p>
-                    </div>
-
-                    <div className="border border-zinc-800 rounded-2xl p-5">
-                      <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
-                        Element
-                      </p>
-                      <p className="text-2xl font-semibold">
-                        {primaryLoopInfo.element}
-                      </p>
-                    </div>
-
-                    <div className="border border-zinc-800 rounded-2xl p-5">
-  <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
-    Pattern Formation
-  </p>
-
-  <p className="text-2xl font-semibold">
-    {primaryLoopInfo?.mechanism === "Suppression"
-      ? "Collapsed"
-      : primaryLoopInfo?.mechanism === "Compensation"
-      ? "Compensated"
-      : primaryLoopInfo?.mechanism === "Collision"
-      ? "Collision"
-      : "Unknown"}
-  </p>
-</div>
-
-                    <div className="border border-zinc-800 rounded-2xl p-5">
-                      <p className="text-gray-500 text-sm uppercase tracking-[0.25em] mb-2">
-                        Core Belief
-                      </p>
-                      <p className="text-xl font-semibold text-yellow-300">
-                        “{primaryLoopInfo.coreBelief}”
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="bg-white text-black rounded-2xl p-6">
-                    <p className="font-semibold mb-3">
-                      First Loop Breaker
-                    </p>
-
-                    <p className="leading-relaxed">
-                      {primaryLoopInfo.loopBreaker}
-                    </p>
-                  </div>
-                </section>
-
-                <section className="border border-yellow-300/25 rounded-[2rem] bg-gradient-to-b from-yellow-300/10 to-black p-8 mb-10">
-                  <p className="uppercase tracking-[0.3em] text-yellow-300 text-sm mb-5">
-                    Unlock The Full Report
-                  </p>
-
-                  <h2 className="text-3xl md:text-5xl font-bold mb-6">
-                    Want the deeper map?
-                  </h2>
-
-                  <p className="text-xl text-gray-300 leading-relaxed mb-8 max-w-3xl">
-                    Your full ArcheLoop Report expands this preview into a comprehensive pattern map, including secondary
-                    loops, elemental balance, nervous system patterns,
-                    relational activators, body map interpretation, loop
-                    interaction dynamics, and integration guidance.
-                  </p>
-
-                  <div className="grid md:grid-cols-2 gap-4 mb-8">
-                    {[
-                      "Secondary loop activations",
-                      "Elemental balance",
-                      "Nervous system patterns",
-                      "Relational activators",
-                      "Body map interpretation",
-                      "Loop interaction dynamics",
-                      "Integration pathway",
-                      "Personalised loop breakers",
-                    ].map((item) => (
-                      <div
-                        key={item}
-                        className="border border-zinc-800 rounded-2xl p-4 text-gray-300 bg-black/40"
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-4">
-                   <div className="border border-zinc-800 rounded-[2rem] bg-black p-8 mt-8">
-
-  <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-4">
-    Founding Access
-  </p>
-
-  <h3 className="text-2xl font-bold mb-4">
-  First 50 Reports Free
+           <h3 className="mt-4 text-4xl font-bold text-yellow-300">
+  Find My Loop™ + First Month Integration™
 </h3>
 
-<p className="text-xl font-semibold text-yellow-300 mb-4">
-  Unlock Your Full ArcheLoop Report
+<p className="mt-4 text-lg text-stone-500 line-through">£39</p>
+
+<p className="text-2xl font-semibold text-yellow-300">
+  Free Founding Access
 </p>
 
-  <p className="text-gray-400 leading-relaxed mb-6">
-   The first 50 ArcheLoop reports are currently available free as part of the
-Founding Access programme.
+<p className="mt-5 leading-relaxed text-stone-300">
+  Includes your full ArcheLoop Report™ and first month of ArcheLoop
+  Integration™. After the first month, ArcheLoop Integration™ continues
+  at the monthly subscription price.
+</p>
 
-If you have received a Founding Access code, enter it below to unlock your report.
-  </p>
-
-  <input
-    type="text"
-    value={accessCode}
-    onChange={(e) => setAccessCode(e.target.value)}
-    placeholder="Enter access code"
-    className="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-5 py-4 text-white placeholder:text-gray-500 focus:outline-none focus:border-yellow-300 mb-5"
-  />
-
-  {hasFoundingAccess ? (
-    <button
-  type="button"
-  onClick={saveReportAndRedirect}
-  className="block w-full text-center bg-yellow-300 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-200 transition"
->
-  Unlock My Full ArcheLoop Report
-</button>
-  ) : (
-    <button
-      disabled
-      className="w-full bg-zinc-800 text-gray-500 px-8 py-4 rounded-full font-semibold text-lg cursor-not-allowed"
-    >
-      Enter Code To Unlock Report
-    </button>
-  )}
-
-  <p className="text-xs text-gray-600 mt-5">
-    No payment is required during the founding phase. Access is limited while early feedback is collected.
-  </p>
-
-</div>
-
-                    <a
-                      href={`/loops/${primaryLoop[0]
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")}`}
-                      className="border border-zinc-700 px-7 py-3 rounded-full font-semibold hover:border-yellow-300 hover:text-yellow-300 transition"
-                    >
-                      Explore {primaryLoopInfo.title}
-                    </a>
-                  </div>
-                </section>
-
-               <div className="hidden">
-  {JSON.stringify(premiumDataReady)}
-</div>
-              </>
-            )}
-
-            <div className="flex gap-4 mt-8 flex-wrap">
-              <a
-                href="/"
-                className="bg-white text-black px-6 py-3 rounded-full font-semibold"
-              >
-                Return Home
-              </a>
-
-              <a
-                href="/triggered"
-                className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black"
-              >
-                I Am Triggered
-              </a>
-
-              <a
-               href={`/report-preview?loop=${encodeURIComponent(primaryLoop[0])}&scores=${encodeURIComponent(JSON.stringify(integratedScores))}`}
-                className="border border-yellow-400 text-yellow-300 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
-              >
-                View Report Page
-              </a>
+            <div className="mt-7 grid gap-3 text-left">
+              {[
+  "Full ArcheLoop Report™",
+  "First month ArcheLoop Integration™",
+  "Triggered Pro™",
+  "Progress Dashboard™",
+  "Integration Journeys™",
+  "My Integrated Vision™",
+].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
+                >
+                  ✓ {item}
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        <Footer />
-      </main>
-    )
-  }
+        <div className="mx-auto mt-12 max-w-xl rounded-[2rem] border border-yellow-300/20 bg-black/40 p-8 text-center">
+          <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+            Founding Access
+          </p>
+
+          <p className="mt-4 text-stone-300">
+            Enter your Founding Access code to unlock your full ArcheLoop
+            Report™ during the founding phase.
+          </p>
+
+          <input
+            type="text"
+            value={accessCode}
+            onChange={(e) => setAccessCode(e.target.value)}
+            placeholder="Enter access code"
+            className="mt-6 w-full rounded-2xl border border-zinc-700 bg-zinc-950 px-5 py-4 text-white placeholder:text-gray-500 focus:border-yellow-300 focus:outline-none"
+          />
+
+          {hasFoundingAccess ? (
+            <button
+              type="button"
+              onClick={saveReportAndRedirect}
+              className="mt-5 w-full rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+            >
+              Unlock My ArcheLoop Report™
+            </button>
+          ) : (
+            <button
+              disabled
+              className="mt-5 w-full cursor-not-allowed rounded-full bg-zinc-800 px-8 py-4 text-lg font-semibold text-gray-500"
+            >
+              Enter Code To Unlock
+            </button>
+          )}
+
+          <div className="mt-6 rounded-2xl border border-yellow-300/10 bg-black/30 p-5 text-left">
+  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-yellow-300/70">
+    Founding Access Notice
+  </p>
+
+  <p className="mt-3 text-sm leading-relaxed text-stone-400">
+    No payment is required during Founding Access. ArcheLoop™ products are
+    temporarily available for testing and feedback while the platform is being
+    refined.
+  </p>
+
+  <p className="mt-3 text-sm leading-relaxed text-stone-500">
+    Future access to Find My Loop™, ArcheLoop Report™, ArcheLoop Integration™,
+    Triggered Pro™, Progress Dashboard™, and Integration Journeys™ may require
+    an active purchase or subscription after public launch. Founding Access does
+    not guarantee free lifetime access.
+  </p>
+</div>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+);
+}
 
   return (
   <main className="min-h-screen bg-[#030712] text-stone-100">
@@ -566,17 +537,15 @@ If you have received a Founding Access code, enter it below to unlock your repor
       <div className="relative mx-auto max-w-4xl space-y-8">
 <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-6 shadow-[0_0_60px_rgba(216,183,120,0.08)]">
           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            ArcheLoop Assessment
+            Find My Loop™
           </p>
 
           <h1 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
-            Discover Your Shadow Loop
+            Find My Loop™
           </h1>
 
           <p className="mt-3 max-w-3xl text-base leading-relaxed text-stone-300">
-            Answer each question honestly. Your responses help reveal the
-            protective patterns, archetypal dynamics, and Shadow Loops that may
-            activate under stress.
+           Complete the 60-question ArcheLoop assessment to generate your personalised ArcheLoop Report™. Your report reveals your Shadow Loop™, archetype, nervous system pattern, Integrated Self™, and recommended Integration Journey™.
           </p>
         </div>
 
@@ -655,17 +624,33 @@ If you have received a Founding Access code, enter it below to unlock your repor
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-7 shadow-[0_0_55px_rgba(216,183,120,0.07)]">
-          <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-            Future Report Preview
-          </p>
+       <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-7 shadow-[0_0_55px_rgba(216,183,120,0.07)]">
+  <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+    What You’ll Discover
+  </p>
 
-          <p className="mt-4 leading-relaxed text-stone-300">
-            Your answers will help shape your ArcheLoop Personal Pattern
-            Report, mapping Shadow Loops, archetypal patterns, nervous system
-            responses, and integration pathways.
-          </p>
-        </div>
+  <div className="mt-5 grid gap-3 text-stone-300 md:grid-cols-2">
+    {[
+  "Your Primary Shadow Loop™",
+  "Your Secondary Shadow Loop™",
+  "Your Archetype & Element",
+  "Your Nervous System Pattern",
+  "Your Integrated Self™",
+  "Your Personalised ArcheLoop Report™",
+].map((item) => (
+      <div
+        key={item}
+        className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4"
+      >
+        ✓ {item}
+      </div>
+    ))}
+  </div>
+
+  <p className="mt-5 text-sm text-stone-400">
+    60 questions • Approximately 5–7 minutes
+  </p>
+</div>
       </div>
     </section>
 
