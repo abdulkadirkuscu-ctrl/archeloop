@@ -142,13 +142,13 @@ export default function Home() {
             ArcheLoop™
           </p>
 
-          <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
-            Why do you keep repeating
-            <br />
-            the same patterns?
-          </h1>
+          <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
+  Why do certain patterns
+  <br />
+  keep repeating?
+</h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300 md:text-2xl">
+          <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-stone-300 md:text-xl">
             Discover the unconscious Shadow Loop™ behind your reactions,
             relationships, decisions, self-sabotage, and emotional patterns.
           </p>
@@ -179,7 +179,7 @@ export default function Home() {
             Start With What Feels Familiar
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
             Do any of these patterns feel familiar?
           </h2>
 
@@ -215,7 +215,7 @@ export default function Home() {
             What Is A Shadow Loop™?
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
             The Core Of ArcheLoop™
           </h2>
 
@@ -246,7 +246,7 @@ export default function Home() {
             What You’ll Discover
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
             Find the loop behind the reaction.
           </h2>
 
@@ -275,7 +275,7 @@ export default function Home() {
               How ArcheLoop™ Works
             </p>
 
-            <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
               A clear path from discovery to integration.
             </h2>
 
@@ -325,7 +325,7 @@ export default function Home() {
               The ArcheLoop™ Path
             </p>
 
-            <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
               Understand. Interrupt. Integrate.
             </h2>
 
@@ -364,7 +364,7 @@ export default function Home() {
             Meet Your Integrated Self™
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
             You are not the loop.
           </h2>
 
@@ -395,7 +395,7 @@ export default function Home() {
               Choose Your Path
             </p>
 
-            <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
               Start where you are.
             </h2>
 
@@ -459,7 +459,7 @@ export default function Home() {
             Founding Access
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
             ArcheLoop™ is currently in Founding Access.
           </h2>
 
@@ -537,7 +537,7 @@ export default function Home() {
             Begin Here
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
             Discover the Shadow Loop™ you keep repeating.
           </h2>
 

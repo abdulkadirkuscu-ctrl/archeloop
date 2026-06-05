@@ -92,7 +92,7 @@ export default function ProgressDashboardPage() {
               Last 30 Days
             </div>
 
-            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-6xl">
+            <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
               Your ArcheLoop Patterns
             </h1>
 

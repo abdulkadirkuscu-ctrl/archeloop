@@ -15,7 +15,7 @@ export default function DisclaimerPage() {
               Disclaimer
             </p>
 
-            <h1 className="mt-6 text-5xl md:text-7xl font-bold leading-tight">
+            <h1 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
               ArcheLoop is an educational self-development tool.
             </h1>
 

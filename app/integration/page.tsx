@@ -89,7 +89,7 @@ export default async function IntegrationPage() {
             ArcheLoop Integration™
           </p>
 
-          <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
+          <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
             The report shows the loop.
             <br />
             Integration helps you change it.
@@ -159,7 +159,7 @@ export default async function IntegrationPage() {
             What Integration Does
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
             From awareness into transformation.
           </h2>
 
@@ -194,7 +194,7 @@ export default async function IntegrationPage() {
             What Integration Includes
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
             One system for real-life pattern change.
           </h2>
 
@@ -224,7 +224,7 @@ export default async function IntegrationPage() {
               Integration Journeys™
             </p>
 
-            <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
               Every Shadow Loop™ has a path forward.
             </h2>
 
@@ -287,12 +287,12 @@ export default async function IntegrationPage() {
       </section>
 
       <section className="px-6 py-24">
-        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+        <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
             Begin Integration
           </p>
 
-          <h2 className="text-4xl font-bold md:text-6xl">
+          <h2 className="text-4xl font-bold md:text-5xl">
             Start practising beyond the loop.
           </h2>
 

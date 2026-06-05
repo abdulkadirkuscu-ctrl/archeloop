@@ -45,7 +45,7 @@ export default async function IntegrationJourneyPage({ params }: Props) {
               ArcheLoop Integration™
             </p>
 
-            <h1 className="mt-5 text-5xl font-bold leading-tight md:text-7xl">
+            <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
               {journey.path}
             </h1>
 
@@ -66,7 +66,7 @@ export default async function IntegrationJourneyPage({ params }: Props) {
     ArcheLoop Integration™
   </p>
 
-  <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+  <h2 className="mt-5 text-4xl font-bold md:text-5xl">
     Continue into the full {journey.path}
   </h2>
 

@@ -86,7 +86,7 @@ export default function NervousSystemPage() {
               Nervous System Patterns
             </p>
 
-            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
+            <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
               Understanding Survival States
             </h1>
 

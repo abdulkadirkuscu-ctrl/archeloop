@@ -42,7 +42,7 @@ export default function FoundingAccessPage() {
             Founding Access
           </p>
 
-          <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
+          <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
             Explore ArcheLoop™ before
             <br />
             public pricing begins.
@@ -78,7 +78,7 @@ export default function FoundingAccessPage() {
               Product Structure
             </p>
 
-            <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
               Free, Report, Integration.
             </h2>
 
@@ -222,7 +222,7 @@ export default function FoundingAccessPage() {
             Future Bundle Offer
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
             Report + first month Integration.
           </h2>
 

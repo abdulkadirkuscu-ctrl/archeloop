@@ -18,7 +18,7 @@ export default function WhatIsArcheLoopPage() {
           ArcheLoop™
         </p>
 
-        <h1 className="text-6xl font-bold mb-10 leading-tight">
+        <h1 className="text-5xl font-bold mb-10 leading-tight">
           What Is ArcheLoop?
         </h1>
 

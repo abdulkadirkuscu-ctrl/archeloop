@@ -57,7 +57,7 @@ export default function RelationalDynamicsPage() {
               Dynamic Relational Activation
             </p>
 
-            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
+            <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
               Different people can activate different loops.
             </h1>
 
@@ -143,7 +143,7 @@ export default function RelationalDynamicsPage() {
                 Loop Interaction Examples
               </p>
 
-              <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+              <h2 className="mt-5 text-4xl font-bold md:text-5xl">
                 One loop can activate another.
               </h2>
 

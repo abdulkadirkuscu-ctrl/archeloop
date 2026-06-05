@@ -15,7 +15,7 @@ export default function AboutPage() {
               About ArcheLoop™
             </p>
 
-            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
+            <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
               Name the pattern.
               <br />
               Break the loop.

@@ -268,7 +268,7 @@ export default function TriggeredPage() {
   I Am Triggered™
 </p>
 
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
             What is active right now?
           </h1>
 

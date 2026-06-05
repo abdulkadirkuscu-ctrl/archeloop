@@ -100,7 +100,7 @@ export default function TriggeredIntelligencePage() {
                 Triggered Pro™
               </p>
 
-              <h1 className="mt-5 text-5xl font-bold leading-tight md:text-6xl">
+              <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
                 Decode the Loop Behind the Trigger
               </h1>
 

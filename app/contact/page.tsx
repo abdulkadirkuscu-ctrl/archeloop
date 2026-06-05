@@ -22,7 +22,7 @@ export default function ContactPage() {
               Contact
             </p>
 
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-8">
               Contact ArcheLoop
             </h1>
 

@@ -41,7 +41,7 @@ export default async function LoopPage({
             {loop.element} Element • {loop.mechanism}
           </p>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-8">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8">
             {loop.title}
           </h1>
 
