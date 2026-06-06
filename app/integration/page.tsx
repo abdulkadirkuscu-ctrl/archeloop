@@ -1,7 +1,7 @@
 import Nav from "../components/Nav";
 import Link from "next/link";
 import Footer from "../components/Footer";
-import { supabaseServer } from "../../lib/supabaseServer";
+import TrackPageView from "../../components/TrackPageView";
 
 const journeyGroups = [
   {
@@ -72,14 +72,12 @@ const transformationSteps = [
   },
 ];
 
-export default async function IntegrationPage() {
-  await supabaseServer.from("archeloop_events").insert({
-    event_name: "integration_opened",
-    event_value: "integration_page",
-  });
+export default function IntegrationPage() {
+ 
   return (
     <main className="min-h-screen bg-[#030712] text-stone-100">
       <Nav />
+      <TrackPageView eventName="integration_opened" eventValue="integration_page" />
 
       <section className="relative overflow-hidden px-6 py-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />

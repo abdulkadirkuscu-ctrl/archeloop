@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabaseServer } from "@/lib/supabaseServer";
+import { supabaseServer } from "../../../lib/supabaseServer";
 
 export async function POST(req: Request) {
   try {
@@ -12,7 +12,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const { error } = await supabaseServer
+    const { error: feedbackError } = await supabaseServer
       .from("archeloop_feedback")
       .insert({
         report_id: body.reportId || null,
@@ -23,12 +23,19 @@ export async function POST(req: Request) {
         recommend: body.recommend || null,
         testimonial_permission: body.testimonialPermission || null,
         email: body.email || null,
-        
       });
 
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
+    if (feedbackError) {
+      return NextResponse.json(
+        { error: feedbackError.message },
+        { status: 500 }
+      );
     }
+
+    await supabaseServer.from("archeloop_events").insert({
+      event_name: "feedback_submitted",
+      event_value: body.primaryLoop || null,
+    });
 
     return NextResponse.json({ success: true });
   } catch {
