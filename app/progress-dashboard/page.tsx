@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 type Activation = {
   id: string;
@@ -35,13 +37,15 @@ export default function ProgressDashboardPage() {
     setActivations(saved);
   }, []);
 
-
   const stats = useMemo(() => {
     const topLoops = topCommon(activations.map((a) => a.primaryLoop), 3);
     const topArchetypes = topCommon(activations.map((a) => a.archetype), 3);
     const topTriggers = topCommon(activations.map((a) => a.trigger), 3);
     const topPeople = topCommon(activations.map((a) => a.person), 3);
-    const topEnvironments = topCommon(activations.map((a) => a.environment), 3);
+    const topEnvironments = topCommon(
+      activations.map((a) => a.environment),
+      3
+    );
 
     const currentJourney = mostCommon(activations.map((a) => a.journey));
 
@@ -51,127 +55,177 @@ export default function ProgressDashboardPage() {
       topTriggers,
       topPeople,
       topEnvironments,
-      patternInsight: generatePatternInsight(
-        topLoops[0]?.label,
-        topTriggers[0]?.label,
-        topPeople[0]?.label,
-        currentJourney.label
-      ),
       mostActiveLoop: topLoops[0],
       mostActiveArchetype: topArchetypes[0],
+      mostActiveTrigger: topTriggers[0],
+      mostActivePerson: topPeople[0],
+      mostActiveEnvironment: topEnvironments[0],
       currentJourney,
       emergingState: mostCommon(activations.map((a) => a.integratedIdentity)),
     };
   }, [activations]);
 
-
   useEffect(() => {
-  if (!stats.currentJourney?.label || stats.currentJourney.label === "—") {
-    setIntegratedVision("");
-    return;
-  }
+    if (!stats.currentJourney?.label || stats.currentJourney.label === "—") {
+      setIntegratedVision("");
+      return;
+    }
 
-  const storageKey = `archeloop-integrated-vision-${stats.currentJourney.label}`;
-  const savedVision = localStorage.getItem(storageKey);
+    const storageKey = `archeloop-integrated-vision-${stats.currentJourney.label}`;
+    const savedVision = localStorage.getItem(storageKey);
 
-  setIntegratedVision(savedVision || "");
-}, [stats.currentJourney?.label]);
+    setIntegratedVision(savedVision || "");
+  }, [stats.currentJourney?.label]);
 
   return (
     <main className="min-h-screen bg-[#030712] text-stone-100">
-      <section className="relative overflow-hidden px-6 py-16">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.16),transparent_42%)]" />
+      <Nav />
+
+      <section className="relative overflow-hidden px-6 py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
 
         <div className="relative mx-auto max-w-7xl space-y-8">
           <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              Progress Dashboard
-            </p>
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+                  Progress Dashboard™
+                </p>
 
-            <div className="mt-4 inline-flex rounded-full border border-yellow-300/20 bg-yellow-300/10 px-4 py-2 text-xs text-yellow-200">
-              Last 30 Days
-            </div>
+                <div className="mt-4 inline-flex rounded-full border border-yellow-300/20 bg-yellow-300/10 px-4 py-2 text-xs text-yellow-200">
+                  Last 30 Days
+                </div>
 
-            <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
-              Your ArcheLoop Patterns
-            </h1>
+                <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
+                  Your ArcheLoop Patterns
+                </h1>
 
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-              Track your recurring Shadow Loops, triggers, people, and
-              environments over time.
-            </p>
+                <p className="mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+                  Track recurring Shadow Loops™, triggers, people,
+                  environments, and the pathway toward your Integrated Self™.
+                </p>
+              </div>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/triggered-intelligence"
-                className="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-5 py-2 text-sm text-yellow-200 transition hover:border-yellow-300/60"
-              >
-                Log New Activation
-              </Link>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/triggered-intelligence"
+                  className="rounded-full bg-yellow-300 px-6 py-3 text-sm font-semibold text-black transition hover:bg-yellow-200"
+                >
+                  Log New Activation
+                </Link>
 
-              <Link
-                href="/trigger-history"
-                className="rounded-full border border-yellow-300/20 bg-black/30 px-5 py-2 text-sm text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
-              >
-                View Trigger History
-              </Link>
+                <Link
+                  href="/trigger-history"
+                  className="rounded-full border border-yellow-300/20 bg-black/30 px-6 py-3 text-sm font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+                >
+                  View Trigger History
+                </Link>
+              </div>
             </div>
           </div>
 
           {activations.length === 0 ? (
-            <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-              <p className="text-stone-300">
-                No saved activations yet. Save activations from Triggered Pro™
-                to begin tracking your patterns.
+            <div className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_45px_rgba(216,183,120,0.05)]">
+              <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+                No Activations Yet
               </p>
+
+              <h2 className="mt-5 text-3xl font-bold text-stone-100">
+                Your dashboard will build as you log triggers.
+              </h2>
+
+              <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-stone-300">
+                Save activations from Triggered Pro™ to begin seeing your most
+                recurring loops, triggers, people, environments, and integration
+                focus.
+              </p>
+
+              <Link
+                href="/triggered-intelligence"
+                className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 font-semibold text-black transition hover:bg-yellow-200"
+              >
+                Log First Activation
+              </Link>
             </div>
           ) : (
             <>
-              <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.10)]">
-                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-                  ArcheLoop Pattern Insight™
-                </p>
+              <div className="grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+                <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.10)]">
+                  <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+                    Current Pattern
+                  </p>
 
-                <p className="mt-5 whitespace-pre-line text-lg leading-relaxed text-stone-200">
-                  {stats.patternInsight}
-                </p>
+                  <h2 className="mt-5 text-5xl font-bold text-yellow-300">
+                    {stats.mostActiveLoop?.label || "—"}
+                  </h2>
+
+                  <p className="mt-5 max-w-3xl text-lg leading-relaxed text-stone-300">
+                    Your system most often enters{" "}
+                    <span className="text-stone-100">
+                      {stats.mostActiveLoop?.label || "this loop"}
+                    </span>{" "}
+                    when{" "}
+                    <span className="text-stone-100">
+                      {stats.mostActiveTrigger?.label || "a recurring trigger"}
+                    </span>{" "}
+                    appears. Awareness helps you interrupt the pattern and
+                    practise a different response.
+                  </p>
+
+                  <div className="mt-8 grid gap-4 md:grid-cols-2">
+                    <MiniInsight
+                      label="Most Common Trigger"
+                      value={stats.mostActiveTrigger?.label || "—"}
+                    />
+
+                    <MiniInsight
+                      label="Most Involved Person"
+                      value={stats.mostActivePerson?.label || "—"}
+                    />
+
+                    <MiniInsight
+                      label="Most Common Environment"
+                      value={stats.mostActiveEnvironment?.label || "—"}
+                    />
+
+                    <MiniInsight
+                      label="Current Focus"
+                      value={stats.currentJourney.label}
+                    />
+                  </div>
+                </div>
+
+                <div className="rounded-[2.5rem] border border-yellow-300/20 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
+                  <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+                    Integrated Direction
+                  </p>
+
+                  <h2 className="mt-5 text-3xl font-bold text-yellow-300">
+                    {stats.emergingState.label}
+                  </h2>
+
+                  <p className="mt-5 leading-relaxed text-stone-300">
+                    Your current developmental movement points toward{" "}
+                    <span className="text-stone-100">
+                      {stats.emergingState.label}
+                    </span>
+                    . Use each activation as practice for this integrated
+                    state.
+                  </p>
+
+                  {stats.currentJourney.label !== "—" && (
+                    <Link
+                      href={`/integration/${stats.currentJourney.label
+                        .replace("™", "")
+                        .toLowerCase()
+                        .replaceAll(" ", "-")}`}
+                      className="mt-8 inline-flex rounded-full border border-yellow-300/20 bg-black/30 px-6 py-3 font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+                    >
+                      Open {stats.currentJourney.label}
+                    </Link>
+                  )}
+                </div>
               </div>
-
-
-<div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.10)]">
-  <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-    My Integrated Vision™
-  </p>
-
-  <h2 className="mt-4 text-3xl font-semibold text-stone-100">
-    {stats.emergingState.label !== "—"
-      ? `Becoming ${stats.emergingState.label}`
-      : "Your future self vision"}
-  </h2>
-
-  {integratedVision ? (
-    <p className="mt-5 whitespace-pre-line text-lg leading-relaxed text-stone-300">
-      {integratedVision}
-    </p>
-  ) : (
-    <p className="mt-5 text-lg leading-relaxed text-stone-300">
-      Visit your {stats.currentJourney.label} page to write the vision of the
-      integrated self you are becoming.
-    </p>
-  )}
-
-  {stats.currentJourney.label !== "—" && (
-    <Link
-      href={`/integration/${stats.currentJourney.label
-        .replace("™", "")
-        .toLowerCase()
-        .replaceAll(" ", "-")}`}
-      className="mt-6 inline-flex rounded-full border border-yellow-300/20 bg-yellow-300/10 px-5 py-2 text-sm text-yellow-200 transition hover:border-yellow-300/60"
-    >
-      Open {stats.currentJourney.label}
-    </Link>
-  )}
-</div>
 
               <div className="grid gap-4 md:grid-cols-3">
                 <StatCard
@@ -188,16 +242,59 @@ export default function ProgressDashboardPage() {
                 <StatCard
                   label="Most Active Archetype"
                   value={stats.mostActiveArchetype?.label || "—"}
-                  detail={`${stats.mostActiveArchetype?.count || 0} activations`}
+                  detail={`${
+                    stats.mostActiveArchetype?.count || 0
+                  } activations`}
                 />
+              </div>
+
+              <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.10)]">
+                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+                  My Integrated Vision™
+                </p>
+
+                <h2 className="mt-4 text-3xl font-semibold text-stone-100">
+                  {stats.emergingState.label !== "—"
+                    ? `Becoming ${stats.emergingState.label}`
+                    : "Your Future Self Vision"}
+                </h2>
+
+                {integratedVision ? (
+                  <blockquote className="mt-6 rounded-[2rem] border border-yellow-300/10 bg-black/30 p-6 text-xl leading-relaxed text-stone-200">
+                    “{integratedVision}”
+                  </blockquote>
+                ) : (
+                  <p className="mt-5 text-lg leading-relaxed text-stone-300">
+                    Visit your {stats.currentJourney.label} page to write the
+                    vision of the integrated self you are becoming.
+                  </p>
+                )}
+
+                {stats.currentJourney.label !== "—" && (
+                  <Link
+                    href={`/integration/${stats.currentJourney.label
+                      .replace("™", "")
+                      .toLowerCase()
+                      .replaceAll(" ", "-")}`}
+                    className="mt-6 inline-flex rounded-full border border-yellow-300/20 bg-yellow-300/10 px-5 py-2 text-sm text-yellow-200 transition hover:border-yellow-300/60"
+                  >
+                    Open {stats.currentJourney.label}
+                  </Link>
+                )}
               </div>
 
               <div className="grid gap-4 md:grid-cols-2">
                 <RankedCard title="Top 3 Recurring Loops" items={stats.topLoops} />
-                <RankedCard title="Top 3 Active Archetypes" items={stats.topArchetypes} />
+                <RankedCard
+                  title="Top 3 Active Archetypes"
+                  items={stats.topArchetypes}
+                />
                 <RankedCard title="Top 3 Triggers" items={stats.topTriggers} />
                 <RankedCard title="Top 3 People" items={stats.topPeople} />
-                <RankedCard title="Top 3 Environments" items={stats.topEnvironments} />
+                <RankedCard
+                  title="Top 3 Environments"
+                  items={stats.topEnvironments}
+                />
 
                 <div className="grid gap-4">
                   <StatCard
@@ -212,10 +309,25 @@ export default function ProgressDashboardPage() {
                 </div>
               </div>
 
-              <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-                <h2 className="text-3xl font-semibold text-yellow-300">
-                  Recent Activations
-                </h2>
+              <div className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
+                <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+                      Recent Activations
+                    </p>
+
+                    <h2 className="mt-4 text-3xl font-semibold text-yellow-300">
+                      Latest trigger logs
+                    </h2>
+                  </div>
+
+                  <Link
+                    href="/trigger-history"
+                    className="rounded-full border border-yellow-300/20 bg-black/30 px-5 py-2 text-sm font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+                  >
+                    View Full History
+                  </Link>
+                </div>
 
                 <div className="mt-6 space-y-4">
                   {activations.slice(0, 5).map((activation) => (
@@ -251,7 +363,21 @@ export default function ProgressDashboardPage() {
           )}
         </div>
       </section>
+
+      <Footer />
     </main>
+  );
+}
+
+function MiniInsight({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5">
+      <p className="text-xs uppercase tracking-[0.2em] text-yellow-300/50">
+        {label}
+      </p>
+
+      <p className="mt-3 text-xl font-semibold text-stone-100">{value}</p>
+    </div>
   );
 }
 
@@ -316,10 +442,12 @@ function RankedCard({
 }
 
 function mostCommon(items: string[]) {
-  return topCommon(items, 1)[0] || {
-    label: "—",
-    count: 0,
-  };
+  return (
+    topCommon(items, 1)[0] || {
+      label: "—",
+      count: 0,
+    }
+  );
 }
 
 function topCommon(items: string[], limit: number) {
@@ -337,27 +465,4 @@ function topCommon(items: string[], limit: number) {
       label,
       count,
     }));
-}
-
-function generatePatternInsight(
-  loop?: string,
-  trigger?: string,
-  person?: string,
-  journey?: string
-) {
-  if (!loop) {
-    return "Begin saving activations to uncover recurring patterns.";
-  }
-
-  return `Your most recurring loop is ${loop}.
-
-The trigger appearing most often is ${trigger || "unknown"}.
-
-The person most frequently involved is ${person || "unknown"}.
-
-Your current developmental focus appears to be ${
-    journey || "your integration journey"
-  }.
-
-Notice what repeatedly activates this pattern. Awareness creates choice, and choice creates transformation.`;
 }

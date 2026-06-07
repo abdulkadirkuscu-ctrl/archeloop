@@ -44,6 +44,12 @@ export default function Nav() {
         >
           I Am Triggered
         </Link>
+        <Link
+  href="/account"
+  className="text-sm font-medium text-stone-300 transition hover:text-yellow-300"
+>
+  My Account
+</Link>
       </nav>
     </header>
   );

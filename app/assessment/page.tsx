@@ -292,6 +292,59 @@ const secondaryLoop = sortedLoops[1]
   accessCode.trim().toUpperCase() === "FOUNDING50"
 
 
+  const journeyByLoop: Record<
+  string,
+  { journey: string; integratedState: string }
+> = {
+  "Dimmed Light": {
+    journey: "Visibility Path™",
+    integratedState: "Healthy Visibility",
+  },
+  "Paper Crown": {
+    journey: "Authentic Sovereignty Path™",
+    integratedState: "Authentic Leadership",
+  },
+  "Stalled Flame": {
+    journey: "Action Path™",
+    integratedState: "Purposeful Action",
+  },
+  "Blank Page": {
+    journey: "Creative Expression Path™",
+    integratedState: "Authentic Expression",
+  },
+  "Smoky Mirrors": {
+    journey: "Truth Path™",
+    integratedState: "Self-Honesty",
+  },
+  "Mind Maze": {
+    journey: "Clarity Path™",
+    integratedState: "Clear Thinking",
+  },
+  "Emotional Lockdown": {
+    journey: "Vulnerability Path™",
+    integratedState: "Emotional Openness",
+  },
+  "Fantasy Fog": {
+    journey: "Connection Path™",
+    integratedState: "Genuine Connection",
+  },
+  "Flooded Waters": {
+    journey: "Emotional Regulation Path™",
+    integratedState: "Emotional Flow",
+  },
+  Compliance: {
+    journey: "Boundaries Path™",
+    integratedState: "Self-Respect",
+  },
+  Fortress: {
+    journey: "Trust Path™",
+    integratedState: "Connected Strength",
+  },
+  "Barren Ground": {
+    journey: "Vitality Path™",
+    integratedState: "Inner Vitality",
+  },
+};
 
   async function saveReportAndRedirect() {
   try {
@@ -318,6 +371,21 @@ const secondaryLoop = sortedLoops[1]
 
     trackEvent("report_unlocked", primaryLoop[0]);
     
+    const primaryLoopName = primaryLoop[0];
+const secondaryLoopName = secondaryLoop?.[0] || "";
+const journeyInfo = journeyByLoop[primaryLoopName];
+
+document.cookie = `archeloop_report_summary=${encodeURIComponent(
+  JSON.stringify({
+    primaryLoop: primaryLoopName,
+    secondaryLoop: secondaryLoopName,
+    archetype: primaryLoopInfo?.archetype || "",
+    element: primaryLoopInfo?.element || "",
+    journey: journeyInfo?.journey || "",
+    integratedState: journeyInfo?.integratedState || "",
+  })
+)}; path=/; max-age=2592000`;
+
     window.location.href = `/report/${data.reportId}`;
   } catch {
     alert("Something went wrong while creating your report.");
