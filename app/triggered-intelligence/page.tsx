@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { detectLoop } from "../data/intelligenceEngine";
 import { generateInsight } from "../data/insightGenerator";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 import {
   bodyZones,
   emotionalFamilies,
@@ -25,6 +27,7 @@ export default function TriggeredIntelligencePage() {
   const [environment, setEnvironment] = useState(environments[0]);
   const [thought, setThought] = useState(thoughtPatterns[0].value);
   const [integratedVision, setIntegratedVision] = useState("");
+  const [loopBreakLevel, setLoopBreakLevel] = useState("");
 
   const result = detectLoop({
     bodyActivation: [bodyZone],
@@ -64,6 +67,7 @@ export default function TriggeredIntelligencePage() {
       journey: result.journey,
       integratedIdentity: result.integratedIdentity,
       topMatches: result.topMatches,
+      loopBreakLevel,
       bodyZone,
       emotionalFamily,
       responseStyle,
@@ -89,8 +93,10 @@ export default function TriggeredIntelligencePage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <section className="relative overflow-hidden px-6 py-16">
+  <main className="min-h-screen bg-[#030712] text-stone-100">
+    <Nav />
+
+    <section className="relative overflow-hidden px-6 py-16">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.16),transparent_42%)]" />
 
         <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.15fr_0.85fr]">
@@ -324,6 +330,49 @@ export default function TriggeredIntelligencePage() {
               </div>
             </PremiumPanel>
 
+<PremiumPanel title="Integration Check-In™">
+  <p className="mb-4 text-stone-300">
+    Did you break the loop?
+  </p>
+
+  <div className="space-y-3">
+    {[
+      "No, the loop took over",
+      "I noticed it afterwards",
+      "I paused before reacting",
+      "I chose a different response",
+      "Yes — I broke the loop",
+    ].map((option) => (
+      <button
+        key={option}
+        type="button"
+        onClick={() => setLoopBreakLevel(option)}
+        className={`w-full rounded-2xl border p-4 text-left transition ${
+          loopBreakLevel === option
+            ? "border-yellow-300 bg-yellow-300 text-black"
+            : "border-yellow-300/10 bg-black/30 text-stone-300 hover:border-yellow-300/50"
+        }`}
+      >
+        {option}
+      </button>
+    ))}
+  </div>
+
+  {(loopBreakLevel === "I chose a different response" ||
+    loopBreakLevel === "Yes — I broke the loop") && (
+    <div className="mt-5 rounded-2xl border border-yellow-300/20 bg-yellow-300/10 p-4">
+      <p className="font-semibold text-yellow-200">
+        🔥 Loop Broken
+      </p>
+
+      <p className="mt-2 text-stone-300">
+        You noticed the pattern, interrupted the automatic response,
+        and chose differently. This is integration in action.
+      </p>
+    </div>
+  )}
+</PremiumPanel>
+
             <PremiumPanel title="Suggested Practices">
               <ul className="space-y-2 text-stone-300">
                 {result.suggestedPractices.map((practice) => (
@@ -340,8 +389,10 @@ export default function TriggeredIntelligencePage() {
               </button>
             </PremiumPanel>
           </aside>
-        </div>
+                </div>
       </section>
+
+      <Footer />
     </main>
   );
 }
