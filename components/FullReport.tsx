@@ -7,6 +7,65 @@ import { loops } from "../app/data/loops"
 import { elementInsights } from "../app/data/elementInsights"
 import ReportFeedback from "./ReportFeedback"
 
+
+const loopPathMap: Record<string, { journey: string; integratedSelf: string }> = {
+  "Dimmed Light": {
+    journey: "Visibility Path™",
+    integratedSelf: "Healthy Visibility",
+  },
+  "Paper Crown": {
+    journey: "Authentic Sovereignty Path™",
+    integratedSelf: "Authentic Leadership",
+  },
+  "Stalled Flame": {
+    journey: "Action Path™",
+    integratedSelf: "Purposeful Action",
+  },
+  "Blank Page": {
+    journey: "Creative Expression Path™",
+    integratedSelf: "Authentic Expression",
+  },
+  "Smoky Mirrors": {
+    journey: "Truth Path™",
+    integratedSelf: "Self-Honesty",
+  },
+  "Mind Maze": {
+    journey: "Clarity Path™",
+    integratedSelf: "Clear Thinking",
+  },
+  "Emotional Lockdown": {
+    journey: "Vulnerability Path™",
+    integratedSelf: "Emotional Openness",
+  },
+  "Fantasy Fog": {
+    journey: "Connection Path™",
+    integratedSelf: "Genuine Connection",
+  },
+  "Flooded Waters": {
+    journey: "Emotional Regulation Path™",
+    integratedSelf: "Emotional Flow",
+  },
+  Compliance: {
+    journey: "Boundaries Path™",
+    integratedSelf: "Self-Respect",
+  },
+  Fortress: {
+    journey: "Trust Path™",
+    integratedSelf: "Connected Strength",
+  },
+  "Barren Ground": {
+    journey: "Vitality Path™",
+    integratedSelf: "Inner Vitality",
+  },
+};
+
+function formatMechanism(mechanism: string) {
+  if (mechanism === "Suppression") return "Collapsed";
+  if (mechanism === "Compensation") return "Compensated";
+  if (mechanism === "Collision") return "Collided";
+  return mechanism;
+}
+
 export default function FullReport({
   reportData,
 }: {
@@ -42,6 +101,13 @@ const highestIntegratedArchetype =
 const primaryElement = primaryLoop.element as keyof typeof elementInsights
 const elementInsight = elementInsights[primaryElement]
 
+const archeLoopPath = loopPathMap[selectedLoopName] || {
+  journey: primaryLoop.integrationKey || "Integration Journey™",
+  integratedSelf: primaryLoop.integrationKey || "Integrated Self™",
+};
+
+const formattedMechanism = formatMechanism(primaryLoop.mechanism);
+
   const secondaryLoopName = detail.relatedDynamics?.[0] || "Fortress"
   const secondaryLoop = loops[secondaryLoopName as keyof typeof loops]
 
@@ -63,7 +129,7 @@ const integrationBlueprintText =
     ? detail.integrationBlueprint
     : `${detail.coreStructure.integrationShift} This process usually begins through small, repeatable moments of awareness, regulation, and behaviour change rather than forcing the system to transform all at once.`
  
- function ScoreBar({
+function ScoreBar({
   label,
   value,
 }: {
@@ -83,6 +149,32 @@ const integrationBlueprintText =
           style={{ width: `${value}%` }}
         />
       </div>
+    </div>
+  )
+}
+
+function PathCard({
+  label,
+  value,
+  detail,
+}: {
+  label: string
+  value: string
+  detail: string
+}) {
+  return (
+    <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-b from-yellow-300/10 to-black p-8 text-center">
+      <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/70">
+        {label}
+      </p>
+
+      <h3 className="mt-5 text-3xl font-bold text-yellow-300">
+        {value}
+      </h3>
+
+      <p className="mt-4 leading-relaxed text-gray-300">
+        {detail}
+      </p>
     </div>
   )
 }
@@ -165,6 +257,37 @@ if (!lowestIntegratedArchetype) {
         </div>
       </section>
 
+<section className="px-6 py-24 border-b border-zinc-800 bg-black">
+  <div className="max-w-6xl mx-auto">
+    <p className="uppercase tracking-[0.35em] text-yellow-300/70 mb-5 text-center">
+      Your ArcheLoop Path™
+    </p>
+
+    <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
+      From loop to integrated self.
+    </h2>
+
+    <div className="grid gap-5 md:grid-cols-3">
+      <PathCard
+        label="Shadow Loop™"
+        value={primaryLoop.title}
+        detail="The protective pattern currently shaping your reactions."
+      />
+
+      <PathCard
+        label="Integration Journey™"
+        value={archeLoopPath.journey}
+        detail="The path that helps you interrupt and integrate the loop."
+      />
+
+      <PathCard
+        label="Integrated Self™"
+        value={archeLoopPath.integratedSelf}
+        detail="The healthier expression this loop is guiding you toward."
+      />
+    </div>
+  </div>
+</section>
 
 <section className="px-6 py-28 border-b border-zinc-800 bg-[#0B1018]">
   <div className="max-w-6xl mx-auto">
@@ -314,70 +437,52 @@ if (!lowestIntegratedArchetype) {
     </h2>
 
     <div className="border border-zinc-800 rounded-[2rem] p-10 bg-zinc-950">
-
-      <p className="text-lg leading-8 text-gray-300">
-
-  <span className="text-white font-semibold">
-    Lowest Integrated Archetype:
-  </span>{" "}
-  
-  {lowestIntegratedArchetype.archetype} ({lowestIntegratedArchetype.integratedPercent}%)
-
-</p>
-
-<p className="text-lg leading-8 text-gray-300 mt-8">
-
-  This archetype currently shows the lowest level of integrated
-  expression and may represent the primary area of collapse,
-  restriction, avoidance, or developmental pressure within the system.
-
-</p>
-<p className="text-lg leading-8 text-gray-300 mt-8">
-  This may be different from the dominant loop family, because one part of the system may be most restricted while another part becomes the main protective strategy.
-</p>
-
-<p className="text-lg leading-8 text-gray-300 mt-10">
-
-  <span className="text-white font-semibold">
-    Dominant Loop Family:
-  </span>{" "}
-  {dominantLoopFamily}
-
-</p>
-
-<p className="text-lg leading-8 text-gray-300 mt-8">
-
-  The strongest shadow activation emerged within the{" "}
-  <span className="text-white font-semibold">
-    {dominantLoopFamily}
-  </span>{" "}
-  loop family, indicating that this archetype currently provides
-  the dominant protective strategy used by the system under pressure.
-
-</p>
-
-<p className="text-lg leading-8 text-gray-300 mt-10">
-
+<p className="text-lg leading-8 text-gray-300">
   <span className="text-white font-semibold">
     Primary Loop Formation:
   </span>{" "}
-  {primaryLoop.mechanism === "Suppression"
-    ? "Collapsed"
-    : primaryLoop.mechanism === "Compensation"
-    ? "Compensated"
-    : "Collision"}
-
+  {formattedMechanism}
 </p>
 
 <p className="text-lg leading-8 text-gray-300 mt-8">
-
-  Among all loop activations,{" "}
+  Your strongest assessment pattern emerged as{" "}
   <span className="text-white font-semibold">
     {primaryLoop.title}
-  </span>{" "}
-  produced the strongest overall activation score and therefore
-  emerged as the dominant loop pattern at this time.
+  </span>
+  . This does not mean this loop is your identity. It means this protective
+  pattern is currently the most visible expression of how your system adapts
+  under pressure.
+</p>
 
+<p className="text-lg leading-8 text-gray-300 mt-10">
+  <span className="text-white font-semibold">
+    Archetype Family:
+  </span>{" "}
+  {primaryLoop.archetype}
+</p>
+
+<p className="text-lg leading-8 text-gray-300 mt-8">
+  This loop belongs to the{" "}
+  <span className="text-white font-semibold">
+    {primaryLoop.archetype}
+  </span>{" "}
+  archetype family and the{" "}
+  <span className="text-white font-semibold">
+    {primaryLoop.element}
+  </span>{" "}
+  element. The report is not saying this archetype is weak. It is showing how
+  this archetypal energy is currently forming a shadow pattern through{" "}
+  <span className="text-white font-semibold">
+    {formattedMechanism.toLowerCase()}
+  </span>
+  .
+</p>
+
+<p className="text-lg leading-8 text-gray-300 mt-10">
+  <span className="text-white font-semibold">
+    Integration Direction:
+  </span>{" "}
+  {archeLoopPath.journey} → {archeLoopPath.integratedSelf}
 </p>
      
     </div>
@@ -435,10 +540,10 @@ if (!lowestIntegratedArchetype) {
 
             <div className="md:w-64">
               <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-400">Activation</span>
-                <span className="text-yellow-300 font-semibold">
-                  {item.score}%
-                </span>
+               <span className="text-gray-400">Activation Score™</span>
+<span className="text-yellow-300 font-semibold">
+  {item.score}
+</span>
               </div>
 
               <div className="h-3 bg-zinc-800 rounded-full overflow-hidden">
@@ -498,16 +603,16 @@ if (!lowestIntegratedArchetype) {
           className="border border-zinc-800 rounded-2xl bg-black p-6"
         >
           <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-3">
-            {label === "overactiveArchetype"
-              ? "Protective Archetype"
-              : label === "suppressedElement"
-              ? "Collapsed Element"
-              : label === "compensationPattern"
-              ? "Protective Adaptation"
-              : label
-                  .replace(/([A-Z])/g, " $1")
-                  .replace(/^./, (str) => str.toUpperCase())}
-          </p>
+  {label === "overactiveArchetype"
+    ? "Protective Archetype"
+    : label === "suppressedElement"
+    ? "Collapsed Element"
+    : label === "compensationPattern"
+    ? "Protective Adaptation"
+    : label
+        .replace(/([A-Z])/g, " $1")
+        .replace(/^./, (str) => str.toUpperCase())}
+</p>
 
           <p className="text-lg text-gray-200 leading-relaxed">
             {value}
@@ -522,11 +627,11 @@ if (!lowestIntegratedArchetype) {
   <section className="px-6 py-28 border-b border-zinc-800 bg-black">
     <div className="max-w-6xl mx-auto">
       <p className="uppercase tracking-[0.35em] text-gray-500 mb-5 text-center">
-        Archetype Score Map
+        Archetypal Availability™
       </p>
 
       <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
-        Your archetypal energy profile.
+       Which healthy archetypal energies are currently most accessible?
       </h2>
 
       <div className="grid md:grid-cols-2 gap-6">
@@ -546,7 +651,7 @@ if (!lowestIntegratedArchetype) {
       </div>
 
 <p className="text-2xl font-bold text-yellow-300">
-  Current Integration: {item.integratedPercent}%
+  Healthy Availability: {item.integratedPercent}%
 </p>
 
     </div>
@@ -567,6 +672,7 @@ if (!lowestIntegratedArchetype) {
         <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-4">
   Shadow Expression
 </p>
+
 
 <div className="space-y-5">
   <ScoreBar
