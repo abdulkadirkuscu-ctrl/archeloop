@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function IntegratedVisionBox({
   journeySlug,
@@ -13,6 +13,24 @@ export default function IntegratedVisionBox({
   const [saved, setSaved] = useState(false);
   const [editing, setEditing] = useState(true);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function loadVision() {
+      const res = await fetch(
+        `/api/integrated-vision?journeySlug=${encodeURIComponent(journeySlug)}`
+      );
+
+      const data = await res.json();
+
+      if (data.visionText) {
+        setVisionText(data.visionText);
+        setEditing(false);
+        setSaved(true);
+      }
+    }
+
+    loadVision();
+  }, [journeySlug]);
 
   async function saveVision() {
     if (!visionText.trim()) {
@@ -68,7 +86,10 @@ export default function IntegratedVisionBox({
         ) : (
           <button
             type="button"
-            onClick={() => setEditing(true)}
+            onClick={() => {
+              setEditing(true);
+              setSaved(false);
+            }}
             className="rounded-full bg-yellow-300 px-7 py-3 font-semibold text-black transition hover:bg-yellow-200"
           >
             Edit My Vision™

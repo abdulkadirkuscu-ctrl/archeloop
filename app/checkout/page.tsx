@@ -3,16 +3,17 @@
 import { useState } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import { supabaseClient } from "../../lib/supabaseClient";
 
 const products = [
   {
     id: "report",
-    label: "Product 1",
+    label: "Recommended First Step",
     title: "Find My Loop™",
     subtitle: "Understand the pattern.",
-    price: "£29",
+    price: "£19",
     description:
-      "Includes the 60-question assessment and full personalised ArcheLoop Report™.",
+      "Launch offer. Includes the 60-question assessment and full personalised ArcheLoop Report™.",
     items: [
       "60-question Find My Loop™ assessment",
       "Primary & Secondary Shadow Loops™",
@@ -24,29 +25,29 @@ const products = [
   },
   {
     id: "integration",
-    label: "Product 2",
+    label: "Transformation",
     title: "ArcheLoop Integration™",
     subtitle: "Transform the pattern.",
-    price: "£29/month",
+    price: "£14.99/month",
     description:
-      "Requires Find My Loop™. Includes Triggered Pro™, Progress Dashboard™, Integration Journeys™, My Integrated Vision™, and personal tracking.",
+      "Launch offer. Includes Triggered Pro™, Progress Dashboard™, Integration Journeys™, My Integrated Vision™, and personal tracking.",
     items: [
-      "Requires Find My Loop™ report",
       "Triggered Pro™",
       "Progress Dashboard™",
       "Integration Journeys™",
       "My Integrated Vision™",
+      "Monthly Review™",
       "Personal Integration Tracking™",
     ],
   },
   {
     id: "bundle",
-    label: "Recommended",
+    label: "Best Value",
     title: "Report + First Month Integration™",
     subtitle: "Understand and begin transformation.",
-    price: "£39",
+    price: "£29",
     description:
-      "Includes your full ArcheLoop Report™ and first month of ArcheLoop Integration™. After the first month, Integration continues at £29/month.",
+      "Includes your full ArcheLoop Report™ and first month of ArcheLoop Integration™.",
     items: [
       "Full ArcheLoop Report™",
       "First month ArcheLoop Integration™",
@@ -70,6 +71,17 @@ export default function CheckoutPage() {
   async function completeCheckout() {
     setLoading(true);
 
+    const {
+      data: { session },
+    } = await supabaseClient.auth.getSession();
+
+    if (!session?.access_token) {
+      setLoading(false);
+      alert("Please log in before checkout.");
+      window.location.href = "/auth/login";
+      return;
+    }
+
     const res = await fetch("/api/checkout", {
       method: "POST",
       headers: {
@@ -79,6 +91,7 @@ export default function CheckoutPage() {
         product: selectedProduct,
         email,
         accessCode,
+        accessToken: session.access_token,
       }),
     });
 
@@ -90,14 +103,9 @@ export default function CheckoutPage() {
       return;
     }
 
-    if (selectedProduct === "integration" || selectedProduct === "bundle") {
-      document.cookie =
-        "archeloop_integration_access=true; path=/; max-age=2592000";
-    }
-
-    if (selectedProduct === "report" || selectedProduct === "bundle") {
-      document.cookie =
-        "archeloop_report_access=true; path=/; max-age=2592000";
+    if (data.url) {
+      window.location.href = data.url;
+      return;
     }
 
     setCompletedProduct(selectedProduct);
@@ -111,7 +119,7 @@ export default function CheckoutPage() {
         <section className="px-6 py-28 text-center">
           <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
             <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              Founding Access Confirmed
+              Access Confirmed
             </p>
 
             <h1 className="mt-5 text-4xl font-bold md:text-5xl">
@@ -119,8 +127,8 @@ export default function CheckoutPage() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-stone-300">
-              Your Founding Access checkout has been recorded. Your selected
-              product is now available inside My Account.
+              Your access has been recorded. Your selected product is now
+              available inside My Account.
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -176,9 +184,8 @@ export default function CheckoutPage() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-            During Founding Access, you can complete checkout with a Founding
-            Access code. This lets you experience the paid product journey
-            before public pricing begins.
+            Start with your personalised report, continue with integration, or
+            choose the bundle to understand and begin transforming the pattern.
           </p>
         </div>
       </section>
@@ -249,8 +256,8 @@ export default function CheckoutPage() {
           </h2>
 
           <p className="mt-2 text-stone-400">
-            Enter your Founding Access code to unlock this product during the
-            founding phase.
+            Enter your email and continue securely. If you have a promo code,
+            you can enter it below.
           </p>
 
           <input
@@ -265,7 +272,7 @@ export default function CheckoutPage() {
             type="text"
             value={accessCode}
             onChange={(e) => setAccessCode(e.target.value)}
-            placeholder="Enter Founding Access code"
+            placeholder="Promo code optional"
             className="mt-4 w-full rounded-2xl border border-yellow-300/10 bg-[#030712] p-4 text-stone-100 placeholder:text-stone-600 focus:border-yellow-300 focus:outline-none"
           />
 
@@ -275,13 +282,12 @@ export default function CheckoutPage() {
             disabled={loading}
             className="mt-6 w-full rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200 disabled:opacity-50"
           >
-            {loading ? "Completing..." : "Complete Founding Access Checkout"}
+            {loading ? "Completing..." : "Complete Checkout"}
           </button>
 
           <p className="mt-5 text-xs leading-relaxed text-stone-500">
-            Founding Access gives temporary access while ArcheLoop™ is being
-            refined. Future access may require payment or an active
-            subscription after public launch.
+            Launch pricing is available for a limited time. Promo codes may be
+            offered to selected early members, partners, or invited users.
           </p>
         </div>
       </section>

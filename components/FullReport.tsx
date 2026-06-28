@@ -178,6 +178,220 @@ function PathCard({
     </div>
   )
 }
+
+function ArchetypeCompass({ scores }: { scores: any[] }) {
+  const positions = [
+    { name: "Magician", element: "Air", x: 200, y: 40 },
+    { name: "Sovereign", element: "Fire", x: 360, y: 200 },
+    { name: "Lover", element: "Water", x: 200, y: 360 },
+    { name: "Warrior", element: "Earth", x: 40, y: 200 },
+  ];
+
+  const items = positions.map((position) => {
+    const item = scores.find((score) => score.archetype === position.name);
+    const value = item?.integratedPercent || 0;
+
+    const dx = position.x - 200;
+    const dy = position.y - 200;
+
+    return {
+      ...position,
+      value,
+      energyX: 200 + dx * (value / 100),
+      energyY: 200 + dy * (value / 100),
+    };
+  });
+
+  const polygonPoints = items
+    .map((item) => `${item.energyX},${item.energyY}`)
+    .join(" ");
+
+  const mostAvailable = [...items].sort((a, b) => b.value - a.value)[0];
+  const leastAvailable = [...items].sort((a, b) => a.value - b.value)[0];
+
+  return (
+    <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-b from-yellow-300/10 via-[#050814] to-black p-8 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+      <p className="text-center text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+        Archetypal Compass™
+      </p>
+
+      <h3 className="mt-4 text-center text-3xl font-bold">
+        Healthy archetypal access
+      </h3>
+
+      <p className="mx-auto mt-4 max-w-3xl text-center leading-relaxed text-gray-300">
+        This map shows which healthy archetypal energies are currently most
+        available. Lower availability does not mean weakness — it means that
+        expression may be collapsed, compensated, or caught in collision under
+        pressure.
+      </p>
+
+      <div className="mt-10 flex justify-center">
+        <svg viewBox="0 0 400 400" className="h-[28rem] w-[28rem] max-w-full">
+          <defs>
+            <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="rgba(250,204,21,0.55)" />
+              <stop offset="45%" stopColor="rgba(250,204,21,0.18)" />
+              <stop offset="100%" stopColor="rgba(250,204,21,0)" />
+            </radialGradient>
+
+            <filter id="softGlow">
+              <feGaussianBlur stdDeviation="5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <circle cx="200" cy="200" r="150" fill="url(#goldGlow)" />
+
+          {[40, 70, 100, 130, 160].map((radius) => (
+            <circle
+              key={radius}
+              cx="200"
+              cy="200"
+              r={radius}
+              fill="none"
+              stroke="rgba(250,204,21,0.13)"
+              strokeWidth="1"
+            />
+          ))}
+
+          {Array.from({ length: 11 }).map((_, index) => {
+            const offset = 40 + index * 32;
+
+            return (
+              <g key={index}>
+                <line
+                  x1={offset}
+                  y1="40"
+                  x2={offset}
+                  y2="360"
+                  stroke="rgba(250,204,21,0.06)"
+                  strokeWidth="1"
+                />
+                <line
+                  x1="40"
+                  y1={offset}
+                  x2="360"
+                  y2={offset}
+                  stroke="rgba(250,204,21,0.06)"
+                  strokeWidth="1"
+                />
+              </g>
+            );
+          })}
+
+          <line
+            x1="200"
+            y1="40"
+            x2="200"
+            y2="360"
+            stroke="rgba(250,204,21,0.25)"
+            strokeWidth="1.5"
+          />
+          <line
+            x1="40"
+            y1="200"
+            x2="360"
+            y2="200"
+            stroke="rgba(250,204,21,0.25)"
+            strokeWidth="1.5"
+          />
+
+          <polygon
+            points={polygonPoints}
+            fill="rgba(250,204,21,0.22)"
+            stroke="rgba(250,204,21,0.95)"
+            strokeWidth="2"
+            filter="url(#softGlow)"
+          />
+
+          {items.map((item) => (
+            <circle
+              key={`${item.name}-energy`}
+              cx={item.energyX}
+              cy={item.energyY}
+              r="5"
+              fill="rgb(250,204,21)"
+              filter="url(#softGlow)"
+            />
+          ))}
+
+          <circle
+            cx="200"
+            cy="200"
+            r="5"
+            fill="rgba(250,204,21,0.9)"
+            filter="url(#softGlow)"
+          />
+
+          {items.map((item) => (
+            <g key={item.name}>
+              <circle
+                cx={item.x}
+                cy={item.y}
+                r="26"
+                fill="rgba(0,0,0,0.72)"
+                stroke="rgba(250,204,21,0.32)"
+              />
+
+              <text
+                x={item.x}
+                y={item.y - 4}
+                textAnchor="middle"
+                fill="rgb(245,245,244)"
+                fontSize="12"
+                fontWeight="700"
+              >
+                {item.name}
+              </text>
+
+              <text
+                x={item.x}
+                y={item.y + 12}
+                textAnchor="middle"
+                fill="rgba(214,211,209,0.7)"
+                fontSize="10"
+              >
+                {item.element}
+              </text>
+            </g>
+          ))}
+        </svg>
+      </div>
+
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <div className="rounded-2xl border border-yellow-300/10 bg-black/40 p-5">
+          <p className="text-xs uppercase tracking-[0.25em] text-yellow-300/60">
+            Most Available
+          </p>
+          <p className="mt-3 text-2xl font-bold text-stone-100">
+            {mostAvailable.name}
+          </p>
+          <p className="mt-2 text-sm text-stone-400">
+            This archetypal energy currently has the strongest healthy access.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-yellow-300/10 bg-black/40 p-5">
+          <p className="text-xs uppercase tracking-[0.25em] text-yellow-300/60">
+            Least Available
+          </p>
+          <p className="mt-3 text-2xl font-bold text-stone-100">
+            {leastAvailable.name}
+          </p>
+          <p className="mt-2 text-sm text-stone-400">
+            This archetypal energy may need gentler integration, not force or
+            judgment.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 if (!lowestIntegratedArchetype) {
   return (
     <main className="min-h-screen bg-black px-6 py-24 text-white">
@@ -473,7 +687,13 @@ if (!lowestIntegratedArchetype) {
   element. The report is not saying this archetype is weak. It is showing how
   this archetypal energy is currently forming a shadow pattern through{" "}
   <span className="text-white font-semibold">
-    {formattedMechanism.toLowerCase()}
+   {
+  primaryLoop.mechanism === "Suppression"
+    ? "collapse"
+    : primaryLoop.mechanism === "Compensation"
+    ? "compensation"
+    : "collision"
+}
   </span>
   .
 </p>
@@ -603,7 +823,9 @@ if (!lowestIntegratedArchetype) {
           className="border border-zinc-800 rounded-2xl bg-black p-6"
         >
           <p className="uppercase tracking-[0.25em] text-gray-500 text-xs mb-3">
-  {label === "overactiveArchetype"
+  {label === "weakArchetype"
+  ? "Collapsed Archetype"
+  : label === "overactiveArchetype"
     ? "Protective Archetype"
     : label === "suppressedElement"
     ? "Collapsed Element"
@@ -631,8 +853,12 @@ if (!lowestIntegratedArchetype) {
       </p>
 
       <h2 className="text-4xl md:text-6xl font-bold mb-12 text-center">
-       Which healthy archetypal energies are currently most accessible?
+      Your archetypal availability at a glance.
       </h2>
+
+<div className="mb-10">
+  <ArchetypeCompass scores={archetypeScores} />
+</div>
 
       <div className="grid md:grid-cols-2 gap-6">
       {archetypeScores.map((item: any) => (

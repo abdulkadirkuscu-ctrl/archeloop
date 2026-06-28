@@ -14,19 +14,15 @@ export default function TermsAndConditionsPage() {
             Legal
           </p>
 
-          <h1 className="mt-5 text-5xl font-bold">
-            Terms & Conditions
-          </h1>
+          <h1 className="mt-5 text-5xl font-bold">Terms & Conditions</h1>
 
-          <p className="mt-6 text-stone-300">
-            Last updated: June 2026
-          </p>
+          <p className="mt-6 text-stone-300">Last updated: June 2026</p>
         </div>
 
         <div className="relative mx-auto mt-10 max-w-5xl space-y-6 rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
           <Section title="1. About ArcheLoop">
             ArcheLoop is an educational self-development platform designed to
-            help users reflect on emotional patterns, archetypes, Shadow Loops,
+            help users reflect on emotional patterns, archetypes, Shadow Loops™,
             nervous system responses, relational dynamics, and integration
             journeys.
           </Section>
@@ -52,56 +48,63 @@ export default function TermsAndConditionsPage() {
             self-awareness prompts, not fixed labels or factual diagnoses.
           </Section>
 
-          <Section title="5. Triggered Pro™ and Local Data">
-            Some tools may save information in your browser using local storage,
-            such as saved activations, trigger history, or progress dashboard
-            data. This data may remain on your device unless you clear it. If
-            you use a different browser or device, that local data may not be
-            available.
+          <Section title="5. Products, Purchases and Subscriptions">
+            ArcheLoop may offer free resources, paid reports, subscriptions,
+            bundles, launch offers, and promotional pricing. Prices, product
+            availability, subscription terms, and included features may change
+            over time. Any active paid subscription will continue according to
+            the terms shown at checkout unless cancelled.
           </Section>
 
-          <Section title="6. Founding Access and Future Features">
-            Founding Access, premium reports, early features, or future
-            membership options may change, pause, or be discontinued as the
-            platform develops. Early access does not guarantee permanent access
-            to all future paid products or services unless stated separately.
+          <Section title="6. Payments and Access">
+            Payments are processed securely through third-party payment
+            providers such as Stripe. Access to paid products is linked to your
+            ArcheLoop account. You are responsible for using the correct account
+            when purchasing or accessing paid features.
           </Section>
 
-          <Section title="7. Intellectual Property">
-            ArcheLoop™, Shadow Loops, Integration Journeys™, written content,
+          <Section title="7. Triggered Pro™ and Saved Data">
+            Some tools may save information in your browser or account, such as
+            saved activations, trigger history, report data, progress dashboard
+            data, or integration reflections. If data is stored locally on your
+            device, it may not be available on another browser or device.
+          </Section>
+
+          <Section title="8. Intellectual Property">
+            ArcheLoop™, Shadow Loops™, Integration Journeys™, written content,
             frameworks, designs, branding, reports, and related materials belong
             to ArcheLoop unless otherwise stated. You may not copy, reproduce,
             sell, publish, or redistribute ArcheLoop materials without
             permission.
           </Section>
 
-          <Section title="8. User Responsibility">
+          <Section title="9. User Responsibility">
             You are responsible for how you interpret and use ArcheLoop content.
             If you are experiencing emotional distress, crisis, or mental health
             concerns, please seek support from a qualified professional or
             emergency service.
           </Section>
 
-          <Section title="9. Cookies and Analytics">
+          <Section title="10. Cookies and Analytics">
             ArcheLoop may use cookies and similar technologies, including Google
             Analytics, to understand website usage and improve the site. You can
             accept or reject optional analytics cookies through the cookie
             consent banner.
           </Section>
 
-          <Section title="10. Limitation of Liability">
+          <Section title="11. Limitation of Liability">
             ArcheLoop is provided on an “as is” basis. We do our best to provide
             useful and thoughtful content, but we do not guarantee that the
-            website, tools, or content will be error-free, uninterrupted, or
-            suitable for every individual situation.
+            website, tools, reports, or content will be error-free,
+            uninterrupted, or suitable for every individual situation.
           </Section>
 
-          <Section title="11. Changes to These Terms">
+          <Section title="12. Changes to These Terms">
             We may update these Terms & Conditions from time to time. Continued
             use of the website after updates means you accept the revised terms.
           </Section>
 
-          <Section title="12. Contact">
+          <Section title="13. Contact">
             For questions about these terms, contact us through the Contact page
             on this website.
           </Section>
@@ -122,13 +125,9 @@ function Section({
 }) {
   return (
     <section className="rounded-2xl border border-yellow-300/10 bg-black/30 p-6">
-      <h2 className="text-xl font-semibold text-yellow-300">
-        {title}
-      </h2>
+      <h2 className="text-xl font-semibold text-yellow-300">{title}</h2>
 
-      <p className="mt-4 leading-relaxed text-stone-300">
-        {children}
-      </p>
+      <p className="mt-4 leading-relaxed text-stone-300">{children}</p>
     </section>
   );
 }

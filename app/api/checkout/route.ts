@@ -1,54 +1,125 @@
 import { NextResponse } from "next/server";
+import Stripe from "stripe";
 import { supabaseServer } from "../../../lib/supabaseServer";
+import { createSupabaseServerClient } from "../../../lib/supabaseServerClient";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const FOUNDING_CODES = ["FOUNDING50", "FOUNDINGFREE"];
 
-const productPrices: Record<string, number> = {
-  report: 29,
-  integration: 29,
-  bundle: 39,
+const products = {
+  report: {
+    name: "Find My Loop™",
+    amount: 2900,
+    mode: "payment" as const,
+  },
+  integration: {
+    name: "ArcheLoop Integration™",
+    amount: 2900,
+    mode: "subscription" as const,
+  },
+  bundle: {
+    name: "Report + First Month Integration™",
+    amount: 3900,
+    mode: "payment" as const,
+  },
 };
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const product = body.product;
+    const product = body.product as keyof typeof products;
     const email = body.email || null;
     const accessCode = (body.accessCode || "").trim().toUpperCase();
 
-    if (!product || !productPrices[product]) {
+    if (!product || !products[product]) {
       return NextResponse.json(
         { error: "Valid product is required." },
         { status: 400 }
       );
     }
 
-    if (!FOUNDING_CODES.includes(accessCode)) {
+    let user = null;
+
+if (body.accessToken) {
+  const {
+    data: { user: tokenUser },
+  } = await supabaseServer.auth.getUser(body.accessToken);
+
+  user = tokenUser;
+}
+
+if (!user) {
+  const supabaseAuth = await createSupabaseServerClient();
+
+  const {
+    data: { user: cookieUser },
+  } = await supabaseAuth.auth.getUser();
+
+  user = cookieUser;
+}
+
+if (!user) {
       return NextResponse.json(
-        { error: "Enter a valid Founding Access code." },
-        { status: 400 }
+        { error: "Please log in before checkout." },
+        { status: 401 }
       );
     }
 
-    const { error } = await supabaseServer.from("archeloop_orders").insert({
-      product,
-      email,
-      access_code: accessCode,
-      amount_due: 0,
-      status: "founding_access",
-    });
+    if (FOUNDING_CODES.includes(accessCode)) {
+      const { error } = await supabaseServer.from("archeloop_orders").insert({
+        product,
+        email: user.email || email,
+        access_code: accessCode,
+        amount_due: 0,
+        status: "founding_access",
+        user_id: user.id,
+      });
 
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      if (error) {
+        return NextResponse.json({ error: error.message }, { status: 500 });
+      }
+
+      return NextResponse.json({
+        success: true,
+        product,
+        foundingAccess: true,
+      });
     }
 
-    await supabaseServer.from("archeloop_events").insert({
-      event_name: "checkout_completed",
-      event_value: product,
+    const selected = products[product];
+
+    const session = await stripe.checkout.sessions.create({
+      mode: selected.mode,
+      customer_email: user.email || email || undefined,
+      line_items: [
+        {
+          price_data: {
+            currency: "gbp",
+            product_data: {
+              name: selected.name,
+            },
+            unit_amount: selected.amount,
+            ...(selected.mode === "subscription"
+              ? { recurring: { interval: "month" as const } }
+              : {}),
+          },
+          quantity: 1,
+        },
+      ],
+      success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/account?checkout=success`,
+      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/checkout?checkout=cancelled`,
+      metadata: {
+        user_id: user.id,
+        product,
+      },
     });
 
-    return NextResponse.json({ success: true, product });
+    return NextResponse.json({
+      success: true,
+      url: session.url,
+    });
   } catch {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }

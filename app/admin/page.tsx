@@ -37,14 +37,14 @@ export default async function AdminPage() {
         <h1 className="text-5xl font-bold mb-4">Founder Dashboard</h1>
 
         <p className="text-gray-400 mb-12">
-          Live overview of founding reports, feedback, waitlist growth, and early user signals.
+         Live overview of launch reports, feedback, waitlist growth, and early user signals.
         </p>
 
 <div className="mb-8 rounded-2xl border border-yellow-300/30 bg-yellow-300/10 p-6">
   <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
     <div>
       <p className="uppercase tracking-[0.3em] text-yellow-300 text-sm">
-        Founding Progress
+        Launch Progress
       </p>
 
       <h2 className="mt-3 text-3xl font-bold">
@@ -52,7 +52,7 @@ export default async function AdminPage() {
       </h2>
 
       <p className="mt-2 text-gray-400">
-        {stats.foundingRemaining} founding spots remaining.
+        {stats.foundingRemaining} launch spots remaining.
       </p>
     </div>
 
@@ -100,7 +100,7 @@ export default async function AdminPage() {
 
           <div className="rounded-2xl border border-zinc-800 bg-black p-6">
             <p className="text-gray-500 text-sm uppercase tracking-[0.25em]">
-              Remaining
+              Launch Spots
             </p>
             <p className="mt-4 text-4xl font-bold text-yellow-300">
               {stats.foundingRemaining}

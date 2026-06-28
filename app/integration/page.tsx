@@ -73,7 +73,6 @@ const transformationSteps = [
 ];
 
 export default function IntegrationPage() {
- 
   return (
     <main className="min-h-screen bg-[#030712] text-stone-100">
       <Nav />
@@ -104,41 +103,26 @@ export default function IntegrationPage() {
             <p className="text-lg text-stone-500 line-through">£29/month</p>
 
             <p className="mt-1 text-3xl font-bold text-yellow-300">
-              Free Founding Access
+              £14.99/month
             </p>
 
             <p className="mt-3 text-sm leading-relaxed text-stone-400">
-              Available while ArcheLoop™ is being refined with early users.
+              Launch Price. Includes Triggered Pro™, Progress Dashboard™,
+              Integration Journeys™, My Integrated Vision™, and personal
+              integration tracking.
             </p>
-            <div className="mt-6 rounded-2xl border border-yellow-300/10 bg-black/30 p-5 text-left">
-  <p className="text-sm font-semibold uppercase tracking-[0.25em] text-yellow-300/70">
-    Founding Access Notice
-  </p>
 
-  <p className="mt-3 text-sm leading-relaxed text-stone-400">
-    ArcheLoop Integration™ is temporarily available during Founding Access
-    while the platform is being refined and tested with early users.
-  </p>
-
-  <p className="mt-3 text-sm leading-relaxed text-stone-500">
-    Future access to ArcheLoop Integration™, Triggered Pro™, Progress
-    Dashboard™, and Integration Journeys™ may require an active subscription
-    after public launch. Founding Access does not guarantee free lifetime
-    access.
-  </p>
-</div>
-
-<p className="mt-5 text-sm text-stone-500">
-  Future public pricing: £29/month
-</p>
+            <p className="mt-5 text-sm text-stone-500">
+              Cancel anytime. Subscription renews monthly.
+            </p>
           </div>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
-              href="/triggered-intelligence"
+              href="/checkout?product=integration"
               className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
             >
-             Start With Triggered Pro™
+              Start Integration™
             </a>
 
             <a
@@ -295,26 +279,31 @@ export default function IntegrationPage() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Start Integration™ by logging your first activation in Triggered Pro™, then use your
-            Progress Dashboard™ and Integration Journey™ to track the path
-            toward your Integrated Self™.
+            Start Integration™ by logging your first activation in Triggered
+            Pro™, then use your Progress Dashboard™ and Integration Journey™ to
+            track the path toward your Integrated Self™.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
-              href="/triggered-intelligence"
+              href="/checkout?product=integration"
               className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
             >
-             Start With Triggered Pro™
+              Start Integration™
             </a>
 
             <a
-              href="/progress-dashboard"
+              href="/checkout?product=bundle"
               className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
             >
-              View Progress Dashboard™
+              Choose Report + Integration™
             </a>
           </div>
+
+          <p className="mx-auto mt-8 max-w-3xl text-sm text-stone-500">
+            ArcheLoop Integration™ is an educational self-development tool and
+            is not a medical, psychiatric, therapeutic, or diagnostic service.
+          </p>
         </div>
       </section>
 

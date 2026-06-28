@@ -6,9 +6,9 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    if (!body.reportData) {
+    if (!body.activationData) {
       return NextResponse.json(
-        { error: "Report data is required" },
+        { error: "Activation data is required" },
         { status: 400 }
       );
     }
@@ -22,28 +22,23 @@ export async function POST(req: Request) {
 
     if (userError || !user) {
       return NextResponse.json(
-        { error: "You must be logged in to save this report." },
+        { error: "You must be logged in to save activations." },
         { status: 401 }
       );
     }
 
-    const { data, error } = await supabaseServer
-      .from("archeloop_reports")
+    const { error } = await supabaseServer
+      .from("archeloop_activations")
       .insert({
-        report_data: body.reportData,
         user_id: user.id,
-      })
-      .select("id")
-      .single();
+        activation_data: body.activationData,
+      });
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({
-      success: true,
-      reportId: data.id,
-    });
+    return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }

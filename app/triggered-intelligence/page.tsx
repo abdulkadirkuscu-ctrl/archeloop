@@ -28,6 +28,10 @@ export default function TriggeredIntelligencePage() {
   const [thought, setThought] = useState(thoughtPatterns[0].value);
   const [integratedVision, setIntegratedVision] = useState("");
   const [loopBreakLevel, setLoopBreakLevel] = useState("");
+  const [showBreakthrough, setShowBreakthrough] = useState(false);
+  const [awarenessLevel, setAwarenessLevel] = useState("");
+const [recoveryLevel, setRecoveryLevel] = useState("");
+const [embodimentLevel, setEmbodimentLevel] = useState("");
 
   const result = detectLoop({
     bodyActivation: [bodyZone],
@@ -45,6 +49,16 @@ export default function TriggeredIntelligencePage() {
     result.integratedIdentity
   );
 
+  const hasBrokenLoop =
+  loopBreakLevel === "I chose a different response" ||
+  loopBreakLevel === "Yes — I broke the loop";
+
+  useEffect(() => {
+  if (hasBrokenLoop) {
+    setShowBreakthrough(true);
+  }
+}, [hasBrokenLoop]);
+
   useEffect(() => {
   const storageKey = `archeloop-integrated-vision-${result.journey}`;
   const savedVision = localStorage.getItem(storageKey);
@@ -52,39 +66,59 @@ export default function TriggeredIntelligencePage() {
   setIntegratedVision(savedVision || "");
 }, [result.journey]);
 
-  function saveActivation() {
-    const savedActivations = JSON.parse(
-      localStorage.getItem("archeloopActivations") || "[]"
-    );
+ async function saveActivation() {
+  const activation = {
+    id: crypto.randomUUID(),
+    createdAt: new Date().toISOString(),
+    primaryLoop: result.primaryLoop,
+    secondaryLoop: result.secondaryLoop,
+    confidence: result.confidence,
+    archetype: result.archetype,
+    journey: result.journey,
+    integratedIdentity: result.integratedIdentity,
+    topMatches: result.topMatches,
+    loopBreakLevel,
+    awarenessLevel,
+    recoveryLevel,
+    embodimentLevel,
+    bodyZone,
+    emotionalFamily,
+    responseStyle,
+    triggerCategory,
+    trigger,
+    person,
+    environment,
+    thought,
+  };
 
-    const activation = {
-      id: crypto.randomUUID(),
-      createdAt: new Date().toISOString(),
-      primaryLoop: result.primaryLoop,
-      secondaryLoop: result.secondaryLoop,
-      confidence: result.confidence,
-      archetype: result.archetype,
-      journey: result.journey,
-      integratedIdentity: result.integratedIdentity,
-      topMatches: result.topMatches,
-      loopBreakLevel,
-      bodyZone,
-      emotionalFamily,
-      responseStyle,
-      triggerCategory,
-      trigger,
-      person,
-      environment,
-      thought,
-    };
+  const res = await fetch("/api/activations", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      activationData: activation,
+    }),
+  });
 
-    localStorage.setItem(
-      "archeloopActivations",
-      JSON.stringify([activation, ...savedActivations])
-    );
+  const data = await res.json();
 
-    alert("Activation saved.");
+  if (!res.ok) {
+    alert(data.error || "Could not save activation.");
+    return;
   }
+
+  const savedActivations = JSON.parse(
+    localStorage.getItem("archeloopActivations") || "[]"
+  );
+
+  localStorage.setItem(
+    "archeloopActivations",
+    JSON.stringify([activation, ...savedActivations])
+  );
+
+  alert("Activation saved.");
+}
 
   function handleTriggerCategoryChange(category: string) {
     setTriggerCategory(category);
@@ -107,12 +141,11 @@ export default function TriggeredIntelligencePage() {
               </p>
 
               <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
-                Decode the Loop Behind the Trigger
+                Identify the Shadow Loop™ Behind Your Reaction
               </h1>
 
               <p className="mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-                Move through the core ArcheLoop sequence: body, emotional
-                family, response style, trigger, context, and thought pattern.
+               Answer a few simple questions to identify the Shadow Loop™ driving your current reaction and receive guidance for your next integrated step.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -132,11 +165,11 @@ export default function TriggeredIntelligencePage() {
               </div>
             </div>
 
-            <CardStep number="1" title="Where do you feel it most?">
+           <CardStep number="1" title="Where did you feel it?">
               <ChoiceGrid items={bodyZones} selected={bodyZone} onSelect={setBodyZone} />
             </CardStep>
 
-            <CardStep number="2" title="What feels strongest?">
+            <CardStep number="2" title="What did you feel?">
               <ChoiceGrid
                 items={emotionalFamilies}
                 selected={emotionalFamily}
@@ -144,7 +177,7 @@ export default function TriggeredIntelligencePage() {
               />
             </CardStep>
 
-            <CardStep number="3" title="What happened next?">
+            <CardStep number="3" title="How did you respond?">
               <ChoiceGrid
                 items={responseStyles}
                 selected={responseStyle}
@@ -152,7 +185,7 @@ export default function TriggeredIntelligencePage() {
               />
             </CardStep>
 
-            <CardStep number="4" title="What kind of trigger was it?">
+           <CardStep number="4" title="What happened?">
               <ChoiceGrid
                 items={triggerCategories}
                 selected={triggerCategory}
@@ -206,7 +239,7 @@ export default function TriggeredIntelligencePage() {
               </select>
             </CardStep>
 
-            <CardStep number="7" title="Which thought was closest?">
+           <CardStep number="7" title="What was running through your mind?">
               <div className="grid gap-3 md:grid-cols-2">
                 {thoughtPatterns.map((item) => {
                   const active = thought === item.value;
@@ -241,7 +274,7 @@ export default function TriggeredIntelligencePage() {
               </h2>
 
               <p className="mt-3 text-stone-300">
-                Loop Match: {result.confidence}%
+                Pattern Match: {result.confidence}%
               </p>
             </div>
 
@@ -331,46 +364,124 @@ export default function TriggeredIntelligencePage() {
             </PremiumPanel>
 
 <PremiumPanel title="Integration Check-In™">
-  <p className="mb-4 text-stone-300">
-    Did you break the loop?
-  </p>
+  <div className="space-y-6">
+    <CheckInQuestion
+      title="When did you become aware you were in the loop?"
+      selected={awarenessLevel}
+      onSelect={setAwarenessLevel}
+      options={[
+        "Only afterwards",
+        "While it was happening",
+        "Before I reacted",
+        "Immediately",
+      ]}
+    />
 
-  <div className="space-y-3">
-    {[
-      "No, the loop took over",
-      "I noticed it afterwards",
-      "I paused before reacting",
-      "I chose a different response",
-      "Yes — I broke the loop",
-    ].map((option) => (
-      <button
-        key={option}
-        type="button"
-        onClick={() => setLoopBreakLevel(option)}
-        className={`w-full rounded-2xl border p-4 text-left transition ${
-          loopBreakLevel === option
-            ? "border-yellow-300 bg-yellow-300 text-black"
-            : "border-yellow-300/10 bg-black/30 text-stone-300 hover:border-yellow-300/50"
-        }`}
-      >
-        {option}
-      </button>
-    ))}
+    <CheckInQuestion
+      title="How quickly did you return to your centre?"
+      selected={recoveryLevel}
+      onSelect={setRecoveryLevel}
+      options={[
+        "Still activated",
+        "Several hours",
+        "About an hour",
+        "A few minutes",
+        "Almost immediately",
+      ]}
+    />
+
+    <CheckInQuestion
+      title="Did you break the loop?"
+      selected={loopBreakLevel}
+      onSelect={setLoopBreakLevel}
+      options={[
+        "No, the loop took over",
+        "I noticed it afterwards",
+        "I paused before reacting",
+        "I chose a different response",
+        "Yes — I broke the loop",
+      ]}
+    />
+
+    <CheckInQuestion
+      title={`How much did ${result.integratedIdentity} guide your response?`}
+      selected={embodimentLevel}
+      onSelect={setEmbodimentLevel}
+      options={[
+        "Not at all",
+        "A little",
+        "Somewhat",
+        "Mostly",
+        "Completely",
+      ]}
+    />
   </div>
 
-  {(loopBreakLevel === "I chose a different response" ||
-    loopBreakLevel === "Yes — I broke the loop") && (
-    <div className="mt-5 rounded-2xl border border-yellow-300/20 bg-yellow-300/10 p-4">
-      <p className="font-semibold text-yellow-200">
-        🔥 Loop Broken
+{showBreakthrough && hasBrokenLoop && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-6 backdrop-blur-sm">
+    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(250,204,21,0.35),transparent_35%,transparent_70%)] animate-pulse" />
+
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {[...Array(28)].map((_, index) => (
+        <span
+          key={index}
+          className="absolute h-2 w-2 rounded-full bg-yellow-300/70 shadow-[0_0_18px_rgba(250,204,21,0.9)]"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            animation: `float-gold ${
+              2 + Math.random() * 2
+            }s ease-out infinite`,
+            animationDelay: `${Math.random() * 1.5}s`,
+          }}
+        />
+      ))}
+    </div>
+
+    <div className="relative max-w-xl rounded-[2rem] border border-yellow-300/30 bg-gradient-to-br from-[#15100A] via-[#0B1018] to-black p-8 text-center shadow-[0_0_120px_rgba(250,204,21,0.35)]">
+      <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+        ArcheLoop Breakthrough™
       </p>
 
-      <p className="mt-2 text-stone-300">
-        You noticed the pattern, interrupted the automatic response,
-        and chose differently. This is integration in action.
+      <h2 className="mt-5 text-4xl font-bold text-yellow-200">
+        {result.integratedIdentity} Activated
+      </h2>
+
+      <p className="mt-5 text-lg leading-relaxed text-stone-200">
+        You interrupted {result.primaryLoop} and chose from your Integrated
+        Self™.
       </p>
+
+      <p className="mt-5 text-sm uppercase tracking-[0.25em] text-yellow-300/70">
+        Awareness → Interruption → Integration
+      </p>
+      <button
+  type="button"
+  onClick={() => setShowBreakthrough(false)}
+  className="mt-7 rounded-full bg-yellow-300 px-6 py-3 font-semibold text-black transition hover:bg-yellow-200"
+>
+  Continue
+</button>
     </div>
-  )}
+
+  <style>{`
+      @keyframes float-gold {
+        0% {
+          transform: translateY(30px) scale(0.7);
+          opacity: 0;
+        }
+        35% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-80px) scale(1.2);
+          opacity: 0;
+        }
+      }
+    `}</style>
+  </div>
+)}
+
 </PremiumPanel>
 
             <PremiumPanel title="Suggested Practices">
@@ -488,6 +599,41 @@ function ResultItem({
     </div>
   );
 }
+function CheckInQuestion({
+  title,
+  options,
+  selected,
+  onSelect,
+}: {
+  title: string;
+  options: string[];
+  selected: string;
+  onSelect: (value: string) => void;
+}) {
+  return (
+    <div>
+      <p className="mb-3 font-semibold text-stone-100">{title}</p>
+
+      <div className="space-y-3">
+        {options.map((option) => (
+          <button
+            key={option}
+            type="button"
+            onClick={() => onSelect(option)}
+            className={`w-full rounded-2xl border p-4 text-left transition ${
+              selected === option
+                ? "border-yellow-300 bg-yellow-300 text-black"
+                : "border-yellow-300/10 bg-black/30 text-stone-300 hover:border-yellow-300/50"
+            }`}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 
 function PremiumPanel({
   title,

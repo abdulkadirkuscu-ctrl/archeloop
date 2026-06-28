@@ -3,99 +3,96 @@ export const bodyZones = [
     id: "head",
     title: "Head / Throat",
     value: "head / throat",
-    description: "Perception, thought, clarity, communication.",
   },
   {
     id: "chest",
     title: "Chest / Solar Plexus",
     value: "chest / solar plexus",
-    description: "Worth, visibility, identity, expression.",
   },
   {
     id: "gut",
     title: "Gut / Lower Abdomen",
     value: "gut / lower abdomen",
-    description: "Emotion, attachment, vulnerability, connection.",
   },
   {
     id: "legs",
     title: "Legs / Feet / Full Body",
     value: "legs / feet / full body",
-    description: "Protection, grounding, boundaries, survival.",
   },
 ];
 
 export const emotionalFamilies = [
   {
     id: "fire",
-    title: "Inadequate / Exposed",
+    title: "I felt judged or not good enough.",
     value: "inadequate / exposed",
-    description: "Feeling unseen, judged, exposed, or not enough.",
+    description: "Inadequate / Exposed",
   },
   {
     id: "air",
-    title: "Confused / Overthinking",
+    title: "I couldn't stop thinking.",
     value: "confused / overthinking",
-    description: "Feeling foggy, uncertain, scattered, or trapped in thought.",
+    description: "Confused / Overthinking",
   },
   {
     id: "water",
-    title: "Hurt / Longing",
+    title: "I felt hurt or rejected.",
     value: "hurt / longing",
-    description: "Feeling rejected, abandoned, disappointed, or craving connection.",
+    description: "Hurt / Longing",
   },
   {
     id: "earth",
-    title: "Defensive / Tense",
+    title: "I felt threatened or defensive.",
     value: "defensive / tense",
-    description: "Feeling guarded, pressured, angry, trapped, or unable to relax.",
+    description: "Defensive / Tense",
   },
 ];
 
 export const responseStyles = [
   {
     id: "collapse",
-    title: "Collapse",
+    title: "I shut down.",
     value: "collapse",
-    description:
-      "I withdrew, disconnected, shrank, or held myself back.",
+    description: "Collapse",
   },
   {
     id: "compensation",
-    title: "Compensate",
+    title: "I tried to regain control.",
     value: "compensation",
-    description:
-      "I tried to regain control, prove myself, over-manage, or overcompensate.",
+    description: "Compensate",
   },
   {
     id: "collision",
-    title: "Collide",
+    title: "I felt torn between different impulses.",
     value: "collision",
-    description:
-      "I felt overwhelmed, internally conflicted, reactive, or stuck between impulses.",
+    description: "Collide",
   },
 ];
 
 export const triggerCategories = [
   {
     id: "visibility",
-    title: "Visibility",
-    description: "Being seen, judged, compared, criticized, or overlooked.",
+    title: "I was criticised, compared, or put on the spot.",
+    value: "visibility",
+    description: "Visibility Trigger",
   },
   {
     id: "uncertainty",
-    title: "Uncertainty",
-    description: "Not knowing, change, pressure, decisions, or lack of clarity.",
+    title: "Something felt uncertain or unpredictable.",
+    value: "uncertainty",
+    description: "Uncertainty Trigger",
   },
   {
     id: "connection",
-    title: "Connection",
-    description: "Rejection, disappointment, distance, approval, or emotional need.",
+    title: "Someone pulled away or let me down.",
+    value: "connection",
+    description: "Connection Trigger",
   },
   {
     id: "protection",
-    title: "Protection",
-    description: "Conflict, boundaries, responsibility, pressure, or feeling controlled.",
+    title: "A boundary, conflict, or responsibility challenged me.",
+    value: "protection",
+    description: "Protection Trigger",
   },
 ];
 
@@ -140,14 +137,8 @@ export const thoughtPatterns = [
   {
     loop: "Dimmed Light",
     archetype: "Sovereign",
-    title: "I am not enough.",
-    value: "I am not enough",
-  },
-  {
-    loop: "Dimmed Light",
-    archetype: "Sovereign",
-    title: "Nobody sees me.",
-    value: "Nobody sees me",
+    title: "I'm not good enough.",
+    value: "I'm not good enough",
   },
   {
     loop: "Paper Crown",
@@ -156,72 +147,34 @@ export const thoughtPatterns = [
     value: "I need to prove myself",
   },
   {
-    loop: "Paper Crown",
-    archetype: "Sovereign",
-    title: "I need their approval.",
-    value: "I need their approval",
-  },
-  {
     loop: "Stalled Flame",
     archetype: "Sovereign",
     title: "Why bother?",
     value: "Why bother",
   },
   {
-    loop: "Stalled Flame",
-    archetype: "Sovereign",
-    title: "Nothing will change.",
-    value: "Nothing will change",
-  },
-
-  {
     loop: "Blank Page",
     archetype: "Magician",
-    title: "I don't know what to do.",
-    value: "I don't know what to do",
-  },
-  {
-    loop: "Blank Page",
-    archetype: "Magician",
-    title: "I don't know what to say.",
-    value: "I don't know what to say",
+    title: "My mind has gone blank.",
+    value: "My mind has gone blank",
   },
   {
     loop: "Smoky Mirrors",
     archetype: "Magician",
-    title: "Maybe I am wrong.",
-    value: "Maybe I am wrong",
-  },
-  {
-    loop: "Smoky Mirrors",
-    archetype: "Magician",
-    title: "I can't trust my perception.",
-    value: "I can't trust my perception",
+    title: "Maybe I'm wrong.",
+    value: "Maybe I'm wrong",
   },
   {
     loop: "Mind Maze",
     archetype: "Magician",
-    title: "I need certainty.",
-    value: "I need certainty",
-  },
-  {
-    loop: "Mind Maze",
-    archetype: "Magician",
-    title: "What if I make the wrong choice?",
-    value: "What if I make the wrong choice",
-  },
-
-  {
-    loop: "Emotional Lockdown",
-    archetype: "Lover",
-    title: "I don't feel loved.",
-    value: "I don't feel loved",
+    title: "I need to figure this out.",
+    value: "I need to figure this out",
   },
   {
     loop: "Emotional Lockdown",
     archetype: "Lover",
-    title: "I shouldn't need anyone.",
-    value: "I shouldn't need anyone",
+    title: "I have to hide how I feel.",
+    value: "I have to hide how I feel",
   },
   {
     loop: "Fantasy Fog",
@@ -230,29 +183,10 @@ export const thoughtPatterns = [
     value: "Maybe they will change",
   },
   {
-    loop: "Fantasy Fog",
-    archetype: "Lover",
-    title: "The connection is still there.",
-    value: "The connection is still there",
-  },
-  {
-    loop: "Flooded Waters",
-    archetype: "Lover",
-    title: "I need them right now.",
-    value: "I need them right now",
-  },
-  {
     loop: "Flooded Waters",
     archetype: "Lover",
     title: "This hurts too much.",
     value: "This hurts too much",
-  },
-
-  {
-    loop: "Compliance",
-    archetype: "Warrior",
-    title: "I can't say no.",
-    value: "I can't say no",
   },
   {
     loop: "Compliance",
@@ -263,25 +197,13 @@ export const thoughtPatterns = [
   {
     loop: "Fortress",
     archetype: "Warrior",
-    title: "I can only rely on myself.",
-    value: "I can only rely on myself",
-  },
-  {
-    loop: "Fortress",
-    archetype: "Warrior",
-    title: "Leave me alone.",
-    value: "Leave me alone",
+    title: "I can't rely on anyone else.",
+    value: "I can't rely on anyone else",
   },
   {
     loop: "Barren Ground",
     archetype: "Warrior",
-    title: "I have nothing left.",
-    value: "I have nothing left",
-  },
-  {
-    loop: "Barren Ground",
-    archetype: "Warrior",
-    title: "Everything depends on me.",
-    value: "Everything depends on me",
+    title: "I can't keep doing this.",
+    value: "I can't keep doing this",
   },
 ];

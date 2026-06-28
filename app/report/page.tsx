@@ -8,14 +8,23 @@ const previewIncludes = [
   "One starting loop breaker",
 ];
 
-const premiumIncludes = [
-  "Primary and secondary loops",
+const reportIncludes = [
+  "Primary and secondary Shadow Loops™",
   "Nervous system response patterns",
-  "Suppressed and compensating archetypes",
+  "Archetype and element analysis",
   "Relational activators and emotional triggers",
   "Body activation map",
   "Loop interaction dynamics",
   "Integration guidance and loop breakers",
+];
+
+const bundleIncludes = [
+  "Full ArcheLoop Report™",
+  "First month ArcheLoop Integration™",
+  "Triggered Pro™",
+  "Progress Dashboard™",
+  "Integration Journeys™",
+  "My Integrated Vision™",
 ];
 
 export default function ReportPage() {
@@ -28,7 +37,7 @@ export default function ReportPage() {
 
         <div className="relative mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            ArcheLoop Report
+            ArcheLoop Report™
           </p>
 
           <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
@@ -38,7 +47,7 @@ export default function ReportPage() {
           </h1>
 
           <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Your ArcheLoop Report reveals the deeper structure behind recurring
+            Your ArcheLoop Report™ reveals the deeper structure behind recurring
             emotional reactions, relationship dynamics, nervous system patterns,
             and protective responses.
           </p>
@@ -48,16 +57,20 @@ export default function ReportPage() {
               href="/assessment"
               className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
             >
-              Find My Loop
+              Start Find My Loop™
             </a>
 
             <a
-              href="#premium-report"
+              href="/checkout?product=report"
               className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
             >
-              Unlock Full Report
+              Get Full Report
             </a>
           </div>
+
+          <p className="mt-6 text-sm text-stone-500">
+            Launch Offer: £19, normally £29.
+          </p>
         </div>
       </section>
 
@@ -84,13 +97,13 @@ export default function ReportPage() {
               ],
               [
                 "02",
-                "Receive Your Preview",
-                "See your primary loop, emotional protection patterns, and first loop-breaking direction.",
+                "See Your Result",
+                "Identify your primary Shadow Loop™, protection pattern, and first direction for interrupting the loop.",
               ],
               [
                 "03",
-                "Unlock Full Report",
-                "Access deeper nervous system dynamics, relational activators, loop interactions, body patterns, and integration guidance.",
+                "Read Your Full Report",
+                "Explore nervous system dynamics, relational activators, body patterns, loop interactions, and your Integration Journey™.",
               ],
             ].map(([number, title, body]) => (
               <div
@@ -105,9 +118,7 @@ export default function ReportPage() {
                   {title}
                 </h3>
 
-                <p className="mt-4 leading-relaxed text-stone-300">
-                  {body}
-                </p>
+                <p className="mt-4 leading-relaxed text-stone-300">{body}</p>
               </div>
             ))}
           </div>
@@ -133,44 +144,44 @@ export default function ReportPage() {
             </p>
 
             <p>
-              But overthinking, people pleasing, emotional shutdown, emotional
+              Overthinking, people pleasing, emotional shutdown, emotional
               flooding, defensiveness, confusion, and validation seeking are
               often protective responses — not random flaws.
             </p>
 
             <p>
-              The ArcheLoop Report helps make those deeper patterns visible so
-              they can finally be interrupted consciously.
+              The ArcheLoop Report™ helps make those deeper patterns visible so
+              they can be interrupted consciously.
             </p>
           </div>
         </div>
       </section>
 
-      <section id="premium-report" className="px-6 py-28">
+      <section id="full-report" className="px-6 py-28">
         <div className="mx-auto max-w-6xl">
           <div className="mb-14 text-center">
             <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-              Inside Your Premium Report
+              Inside Your Report
             </p>
 
             <h2 className="mt-5 text-4xl font-bold leading-tight md:text-6xl">
-              Go beyond a single loop and uncover the deeper architecture
+              Go beyond a single result and uncover the deeper architecture
               shaping your emotional patterns.
             </h2>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
             <ReportCard
-              eyebrow="Free Profile Preview"
+              eyebrow="Result Preview"
               title="Start with the pattern."
               items={previewIncludes}
               premium={false}
             />
 
             <ReportCard
-              eyebrow="Full ArcheLoop Report"
-              title="Unlock the architecture."
-              items={premiumIncludes}
+              eyebrow="Full ArcheLoop Report™"
+              title="Understand the architecture."
+              items={reportIncludes}
               premium
             />
           </div>
@@ -181,116 +192,130 @@ export default function ReportPage() {
         <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 shadow-[0_0_70px_rgba(216,183,120,0.08)]">
           <div className="mb-14 text-center">
             <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-              Founding Access
+              Launch Offer
             </p>
 
             <h2 className="mt-5 text-4xl font-bold leading-tight md:text-6xl">
-              Become one of the first
-              <br />
-              ArcheLoop members.
+              Choose your next step.
             </h2>
 
             <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-              Help shape the future of ArcheLoop while receiving your full
-              premium report, early feature access, and priority invitations to
-              future releases.
+              Start with your full ArcheLoop Report™, or choose the bundle if
+              you want your report plus your first month of ArcheLoop
+              Integration™.
             </p>
           </div>
 
-          <div className="mb-14 grid gap-8 lg:grid-cols-2">
+          <div className="grid gap-8 lg:grid-cols-2">
             <div className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-8">
               <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
-                What You Receive
+                Personal Report
               </p>
 
-              <div className="mt-6 space-y-4 text-stone-300">
-                {[
-                  "Full Premium ArcheLoop Report",
-                  "Loop Landscape Analysis",
-                  "Archetype Score Map",
-                  "Nervous System Pattern Mapping",
-                  "Relational Activators",
-                  "Body Map Interpretation",
-                  "Integration Blueprint",
-                  "Personalised Loop Breakers",
-                  "Early Access To Future Features",
-                  "Priority Access To I Am Triggered™",
-                ].map((item) => (
+              <h3 className="mt-5 text-3xl font-bold text-yellow-300">
+                ArcheLoop Report™
+              </h3>
+
+              <p className="mt-5 text-lg text-stone-500 line-through">£29</p>
+
+              <p className="text-3xl font-semibold text-yellow-300">
+                £19 Launch Offer
+              </p>
+
+              <p className="mt-5 leading-relaxed text-stone-300">
+                Your personalised report showing your primary and secondary
+                Shadow Loops™, nervous system pattern, relationship dynamics,
+                body activation map, and integration guidance.
+              </p>
+
+              <div className="mt-7 space-y-4 text-stone-300">
+                {reportIncludes.map((item) => (
                   <p key={item}>✓ {item}</p>
                 ))}
               </div>
+
+              <a
+                href="/checkout?product=report"
+                className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              >
+                Get Full Report
+              </a>
             </div>
 
             <div className="rounded-[2rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8 shadow-[0_0_50px_rgba(216,183,120,0.08)]">
               <p className="text-sm uppercase tracking-[0.25em] text-yellow-300">
-                Founding Member Opportunity
+                Most Complete Experience
               </p>
 
-              <h3 className="mt-6 text-3xl font-bold">
-                Help build ArcheLoop.
+              <h3 className="mt-5 text-3xl font-bold text-yellow-300">
+                Report + First Month Integration™
               </h3>
 
+              <p className="mt-5 text-lg text-stone-500 line-through">£58</p>
+
+              <p className="text-3xl font-semibold text-yellow-300">
+                £29 Launch Offer
+              </p>
+
               <p className="mt-5 leading-relaxed text-stone-300">
-                Founding Members help improve the assessment through real-world
-                feedback while gaining access to the most advanced version of
-                the ArcheLoop system before public launch.
+                Everything in the ArcheLoop Report™, plus your first month of
+                ArcheLoop Integration™ to help you recognise patterns, track
+                activations, and build lasting change.
               </p>
 
               <div className="mt-7 space-y-4 text-stone-300">
-                <p>✓ Early member access</p>
-                <p>✓ Priority feature invitations</p>
-                <p>✓ Future Triggered Tracker access</p>
-                <p>✓ Opportunity to shape the platform</p>
+                {bundleIncludes.map((item) => (
+                  <p key={item}>✓ {item}</p>
+                ))}
               </div>
+
+              <a
+                href="/checkout?product=bundle"
+                className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              >
+                Choose Bundle
+              </a>
             </div>
           </div>
 
-          <div className="text-center">
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="/assessment"
-                className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-              >
-                Find My Loop
-              </a>
-
-              <a
-                href="/founding-access"
-                className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
-              >
-                Request Founding Access
-              </a>
-            </div>
-
-            <p className="mx-auto mt-10 max-w-3xl text-sm text-stone-500">
-              ArcheLoop reports are educational self-development tools and are
-              not medical, psychiatric, therapeutic, or diagnostic services.
-            </p>
-          </div>
+          <p className="mx-auto mt-10 max-w-3xl text-center text-sm text-stone-500">
+            ArcheLoop reports are educational self-development tools and are not
+            medical, psychiatric, therapeutic, or diagnostic services.
+          </p>
         </div>
       </section>
 
       <section className="px-6 py-24">
         <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/10 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-            Coming Soon
+            Continue The Work
           </p>
 
           <h2 className="mt-5 text-4xl font-bold md:text-6xl">
-            I Am Triggered™
+            ArcheLoop Integration™
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Track which shadow loops activate throughout the week. Discover
-            recurring triggers, emotional patterns, relational activators, and
-            integration progress over time.
+            After your report, Integration helps you track real-life
+            activations, recognise recurring triggers, follow your Integration
+            Journey™, and build your Integrated Self™ over time.
           </p>
 
-          <p className="mt-8 text-stone-500">
-            The assessment reveals your architecture.
-            <br />
-            Triggered reveals what is happening right now.
-          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <a
+              href="/integration"
+              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+            >
+              Explore Integration
+            </a>
+
+            <a
+              href="/triggered"
+              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+            >
+              Try I Am Triggered™
+            </a>
+          </div>
         </div>
       </section>
 
