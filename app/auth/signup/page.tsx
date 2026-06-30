@@ -1,12 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { supabaseClient } from "../../../lib/supabaseClient";
 
 export default function SignupPage() {
+  return (
+    <Suspense fallback={null}>
+      <SignupContent />
+    </Suspense>
+  );
+}
+
+function SignupContent() {
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirectTo") || "/account";
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -21,7 +33,7 @@ export default function SignupPage() {
       email,
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}/account`,
+        emailRedirectTo: `${window.location.origin}${redirectTo}`,
       },
     });
 
@@ -85,7 +97,10 @@ export default function SignupPage() {
 
           <p className="mt-6 text-sm text-stone-400">
             Already have an account?{" "}
-            <Link href="/auth/login" className="text-yellow-300">
+            <Link
+              href={`/auth/login?redirectTo=${encodeURIComponent(redirectTo)}`}
+              className="text-yellow-300"
+            >
               Log in
             </Link>
           </p>

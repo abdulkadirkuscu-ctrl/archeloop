@@ -36,7 +36,7 @@ export default async function AccountPage() {
       .from("archeloop_orders")
       .select("product, status")
       .eq("user_id", user.id)
-      .in("status", ["paid", "founding_access"]);
+      .in("status", ["paid", "private_access", "founding_access"]);
 
     hasReportAccess =
       orders?.some(
@@ -95,117 +95,120 @@ export default async function AccountPage() {
 
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-7xl space-y-8">
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-7">
-              <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-                My Report™
-              </p>
+         <div className="grid gap-6 lg:grid-cols-3">
+  <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-7">
+    <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+      My Report™
+    </p>
 
-              {reportSummary && (
-                <div className="mt-5 grid gap-3 text-sm text-stone-300">
-                  <InfoCard label="Primary Loop" value={reportSummary.primaryLoop} />
-                  <InfoCard label="Archetype" value={reportSummary.archetype} />
-                  <InfoCard label="Current Journey" value={reportSummary.journey} />
-                  <InfoCard
-                    label="Integrated State"
-                    value={reportSummary.integratedState}
-                  />
-                </div>
-              )}
+    {hasReportAccess && reportSummary && (
+      <div className="mt-5 grid gap-3 text-sm text-stone-300">
+        <InfoCard label="Primary Loop" value={reportSummary.primaryLoop} />
+        <InfoCard label="Archetype" value={reportSummary.archetype} />
+        <InfoCard label="Current Journey" value={reportSummary.journey} />
+        <InfoCard label="Integrated State" value={reportSummary.integratedState} />
+      </div>
+    )}
 
-              <h2 className="mt-4 text-3xl font-bold text-yellow-300">
-                Your ArcheLoop Report™
-              </h2>
+    <h2 className="mt-4 text-3xl font-bold text-yellow-300">
+      ArcheLoop Report™
+    </h2>
 
-              <p className="mt-4 leading-relaxed text-stone-300">
-                Your report reveals your Shadow Loop™, archetype, nervous system
-                pattern, Integrated Self™, and recommended Integration Journey™.
-              </p>
+    <p className="mt-4 leading-relaxed text-stone-300">
+      Your report reveals your Shadow Loop™, archetype, nervous system pattern,
+      Integrated Self™, and recommended Integration Journey™.
+    </p>
 
-              <StatusBox
-                label="Status"
-                value={hasReportAccess ? "Report Access Active" : "Report Not Active"}
-              />
+    <StatusBox
+      label="Status"
+      value={hasReportAccess ? "Report Access Active" : "Report Not Active"}
+    />
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                {latestReportId && (
-                  <Link
-                    href={`/report/${latestReportId}`}
-                    className="inline-flex rounded-full bg-yellow-300 px-6 py-3 font-semibold text-black transition hover:bg-yellow-200"
-                  >
-                    Open My Report™
-                  </Link>
-                )}
+    <div className="mt-6 flex flex-wrap gap-3">
+      {hasReportAccess && latestReportId && (
+        <Link
+          href={`/report/${latestReportId}`}
+          className="inline-flex rounded-full bg-yellow-300 px-6 py-3 font-semibold text-black transition hover:bg-yellow-200"
+        >
+          Open My Report™
+        </Link>
+      )}
 
-                <Link
-                  href="/assessment"
-                  className="inline-flex rounded-full border border-yellow-300/20 bg-black/30 px-6 py-3 font-semibold text-yellow-200 transition hover:border-yellow-300/60"
-                >
-                  {latestReportId ? "Retake Find My Loop™" : "Start Find My Loop™"}
-                </Link>
-              </div>
-            </div>
+      {!hasReportAccess && (
+        <Link
+          href="/assessment"
+          className="inline-flex rounded-full bg-yellow-300 px-6 py-3 font-semibold text-black transition hover:bg-yellow-200"
+        >
+          Start Find My Loop™
+        </Link>
+      )}
 
-            <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-7">
-              <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
-                Current Journey™
-              </p>
+      {hasReportAccess && (
+        <Link
+          href="/assessment"
+          className="inline-flex rounded-full border border-yellow-300/20 bg-black/30 px-6 py-3 font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+        >
+          Retake Find My Loop™
+        </Link>
+      )}
+    </div>
+  </div>
 
-              <h2 className="mt-4 text-3xl font-bold text-yellow-300">
-                Integration Journey™
-              </h2>
+  <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-7">
+    <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+      Integration Journey™
+    </p>
 
-              <p className="mt-4 leading-relaxed text-stone-300">
-                Your current pathway helps you move from Shadow Loop™ activation
-                toward your Integrated Self™ through awareness, interruption,
-                and embodiment.
-              </p>
+    <h2 className="mt-4 text-3xl font-bold text-yellow-300">
+      {hasIntegrationAccess ? "Continue Integration™" : "Integration Not Active"}
+    </h2>
 
-              <StatusBox
-                label="Recommended Flow"
-                value="Report → Integration Hub → Journey"
-              />
+    <p className="mt-4 leading-relaxed text-stone-300">
+      ArcheLoop Integration™ helps you practise beyond the loop through
+      Triggered Pro™, Progress Dashboard™, Monthly Review™, and Integration
+      Journeys™.
+    </p>
 
-              <Link
-                href={
-                  hasIntegrationAccess
-                    ? "/integration-home"
-                    : "/checkout?product=integration"
-                }
-                className="mt-6 inline-flex rounded-full bg-yellow-300 px-6 py-3 font-semibold text-black transition hover:bg-yellow-200"
-              >
-                {hasIntegrationAccess ? "Continue Journey™" : "Start Integration™"}
-              </Link>
-            </div>
+    <StatusBox
+      label="Status"
+      value={hasIntegrationAccess ? "Integration Access Active" : "Requires Integration Access"}
+    />
 
-            <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-7">
-              <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
-                My Integrated Vision™
-              </p>
+    <Link
+      href={hasIntegrationAccess ? "/integration-home" : "/checkout?product=integration"}
+      className="mt-6 inline-flex rounded-full bg-yellow-300 px-6 py-3 font-semibold text-black transition hover:bg-yellow-200"
+    >
+      {hasIntegrationAccess ? "Open Integration Hub™" : "Start Integration™"}
+    </Link>
+  </div>
 
-              <h2 className="mt-4 text-3xl font-bold text-yellow-300">
-                Your Future Self Statement
-              </h2>
+  <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-7">
+    <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+      My Integrated Vision™
+    </p>
 
-              <p className="mt-4 leading-relaxed text-stone-300">
-                Write and return to the vision of how your Integrated Self™
-                thinks, responds, chooses, relates, and acts in real life.
-              </p>
+    <h2 className="mt-4 text-3xl font-bold text-yellow-300">
+      {hasIntegrationAccess ? "Your Future Self Statement" : "Available With Integration™"}
+    </h2>
 
-              <StatusBox label="Available Inside" value="Full Integration Journey™" />
+    <p className="mt-4 leading-relaxed text-stone-300">
+      Write and return to the vision of how your Integrated Self™ thinks,
+      responds, chooses, relates, and acts in real life.
+    </p>
 
-              <Link
-                href={
-                  hasIntegrationAccess
-                    ? "/integration"
-                    : "/checkout?product=integration"
-                }
-                className="mt-6 inline-flex rounded-full border border-yellow-300/20 bg-black/30 px-6 py-3 font-semibold text-yellow-200 transition hover:border-yellow-300/60"
-              >
-                {hasIntegrationAccess ? "Open Journeys™" : "Start Integration™"}
-              </Link>
-            </div>
-          </div>
+    <StatusBox
+      label="Available Inside"
+      value="Full Integration Journey™"
+    />
+
+    <Link
+      href={hasIntegrationAccess ? "/integration" : "/checkout?product=integration"}
+      className="mt-6 inline-flex rounded-full border border-yellow-300/20 bg-black/30 px-6 py-3 font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+    >
+      {hasIntegrationAccess ? "Open Journeys™" : "Start Integration™"}
+    </Link>
+  </div>
+</div>
 
           <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8">
             <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
@@ -216,13 +219,26 @@ export default async function AccountPage() {
               Continue where you are.
             </h2>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-5">
-              <QuickAction href="/assessment" label="Find My Loop™" />
-              <QuickAction href="/integration-home" label="Integration Hub™" />
-              <QuickAction href="/triggered-intelligence" label="Triggered Pro™" />
-              <QuickAction href="/progress-dashboard" label="Progress Dashboard™" />
-              <QuickAction href="/monthly-review" label="Monthly Review™" />
-            </div>
+           <div className="mt-8 grid gap-4 md:grid-cols-5">
+  <QuickAction href="/assessment" label="Find My Loop™" />
+
+  {hasReportAccess && latestReportId && (
+    <QuickAction href={`/report/${latestReportId}`} label="My Report™" />
+  )}
+
+  {hasIntegrationAccess && (
+    <>
+      <QuickAction href="/integration-home" label="Integration Hub™" />
+      <QuickAction href="/triggered-intelligence" label="Triggered Pro™" />
+      <QuickAction href="/progress-dashboard" label="Progress Dashboard™" />
+      <QuickAction href="/monthly-review" label="Monthly Review™" />
+    </>
+  )}
+
+  {!hasIntegrationAccess && (
+    <QuickAction href="/checkout?product=integration" label="Start Integration™" />
+  )}
+</div>
           </div>
 
           <div className="rounded-[2rem] border border-yellow-300/20 bg-[#0B1018] p-8 text-center">
@@ -275,7 +291,7 @@ export default async function AccountPage() {
                   href="/checkout?product=bundle"
                   className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 font-semibold text-yellow-200 transition hover:border-yellow-300/60"
                 >
-                  Choose Bundle
+                  Choose Report + Integration™
                 </Link>
               )}
             </div>

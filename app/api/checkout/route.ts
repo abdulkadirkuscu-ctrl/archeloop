@@ -5,7 +5,7 @@ import { createSupabaseServerClient } from "../../../lib/supabaseServerClient";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-const FOUNDING_CODES = ["FOUNDING50", "FOUNDINGFREE"];
+const PRIVATE_ACCESS_CODES = ["FOUNDING50"];
 
 const products = {
   report: {
@@ -42,38 +42,38 @@ export async function POST(req: Request) {
 
     let user = null;
 
-if (body.accessToken) {
-  const {
-    data: { user: tokenUser },
-  } = await supabaseServer.auth.getUser(body.accessToken);
+    if (body.accessToken) {
+      const {
+        data: { user: tokenUser },
+      } = await supabaseServer.auth.getUser(body.accessToken);
 
-  user = tokenUser;
-}
+      user = tokenUser;
+    }
 
-if (!user) {
-  const supabaseAuth = await createSupabaseServerClient();
+    if (!user) {
+      const supabaseAuth = await createSupabaseServerClient();
 
-  const {
-    data: { user: cookieUser },
-  } = await supabaseAuth.auth.getUser();
+      const {
+        data: { user: cookieUser },
+      } = await supabaseAuth.auth.getUser();
 
-  user = cookieUser;
-}
+      user = cookieUser;
+    }
 
-if (!user) {
+    if (!user) {
       return NextResponse.json(
         { error: "Please log in before checkout." },
         { status: 401 }
       );
     }
 
-    if (FOUNDING_CODES.includes(accessCode)) {
+    if (PRIVATE_ACCESS_CODES.includes(accessCode)) {
       const { error } = await supabaseServer.from("archeloop_orders").insert({
         product,
         email: user.email || email,
         access_code: accessCode,
         amount_due: 0,
-        status: "founding_access",
+        status: "private_access",
         user_id: user.id,
       });
 
@@ -84,7 +84,7 @@ if (!user) {
       return NextResponse.json({
         success: true,
         product,
-        foundingAccess: true,
+        privateAccess: true,
       });
     }
 

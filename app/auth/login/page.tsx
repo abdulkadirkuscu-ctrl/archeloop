@@ -1,14 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { supabaseClient } from "../../../lib/supabaseClient";
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginContent />
+    </Suspense>
+  );
+}
+
+function LoginContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirectTo") || "/account";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +41,7 @@ export default function LoginPage() {
       return;
     }
 
-    router.push("/account");
+    router.push(redirectTo);
     router.refresh();
   }
 
@@ -85,7 +95,10 @@ export default function LoginPage() {
           <div className="mt-6 space-y-2 text-sm text-stone-400">
             <p>
               New to ArcheLoop?{" "}
-              <Link href="/auth/signup" className="text-yellow-300">
+              <Link
+                href={`/auth/signup?redirectTo=${encodeURIComponent(redirectTo)}`}
+                className="text-yellow-300"
+              >
                 Create an account
               </Link>
             </p>

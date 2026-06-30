@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { supabaseClient } from "../../lib/supabaseClient";
@@ -65,6 +65,21 @@ export default function CheckoutPage() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [completedProduct, setCompletedProduct] = useState("");
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+const [checkingSession, setCheckingSession] = useState(true);
+
+useEffect(() => {
+  async function checkSession() {
+    const {
+      data: { session },
+    } = await supabaseClient.auth.getSession();
+
+    setIsLoggedIn(Boolean(session?.access_token));
+    setCheckingSession(false);
+  }
+
+  checkSession();
+}, []);
 
   const selected = products.find((item) => item.id === selectedProduct);
 
@@ -256,40 +271,69 @@ export default function CheckoutPage() {
           </h2>
 
           <p className="mt-2 text-stone-400">
-            Enter your email and continue securely. If you have a promo code,
-            you can enter it below.
+            Create or log in to your account first so your report, Integration access, trigger history, and progress can be saved.
           </p>
+{!checkingSession && !isLoggedIn && (
+  <div className="mt-6 rounded-[2rem] border border-yellow-300/20 bg-yellow-300/10 p-5">
+    <p className="font-semibold text-yellow-300">
+      Account required before checkout
+    </p>
 
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email optional"
-            className="mt-6 w-full rounded-2xl border border-yellow-300/10 bg-[#030712] p-4 text-stone-100 placeholder:text-stone-600 focus:border-yellow-300 focus:outline-none"
-          />
+    <p className="mt-3 text-sm leading-relaxed text-stone-300">
+      ArcheLoop access is saved to your account, so please create an account or log in before continuing.
+    </p>
 
-          <input
-            type="text"
-            value={accessCode}
-            onChange={(e) => setAccessCode(e.target.value)}
-            placeholder="Promo code optional"
-            className="mt-4 w-full rounded-2xl border border-yellow-300/10 bg-[#030712] p-4 text-stone-100 placeholder:text-stone-600 focus:border-yellow-300 focus:outline-none"
-          />
+    <div className="mt-5 flex flex-wrap justify-center gap-3">
+      <a
+       href="/auth/signup?redirectTo=/checkout"
+        className="rounded-full bg-yellow-300 px-6 py-3 font-semibold text-black transition hover:bg-yellow-200"
+      >
+        Create Account
+      </a>
 
-          <button
-            type="button"
-            onClick={completeCheckout}
-            disabled={loading}
-            className="mt-6 w-full rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200 disabled:opacity-50"
-          >
-            {loading ? "Completing..." : "Complete Checkout"}
-          </button>
+      <a
+        href="/auth/login?redirectTo=/checkout"
+        className="rounded-full border border-yellow-300/20 bg-black/30 px-6 py-3 font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+      >
+        Log In
+      </a>
+    </div>
+  </div>
+)}
 
-          <p className="mt-5 text-xs leading-relaxed text-stone-500">
-            Launch pricing is available for a limited time. Promo codes may be
-            offered to selected early members, partners, or invited users.
-          </p>
-        </div>
+{!checkingSession && isLoggedIn && (
+  <>
+    <input
+      type="email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      placeholder="Email optional"
+      className="mt-6 w-full rounded-2xl border border-yellow-300/10 bg-[#030712] p-4 text-stone-100 placeholder:text-stone-600 focus:border-yellow-300 focus:outline-none"
+    />
+
+    <input
+      type="text"
+      value={accessCode}
+      onChange={(e) => setAccessCode(e.target.value)}
+      placeholder="Promo code optional"
+      className="mt-4 w-full rounded-2xl border border-yellow-300/10 bg-[#030712] p-4 text-stone-100 placeholder:text-stone-600 focus:border-yellow-300 focus:outline-none"
+    />
+
+    <button
+      type="button"
+      onClick={completeCheckout}
+      disabled={loading}
+      className="mt-6 w-full rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200 disabled:opacity-50"
+    >
+      {loading ? "Completing..." : "Complete Checkout"}
+    </button>
+
+    <p className="mt-5 text-xs leading-relaxed text-stone-500">
+      Payments are processed securely. If you have a private access code, you can enter it above.
+    </p>
+  </>
+)}
+ </div>
       </section>
 
       <Footer />
