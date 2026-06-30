@@ -81,7 +81,7 @@ export const loopDetails = {
     ],
 
     loopBreaker:
-      "Name one feeling gently without needing to fix it. Let the body register a small amount of emotion safely.",
+      "Name one feeling without trying to fix it. Let yourself experience it safely for a moment.",
 
     integrationKey:
       "Safe emotional contact restores connection to feeling and intimacy. Healthy Water returns through emotional safety, not emotional force.",
@@ -167,7 +167,7 @@ export const loopDetails = {
     ],
 
     loopBreaker:
-      "Begin with one small sentence or expression. Reduce pressure and allow expression to return gradually.",
+  "Begin with one small sentence or expression. Reduce the pressure and allow your voice to return gradually.",
 
     integrationKey:
       "Healthy Magician restores trusted perception, fluid expression, and communication without excessive pressure.",
@@ -255,7 +255,7 @@ export const loopDetails = {
     ],
 
     loopBreaker:
-      "Ask what is actually happening and what story is being added. Name one emotion directly instead of analysing it.",
+      "Ask yourself: \"What actually happened?\" Then separate facts from the story your mind is creating.",
 
     integrationKey:
       "Healthy Lover restores emotional honesty, allowing perception to become clear without excessive interpretation.",
@@ -342,6 +342,7 @@ export const loopDetails = {
 
     loopBreaker:
       "Practise one small act of visibility today. Share an idea, take up space, or name one strength without apologising.",
+
 
     integrationKey:
       "Healthy Sovereign restores safe visibility, self-trust, and authentic expression.",
@@ -432,7 +433,7 @@ export const loopDetails = {
     ],
 
     loopBreaker:
-      "Return to intrinsic worth. Name one value you hold even when nobody is watching.",
+      "Return to your intrinsic worth. Name one quality you value in yourself that does not depend on achievement or approval.",
 
     integrationKey:
       "Healthy Lover restores authentic emotional connection, softening the need to perform for worth.",
@@ -522,7 +523,7 @@ export const loopDetails = {
     ],
 
     loopBreaker:
-      "Choose one small visible action. Do not wait for full confidence before beginning.",
+      "Choose one small visible action. Do not wait for confidence before beginning.",
 
     integrationKey:
       "Healthy Warrior restores grounded action. Healthy Fire strengthens through embodied movement, not endless preparation.",
@@ -612,7 +613,7 @@ export const loopDetails = {
     ],
 
     loopBreaker:
-      "Ground the fantasy into one real action. Ask: What is true here, and what am I imagining?",
+       "Ask yourself: \"What is true right now?\" Bring one imagined possibility back into present reality.",
 
     integrationKey:
       "Healthy Warrior restores grounded embodiment, reconnecting fantasy to what is real, present, and emotionally available.",
@@ -702,7 +703,7 @@ export const loopDetails = {
     ],
 
     loopBreaker:
-      "Slow the emotional wave. Breathe, name the feeling, and take one grounding action before responding.",
+       "Slow your breathing, name the emotion, and allow your body to settle before responding.",
 
     integrationKey:
       "Healthy Warrior restores grounded structure and nervous system regulation, creating containment without suppressing emotional truth.",
@@ -792,7 +793,7 @@ export const loopDetails = {
     ],
 
     loopBreaker:
-      "Practise one small boundary today. Say one honest no, pause before agreeing, or name one need clearly.",
+       "Practise one small boundary today. Pause before saying yes and ask yourself what you need first.",
 
     integrationKey:
       "Healthy Warrior restores boundaries and grounded action, protecting connection without abandoning the self.",
@@ -882,7 +883,7 @@ export const loopDetails = {
     ],
 
     loopBreaker:
-      "Soften one protective wall safely. Let someone support you in one small, low-risk way.",
+       "Let one trusted person support you in one small way today. Strength grows through safe connection as well as protection.",
 
     integrationKey:
       "Healthy Lover restores safe emotional connection, softening defensive isolation without removing boundaries or protection.",
@@ -972,7 +973,7 @@ export const loopDetails = {
     ],
 
     loopBreaker:
-      "Choose one act of restoration. Delegate, rest, ask for help, or remove one unnecessary burden.",
+       "Choose one act of restoration today. Rest, delegate, nourish yourself, or remove one unnecessary burden.",
 
     integrationKey:
       "Healthy Lover restores nourishment, emotional reconnection, and vitality without removing grounded structure.",
@@ -1060,7 +1061,7 @@ export const loopDetails = {
     ],
 
     loopBreaker:
-      "Choose one small next action. Let clarity come through movement, not endless analysis.",
+      "Choose one next step and let action create clarity instead of waiting for certainty.",
 
     integrationKey:
       "Healthy Warrior restores grounded action, helping thought become useful without becoming a trap.",
@@ -1071,4 +1072,4 @@ export const loopDetails = {
       blankPage: "I cannot access my voice under pressure.",
     },
   },
-}
+} as const;

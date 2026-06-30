@@ -177,39 +177,39 @@ const [embodimentLevel, setEmbodimentLevel] = useState("");
               />
             </CardStep>
 
-            <CardStep number="3" title="How did you respond?">
-              <ChoiceGrid
-                items={responseStyles}
-                selected={responseStyle}
-                onSelect={setResponseStyle}
-              />
-            </CardStep>
+            <CardStep number="3" title="What happened?">
+  <ChoiceGrid
+    items={triggerCategories}
+    selected={triggerCategory}
+    onSelect={handleTriggerCategoryChange}
+  />
 
-           <CardStep number="4" title="What happened?">
-              <ChoiceGrid
-                items={triggerCategories}
-                selected={triggerCategory}
-                onSelect={handleTriggerCategoryChange}
-              />
+  <div className="mt-6">
+    <label className="text-sm uppercase tracking-[0.2em] text-yellow-300/60">
+      What specifically happened?
+    </label>
 
-              <div className="mt-6">
-                <label className="text-sm uppercase tracking-[0.2em] text-yellow-300/60">
-                  Specific trigger
-                </label>
+    <select
+      value={trigger}
+      onChange={(event) => setTrigger(event.target.value)}
+      className="mt-3 w-full rounded-2xl border border-yellow-300/10 bg-black/40 px-4 py-4 text-stone-100 outline-none transition focus:border-yellow-300/50"
+    >
+      {triggers[triggerCategory as keyof typeof triggers].map((item) => (
+        <option key={item} value={item}>
+          {item}
+        </option>
+      ))}
+    </select>
+  </div>
+</CardStep>
 
-                <select
-                  value={trigger}
-                  onChange={(event) => setTrigger(event.target.value)}
-                  className="mt-3 w-full rounded-2xl border border-yellow-300/10 bg-black/40 px-4 py-4 text-stone-100 outline-none transition focus:border-yellow-300/50"
-                >
-                  {triggers[triggerCategory as keyof typeof triggers].map((item) => (
-                    <option key={item} value={item}>
-                      {item}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </CardStep>
+<CardStep number="4" title="How did you respond?">
+  <ChoiceGrid
+    items={responseStyles}
+    selected={responseStyle}
+    onSelect={setResponseStyle}
+  />
+</CardStep>
 
             <CardStep number="5" title="Who was involved?">
               <select

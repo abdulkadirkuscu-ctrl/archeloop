@@ -425,18 +425,18 @@ if (!lowestIntegratedArchetype) {
 
 <div className="border border-yellow-300/25 rounded-[2rem] bg-yellow-300/10 p-6 mb-10">
   <p className="text-yellow-300 font-semibold mb-2">
-    Save Your Report
+    Your report has been saved.
   </p>
 
   <p className="text-gray-300 leading-relaxed">
-    This report is generated from your assessment link. Bookmark this page or save it as a PDF from your browser if you want to return to it later.
+    You can return to this report from My Account whenever you log in. You can also save it as a PDF from your browser if you'd like an offline copy.
   </p>
 </div>
 
-         <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
-  {primaryLoop.title}
+<h1 className="text-5xl md:text-7xl font-bold leading-tight mb-8">
+  Your ArcheLoop Report™
   <br />
-  Pattern Report
+  <span className="text-yellow-300">{primaryLoop.title}</span>
 </h1>
 
           <p className="text-xl text-gray-300 leading-relaxed max-w-3xl">
@@ -459,7 +459,7 @@ if (!lowestIntegratedArchetype) {
 
   <div className="border border-zinc-800 rounded-2xl p-5 bg-black/40">
     <p className="text-gray-500 uppercase tracking-[0.25em] text-xs mb-2">
-      Pattern Formation
+      Response Style™
     </p>
     <p className="text-xl font-semibold">{primaryLoop.mechanism === "Suppression"
   ? "Collapsed"
@@ -500,6 +500,22 @@ if (!lowestIntegratedArchetype) {
         detail="The healthier expression this loop is guiding you toward."
       />
     </div>
+  </div>
+</section>
+
+<section className="px-6 py-20 border-b border-zinc-800 bg-black">
+  <div className="max-w-5xl mx-auto rounded-[2rem] border border-yellow-300/20 bg-yellow-300/10 p-8 text-center">
+    <p className="uppercase tracking-[0.3em] text-yellow-300/70 text-sm mb-5">
+      Remember
+    </p>
+
+    <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      Your Shadow Loop™ is not your identity.
+    </h2>
+
+    <p className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-300">
+      It is a protective pattern your mind and nervous system developed in an attempt to keep you safe. Protective patterns can be understood. What can be understood can be interrupted. What can be interrupted can gradually be integrated.
+    </p>
   </div>
 </section>
 
@@ -612,7 +628,7 @@ if (!lowestIntegratedArchetype) {
 
               <div className="border border-zinc-800 rounded-2xl p-5 bg-black/40">
                 <p className="text-gray-500 uppercase tracking-[0.25em] text-xs mb-2">
-                  Pattern Formation
+                  Response Style™
                 </p>
                 <p className="text-2xl font-semibold">{primaryLoop.mechanism === "Suppression"
   ? "Collapsed"
@@ -646,9 +662,9 @@ if (!lowestIntegratedArchetype) {
       Why This Loop Appeared
     </p>
 
-    <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
-      Understanding the result.
-    </h2>
+   <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
+  Why this became your primary Shadow Loop™
+</h2>
 
     <div className="border border-zinc-800 rounded-[2rem] p-10 bg-zinc-950">
 <p className="text-lg leading-8 text-gray-300">
@@ -1225,17 +1241,12 @@ if (!lowestIntegratedArchetype) {
     </p>
 
     <h2 className="text-4xl md:text-6xl font-bold mb-8">
-      Understanding creates awareness.
-      <br />
-      Integration creates transformation.
-    </h2>
+  Understand • Interrupt • Integrate
+</h2>
 
-    <p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-300 mb-12">
-      Your ArcheLoop Report™ has shown you the structure beneath your Shadow
-      Loop™. ArcheLoop Integration™ helps you notice the pattern in real life,
-      follow your Integration Journey™, and practise becoming your Integrated
-      Self™.
-    </p>
+<p className="mx-auto max-w-3xl text-xl leading-relaxed text-gray-300 mb-12">
+  Your ArcheLoop Report™ has helped bring the unconscious pattern into conscious awareness. ArcheLoop Integration™ helps you notice the pattern in real life, follow your Integration Journey™, and practise becoming your Integrated Self™ through repeated awareness and new choices.
+</p>
 
     <div className="grid gap-6 md:grid-cols-3 text-left mb-12">
       <div className="rounded-[2rem] border border-yellow-300/10 bg-black/40 p-6">

@@ -270,7 +270,7 @@ export default async function IntegrationJourneyPage({ params }: Props) {
                     href="/triggered-intelligence"
                     className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
                   >
-                    Log Activation In Triggered Pro™
+                    Log Trigger In Triggered Pro™
                   </Link>
 
                   <Link
@@ -281,10 +281,10 @@ export default async function IntegrationJourneyPage({ params }: Props) {
                   </Link>
 
                   <Link
-                    href="/integration-home"
+                    href="/integration"
                     className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
                   >
-                    Back To Integration Hub™
+                    Back to Integration™
                   </Link>
                 </div>
               </div>
@@ -340,7 +340,7 @@ export default async function IntegrationJourneyPage({ params }: Props) {
                 </p>
 
                 <p className="mt-3 text-sm leading-relaxed text-stone-400">
-                  Launch Price. Includes full Integration Journeys™, Triggered
+                  Launch price. Includes full Integration Journeys™, Triggered
                   Pro™, Progress Dashboard™, My Integrated Vision™, and personal
                   integration tracking.
                 </p>
@@ -369,7 +369,7 @@ export default async function IntegrationJourneyPage({ params }: Props) {
                   href="/integration"
                   className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
                 >
-                  Back To Integration Preview
+                  Back to Integration Preview
                 </Link>
               </div>
             </div>

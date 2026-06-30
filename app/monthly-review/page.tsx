@@ -269,7 +269,7 @@ export default async function MonthlyReviewPage() {
                 href="/triggered-intelligence"
                 className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 font-semibold text-black transition hover:bg-yellow-200"
               >
-                Start Logging
+                Log First Activation
               </Link>
             </div>
           ) : (
@@ -436,10 +436,7 @@ export default async function MonthlyReviewPage() {
                 </h2>
 
                 <p className="mt-4 max-w-3xl leading-relaxed text-stone-300">
-  Retaking Find My Loop™ once per month helps you reflect on whether your
-  Shadow Loop profile is shifting over time. As your assessment history grows,
-  ArcheLoop will be able to compare your original pattern with your current
-  integration progress.
+  Retaking Find My Loop™ once per month helps you reflect on whether your Shadow Loop™ profile is shifting over time. As your history grows, ArcheLoop™ can compare your original pattern with your current integration progress.
 </p>
 
                 <Link

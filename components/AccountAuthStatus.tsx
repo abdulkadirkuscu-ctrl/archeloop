@@ -60,11 +60,11 @@ export default function AccountAuthStatus() {
         </p>
 
         <h2 className="mt-4 text-3xl font-bold text-yellow-300">
-          Create an account to keep your report, triggers, progress, and monthly reviews.
+         Create an account to keep your report, trigger history, progress, and monthly reviews.
         </h2>
 
         <p className="mx-auto mt-4 max-w-3xl text-stone-300">
-          Your account lets you return from any device and continue your integration journey without losing your data.
+        Your account lets you return to your ArcheLoop Report™, saved activations, Progress Dashboard™, and Monthly Review™ from any device.
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">

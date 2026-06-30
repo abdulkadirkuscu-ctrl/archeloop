@@ -105,10 +105,6 @@ export default async function ProgressDashboardPage() {
                   Progress Dashboard™
                 </p>
 
-                <div className="mt-4 inline-flex rounded-full border border-yellow-300/20 bg-yellow-300/10 px-4 py-2 text-xs text-yellow-200">
-                  Account-Based Tracking
-                </div>
-
                 <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
                   Your ArcheLoop Patterns
                 </h1>
@@ -294,7 +290,7 @@ export default async function ProgressDashboardPage() {
                 )}
               </DashboardSection>
 
-              <DashboardSection title="Loop Influence™" subtitle="Are your dominant Shadow Loops becoming less influential?">
+             <DashboardSection title="Loop Trend™" subtitle="How have your dominant Shadow Loops changed over time?">
                 <div className="mt-8 space-y-4">
                   {stats.loopTrend.length === 0 ? (
                     <p className="text-stone-400">Not enough trend data yet.</p>
@@ -369,7 +365,7 @@ export default async function ProgressDashboardPage() {
 
                       {activation.loopBreakLevel && (
                         <p className="mt-3 text-sm text-yellow-200">
-                          Loop Break Level: {activation.loopBreakLevel}
+                          Integration Check-In™: {activation.loopBreakLevel}
                         </p>
                       )}
                     </div>

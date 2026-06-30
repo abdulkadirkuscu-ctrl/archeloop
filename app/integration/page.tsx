@@ -60,7 +60,7 @@ const features = [
 const transformationSteps = [
   {
     title: "Notice the loop in real life",
-    text: "Use Triggered Pro™ to log real-life activations and identify which Shadow Loops™ are repeating most often.",
+    text: "Use Triggered Pro™ to log real-life triggers and identify which Shadow Loops™ are repeating most often.",
   },
   {
     title: "Understand the pattern over time",
@@ -94,7 +94,7 @@ export default function IntegrationPage() {
 
           <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
             ArcheLoop Integration™ is the monthly transformation system that
-            helps you track real-life activations, follow your Integration
+            helps you track real-life triggers, follow your Integration
             Journey™, practise new responses, and move toward your Integrated
             Self™.
           </p>
@@ -279,7 +279,7 @@ export default function IntegrationPage() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Start Integration™ by logging your first activation in Triggered
+            Start Integration™ by logging your first trigger in Triggered
             Pro™, then use your Progress Dashboard™ and Integration Journey™ to
             track the path toward your Integrated Self™.
           </p>

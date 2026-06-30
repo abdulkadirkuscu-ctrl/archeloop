@@ -48,6 +48,63 @@ export const emotionalFamilies = [
   },
 ];
 
+export const triggerCategories = [
+  {
+    id: "visibility",
+    title: "I felt judged, overlooked, criticised, or not taken seriously.",
+    value: "visibility",
+    description: "Visibility Trigger",
+  },
+  {
+    id: "uncertainty",
+    title: "I felt confused, uncertain, or mentally overwhelmed.",
+    value: "uncertainty",
+    description: "Uncertainty Trigger",
+  },
+  {
+    id: "connection",
+    title: "I felt rejected, disconnected, or emotionally hurt.",
+    value: "connection",
+    description: "Connection Trigger",
+  },
+  {
+    id: "protection",
+    title: "I felt I needed to protect myself or defend my boundaries.",
+    value: "protection",
+    description: "Protection Trigger",
+  },
+];
+
+export const triggers = {
+  visibility: [
+    "Criticism",
+    "Comparison",
+    "Being ignored",
+    "Being overlooked",
+  ],
+
+  uncertainty: [
+    "Change",
+    "Uncertainty",
+    "Decision",
+    "Unexpected situation",
+  ],
+
+  connection: [
+    "Rejection",
+    "Emotional distance",
+    "Disappointment",
+    "Feeling abandoned",
+  ],
+
+  protection: [
+    "Boundary challenge",
+    "Conflict",
+    "Responsibility",
+    "Feeling controlled",
+  ],
+};
+
 export const responseStyles = [
   {
     id: "collapse",
@@ -68,40 +125,6 @@ export const responseStyles = [
     description: "Collide",
   },
 ];
-
-export const triggerCategories = [
-  {
-    id: "visibility",
-    title: "I was criticised, compared, or put on the spot.",
-    value: "visibility",
-    description: "Visibility Trigger",
-  },
-  {
-    id: "uncertainty",
-    title: "Something felt uncertain or unpredictable.",
-    value: "uncertainty",
-    description: "Uncertainty Trigger",
-  },
-  {
-    id: "connection",
-    title: "Someone pulled away or let me down.",
-    value: "connection",
-    description: "Connection Trigger",
-  },
-  {
-    id: "protection",
-    title: "A boundary, conflict, or responsibility challenged me.",
-    value: "protection",
-    description: "Protection Trigger",
-  },
-];
-
-export const triggers = {
-  visibility: ["Criticism", "Comparison", "Visibility"],
-  uncertainty: ["Uncertainty", "Change", "Performance Pressure"],
-  connection: ["Rejection", "Disappointment", "Need for Approval"],
-  protection: ["Conflict", "Boundary Challenge", "Responsibility"],
-};
 
 export const people = [
   "Partner / Spouse",

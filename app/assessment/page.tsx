@@ -409,9 +409,9 @@ export default function AssessmentPage() {
             </h1>
 
             <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-              Your 60-question assessment has been analysed. We identified your
-              Shadow Loop™, archetypal pattern, nervous system pattern,
-              Integrated Self™, and recommended Integration Journey™.
+              Your responses have been analysed to identify your Shadow Loop™,
+archetypal pattern, nervous system pattern, Integrated Self™, and
+recommended Integration Journey™.
             </p>
           </div>
         </section>
@@ -432,10 +432,11 @@ export default function AssessmentPage() {
               </p>
 
               <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-stone-500">
-                This is a preview of your results. Your full ArcheLoop Report™
-                explains why this pattern developed, what activates it, and how
-                to begin moving toward your Integrated Self™.
-              </p>
+  This is a preview of your ArcheLoop Report™. Your full report
+  explores why this pattern developed, what activates it, how it
+  influences your relationships and nervous system, and how to move
+  toward your Integrated Self™.
+</p>
             </div>
           </section>
         )}
@@ -444,12 +445,16 @@ export default function AssessmentPage() {
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
               <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-                Choose Your Next Step
-              </p>
+  Your Assessment Is Complete
+</p>
 
-              <h2 className="mt-5 text-4xl font-bold md:text-6xl">
-                Your assessment is complete. Choose how you'd like to continue.
-              </h2>
+<h2 className="mt-5 text-4xl font-bold md:text-6xl">
+  Continue Your ArcheLoop Journey™
+</h2>
+
+<p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+  You've identified your Shadow Loop™. Now choose how you'd like to continue.
+</p>
             </div>
 
             <div className="mt-12 grid gap-8 md:grid-cols-2">
@@ -496,7 +501,7 @@ export default function AssessmentPage() {
                   href="/checkout?product=report"
                   className="mt-8 block rounded-full bg-yellow-300 px-8 py-4 text-center text-lg font-semibold text-black transition hover:bg-yellow-200"
                 >
-                  Continue To Full Report
+                  Continue to Full ArcheLoop Report™
                 </a>
               </div>
 
@@ -543,7 +548,7 @@ export default function AssessmentPage() {
                   href="/checkout?product=bundle"
                   className="mt-8 block rounded-full bg-yellow-300 px-8 py-4 text-center text-lg font-semibold text-black transition hover:bg-yellow-200"
                 >
-                  Choose Bundle
+                 Choose Report + Integration™
                 </a>
               </div>
             </div>

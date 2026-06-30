@@ -59,11 +59,10 @@ export default async function TriggerHistoryPage() {
             Trigger History™
           </p>
 
-          <h1 className="mt-5 text-5xl font-bold">Your saved activations.</h1>
+          <h1 className="mt-5 text-5xl font-bold">Your saved activations</h1>
 
           <p className="mt-5 max-w-3xl text-lg leading-relaxed text-stone-300">
-            Review the moments you logged, the Shadow Loops™ that appeared, and
-            the integration patterns you are learning to interrupt.
+           Review the moments you logged, the Shadow Loops™ that appeared, and the patterns you are learning to interrupt.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -140,7 +139,7 @@ export default async function TriggerHistoryPage() {
                     {activation.loopBreakLevel && (
                       <div className="mt-5 rounded-2xl border border-yellow-300/10 bg-yellow-300/5 p-4">
                         <p className="text-sm uppercase tracking-[0.2em] text-yellow-300/60">
-                          Loop Break Level
+                          Integration Check-In™
                         </p>
                         <p className="mt-2 text-stone-200">
                           {activation.loopBreakLevel}

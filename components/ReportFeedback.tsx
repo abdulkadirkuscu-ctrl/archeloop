@@ -58,8 +58,7 @@ export default function ReportFeedback() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-stone-300">
-            Your feedback helps refine ArcheLoop™ for founding users before
-            public launch.
+            Your feedback helps refine ArcheLoop™ and improve the report experience for early users.
           </p>
         </div>
       </section>
@@ -71,7 +70,7 @@ export default function ReportFeedback() {
       <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.08)] md:p-10">
         <div className="text-center">
           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            Founding Feedback
+            Report Feedback
           </p>
 
           <h2 className="mt-5 text-4xl font-bold text-stone-100 md:text-5xl">
@@ -80,8 +79,7 @@ export default function ReportFeedback() {
 
           <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-stone-300">
             You are one of the first people experiencing the ArcheLoop Report™.
-            Your feedback helps refine the system before paid public access
-            begins.
+Your feedback helps refine the system and improve the experience for future users.
           </p>
         </div>
 

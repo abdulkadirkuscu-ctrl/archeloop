@@ -64,12 +64,12 @@ export default function ReportPage() {
               href="/checkout?product=report"
               className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
             >
-              Get Full Report
+              Continue to Full Report
             </a>
           </div>
 
           <p className="mt-6 text-sm text-stone-500">
-            Launch Offer: £19, normally £29.
+            Launch price: £19, normally £29.
           </p>
         </div>
       </section>
@@ -219,7 +219,7 @@ export default function ReportPage() {
               <p className="mt-5 text-lg text-stone-500 line-through">£29</p>
 
               <p className="text-3xl font-semibold text-yellow-300">
-                £19 Launch Offer
+                £19 launch price
               </p>
 
               <p className="mt-5 leading-relaxed text-stone-300">
@@ -254,7 +254,7 @@ export default function ReportPage() {
               <p className="mt-5 text-lg text-stone-500 line-through">£58</p>
 
               <p className="text-3xl font-semibold text-yellow-300">
-                £29 Launch Offer
+                £29 launch price
               </p>
 
               <p className="mt-5 leading-relaxed text-stone-300">
@@ -273,7 +273,7 @@ export default function ReportPage() {
                 href="/checkout?product=bundle"
                 className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
               >
-                Choose Bundle
+                Choose Report + Integration™
               </a>
             </div>
           </div>

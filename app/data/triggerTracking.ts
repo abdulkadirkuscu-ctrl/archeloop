@@ -11,44 +11,40 @@ export type PersonCategory =
   | "Manager / Boss"
   | "Client / Customer"
   | "Relative"
-  | "Teacher / Mentor"
   | "Stranger"
   | "Myself"
-  | "Other"
 
 export type EnvironmentCategory =
   | "Work"
   | "Home"
   | "School / University"
-  | "Family Setting"
   | "Social Gathering"
+  | "Party / Celebration"
+  | "Family Event"
   | "Relationship / Dating"
   | "Online / Social Media"
   | "Phone / Text"
   | "Public Place"
   | "Travel"
   | "Alone"
-  | "Other"
 
 export type TriggerEvent =
-  | "Criticised me"
-  | "Rejected me"
-  | "Ignored me"
-  | "Pressured me"
-  | "Controlled me"
-  | "Shouted at me"
-  | "Lied to me"
-  | "Changed plans"
-  | "Compared me"
-  | "Disappointed me"
-  | "Left me out"
-  | "Asked something from me"
-  | "Needed me"
-  | "Praised me"
-  | "I had to perform"
-  | "I had to make a decision"
-  | "I felt uncertain"
-  | "Other"
+  | "Criticism"
+  | "Comparison"
+  | "Being ignored"
+  | "Being overlooked"
+  | "Change"
+  | "Uncertainty"
+  | "Decision"
+  | "Unexpected situation"
+  | "Rejection"
+  | "Emotional distance"
+  | "Disappointment"
+  | "Feeling abandoned"
+  | "Boundary challenge"
+  | "Conflict"
+  | "Responsibility"
+  | "Feeling controlled"
 
 export type BodyArea =
   | "Head / Throat"
@@ -62,10 +58,7 @@ export type EmotionalState =
   | "Hurt / Longing"
   | "Defensive / Tense"
 
-export type ResponseStyle =
-  | "Suppression"
-  | "Compensation"
-  | "Collision"
+export type ResponseStyle = "Collapse" | "Compensate" | "Collide"
 
 export type TriggerLog = {
   id: string
@@ -90,46 +83,42 @@ export const personCategories: PersonCategory[] = [
   "Manager / Boss",
   "Client / Customer",
   "Relative",
-  "Teacher / Mentor",
   "Stranger",
   "Myself",
-  "Other",
 ]
 
 export const environmentCategories: EnvironmentCategory[] = [
   "Work",
   "Home",
   "School / University",
-  "Family Setting",
   "Social Gathering",
+  "Party / Celebration",
+  "Family Event",
   "Relationship / Dating",
   "Online / Social Media",
   "Phone / Text",
   "Public Place",
   "Travel",
   "Alone",
-  "Other",
 ]
 
 export const triggerEvents: TriggerEvent[] = [
-  "Criticised me",
-  "Rejected me",
-  "Ignored me",
-  "Pressured me",
-  "Controlled me",
-  "Shouted at me",
-  "Lied to me",
-  "Changed plans",
-  "Compared me",
-  "Disappointed me",
-  "Left me out",
-  "Asked something from me",
-  "Needed me",
-  "Praised me",
-  "I had to perform",
-  "I had to make a decision",
-  "I felt uncertain",
-  "Other",
+  "Criticism",
+  "Comparison",
+  "Being ignored",
+  "Being overlooked",
+  "Change",
+  "Uncertainty",
+  "Decision",
+  "Unexpected situation",
+  "Rejection",
+  "Emotional distance",
+  "Disappointment",
+  "Feeling abandoned",
+  "Boundary challenge",
+  "Conflict",
+  "Responsibility",
+  "Feeling controlled",
 ]
 
 export function countByField<T extends keyof TriggerLog>(
@@ -166,10 +155,7 @@ export function analyseTriggerLogs(
   const bodyAreaCounts = sortCounts(countByField(logs, "bodyArea"))
 
   const mostActiveLoop = loopCounts[0]?.label || reportPrimaryLoop || null
-
-  const primaryJourney = mostActiveLoop
-    ? getJourneyForLoop(mostActiveLoop)
-    : null
+  const primaryJourney = mostActiveLoop ? getJourneyForLoop(mostActiveLoop) : null
 
   const reportJourney =
     reportPrimaryLoop && reportPrimaryLoop !== mostActiveLoop
@@ -177,10 +163,7 @@ export function analyseTriggerLogs(
       : null
 
   const supportingLoop = loopCounts.length > 1 ? loopCounts[1]?.label : null
-
-  const supportingJourney = supportingLoop
-    ? getJourneyForLoop(supportingLoop)
-    : null
+  const supportingJourney = supportingLoop ? getJourneyForLoop(supportingLoop) : null
 
   const topPerson = personCounts[0]?.label || null
   const topTrigger = triggerCounts[0]?.label || null
@@ -210,7 +193,7 @@ export function analyseTriggerLogs(
         : "Start logging triggers to reveal your most active loop.",
     patternSummary:
       mostActiveLoop && topPerson && topTrigger && topEnvironment
-        ? `${mostActiveLoop} appears most often around ${topPerson}, especially when you felt ${topTrigger.toLowerCase()}, usually in ${topEnvironment.toLowerCase()} settings.`
+        ? `${mostActiveLoop} appears most often around ${topPerson}, especially around ${topTrigger.toLowerCase()}, usually in ${topEnvironment.toLowerCase()} settings.`
         : null,
   }
 }
@@ -220,44 +203,44 @@ export const exampleTriggerLogs: TriggerLog[] = [
     id: "1",
     createdAt: "2026-06-01",
     personCategory: "Manager / Boss",
-    triggerEvent: "Criticised me",
+    triggerEvent: "Criticism",
     environment: "Work",
     bodyArea: "Chest / Solar Plexus",
     emotionalState: "Inadequate / Exposed",
-    responseStyle: "Suppression",
+    responseStyle: "Collapse",
     detectedLoop: "Dimmed Light",
   },
   {
     id: "2",
     createdAt: "2026-06-02",
     personCategory: "Manager / Boss",
-    triggerEvent: "Criticised me",
+    triggerEvent: "Comparison",
     environment: "Work",
     bodyArea: "Chest / Solar Plexus",
     emotionalState: "Inadequate / Exposed",
-    responseStyle: "Suppression",
-    detectedLoop: "Dimmed Light",
+    responseStyle: "Compensate",
+    detectedLoop: "Paper Crown",
   },
   {
     id: "3",
     createdAt: "2026-06-03",
     personCategory: "Friend",
-    triggerEvent: "Asked something from me",
+    triggerEvent: "Boundary challenge",
     environment: "Phone / Text",
     bodyArea: "Legs / Feet / Full Body",
     emotionalState: "Defensive / Tense",
-    responseStyle: "Suppression",
+    responseStyle: "Collapse",
     detectedLoop: "Compliance",
   },
   {
     id: "4",
     createdAt: "2026-06-04",
     personCategory: "Myself",
-    triggerEvent: "I felt uncertain",
+    triggerEvent: "Uncertainty",
     environment: "Alone",
     bodyArea: "Head / Throat",
     emotionalState: "Confused / Overthinking",
-    responseStyle: "Compensation",
+    responseStyle: "Compensate",
     detectedLoop: "Mind Maze",
   },
 ]

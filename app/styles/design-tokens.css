@@ -1,0 +1,70 @@
+:root {
+
+/* =======================================================
+   ARCHELOOP FOUNDATION
+   ======================================================= */
+
+/* STATES OF CONSCIOUSNESS */
+
+--night: #070B12;
+--mist: #121A26;
+--dawn: #243248;
+--light: #F5F1E8;
+--consciousness: #D8B778;
+--stone: #D8D3C7;
+
+
+/* ARCHETYPES */
+
+--fire: #D8B778;
+--air: #8FA5C8;
+--water: #5E8FA3;
+--earth: #65705D;
+
+
+/* SURFACES */
+
+--surface-1: rgba(255,255,255,.03);
+--surface-2: rgba(255,255,255,.05);
+--surface-3: rgba(255,255,255,.08);
+
+
+/* BORDERS */
+
+--border-soft: rgba(255,255,255,.06);
+--border-medium: rgba(255,255,255,.10);
+
+
+/* TEXT */
+
+--text-primary: #F5F1E8;
+--text-secondary: #D6D0C5;
+--text-muted: #9E9B94;
+
+
+/* GLOW */
+
+--gold-glow:
+0 0 80px rgba(216,183,120,.10);
+
+--soft-glow:
+0 0 120px rgba(255,255,255,.03);
+
+
+/* RADIUS */
+
+--radius-xl:24px;
+--radius-2xl:36px;
+--radius-3xl:48px;
+
+
+/* SPACING */
+
+--space-xs:8px;
+--space-sm:16px;
+--space-md:24px;
+--space-lg:40px;
+--space-xl:72px;
+--space-2xl:120px;
+
+}
