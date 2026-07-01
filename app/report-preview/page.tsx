@@ -74,10 +74,10 @@ function ReportPreviewContent() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-            This is a preview of your result. Your full ArcheLoop Report™
-            explains why this pattern may have formed, what activates it, how it
-            affects your relationships, and the Integration Journey™ that helps
-            you move toward your Integrated Self™.
+            This is a preview of your ArcheLoop Report. Your full report
+explains why this pattern may have formed, what activates it, how it
+affects your relationships, and the Integration Journey that helps
+you move toward your Integrated Self.
           </p>
         </div>
       </section>
@@ -110,11 +110,11 @@ function ReportPreviewContent() {
                 ArcheLoop Report™
               </h3>
 
-              <p className="mt-4 text-lg text-stone-500 line-through">£29</p>
+              <p className="text-2xl font-semibold text-yellow-300">£19</p>
 
-              <p className="text-2xl font-semibold text-yellow-300">
-                £19 Launch Offer
-              </p>
+<p className="mt-2 text-sm text-stone-500">
+  Regular price £29
+</p>
 
               <p className="mt-5 leading-relaxed text-stone-300">
                 Continue to your full personalised report and understand the
@@ -156,16 +156,16 @@ function ReportPreviewContent() {
                 Report + First Month Integration™
               </h3>
 
-              <p className="mt-4 text-lg text-stone-500 line-through">£58</p>
+              <p className="text-2xl font-semibold text-yellow-300">£29</p>
 
-              <p className="text-2xl font-semibold text-yellow-300">
-                £29 Launch Offer
-              </p>
+<p className="mt-2 text-sm text-stone-500">
+  Regular price £58
+</p>
 
               <p className="mt-5 leading-relaxed text-stone-300">
-                Everything in the ArcheLoop Report™, plus your first month of
-                ArcheLoop Integration™ to help you recognise patterns, track
-                activations, and build lasting change.
+                Everything in the ArcheLoop Report, plus your first month of
+ArcheLoop Integration to help you recognise patterns, track
+triggers, and build lasting change.
               </p>
 
               <div className="mt-7 grid gap-3 text-left">
@@ -190,21 +190,11 @@ function ReportPreviewContent() {
                 href="/checkout?product=bundle"
                 className="mt-8 block rounded-full bg-yellow-300 px-8 py-4 text-center text-lg font-semibold text-black transition hover:bg-yellow-200"
               >
-                Choose Bundle
+                Choose Report + Integration
               </a>
             </div>
           </div>
 
-          <div className="mx-auto mt-12 max-w-3xl rounded-[2rem] border border-yellow-300/20 bg-black/40 p-8 text-center">
-            <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-              Launch Offer
-            </p>
-
-            <p className="mt-4 leading-relaxed text-stone-300">
-              Launch pricing is available for a limited time. Your purchased
-              access is managed securely through your ArcheLoop account.
-            </p>
-          </div>
         </div>
       </section>
 

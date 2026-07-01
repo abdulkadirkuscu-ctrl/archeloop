@@ -46,11 +46,11 @@ export default function ReportPage() {
             your emotional patterns.
           </h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Your ArcheLoop Report™ reveals the deeper structure behind recurring
-            emotional reactions, relationship dynamics, nervous system patterns,
-            and protective responses.
-          </p>
+         <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
+  Your ArcheLoop Report reveals the deeper patterns behind recurring
+  emotional reactions, relationship dynamics, nervous system responses,
+  and protective strategies.
+</p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
@@ -91,21 +91,21 @@ export default function ReportPage() {
           <div className="grid gap-6 md:grid-cols-3">
             {[
               [
-                "01",
-                "Complete The Assessment",
-                "Answer 60 questions exploring recurring emotional, relational, and nervous system patterns.",
-              ],
-              [
-                "02",
-                "See Your Result",
-                "Identify your primary Shadow Loop™, protection pattern, and first direction for interrupting the loop.",
-              ],
-              [
-                "03",
-                "Read Your Full Report",
-                "Explore nervous system dynamics, relational activators, body patterns, loop interactions, and your Integration Journey™.",
-              ],
-            ].map(([number, title, body]) => (
+    "01",
+    "Complete Find My Loop™",
+    "Answer 60 questions exploring recurring emotional, relational, and nervous system patterns.",
+  ],
+  [
+    "02",
+    "Preview Your Report",
+    "See your primary Shadow Loop™, protection pattern, and first direction for interrupting the loop.",
+  ],
+  [
+    "03",
+    "Continue to Your Full Report",
+    "Explore nervous system dynamics, relational activators, body patterns, loop interactions, and your Integration Journey.",
+  ],
+].map(([number, title, body]) => (
               <div
                 key={title}
                 className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]"
@@ -192,7 +192,7 @@ export default function ReportPage() {
         <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 shadow-[0_0_70px_rgba(216,183,120,0.08)]">
           <div className="mb-14 text-center">
             <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-              Launch Offer
+            Your Next Step
             </p>
 
             <h2 className="mt-5 text-4xl font-bold leading-tight md:text-6xl">
@@ -216,11 +216,11 @@ export default function ReportPage() {
                 ArcheLoop Report™
               </h3>
 
-              <p className="mt-5 text-lg text-stone-500 line-through">£29</p>
+              <p className="text-3xl font-semibold text-yellow-300">£19</p>
 
-              <p className="text-3xl font-semibold text-yellow-300">
-                £19 launch price
-              </p>
+<p className="mt-2 text-sm text-stone-500">
+  Regular price £29
+</p>
 
               <p className="mt-5 leading-relaxed text-stone-300">
                 Your personalised report showing your primary and secondary
@@ -238,7 +238,7 @@ export default function ReportPage() {
                 href="/checkout?product=report"
                 className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
               >
-                Get Full Report
+                Continue to Full Report
               </a>
             </div>
 
@@ -251,16 +251,16 @@ export default function ReportPage() {
                 Report + First Month Integration™
               </h3>
 
-              <p className="mt-5 text-lg text-stone-500 line-through">£58</p>
+              <p className="text-3xl font-semibold text-yellow-300">£29</p>
 
-              <p className="text-3xl font-semibold text-yellow-300">
-                £29 launch price
-              </p>
+<p className="mt-2 text-sm text-stone-500">
+  Regular price £58
+</p>
 
               <p className="mt-5 leading-relaxed text-stone-300">
                 Everything in the ArcheLoop Report™, plus your first month of
                 ArcheLoop Integration™ to help you recognise patterns, track
-                activations, and build lasting change.
+                triggers, and build lasting change.
               </p>
 
               <div className="mt-7 space-y-4 text-stone-300">
@@ -295,11 +295,11 @@ export default function ReportPage() {
             ArcheLoop Integration™
           </h2>
 
-          <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-            After your report, Integration helps you track real-life
-            activations, recognise recurring triggers, follow your Integration
-            Journey™, and build your Integrated Self™ over time.
-          </p>
+         <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+  After your report, Integration helps you recognise real-life triggers,
+  interrupt recurring patterns, follow your Integration Journey, and move
+  toward your Integrated Self over time.
+</p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a

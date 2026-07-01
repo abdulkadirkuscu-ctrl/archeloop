@@ -37,7 +37,7 @@ const archetypes = [
 export const metadata: Metadata = {
   title: "The Four Archetypes",
   description:
-    "Explore the four core ArcheLoop functions: Sovereign, Warrior, Lover, and Magician — adaptive intelligences connected to identity, protection, emotion, and perception.",
+    "Explore the four core ArcheLoop archetypes: Sovereign, Magician, Lover, and Warrior — connected to Fire, Air, Water, and Earth.",
 };
 
 export default function ArchetypesPage() {
@@ -59,10 +59,9 @@ export default function ArchetypesPage() {
             </h1>
 
             <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-              ArcheLoop is built around four core archetypal energies. Each
-              archetype represents a different psychological function,
-              elemental force, and survival intelligence within human
-              consciousness.
+              ArcheLoop is built around four archetypal energies: Fire, Air,
+Water, and Earth. Each archetype represents a different way you
+express, protect, perceive, connect, and respond under pressure.
             </p>
           </div>
 

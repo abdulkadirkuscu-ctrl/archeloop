@@ -1,16 +1,14 @@
+import Nav from "../../components/Nav"
 import Footer from "../../components/Footer"
 export default function LoverPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
-      <nav className="flex justify-center gap-4 p-6 border-b border-zinc-800">
-        <a href="/" className="hover:text-red-300">Home</a>
-        <a href="/assessment" className="hover:text-red-300">Assessment</a>
-        <a href="/triggered" className="hover:text-red-300">I Am Triggered</a>
-        <a href="/practices" className="hover:text-red-300">Practices</a>
-      </nav>
+    <main className="min-h-screen bg-[#030712] text-stone-100">
+     <Nav />
 
-      <section className="px-6 py-24">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-24">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+
+  <div className="relative mx-auto max-w-5xl">
           <p className="uppercase tracking-[0.3em] text-red-300 mb-4">
             Water Element
           </p>
@@ -25,7 +23,7 @@ export default function LoverPage() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 mb-16">
-            <div className="border border-red-400 rounded-2xl p-6 bg-zinc-950">
+            <div className="border border-red-400 rounded-2xl p-6 bg-[#0B1018]">
               <h2 className="text-2xl font-bold mb-3">Healthy Water</h2>
               <p className="text-gray-300">
                 Healthy Water creates emotional flow, connection, vulnerability,
@@ -33,7 +31,7 @@ export default function LoverPage() {
               </p>
             </div>
 
-            <div className="border border-zinc-700 rounded-2xl p-6 bg-zinc-950">
+            <div className="border border-yellow-300/10 rounded-2xl p-6 bg-[#0B1018]">
               <h2 className="text-2xl font-bold mb-3">Core Emotion</h2>
               <p className="text-gray-300">
                 Love and connection when integrated. Grief, longing, or numbness
@@ -41,7 +39,7 @@ export default function LoverPage() {
               </p>
             </div>
 
-            <div className="border border-zinc-700 rounded-2xl p-6 bg-zinc-950">
+            <div className="border border-yellow-300/10 rounded-2xl p-6 bg-[#0B1018]">
               <h2 className="text-2xl font-bold mb-3">Body Map</h2>
               <p className="text-gray-300">
                 Heart, belly, sacral area, emotional breath, tenderness,
@@ -70,7 +68,7 @@ export default function LoverPage() {
                 "You create beauty and meaning through feeling.",
                 "You can grieve, love, and open without collapsing.",
               ].map((item) => (
-                <li key={item} className="border border-zinc-800 rounded-xl p-4">
+                <li key={item} className="border border-yellow-300/10 rounded-xl p-4">
                   {item}
                 </li>
               ))}
@@ -144,7 +142,7 @@ export default function LoverPage() {
                 "Difficulty receiving care",
                 "Escaping into fantasy or imagined connection",
               ].map((item) => (
-                <div key={item} className="border border-zinc-800 rounded-xl p-4">
+                <div key={item} className="border border-yellow-300/10 rounded-xl p-4">
                   {item}
                 </div>
               ))}
@@ -181,7 +179,7 @@ export default function LoverPage() {
 
           <div className="flex gap-4 flex-wrap">
             <a href="/assessment" className="bg-white text-black px-6 py-3 rounded-full font-semibold">
-              Take Assessment
+              Find My Loop™
             </a>
 
             <a

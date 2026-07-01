@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 export const metadata: Metadata = {
   title: "The 12 Shadow Loops",
   description:
-    "Explore the 12 ArcheLoop shadow patterns formed through suppression, compensation, collision, and relational activation.",
+   "Explore the 12 Shadow Loops inside ArcheLoop: recurring protective patterns connected to Fire, Air, Water, and Earth.",
 };
 
 const loops = [
@@ -127,9 +127,9 @@ export default function LoopsPage() {
             </h1>
 
             <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-              Shadow Loops are recurring emotional and behavioural patterns
-              formed through collapse, compensation, or collision between
-              archetypal energies.
+              Every recurring pattern has a name. Shadow Loops are protective
+patterns your mind and nervous system may use when visibility,
+clarity, connection, or safety feels threatened.
             </p>
 
             <a
@@ -158,8 +158,8 @@ export default function LoopsPage() {
                   </div>
 
                   <p className="max-w-xl text-stone-400">
-                    Explore the three Shadow Loops connected to this archetypal
-                    element.
+                    Explore the three Shadow Loops connected to this element and
+archetype.
                   </p>
                 </div>
 

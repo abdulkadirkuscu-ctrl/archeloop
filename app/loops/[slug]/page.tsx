@@ -32,12 +32,14 @@ export default async function LoopPage({
   const [loopName, loop] = loopEntry as [string, any]
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
+   <main className="min-h-screen bg-[#030712] text-stone-100">
       <Nav />
 
-      <section className="px-6 py-24">
-        <div className="max-w-5xl mx-auto">
-          <p className="uppercase tracking-[0.3em] text-gray-500 mb-4">
+   <section className="relative overflow-hidden px-6 py-24">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+
+  <div className="relative mx-auto max-w-5xl">
+         <p className="mb-4 uppercase tracking-[0.3em] text-yellow-300/60">
             {loop.element} Element • {loop.mechanism}
           </p>
 
@@ -46,7 +48,7 @@ export default async function LoopPage({
           </h1>
 
           {loop.image && (
-            <div className="relative w-full h-[420px] rounded-[2rem] overflow-hidden border border-zinc-800 mb-12">
+            <div className="relative mb-12 h-[420px] w-full overflow-hidden rounded-[2rem] border border-yellow-300/10 shadow-[0_0_70px_rgba(216,183,120,0.08)]">
               <Image
                 src={loop.image}
                 alt={loop.title}
@@ -62,17 +64,17 @@ export default async function LoopPage({
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 mb-16">
-            <div className="border border-zinc-800 rounded-3xl p-6 bg-zinc-950">
+            <div className="rounded-3xl border border-yellow-300/10 bg-[#0B1018] p-6">
               <h2 className="text-2xl font-bold mb-3">Archetype</h2>
               <p className="text-gray-300">{loop.archetype}</p>
             </div>
 
-            <div className="border border-zinc-800 rounded-3xl p-6 bg-zinc-950">
+            <div className="rounded-3xl border border-yellow-300/10 bg-[#0B1018] p-6">
               <h2 className="text-2xl font-bold mb-3">Core Emotion</h2>
               <p className="text-gray-300">{loop.emotion}</p>
             </div>
 
-            <div className="border border-zinc-800 rounded-3xl p-6 bg-zinc-950">
+            <div className="rounded-3xl border border-yellow-300/10 bg-[#0B1018] p-6">
               <h2 className="text-2xl font-bold mb-3">Body Map</h2>
               <p className="text-gray-300">{loop.body}</p>
             </div>
@@ -80,7 +82,7 @@ export default async function LoopPage({
 
           <section className="mb-16">
             <h2 className="text-4xl font-bold mb-6">Core Belief</h2>
-            <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
+            <div className="rounded-3xl border border-yellow-300/10 bg-[#0B1018] p-8">
               <p className="text-2xl text-yellow-300">
                 “{loop.coreBelief}”
               </p>
@@ -119,7 +121,7 @@ export default async function LoopPage({
                 This Loop May Appear As
               </h2>
 
-              <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
+              <div className="rounded-3xl border border-yellow-300/10 bg-[#0B1018] p-8">
                 <ul className="space-y-3 text-gray-300">
                   {loop.signs.map((sign: string) => (
                     <li key={sign}>• {sign}</li>
@@ -135,7 +137,7 @@ export default async function LoopPage({
                 Nervous System Pattern
               </h2>
 
-              <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
+              <div className="rounded-3xl border border-yellow-300/10 bg-[#0B1018] p-8">
                 <p className="text-xl text-gray-300">
                   {loop.nervousSystem}
                 </p>
@@ -149,7 +151,7 @@ export default async function LoopPage({
                 What This Pattern May Be Protecting
               </h2>
 
-              <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
+              <div className="rounded-3xl border border-yellow-300/10 bg-[#0B1018] p-8">
                 <p className="text-gray-300 text-lg leading-relaxed">
                   {loop.protection}
                 </p>
@@ -163,7 +165,7 @@ export default async function LoopPage({
                 Relational Activators
               </h2>
 
-              <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
+              <div className="rounded-3xl border border-yellow-300/10 bg-[#0B1018] p-8">
                 <ul className="space-y-3 text-gray-300">
                   {loop.relationalActivators.map((item: string) => (
                     <li key={item}>• {item}</li>
@@ -179,7 +181,7 @@ export default async function LoopPage({
                 Related Dynamics
               </h2>
 
-              <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
+              <div className="rounded-3xl border border-yellow-300/10 bg-[#0B1018] p-8">
                 <p className="text-gray-300 mb-4">
                   Under pressure, this loop may interact with:
                 </p>
@@ -198,7 +200,7 @@ export default async function LoopPage({
               Loop Breaker Practice
             </h2>
 
-            <div className="bg-white text-black rounded-3xl p-8">
+            <div className="rounded-3xl border border-yellow-300/20 bg-yellow-300 p-8 text-black">
               <p className="text-lg">{loop.loopBreaker}</p>
             </div>
           </section>
@@ -206,7 +208,7 @@ export default async function LoopPage({
           <section className="mb-16">
             <h2 className="text-4xl font-bold mb-6">Integration Key</h2>
 
-            <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
+            <div className="rounded-3xl border border-yellow-300/10 bg-[#0B1018] p-8">
               <p className="text-xl mb-3">
                 <strong>Restoring Energy:</strong> {loop.integrationKey}
               </p>
@@ -236,7 +238,7 @@ export default async function LoopPage({
               href="/assessment"
               className="inline-flex bg-yellow-300 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-200 transition"
             >
-              Take Assessment
+              Find My Loop™
             </a>
           </section>
 

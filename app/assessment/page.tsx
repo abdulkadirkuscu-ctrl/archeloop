@@ -432,10 +432,10 @@ recommended Integration Journey™.
               </p>
 
               <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-stone-500">
-  This is a preview of your ArcheLoop Report™. Your full report
-  explores why this pattern developed, what activates it, how it
-  influences your relationships and nervous system, and how to move
-  toward your Integrated Self™.
+ This is a preview of your ArcheLoop Report. Your full report
+explores why this pattern developed, what activates it, how it
+influences your relationships and nervous system, and how to move
+toward your Integrated Self.
 </p>
             </div>
           </section>
@@ -467,11 +467,11 @@ recommended Integration Journey™.
                   ArcheLoop Report™
                 </h3>
 
-                <p className="mt-4 text-lg text-stone-500 line-through">£29</p>
+                <p className="text-2xl font-semibold text-yellow-300">£19</p>
 
-                <p className="text-2xl font-semibold text-yellow-300">
-                  £19 Launch Offer
-                </p>
+<p className="mt-2 text-sm text-stone-500">
+  Regular price £29
+</p>
 
                 <p className="mt-5 leading-relaxed text-stone-300">
                   Continue to your complete ArcheLoop Report™ and explore the
@@ -514,16 +514,16 @@ recommended Integration Journey™.
                   Report + First Month Integration™
                 </h3>
 
-                <p className="mt-4 text-lg text-stone-500 line-through">£58</p>
+                <p className="text-2xl font-semibold text-yellow-300">£29</p>
 
-                <p className="text-2xl font-semibold text-yellow-300">
-                  £29 Launch Offer
-                </p>
+<p className="mt-2 text-sm text-stone-500">
+  Regular price £58
+</p>
 
                 <p className="mt-5 leading-relaxed text-stone-300">
-                  Everything in the ArcheLoop Report™, plus your first month of
-                  ArcheLoop Integration™ to help you recognise patterns, track
-                  activations, and build lasting change.
+                  Everything in the ArcheLoop Report, plus your first month of
+ArcheLoop Integration to help you recognise patterns, track
+triggers, and build lasting change.
                 </p>
 
                 <div className="mt-7 grid gap-3 text-left">

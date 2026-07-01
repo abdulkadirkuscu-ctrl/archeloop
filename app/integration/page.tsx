@@ -93,10 +93,10 @@ export default function IntegrationPage() {
           </h1>
 
           <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-            ArcheLoop Integration™ is the monthly transformation system that
-            helps you track real-life triggers, follow your Integration
-            Journey™, practise new responses, and move toward your Integrated
-            Self™.
+            ArcheLoop Integration is the monthly practice system that
+helps you track real-life triggers, follow your Integration
+Journey, practise new responses, and move toward your Integrated
+Self.
           </p>
 
           <div className="mx-auto mt-10 max-w-md rounded-[2rem] border border-yellow-300/20 bg-black/30 p-6">
@@ -107,9 +107,8 @@ export default function IntegrationPage() {
             </p>
 
             <p className="mt-3 text-sm leading-relaxed text-stone-400">
-              Launch Price. Includes Triggered Pro™, Progress Dashboard™,
-              Integration Journeys™, My Integrated Vision™, and personal
-              integration tracking.
+              Includes Triggered Pro™, Progress Dashboard, Integration Journeys,
+My Integrated Vision, and personal integration tracking.
             </p>
 
             <p className="mt-5 text-sm text-stone-500">
@@ -142,7 +141,7 @@ export default function IntegrationPage() {
           </p>
 
           <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-            From awareness into transformation.
+           From awareness into integration.
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
@@ -279,9 +278,9 @@ export default function IntegrationPage() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Start Integration™ by logging your first trigger in Triggered
-            Pro™, then use your Progress Dashboard™ and Integration Journey™ to
-            track the path toward your Integrated Self™.
+           Start Integration by logging your first trigger in Triggered
+Pro, then use your Progress Dashboard and Integration Journey to
+track the path toward your Integrated Self.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { cookies } from "next/headers";
+import { createSupabaseServerClient } from "../../../lib/supabaseServerClient";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { integrationJourneys } from "../../data/integrationJourneys";
@@ -27,9 +27,26 @@ export default async function IntegrationJourneyPage({ params }: Props) {
     event_value: journey.slug,
   });
 
-  const cookieStore = await cookies();
-  const hasIntegrationAccess =
-    cookieStore.get("archeloop_integration_access")?.value === "true";
+ const supabaseAuth = await createSupabaseServerClient();
+
+const {
+  data: { user },
+} = await supabaseAuth.auth.getUser();
+
+let hasIntegrationAccess = false;
+
+if (user) {
+  const { data: orders } = await supabaseServer
+    .from("archeloop_orders")
+    .select("product, status")
+    .eq("user_id", user.id)
+    .in("status", ["paid", "private_access", "founding_access"]);
+
+  hasIntegrationAccess =
+    orders?.some(
+      (order) => order.product === "integration" || order.product === "bundle"
+    ) || false;
+}
 
   return (
     <main className="min-h-screen bg-[#030712] text-stone-100">
@@ -284,7 +301,7 @@ export default async function IntegrationJourneyPage({ params }: Props) {
                     href="/integration"
                     className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
                   >
-                    Back to Integration™
+                    Back to Integration
                   </Link>
                 </div>
               </div>
@@ -369,7 +386,7 @@ export default async function IntegrationJourneyPage({ params }: Props) {
                   href="/integration"
                   className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
                 >
-                  Back to Integration Preview
+                  Back to Integration
                 </Link>
               </div>
             </div>

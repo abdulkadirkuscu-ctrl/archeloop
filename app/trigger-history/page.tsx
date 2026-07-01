@@ -39,6 +39,63 @@ export default async function TriggerHistoryPage() {
     );
   }
 
+  const { data: orders } = await supabaseServer
+  .from("archeloop_orders")
+  .select("product, status")
+  .eq("user_id", user.id)
+  .in("status", ["paid", "private_access", "founding_access"]);
+
+const hasIntegrationAccess =
+  orders?.some(
+    (order) => order.product === "integration" || order.product === "bundle"
+  ) || false;
+
+if (!hasIntegrationAccess) {
+  return (
+    <main className="min-h-screen bg-[#030712] text-stone-100">
+      <Nav />
+
+      <section className="relative overflow-hidden px-6 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+
+        <div className="relative mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+            Trigger History™
+          </p>
+
+          <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
+            Integration access is required.
+          </h1>
+
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+            Trigger History™ is part of ArcheLoop Integration™. It lets you
+            review saved triggers, active Shadow Loops™, Integration Check-Ins™,
+            and the patterns you are learning to interrupt.
+          </p>
+
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Link
+              href="/checkout?product=integration"
+              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+            >
+              Start Integration™
+            </Link>
+
+            <Link
+              href="/checkout?product=bundle"
+              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+            >
+              Choose Report + Integration™
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
+
   const { data: rows } = await supabaseServer
     .from("archeloop_activations")
     .select("id, created_at, activation_data")

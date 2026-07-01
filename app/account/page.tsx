@@ -73,8 +73,8 @@ export default async function AccountPage() {
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
             Return to your report, continue your Integration Journey™, log
-            activations, review your progress, and reconnect with your
-            Integrated Self™.
+triggers, review your progress, and reconnect with your
+Integrated Self™.
           </p>
 
           <div className="mx-auto mt-10 grid max-w-3xl gap-4 text-left md:grid-cols-2">
@@ -248,7 +248,7 @@ export default async function AccountPage() {
 
             <h2 className="mt-4 text-3xl font-bold text-yellow-300">
               {hasReportAccess && hasIntegrationAccess
-                ? "Premium Access Active"
+                ? "Full ArcheLoop Access Active"
                 : hasReportAccess
                 ? "Report Access Active"
                 : "Begin Your Journey"}
@@ -256,10 +256,10 @@ export default async function AccountPage() {
 
             <p className="mx-auto mt-4 max-w-3xl leading-relaxed text-stone-300">
               {hasReportAccess && hasIntegrationAccess
-                ? "You have access to the full ArcheLoop experience. Continue logging activations, reviewing your dashboard, and following your Integration Journey™."
-                : hasReportAccess
-                ? "You have report access. The next step is ArcheLoop Integration™ so you can practise the pattern in real life."
-                : "Start with Find My Loop™ to discover your Shadow Loop™ and receive your personalised ArcheLoop Report™."}
+  ? "You have access to the full ArcheLoop experience. Continue logging triggers, reviewing your dashboard, and following your Integration Journey™."
+  : hasReportAccess
+  ? "You have report access. The next step is ArcheLoop Integration™ so you can practise the pattern in real life."
+  : "Start with Find My Loop™ to discover your Shadow Loop™ and receive your personalised ArcheLoop Report™."}
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
