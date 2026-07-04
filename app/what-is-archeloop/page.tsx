@@ -1,238 +1,347 @@
-import Image from "next/image"
-import type { Metadata } from "next"
-import Nav from "../components/Nav"
-import Footer from "../components/Footer"
+import Image from "next/image";
+import type { Metadata } from "next";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
   title: "What Is ArcheLoop?",
   description:
-    "ArcheLoop is a symbolic self-awareness framework exploring archetypes, nervous system activation, relational dynamics, and recurring shadow loops.",
-}
+    "ArcheLoop is a self-awareness framework for identifying recurring Shadow Loops, understanding why they repeat, and moving from awareness into integration.",
+};
+
+const archetypes = [
+  {
+    element: "Fire",
+    archetype: "Sovereign",
+    image: "/images/elements/fire-element.png",
+    text: "Visibility, agency, confidence, direction, self-worth, and permission to take up space.",
+    question: "Am I allowed to exist visibly?",
+  },
+  {
+    element: "Air",
+    archetype: "Magician",
+    image: "/images/elements/air-element.png",
+    text: "Perception, interpretation, language, insight, clarity, and the power of meaning.",
+    question: "Can I trust what I perceive and express?",
+  },
+  {
+    element: "Water",
+    archetype: "Lover",
+    image: "/images/elements/water-element.png",
+    text: "Emotion, intimacy, creativity, connection, longing, vulnerability, and emotional truth.",
+    question: "Am I safe to feel and connect?",
+  },
+  {
+    element: "Earth",
+    archetype: "Warrior",
+    image: "/images/elements/earth-element.png",
+    text: "Boundaries, protection, grounded action, discipline, responsibility, and embodied strength.",
+    question: "Am I allowed to protect what matters?",
+  },
+];
+
+const formations = [
+  {
+    title: "Collapse",
+    subtitle: "Suppression",
+    belief: "This part of me is not allowed.",
+    text: "A natural energy goes quiet, hidden, frozen, or unavailable. You may shrink, shut down, freeze, people please, or disconnect from a part of yourself.",
+  },
+  {
+    title: "Compensate",
+    subtitle: "Compensation",
+    belief: "I must become something else to stay safe.",
+    text: "A protective strategy takes over. You may perform, control, idealise, overthink, achieve, distance, or create an identity that protects the more vulnerable part underneath.",
+  },
+  {
+    title: "Collide",
+    subtitle: "Collision",
+    belief: "Two inner forces are pulling me in opposite directions.",
+    text: "Two energies become active at the same time but cannot integrate. This can create paralysis, overwhelm, emotional flooding, mental loops, or exhaustion.",
+  },
+];
+
+const steps = [
+  {
+    number: "1",
+    title: "Discover your Shadow Loop",
+    text: "Find the recurring pattern beneath your reactions, relationships, decisions, and emotional responses.",
+  },
+  {
+    number: "2",
+    title: "Understand why it repeats",
+    text: "See the fear, belief, body activation, archetype, and protective response keeping the loop alive.",
+  },
+  {
+    number: "3",
+    title: "Interrupt the pattern",
+    text: "Use Triggered Pro and reflection tools to recognise the loop when it appears in real life.",
+  },
+  {
+    number: "4",
+    title: "Move into integration",
+    text: "Practise your Integration Journey and move toward your Integrated Self over time.",
+  },
+];
+
 export default function WhatIsArcheLoopPage() {
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-[#030712] text-stone-100">
       <Nav />
 
-      <section className="max-w-5xl mx-auto px-6 py-24">
-        <p className="uppercase tracking-[0.3em] text-gray-400 mb-6">
-          ArcheLoop™
-        </p>
+      <section className="relative overflow-hidden px-6 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
 
-        <h1 className="text-5xl font-bold mb-10 leading-tight">
-          What Is ArcheLoop?
-        </h1>
-
-        <p className="text-xl text-gray-300 leading-relaxed mb-8">
-          ArcheLoop is a symbolic self-awareness framework designed to help
-          people recognise recurring emotional, behavioural, and nervous system
-          patterns called Shadow Loops.
-        </p>
-
-        <p className="text-xl text-gray-300 leading-relaxed mb-16">
-          Rather than seeing people as “broken,” ArcheLoop views many difficult
-          patterns as adaptive survival responses that once protected us — but
-          now repeat automatically outside conscious awareness.
-        </p>
-
-        <div className="border border-yellow-400 rounded-3xl p-8 bg-zinc-950 mb-20">
-          <h2 className="text-3xl font-bold mb-6">
-            You are not the loop.
-          </h2>
-
-          <p className="text-xl text-gray-300 leading-relaxed">
-            A Shadow Loop is not your identity. It is a recurring internal
-            pattern of perception, emotion, behaviour, and protection.
-            ArcheLoop helps bring these patterns into awareness so they can
-            become more conscious, flexible, and integrated over time.
-          </p>
-        </div>
-
-        <h2 className="text-4xl font-bold mb-10">
-          The Four Archetypes
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-8 mb-24">
-          <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
-            <div className="flex items-center gap-4 mb-4">
-  <Image
-    src="/images/elements/fire-element.png"
-    alt="Fire Element"
-    width={70}
-    height={70}
-    className="object-contain"
-  />
-
-  <h3 className="text-3xl font-bold">
-    Fire — Sovereign
-  </h3>
-</div>
-
-            <p className="text-gray-300 leading-relaxed mb-4">
-              Visibility, agency, confidence, direction, permission to exist.
+        <div className="relative mx-auto max-w-7xl space-y-20">
+          <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+              ArcheLoop
             </p>
 
-            <p className="text-lg italic text-gray-400">
-              "Am I allowed to exist visibly?"
+            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
+              What Is ArcheLoop?
+            </h1>
+
+            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
+              ArcheLoop is a self-awareness framework that helps you identify
+              unconscious patterns, understand why they repeat, and practise
+              healthier ways of responding.
             </p>
+
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
+              Instead of seeing recurring patterns as personal failure,
+              ArcheLoop sees them as protective strategies your mind, body, and
+              nervous system may have developed to keep you safe.
+            </p>
+
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <a
+                href="/assessment"
+                className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              >
+                Find My Loop™
+              </a>
+
+              <a
+                href="/loops"
+                className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+              >
+                Explore Shadow Loops
+              </a>
+            </div>
           </div>
 
-          <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
-            <div className="flex items-center gap-4 mb-4">
-  <Image
-    src="/images/elements/air-element.png"
-    alt="Air Element"
-    width={70}
-    height={70}
-    className="object-contain"
-  />
-
-  <h3 className="text-3xl font-bold">
-    Air — Magician
-  </h3>
-</div>
-
-            <p className="text-gray-300 leading-relaxed mb-4">
-              Mind, perception, meaning, interpretation, awareness.
+          <section className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
+            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+              Core Principle
             </p>
 
-            <p className="text-lg italic text-gray-400">
-              "Can I trust perception and expression?"
+            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+              You are not the loop.
+            </h2>
+
+            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+              A Shadow Loop is not your identity. It is a recurring internal
+              pattern of perception, emotion, behaviour, and protection.
+              ArcheLoop helps bring these patterns into awareness so they can
+              become more conscious, flexible, and integrated over time.
             </p>
-          </div>
+          </section>
 
-          <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
-            <div className="flex items-center gap-4 mb-4">
-  <Image
-    src="/images/elements/water-element.png"
-    alt="Water Element"
-    width={70}
-    height={70}
-    className="object-contain"
-  />
+          <section>
+            <div className="mb-12 text-center">
+              <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+                The Foundation
+              </p>
 
-  <h3 className="text-3xl font-bold">
-    Water — Lover
-  </h3>
-</div>
+              <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+                The four archetypal energies.
+              </h2>
 
-            <p className="text-gray-300 leading-relaxed mb-4">
-              Emotion, intimacy, creativity, connection, feeling.
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+                ArcheLoop is built around four archetypal energies: Fire, Air,
+                Water, and Earth. Each one represents a different way you
+                express, protect, perceive, connect, and respond under pressure.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              {archetypes.map((item) => (
+                <div
+                  key={item.archetype}
+                  className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]"
+                >
+                  <div className="flex items-center gap-5">
+                    <Image
+                      src={item.image}
+                      alt={`${item.element} Element`}
+                      width={70}
+                      height={70}
+                      className="object-contain"
+                    />
+
+                    <div>
+                      <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
+                        {item.element}
+                      </p>
+
+                      <h3 className="mt-2 text-3xl font-bold text-yellow-300">
+                        {item.archetype}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <p className="mt-6 leading-relaxed text-stone-300">
+                    {item.text}
+                  </p>
+
+                  <p className="mt-5 text-lg italic text-stone-500">
+                    “{item.question}”
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <div className="mb-12 text-center">
+              <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+                How Shadow Loops Form
+              </p>
+
+              <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+                Collapse. Compensate. Collide.
+              </h2>
+
+              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+                Every Shadow Loop forms through a protective response. The
+                surface behaviour may look different, but underneath it usually
+                follows one of three patterns.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              {formations.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]"
+                >
+                  <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
+                    {item.subtitle}
+                  </p>
+
+                  <h3 className="mt-4 text-3xl font-bold text-yellow-300">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-5 text-xl leading-relaxed text-stone-100">
+                    “{item.belief}”
+                  </p>
+
+                  <p className="mt-5 leading-relaxed text-stone-300">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 shadow-[0_0_70px_rgba(216,183,120,0.08)]">
+            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+              Shadow Loop
             </p>
 
-            <p className="text-lg italic text-gray-400">
-              "Am I safe to emotionally connect?"
-            </p>
-          </div>
+            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+              What is a Shadow Loop?
+            </h2>
 
-          <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
-            <div className="flex items-center gap-4 mb-4">
-  <Image
-    src="/images/elements/earth-element.png"
-    alt="Earth Element"
-    width={70}
-    height={70}
-    className="object-contain"
-  />
+            <div className="mt-8 max-w-4xl space-y-6 text-xl leading-relaxed text-stone-300">
+              <p>
+                A Shadow Loop is a closed internal pattern of perception,
+                emotion, behaviour, and nervous system protection that repeats
+                automatically.
+              </p>
 
-  <h3 className="text-3xl font-bold">
-    Earth — Warrior
-  </h3>
-</div>
+              <p>
+                Many loops originally formed as intelligent survival responses.
+                Over time, however, they can become rigid, unconscious, and
+                self-reinforcing.
+              </p>
 
-            <p className="text-gray-300 leading-relaxed mb-4">
-              Boundaries, protection, discipline, survival, grounding.
-            </p>
+              <p>
+                ArcheLoop helps identify these patterns so you can interrupt
+                automatic reactions and move from awareness into integration.
+              </p>
+            </div>
+          </section>
 
-            <p className="text-lg italic text-gray-400">
-             "Am I allowed to protect and ground what matters?"
-            </p>
-          </div>
-        </div>
+          <section>
+            <div className="mb-12 text-center">
+              <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+                How ArcheLoop Works
+              </p>
 
-        <h2 className="text-4xl font-bold mb-10">
-          The Three Ways Shadow Loops Form
-        </h2>
+              <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+                From awareness into integration.
+              </h2>
+            </div>
 
-        <div className="space-y-8 mb-24">
-          <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
-            <h3 className="text-3xl font-bold mb-4">
-              1. Suppression
-            </h3>
+            <div className="grid gap-6 md:grid-cols-4">
+              {steps.map((step) => (
+                <div
+                  key={step.number}
+                  className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-7"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-yellow-300 text-lg font-bold text-black">
+                    {step.number}
+                  </div>
 
-            <p className="text-xl text-gray-300 leading-relaxed mb-4">
-              “This part of me is not allowed.”
-            </p>
+                  <h3 className="mt-5 text-2xl font-bold text-yellow-300">
+                    {step.title}
+                  </h3>
 
-            <p className="text-gray-400 leading-relaxed">
-              One archetypal energy becomes dominant while another collapses,
-              hides, or goes offline.
-            </p>
-          </div>
+                  <p className="mt-4 leading-relaxed text-stone-300">
+                    {step.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
 
-          <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
-            <h3 className="text-3xl font-bold mb-4">
-              2. Compensation
-            </h3>
-
-            <p className="text-xl text-gray-300 leading-relaxed mb-4">
-              “I must become something else to survive.”
-            </p>
-
-            <p className="text-gray-400 leading-relaxed">
-              A wounded archetype borrows another energy to create safety,
-              identity, approval, or control.
-            </p>
-          </div>
-
-          <div className="border border-zinc-800 rounded-3xl p-8 bg-zinc-950">
-            <h3 className="text-3xl font-bold mb-4">
-              3. Collision
-            </h3>
-
-            <p className="text-xl text-gray-300 leading-relaxed mb-4">
-              “Two inner forces pull me in opposite directions.”
+          <section className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+              Begin Here
             </p>
 
-            <p className="text-gray-400 leading-relaxed">
-              Two archetypal energies are both active but unintegrated,
-              creating inner conflict, paralysis, overwhelm, or looping.
+            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+              Discover the Shadow Loop behind your patterns.
+            </h2>
+
+            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+              Find My Loop™ identifies your primary Shadow Loop and gives you a
+              preview of your personalised ArcheLoop Report.
             </p>
-          </div>
-        </div>
 
-        <h2 className="text-4xl font-bold mb-10">
-          What Is a Shadow Loop?
-        </h2>
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <a
+                href="/assessment"
+                className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              >
+                Find My Loop™
+              </a>
 
-        <div className="border border-zinc-800 rounded-3xl p-10 bg-zinc-950 mb-24">
-          <p className="text-xl text-gray-300 leading-relaxed mb-8">
-            A Shadow Loop is a closed internal pattern of perception, emotion,
-            behaviour, and nervous system protection that repeats automatically.
-          </p>
-
-          <p className="text-xl text-gray-300 leading-relaxed mb-8">
-            Many loops originally formed as intelligent survival responses.
-            However, over time they can become rigid, unconscious, and
-            self-reinforcing.
-          </p>
-
-          <p className="text-xl text-gray-300 leading-relaxed">
-            ArcheLoop helps identify these patterns so people can interrupt
-            automatic reactions and move toward healthier integration.
-          </p>
-        </div>
-
-        <div className="text-center">
-          <a
-            href="/assessment"
-            className="border border-yellow-400 text-yellow-300 px-8 py-4 rounded-full text-lg font-semibold hover:bg-yellow-400 hover:text-black"
-          >
-            Take the ArcheLoop Assessment
-          </a>
+              <a
+                href="/loops"
+                className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+              >
+                Explore the 12 Shadow Loops
+              </a>
+            </div>
+          </section>
         </div>
       </section>
 
       <Footer />
     </main>
-  )
+  );
 }

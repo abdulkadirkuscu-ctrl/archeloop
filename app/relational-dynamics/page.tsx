@@ -40,7 +40,7 @@ const interactions = [
 export const metadata: Metadata = {
   title: "Dynamic Relational Activation",
   description:
-    "Explore how different interactions activate archetypal adaptations, nervous system responses, and recurring shadow loops.",
+    "Explore how relationships, nervous system responses, and protective adaptations can activate recurring Shadow Loops.",
 };
 
 export default function RelationalDynamicsPage() {
@@ -62,9 +62,9 @@ export default function RelationalDynamicsPage() {
             </h1>
 
             <p className="mt-8 max-w-4xl text-xl leading-relaxed text-stone-300">
-              Shadow Loops are not always fixed personality traits. They can be
-              adaptive states activated by relational environments, nervous
-              system responses, and archetypal survival patterns.
+             Shadow Loops are not fixed personality traits. They can be
+adaptive states activated by relational environments, nervous
+system responses, and protective survival patterns.
             </p>
           </div>
 

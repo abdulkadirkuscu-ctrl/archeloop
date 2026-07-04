@@ -75,7 +75,7 @@ export default function PracticesPage() {
             </p>
 
             <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
-              Strengthen Your Archetypal Energy
+              Practise Your Integrated Response
             </h1>
 
             <p className="mt-8 max-w-4xl text-xl leading-relaxed text-stone-300">
@@ -123,8 +123,8 @@ export default function PracticesPage() {
             </h2>
 
             <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-              Small, repeatable actions help the integrated self become more
-              familiar than the old protective pattern.
+              Small, repeatable actions help your Integrated Self become more
+familiar than the old protective pattern.
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">

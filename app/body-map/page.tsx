@@ -41,7 +41,7 @@ const mappings = [
 export const metadata: Metadata = {
   title: "ArcheLoop Body Map",
   description:
-    "Explore how archetypal activations and shadow loops appear through the body, nervous system, emotions, and relational dynamics.",
+    "Explore how Shadow Loops can appear through body sensations, nervous system shifts, emotions, and relational patterns.",
 };
 
 export default function BodyMapPage() {
@@ -63,9 +63,9 @@ export default function BodyMapPage() {
             </h1>
 
             <p className="mx-auto mt-8 max-w-4xl text-xl leading-relaxed text-stone-300">
-              Shadow Loops are not only thoughts. They appear through body
-              sensations, nervous system activation, emotional responses, and
-              relational environments.
+              Shadow Loops are not only thoughts. They can appear through body
+sensations, nervous system shifts, emotional responses, and
+relational patterns.
             </p>
           </div>
 
@@ -123,9 +123,8 @@ export default function BodyMapPage() {
             </h2>
 
             <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-              ArcheLoop uses body awareness as part of recognising relational
-              activation, nervous system shifts, and recurring archetypal
-              adaptations.
+              ArcheLoop uses body awareness to help you recognise triggers,
+nervous system shifts, and recurring patterns before they fully take over.
             </p>
           </div>
         </div>

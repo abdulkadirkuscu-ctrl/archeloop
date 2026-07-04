@@ -92,9 +92,9 @@ export default function NervousSystemPage() {
 
             <p className="mt-8 max-w-4xl text-xl leading-relaxed text-stone-300">
              Shadow Loops are not only psychological patterns. They can also
-connect with familiar survival responses such as fight, flight,
-freeze, and fawn — protective states shaped by stress, emotion,
-memory, and relational safety.
+connect with survival responses such as fight, flight, freeze, and
+fawn — protective states shaped by stress, emotion, memory, and
+relational safety.
             </p>
           </div>
 

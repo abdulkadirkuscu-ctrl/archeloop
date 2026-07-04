@@ -68,32 +68,7 @@ const [hasIntegrationAccess, setHasIntegrationAccess] = useState(false);
   setIntegratedVision(savedVision || "");
 }, [result.journey]);
 
- async function saveActivation() {
-  const activation = {
-    id: crypto.randomUUID(),
-    createdAt: new Date().toISOString(),
-    primaryLoop: result.primaryLoop,
-    secondaryLoop: result.secondaryLoop,
-    confidence: result.confidence,
-    archetype: result.archetype,
-    journey: result.journey,
-    integratedIdentity: result.integratedIdentity,
-    topMatches: result.topMatches,
-    loopBreakLevel,
-    awarenessLevel,
-    recoveryLevel,
-    embodimentLevel,
-    bodyZone,
-    emotionalFamily,
-    responseStyle,
-    triggerCategory,
-    trigger,
-    person,
-    environment,
-    thought,
-  };
-
-  useEffect(() => {
+ useEffect(() => {
   async function checkAccess() {
     const {
       data: { session },
@@ -119,6 +94,32 @@ const [hasIntegrationAccess, setHasIntegrationAccess] = useState(false);
 
   checkAccess();
 }, []);
+
+ async function saveActivation() {
+  const activation = {
+    id: crypto.randomUUID(),
+    createdAt: new Date().toISOString(),
+    primaryLoop: result.primaryLoop,
+    secondaryLoop: result.secondaryLoop,
+    confidence: result.confidence,
+    archetype: result.archetype,
+    journey: result.journey,
+    integratedIdentity: result.integratedIdentity,
+    topMatches: result.topMatches,
+    loopBreakLevel,
+    awarenessLevel,
+    recoveryLevel,
+    embodimentLevel,
+    bodyZone,
+    emotionalFamily,
+    responseStyle,
+    triggerCategory,
+    trigger,
+    person,
+    environment,
+    thought,
+  };
+
 
   const res = await fetch("/api/activations", {
     method: "POST",

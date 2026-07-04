@@ -41,19 +41,19 @@ const elements = [
 
 export default function ElementalSigils() {
   return (
-    <section className="px-6 py-28 border-y border-zinc-800 bg-[#0B1018]">
+    <section className="px-6 py-28 border-y border-yellow-300/10 bg-[#0B1018]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
-            Elemental Archetypes
+            The Four Archetypal Energies
           </p>
 
           <h2 className="text-4xl md:text-6xl font-bold mb-8">
-            Four energies. One inner system.
+            Fire. Air. Water. Earth.
           </h2>
 
           <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-            ArcheLoop maps the way elemental archetypes shape emotional
+            ArcheLoop maps the way The Four Archetypal Energies shape emotional
             patterns, nervous system responses, relational dynamics,
             and the path toward integration.
           </p>
@@ -63,7 +63,7 @@ export default function ElementalSigils() {
           {elements.map((element) => (
             <div
               key={element.name}
-              className={`group relative overflow-hidden border border-zinc-800 rounded-[2rem] bg-gradient-to-b ${element.bgGlow} to-black p-5 transition-all duration-700 hover:-translate-y-1 ${element.glow}`}
+              className={`group relative overflow-hidden border border-yellow-300/10 rounded-[2rem] bg-gradient-to-b ${element.bgGlow} to-black p-5 transition-all duration-700 hover:-translate-y-1 ${element.glow}`}
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_60%)]" />

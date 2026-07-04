@@ -150,6 +150,10 @@ export default function Home() {
       ArcheLoop™
     </p>
 
+<p className="mt-4 text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+  Understand • Interrupt • Integrate
+</p>
+
     <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
       Why do certain patterns
       <br />
@@ -157,14 +161,17 @@ export default function Home() {
     </h1>
 
     <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-stone-300 md:text-xl">
-      Discover the unconscious Shadow Loop™ behind your reactions,
-      relationships, decisions, self-sabotage, and emotional patterns.
-    </p>
+  Discover the Shadow Loop™ you keep repeating.
+</p>
 
     <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-  ArcheLoop™ is a self-awareness framework that helps you identify
-  unconscious patterns, understand why they repeat, and practise healthier
-  ways of responding.
+  ArcheLoop is an integrative archetypal self-awareness framework that
+helps people recognise recurring Shadow Loops, interrupt automatic
+reactions, and develop a more integrated way of being.
+</p>
+
+<p className="mx-auto mt-7 max-w-3xl text-xl font-semibold text-yellow-300">
+  Helping people live from their Integrated Self.
 </p>
 
     <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -233,8 +240,9 @@ export default function Home() {
           </h2>
 
           <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-            A Shadow Loop™ is a recurring unconscious pattern that continues
-            repeating despite your best intentions.
+            A Shadow Loop is a recurring emotional, behavioural, and nervous system
+pattern that emerges when archetypal energies collapse, compensate, or
+collide under pressure.
           </p>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
@@ -248,7 +256,7 @@ export default function Home() {
           </p>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
-            Because awareness is the first step toward transformation.
+            Awareness is the beginning of integration.
           </p>
         </div>
       </section>
@@ -418,9 +426,14 @@ export default function Home() {
           </p>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
-            Your Integrated Self™ is not someone new. It is who you become when
-            the Shadow Loop™ no longer controls your choices.
-          </p>
+  Your Integrated Self is not someone new. It is the part of you 
+  that becomes more available as your Shadow Loops lose their grip. 
+  ArcheLoop helps you practise living from your Integrated Self.
+</p>
+
+<p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-yellow-300">
+  ArcheLoop helps you practise living from your Integrated Self.
+</p>
 
           <a
             href="/integration"
