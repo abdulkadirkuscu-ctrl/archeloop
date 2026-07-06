@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 export const metadata: Metadata = {
   title: "What Is ArcheLoop?",
   description:
-    "ArcheLoop is a self-awareness framework for identifying recurring Shadow Loops, understanding why they repeat, and moving from awareness into integration.",
+    "ArcheLoop is an integrative archetypal self-awareness framework that helps people recognise recurring Shadow Loops, interrupt automatic reactions, and develop a more integrated way of being.",
 };
 
 const archetypes = [
@@ -64,23 +64,23 @@ const formations = [
 const steps = [
   {
     number: "1",
-    title: "Discover your Shadow Loop",
-    text: "Find the recurring pattern beneath your reactions, relationships, decisions, and emotional responses.",
+    title: "Understand",
+    text: "Recognise your Shadow Loop and understand the recurring protective pattern beneath your reactions.",
   },
   {
     number: "2",
-    title: "Understand why it repeats",
-    text: "See the fear, belief, body activation, archetype, and protective response keeping the loop alive.",
+    title: "Interrupt",
+    text: "Learn to recognise the loop while it is happening instead of only noticing it afterwards.",
   },
   {
     number: "3",
-    title: "Interrupt the pattern",
-    text: "Use Triggered Pro and reflection tools to recognise the loop when it appears in real life.",
+    title: "Practise",
+    text: "Use Integration Journeys, Triggered, and personalised practices to develop healthier responses.",
   },
   {
     number: "4",
-    title: "Move into integration",
-    text: "Practise your Integration Journey and move toward your Integrated Self over time.",
+    title: "Integrate",
+    text: "Strengthen your Integrated Self until healthier ways of being become more available.",
   },
 ];
 
@@ -103,23 +103,24 @@ export default function WhatIsArcheLoopPage() {
             </h1>
 
             <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-              ArcheLoop is a self-awareness framework that helps you identify
-              unconscious patterns, understand why they repeat, and practise
-              healthier ways of responding.
-            </p>
+  ArcheLoop is an integrative archetypal self-awareness framework that
+  helps people recognise recurring Shadow Loops, interrupt automatic
+  reactions, and develop a more integrated way of being.
+</p>
 
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
-              Instead of seeing recurring patterns as personal failure,
-              ArcheLoop sees them as protective strategies your mind, body, and
-              nervous system may have developed to keep you safe.
-            </p>
+  Rather than asking "What's wrong with me?", ArcheLoop asks
+  "What pattern am I repeating?" By recognising recurring protective
+  strategies, we create the possibility for awareness, interruption,
+  and integration.
+</p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <a
                 href="/assessment"
                 className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
               >
-                Find My Loop™
+                Find My Loop
               </a>
 
               <a
@@ -131,6 +132,22 @@ export default function WhatIsArcheLoopPage() {
             </div>
           </div>
 
+<div className="mt-14 border-t border-b border-yellow-300/10 py-10 text-center">
+  <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+    Understand • Interrupt • Integrate
+  </p>
+
+  <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+    ArcheLoop is an integrative archetypal self-awareness framework that
+    helps people recognise recurring Shadow Loops, interrupt automatic
+    reactions, and develop a more integrated way of being.
+  </p>
+
+  <p className="mx-auto mt-6 text-lg font-medium text-yellow-300">
+    Helping people live from their Integrated Self.
+  </p>
+</div>
+
           <section className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
             <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
               Core Principle
@@ -140,12 +157,21 @@ export default function WhatIsArcheLoopPage() {
               You are not the loop.
             </h2>
 
-            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-              A Shadow Loop is not your identity. It is a recurring internal
-              pattern of perception, emotion, behaviour, and protection.
-              ArcheLoop helps bring these patterns into awareness so they can
-              become more conscious, flexible, and integrated over time.
-            </p>
+           <div className="mx-auto mt-6 max-w-3xl space-y-6 text-lg leading-relaxed text-stone-300">
+  <p>
+    A Shadow Loop is not your identity.
+  </p>
+
+  <p>
+    It is a recurring pattern of emotion, behaviour, and nervous system
+    activation that emerges when archetypal energies collapse,
+    compensate, or collide under pressure.
+  </p>
+
+  <p className="font-medium text-yellow-300">
+    Awareness is the beginning of integration.
+  </p>
+</div>
           </section>
 
           <section>
@@ -155,14 +181,16 @@ export default function WhatIsArcheLoopPage() {
               </p>
 
               <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-                The four archetypal energies.
+                The Four Archetypes
               </h2>
 
               <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-                ArcheLoop is built around four archetypal energies: Fire, Air,
-                Water, and Earth. Each one represents a different way you
-                express, protect, perceive, connect, and respond under pressure.
-              </p>
+  Every person has access to four archetypal energies: Fire, Air,
+  Water, and Earth.
+
+  Together they shape how we think, relate, protect, express
+  ourselves, and respond under pressure.
+</p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
@@ -214,7 +242,8 @@ export default function WhatIsArcheLoopPage() {
               </h2>
 
               <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-                Every Shadow Loop forms through a protective response. The
+                Shadow Loops emerge when archetypal energies collapse,
+compensate, or collide under pressure. The
                 surface behaviour may look different, but underneath it usually
                 follows one of three patterns.
               </p>
@@ -257,21 +286,20 @@ export default function WhatIsArcheLoopPage() {
 
             <div className="mt-8 max-w-4xl space-y-6 text-xl leading-relaxed text-stone-300">
               <p>
-                A Shadow Loop is a closed internal pattern of perception,
-                emotion, behaviour, and nervous system protection that repeats
-                automatically.
-              </p>
+A Shadow Loop is a recurring pattern of emotion, behaviour, and nervous
+system activation that emerges when archetypal energies collapse,
+compensate, or collide under pressure.
+</p>
 
-              <p>
-                Many loops originally formed as intelligent survival responses.
-                Over time, however, they can become rigid, unconscious, and
-                self-reinforcing.
-              </p>
+<p>
+Shadow Loops are not flaws or identities. They are protective strategies
+that once helped you adapt.
+</p>
 
-              <p>
-                ArcheLoop helps identify these patterns so you can interrupt
-                automatic reactions and move from awareness into integration.
-              </p>
+<p>
+ArcheLoop helps you recognise those patterns, interrupt automatic
+reactions, and live from your Integrated Self.
+</p>
             </div>
           </section>
 
@@ -281,9 +309,13 @@ export default function WhatIsArcheLoopPage() {
                 How ArcheLoop Works
               </p>
 
-              <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-                From awareness into integration.
-              </h2>
+             <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+  The ArcheLoop Process
+</h2>
+
+<p className="mt-5 text-lg uppercase tracking-[0.3em] text-yellow-300/70">
+  Understand • Interrupt • Integrate
+</p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-4">
@@ -314,20 +346,20 @@ export default function WhatIsArcheLoopPage() {
             </p>
 
             <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-              Discover the Shadow Loop behind your patterns.
-            </h2>
+  Discover your Shadow Loop.
+</h2>
 
-            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-              Find My Loop™ identifies your primary Shadow Loop and gives you a
-              preview of your personalised ArcheLoop Report.
-            </p>
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+  Begin by discovering your Shadow Loop and receive your personalised
+  ArcheLoop Report with your Integration Journey.
+</p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <a
                 href="/assessment"
                 className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
               >
-                Find My Loop™
+                Find My Loop
               </a>
 
               <a

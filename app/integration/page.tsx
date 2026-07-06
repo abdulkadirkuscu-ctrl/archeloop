@@ -9,9 +9,9 @@ const journeyGroups = [
     archetype: "Sovereign",
     theme: "Visibility, worth, and action",
     journeys: [
-      ["Dimmed Light", "Visibility Path™", "Healthy Visibility"],
-      ["Paper Crown", "Authentic Sovereignty Path™", "Authentic Leadership"],
-      ["Stalled Flame", "Action Path™", "Purposeful Action"],
+      ["Dimmed Light", "Visibility Path", "Healthy Visibility"],
+      ["Paper Crown", "Authentic Sovereignty Path", "Authentic Leadership"],
+      ["Stalled Flame", "Action Path", "Purposeful Action"],
     ],
   },
   {
@@ -19,9 +19,9 @@ const journeyGroups = [
     archetype: "Magician",
     theme: "Expression, truth, and clarity",
     journeys: [
-      ["Blank Page", "Creative Expression Path™", "Authentic Expression"],
-      ["Smoky Mirrors", "Truth Path™", "Self-Honesty"],
-      ["Mind Maze", "Clarity Path™", "Clear Thinking"],
+      ["Blank Page", "Creative Expression Path", "Authentic Expression"],
+      ["Smoky Mirrors", "Truth Path", "Self-Honesty"],
+      ["Mind Maze", "Clarity Path", "Clear Thinking"],
     ],
   },
   {
@@ -29,9 +29,9 @@ const journeyGroups = [
     archetype: "Lover",
     theme: "Feeling, connection, and regulation",
     journeys: [
-      ["Emotional Lockdown", "Vulnerability Path™", "Emotional Openness"],
-      ["Fantasy Fog", "Connection Path™", "Genuine Connection"],
-      ["Flooded Waters", "Emotional Regulation Path™", "Emotional Flow"],
+      ["Emotional Lockdown", "Vulnerability Path", "Emotional Openness"],
+      ["Fantasy Fog", "Connection Path", "Genuine Connection"],
+      ["Flooded Waters", "Emotional Regulation Path", "Emotional Flow"],
     ],
   },
   {
@@ -39,19 +39,19 @@ const journeyGroups = [
     archetype: "Warrior",
     theme: "Boundaries, trust, and vitality",
     journeys: [
-      ["Compliance", "Boundaries Path™", "Self-Respect"],
-      ["Fortress", "Trust Path™", "Connected Strength"],
-      ["Barren Ground", "Vitality Path™", "Inner Vitality"],
+      ["Compliance", "Boundaries Path", "Self-Respect"],
+      ["Fortress", "Trust Path", "Connected Strength"],
+      ["Barren Ground", "Vitality Path", "Inner Vitality"],
     ],
   },
 ];
 
 const features = [
-  "Triggered Pro™",
-  "Progress Dashboard™",
-  "Full Integration Journeys™",
-  "My Integrated Vision™",
-  "Meet Your Integrated Self™",
+  "Triggered Pro",
+  "Progress Dashboard",
+  "Full Integration Journeys",
+  "My Integrated Vision",
+  "Meet Your Integrated Self",
   "Practices & Reflection Prompts",
   "Trigger History",
   "Personal Integration Tracking",
@@ -59,16 +59,16 @@ const features = [
 
 const transformationSteps = [
   {
-    title: "Notice the loop in real life",
-    text: "Use Triggered Pro™ to log real-life triggers and identify which Shadow Loops™ are repeating most often.",
+    title: "Recognise the loop",
+    text: "Use Triggered Pro to log real-life triggers and identify which Shadow Loops are repeating most often.",
   },
   {
     title: "Understand the pattern over time",
-    text: "Use the Progress Dashboard™ to see recurring triggers, people, environments, loops, and integration focus.",
+    text: "Use the Progress Dashboard to see recurring triggers, people, environments, loops, and integration focus.",
   },
   {
-    title: "Practise your Integration Journey™",
-    text: "Follow the path from your Shadow Loop™ toward your Integrated Self™ through practices, prompts, and reflection.",
+    title: "Practise your Integration Journey",
+    text: "Follow the path from your Shadow Loop toward your Integrated Self through practices, prompts, and reflection.",
   },
 ];
 
@@ -83,8 +83,12 @@ export default function IntegrationPage() {
 
         <div className="relative mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            ArcheLoop Integration™
-          </p>
+  ArcheLoop Integration
+</p>
+
+<p className="mt-4 text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+  Understand • Interrupt • Integrate
+</p>
 
           <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
             The report shows the loop.
@@ -93,11 +97,14 @@ export default function IntegrationPage() {
           </h1>
 
           <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-            ArcheLoop Integration is the monthly practice system that
-helps you track real-life triggers, follow your Integration
-Journey, practise new responses, and move toward your Integrated
-Self.
-          </p>
+  ArcheLoop Integration is your ongoing practice for recognising Shadow Loops,
+  interrupting automatic reactions, and developing a more integrated way of being.
+</p>
+
+<p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
+  It helps you move from understanding the pattern to living from your
+  Integrated Self.
+</p>
 
           <div className="mx-auto mt-10 max-w-md rounded-[2rem] border border-yellow-300/20 bg-black/30 p-6">
             <p className="text-lg text-stone-500 line-through">£29/month</p>
@@ -107,8 +114,8 @@ Self.
             </p>
 
             <p className="mt-3 text-sm leading-relaxed text-stone-400">
-              Includes Triggered Pro™, Progress Dashboard, Integration Journeys,
-My Integrated Vision, and personal integration tracking.
+              Includes Triggered Pro, Progress Dashboard, Integration Journeys, 
+              My Integrated Vision, reflection tools, and personal integration tracking.
             </p>
 
             <p className="mt-5 text-sm text-stone-500">
@@ -121,14 +128,14 @@ My Integrated Vision, and personal integration tracking.
               href="/checkout?product=integration"
               className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
             >
-              Start Integration™
+              Start Integration
             </a>
 
             <a
               href="#journeys"
               className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
             >
-              Preview Integration Journeys™
+              Preview Integration Journeys
             </a>
           </div>
         </div>
@@ -137,17 +144,17 @@ My Integrated Vision, and personal integration tracking.
       <section className="px-6 py-20">
         <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-            What Integration Does
+            How Integration Works
           </p>
 
           <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-           From awareness into integration.
+          Understand • Interrupt • Integrate
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Your ArcheLoop Report™ helps you understand the Shadow Loop™.
-            ArcheLoop Integration™ helps you notice it, interrupt it, practise
-            beyond it, and track your progress over time.
+            Your ArcheLoop Report helps you understand the pattern. ArcheLoop Integration 
+            helps you recognise it in everyday life, interrupt automatic reactions, 
+            and practise living from your Integrated Self.
           </p>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -180,9 +187,9 @@ My Integrated Vision, and personal integration tracking.
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Everything inside ArcheLoop Integration™ is designed to help you
-            move from understanding your Shadow Loop™ to practising your
-            Integrated Self™.
+            Everything inside ArcheLoop Integration is designed to 
+            help you recognise recurring Shadow Loops, interrupt automatic reactions, 
+            and practise living from your Integrated Self.
           </p>
 
           <div className="mt-12 grid gap-5 text-left md:grid-cols-2">
@@ -202,18 +209,15 @@ My Integrated Vision, and personal integration tracking.
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 text-center">
             <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-              Integration Journeys™
+              Integration Journeys
             </p>
 
             <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-              Every Shadow Loop™ has a path forward.
+              Every Shadow Loop points toward your Integrated Self.
             </h2>
 
-            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-              Preview the pathway from Shadow Loop™ to Integrated State. Full
-              journeys include awareness, interruption, embodiment, practices,
-              reflection prompts, Integrated Self™ guidance, and integration
-              statements.
+            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300"> 
+              Preview the journey from protective pattern to healthier expression.
             </p>
           </div>
 
@@ -236,27 +240,39 @@ My Integrated Vision, and personal integration tracking.
                 <div className="mt-8 space-y-5">
                   {group.journeys.map(([loop, path, state]) => {
                     const slug = path
-                      .replace("™", "")
-                      .toLowerCase()
-                      .replaceAll(" ", "-");
+  .toLowerCase()
+  .replaceAll(" ", "-");
 
                     return (
                       <Link
                         key={loop}
                         href={`/integration/${slug}`}
-                        className="block rounded-2xl border border-yellow-300/10 bg-black/30 p-5 transition hover:border-yellow-300/60 hover:bg-[#111827]"
+                       className="block rounded-2xl border border-yellow-300/20 bg-black/30 p-6 text-white transition hover:border-yellow-300/70 hover:bg-[#111827]"
                       >
-                        <p className="font-semibold text-stone-100">{loop}</p>
+                    <p className="text-base font-semibold text-stone-100">
+  {loop}
+</p>
 
-                        <p className="mt-2 text-yellow-300">{path}</p>
+<p
+  className="mt-2 font-semibold"
+  style={{ color: "#fcd34d" }}
+>
+  {path}
+</p>
 
-                        <p className="mt-2 text-sm text-stone-400">
-                          Integrated State: {state}
-                        </p>
+<div className="mt-5 h-px bg-yellow-300/10" />
 
-                        <p className="mt-4 text-sm text-yellow-300/60">
-                          Preview Journey →
-                        </p>
+<p className="mt-3 text-sm text-stone-500">
+  Integrated Self
+</p>
+
+<p className="text-sm text-stone-300">
+  {state}
+</p>
+
+<p className="mt-6 text-sm font-medium text-yellow-300/70">
+  Preview Journey →
+</p>
                       </Link>
                     );
                   })}
@@ -274,13 +290,13 @@ My Integrated Vision, and personal integration tracking.
           </p>
 
           <h2 className="text-4xl font-bold md:text-5xl">
-            Start practising beyond the loop.
+            Begin living from your Integrated Self.
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-           Start Integration by logging your first trigger in Triggered
-Pro, then use your Progress Dashboard and Integration Journey to
-track the path toward your Integrated Self.
+           Start by logging your first trigger, then use your Progress Dashboard and 
+           Integration Journey to recognise recurring patterns, interrupt automatic reactions, 
+           and gradually live more often from your Integrated Self.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -288,19 +304,19 @@ track the path toward your Integrated Self.
               href="/checkout?product=integration"
               className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
             >
-              Start Integration™
+              Start Integration
             </a>
 
             <a
               href="/checkout?product=bundle"
               className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
             >
-              Choose Report + Integration™
+              Choose Report + Integration
             </a>
           </div>
 
           <p className="mx-auto mt-8 max-w-3xl text-sm text-stone-500">
-            ArcheLoop Integration™ is an educational self-development tool and
+            ArcheLoop Integration is an educational self-awareness tool and
             is not a medical, psychiatric, therapeutic, or diagnostic service.
           </p>
         </div>

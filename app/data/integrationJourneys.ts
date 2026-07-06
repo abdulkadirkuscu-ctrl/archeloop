@@ -39,7 +39,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Dimmed Light",
     element: "Fire",
     archetype: "Sovereign",
-    path: "Visibility Path™",
+    path: "Visibility Path",
     integratedState: "Healthy Visibility",
     overview:
       "Dimmed Light forms when the Sovereign archetype learns that visibility is unsafe. The individual wants to be seen, expressed, valued, and recognised, but simultaneously fears criticism, judgment, rejection, humiliation, or exposure.",
@@ -59,12 +59,12 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Ambivalent Sovereign wants visibility but cannot tolerate being seen.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise the loop.",
         realisation:
           "I am not avoiding visibility. I am protecting myself from visibility.",
         practices: [
-          "Track activations using I Am Triggered™.",
+          "Track activations using I Am Triggered.",
           "Notice when you hide.",
           "Notice when you self-censor.",
           "Notice when you shrink.",
@@ -80,7 +80,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise Dimmed Light while it is happening.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Build tolerance for visibility.",
         realisation:
           "Visibility feels uncomfortable. Visibility is not dangerous.",
@@ -99,7 +99,7 @@ export const integrationJourneys: IntegrationJourney[] = [
         successMarker: "I can remain present while being seen.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective: "Express yourself consistently.",
         realisation: "I do not need permission to exist visibly.",
         practices: [
@@ -114,7 +114,7 @@ export const integrationJourneys: IntegrationJourney[] = [
         prompts: [
           "What part of myself am I now allowing others to see?",
           "Where am I still shrinking?",
-          "What would my integrated Sovereign do here?",
+          "What would my Integrated Sovereign do here?",
         ],
         successMarker:
           "I can be visible without abandoning myself.",
@@ -172,7 +172,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Paper Crown",
     element: "Fire",
     archetype: "Sovereign",
-    path: "Authentic Sovereignty Path™",
+    path: "Authentic Sovereignty Path",
     integratedState: "Authentic Leadership",
     overview:
       "Paper Crown forms when worth becomes dependent on achievement, status, appearance, performance, or external recognition. The person tries to prove their value instead of embodying it.",
@@ -191,7 +191,7 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Divided Sovereign wants success but resents needing success to feel valuable.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise the performance loop.",
         realisation:
           "I have confused achievement with worth.",
@@ -211,7 +211,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise when I am performing for worth.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Separate value from performance.",
         realisation:
           "My value exists before achievement.",
@@ -230,7 +230,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can experience worth without needing immediate proof.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective: "Lead from authenticity instead of performance.",
         realisation:
           "I do not need to prove my right to exist.",
@@ -298,7 +298,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Stalled Flame",
     element: "Fire",
     archetype: "Sovereign",
-    path: "Action Path™",
+    path: "Action Path",
     integratedState: "Purposeful Action",
     overview:
       "Stalled Flame forms when desire, ambition, vision, or creative fire is present, but fear interrupts movement. The person wants to act, but hesitation repeatedly stops the flame from becoming action.",
@@ -317,7 +317,7 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Divided Flame wants movement but cannot tolerate the risk of action.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise where fear interrupts movement.",
         realisation:
           "The problem is not lack of motivation. The problem is fear of action.",
@@ -336,7 +336,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise Stalled Flame while it is happening.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Create small movement before certainty arrives.",
         realisation:
           "Action creates momentum.",
@@ -355,7 +355,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can take small action without needing full confidence.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective: "Become someone who moves with purpose.",
         realisation:
           "Movement matters more than certainty.",
@@ -368,7 +368,7 @@ export const integrationJourneys: IntegrationJourney[] = [
         prompts: [
           "What would purposeful action look like here?",
           "Where am I still waiting for permission?",
-          "What does my integrated Sovereign choose next?",
+          "What does my Integrated Sovereign choose next?",
         ],
         successMarker:
           "I can move before certainty appears.",
@@ -423,7 +423,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Blank Page",
     element: "Air",
     archetype: "Magician",
-    path: "Creative Expression Path™",
+    path: "Creative Expression Path",
     integratedState: "Authentic Expression",
     overview:
       "Blank Page forms when expression becomes unsafe. The person may have ideas, feelings, creativity, and insight internally, but when expression is required, the mind goes blank and the voice disappears.",
@@ -442,7 +442,7 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Stuck Creator wants expression but cannot allow expression.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise the freeze.",
         realisation:
           "I am not lacking creativity. I am protecting myself from expression.",
@@ -462,7 +462,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise Blank Page while it is happening.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Allow imperfect expression.",
         realisation:
           "Expression does not need perfection.",
@@ -482,7 +482,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can express myself without needing certainty.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective: "Trust creative flow.",
         realisation:
           "Expression creates clarity.",
@@ -496,7 +496,7 @@ export const integrationJourneys: IntegrationJourney[] = [
         prompts: [
           "What wants to move through me?",
           "What am I now allowing myself to express?",
-          "What would my integrated Magician create?",
+          "What would my Integrated Magician create?",
         ],
         successMarker:
           "I trust expression more than perfection.",
@@ -552,7 +552,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Smoky Mirrors",
     element: "Air",
     archetype: "Magician",
-    path: "Truth Path™",
+    path: "Truth Path",
     integratedState: "Self-Honesty",
     overview:
       "Smoky Mirrors forms when truth becomes distorted through rationalisation, projection, denial, self-deception, image management, or narrative construction. The truth is often visible beneath the surface, but becomes obscured by explanations and stories.",
@@ -571,7 +571,7 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Divided Magician knows the truth but cannot face the truth.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise distortion.",
         realisation:
           "I know more than I admit.",
@@ -591,7 +591,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise distortion.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Name reality directly.",
         realisation:
           "Truth hurts less than avoidance.",
@@ -610,7 +610,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can tolerate truth.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective: "Live according to truth.",
         realisation:
           "Truth creates freedom.",
@@ -623,7 +623,7 @@ export const integrationJourneys: IntegrationJourney[] = [
         prompts: [
           "What decision becomes clear when I stop distorting reality?",
           "Where does truth create freedom?",
-          "What would my integrated Magician name clearly?",
+          "What would my Integrated Magician name clearly?",
         ],
         
         successMarker:
@@ -679,7 +679,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Mind Maze",
     element: "Air",
     archetype: "Magician",
-    path: "Clarity Path™",
+    path: "Clarity Path",
     integratedState: "Clear Thinking",
     overview:
       "Mind Maze forms when thinking becomes a substitute for certainty. The person becomes trapped in analysis, planning, prediction, and mental recursion. Instead of creating clarity, thinking creates more thinking.",
@@ -699,7 +699,7 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Trapped Magician wants action but cannot stop thinking.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise overthinking.",
         realisation:
           "Thinking is not the same as clarity.",
@@ -719,7 +719,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise overthinking while it is happening.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Separate clarity from mental noise.",
         realisation:
           "Not every thought deserves attention.",
@@ -739,7 +739,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can separate clarity from noise.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective: "Act from clear enough understanding.",
         realisation:
           "Action creates clarity.",
@@ -752,7 +752,7 @@ export const integrationJourneys: IntegrationJourney[] = [
         prompts: [
           "What became clear through action?",
           "What did thinking fail to solve?",
-          "What would my integrated Magician choose now?",
+          "What would my Integrated Magician choose now?",
         ],
         successMarker:
           "I trust movement more than mental certainty.",
@@ -807,7 +807,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Emotional Lockdown",
     element: "Water",
     archetype: "Lover",
-    path: "Vulnerability Path™",
+    path: "Vulnerability Path",
     integratedState: "Emotional Openness",
     overview:
       "Emotional Lockdown forms when emotional expression becomes unsafe. The person learns to suppress, disconnect from, or numb emotional experience in order to maintain control, function, or avoid pain.",
@@ -826,7 +826,7 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Closed Heart wants intimacy but fears vulnerability.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise emotional shutdown.",
         realisation:
           "Numbness is also a feeling.",
@@ -846,7 +846,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise Emotional Lockdown while it is happening.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Allow emotion safely.",
         realisation:
           "Feeling is not weakness.",
@@ -865,7 +865,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can allow emotion without immediately closing down.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective: "Practise emotional openness and connection.",
         realisation:
           "Connection requires vulnerability.",
@@ -877,7 +877,7 @@ export const integrationJourneys: IntegrationJourney[] = [
         ],
         prompts: [
           "Where am I now allowing myself to be emotionally known?",
-          "What would my integrated Lover express here?",
+          "What would my Integrated Lover express here?",
           "What connection becomes possible when I stay open?",
         ],
         successMarker:
@@ -933,7 +933,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Fantasy Fog",
     element: "Water",
     archetype: "Lover",
-    path: "Connection Path™",
+    path: "Connection Path",
     integratedState: "Genuine Connection",
     overview:
       "Fantasy Fog forms when longing replaces connection. Instead of engaging with reality, the person retreats into imagined futures, idealised relationships, emotional fantasy, or unattainable possibilities.",
@@ -952,7 +952,7 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Divided Lover wants real connection but keeps choosing fantasy.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise where longing has replaced reality.",
         realisation:
           "Longing is not connection.",
@@ -972,7 +972,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise Fantasy Fog while it is happening.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Return to grounded connection.",
         realisation:
           "Reality is where intimacy happens.",
@@ -991,7 +991,7 @@ export const integrationJourneys: IntegrationJourney[] = [
   "I can separate fantasy from genuine connection.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective: "Choose intimacy rooted in reality.",
         realisation:
           "Connection requires reality.",
@@ -1004,7 +1004,7 @@ export const integrationJourneys: IntegrationJourney[] = [
         prompts: [
           "What kind of connection is available here?",
           "What does genuine connection require from me?",
-          "What would my integrated Lover choose?",
+          "What would my Integrated Lover choose?",
         ],
         successMarker:
           "I can choose real connection over emotional fantasy.",
@@ -1059,7 +1059,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Flooded Waters",
     element: "Water",
     archetype: "Lover",
-    path: "Emotional Regulation Path™",
+    path: "Emotional Regulation Path",
     integratedState: "Emotional Flow",
     overview:
       "Flooded Waters forms when emotion overwhelms containment. The person becomes consumed by feelings, reactions, attachments, or emotional intensity until emotion controls the system rather than moving through it.",
@@ -1078,7 +1078,7 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Flooded Lover wants emotional safety but cannot contain emotional intensity.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise emotional flooding.",
         realisation:
           "I am overwhelmed, not broken.",
@@ -1098,7 +1098,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise Flooded Waters while it is happening.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Contain emotion without suppressing it.",
         realisation:
           "Emotions can be held without being suppressed.",
@@ -1118,7 +1118,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can feel emotion without immediately being controlled by it.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective: "Let emotion move through without drowning.",
         realisation:
           "Feelings are information, not commands.",
@@ -1187,7 +1187,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Compliance",
     element: "Earth",
     archetype: "Warrior",
-    path: "Boundaries Path™",
+    path: "Boundaries Path",
     integratedState: "Self-Respect",
     overview:
       "Compliance forms when safety becomes dependent upon approval. The person learns to suppress anger, preferences, needs, limits, and authenticity in order to remain accepted, liked, included, or safe.",
@@ -1207,7 +1207,7 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Divided Warrior wants boundaries but fears the consequences of having them.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise self-abandonment.",
         realisation:
           "People pleasing is self-abandonment.",
@@ -1227,7 +1227,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise Compliance while it is happening.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Practise preference and limit-setting.",
         realisation:
           "My needs matter.",
@@ -1248,7 +1248,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can express a preference without immediately abandoning it.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective: "Hold boundaries without losing self-respect.",
         realisation:
           "Boundaries protect connection.",
@@ -1316,7 +1316,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Fortress",
     element: "Earth",
     archetype: "Warrior",
-    path: "Trust Path™",
+    path: "Trust Path",
     integratedState: "Connected Strength",
     overview:
       "Fortress forms when protection becomes isolation. The person learns that vulnerability is dangerous and dependence is unsafe, so walls become safety and distance becomes protection.",
@@ -1336,7 +1336,7 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Divided Warrior wants closeness but trusts distance more than connection.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise where protection has become isolation.",
         realisation:
           "Protection has become isolation.",
@@ -1356,7 +1356,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise Fortress while it is happening.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Test safe connection gradually.",
         realisation:
           "Not everyone is dangerous.",
@@ -1375,7 +1375,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can allow small support without losing strength.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective: "Build connected strength.",
         realisation:
           "Trust is strength.",
@@ -1443,7 +1443,7 @@ export const integrationJourneys: IntegrationJourney[] = [
     loop: "Barren Ground",
     element: "Earth",
     archetype: "Warrior",
-    path: "Vitality Path™",
+    path: "Vitality Path",
     integratedState: "Inner Vitality",
     overview:
       "Barren Ground forms when survival replaces vitality. Life becomes duty, endurance, and responsibility while softness, joy, desire, pleasure, and aliveness feel distant or unavailable.",
@@ -1463,7 +1463,7 @@ export const integrationJourneys: IntegrationJourney[] = [
       "The Divided Warrior wants vitality but expects disappointment.",
     stages: [
       {
-        title: "Awareness",
+        title: "Understand",
         objective: "Recognise survival mode.",
         realisation:
           "I am surviving, not living.",
@@ -1483,7 +1483,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can recognise Barren Ground while it is happening.",
       },
       {
-        title: "Interruption",
+        title: "Interrupt",
         objective: "Reconnect with desire, nourishment, and life force.",
         realisation:
           "Joy is not irresponsible.",
@@ -1503,7 +1503,7 @@ export const integrationJourneys: IntegrationJourney[] = [
           "I can choose nourishment without guilt.",
       },
       {
-        title: "Embodiment",
+        title: "Integrate",
         objective:
   "Live from inner vitality rather than survival alone.",
         realisation:

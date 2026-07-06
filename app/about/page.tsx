@@ -21,15 +21,14 @@ export default function AboutPage() {
               Break the loop.
             </h1>
 
-            <p className="mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-              ArcheLoop is a symbolic self-awareness framework designed to help
-              people recognise recurring Shadow Loops, understand why they
-              repeat, and move from awareness into integration.
+            <p className="mt-8 max-w-3xl text-lg leading-relaxed text-stone-300">
+              ArcheLoop is an integrative archetypal self-awareness framework
+              that helps people recognise recurring Shadow Loops, interrupt
+              automatic reactions, and develop a more integrated way of being.
             </p>
           </div>
 
           <div className="space-y-6">
-
             <Section title="How ArcheLoop began">
               <p>
                 ArcheLoop grew from years of self-observation, journaling,
@@ -91,18 +90,18 @@ export default function AboutPage() {
                 As the work developed, I began studying how different
                 archetypal energies interact under pressure. Drawing inspiration
                 from archetypal psychology, I explored how four fundamental
-                human functions—represented in ArcheLoop as Fire
+                human functions — represented in ArcheLoop as Fire
                 (Sovereign), Air (Magician), Water (Lover), and Earth
-                (Warrior)—could become either integrated or protective.
+                (Warrior) — could become either integrated or protective.
               </p>
 
               <p>
                 Rather than viewing emotional struggles as isolated problems, I
                 began recognising recurring dynamics created by the interaction
-                of these archetypal energies. Sometimes an energy became
-                suppressed. Sometimes it compensated for another. Sometimes two
-                opposing energies collided. These recurring adaptations
-                eventually evolved into twelve distinct Shadow Loops.
+                of these archetypal energies. Sometimes an energy collapsed.
+                Sometimes it compensated for another. Sometimes two opposing
+                energies collided. These recurring adaptations eventually
+                evolved into twelve distinct Shadow Loops.
               </p>
 
               <p>
@@ -124,19 +123,19 @@ export default function AboutPage() {
               </p>
 
               <p>
-                Under stress, however, these same energies may become
-                suppressed, overcompensate, or collide with one another,
-                creating recurring Shadow Loops. These adaptations can influence
-                thoughts, emotions, behaviours, relationships, and nervous
-                system responses without us fully realising it.
+                Under stress, however, these same energies may collapse,
+                compensate, or collide with one another, creating recurring
+                Shadow Loops. These adaptations can influence thoughts,
+                emotions, behaviours, relationships, and nervous system
+                responses without us fully realising it.
               </p>
 
               <p>
                 Every person's story is unique, and every experience deserves
                 compassion. ArcheLoop is not designed to reduce people to
                 categories. Instead, it offers a practical language for
-                recognising the recurring patterns beneath those experiences so
-                they can be understood, interrupted, and gradually integrated.
+                recognising recurring patterns so they can be understood,
+                interrupted, and gradually integrated.
               </p>
             </Section>
 
@@ -145,8 +144,8 @@ export default function AboutPage() {
                 Core Principle
               </p>
 
-              <h2 className="mt-5 text-4xl font-bold">
-                Recognition is the beginning of integration.
+              <h2 className="mt-5 text-3xl font-bold md:text-4xl">
+                Awareness is the beginning of integration.
               </h2>
 
               <div className="mt-8 space-y-5 text-lg leading-relaxed text-stone-300">
@@ -156,16 +155,16 @@ export default function AboutPage() {
                 </p>
 
                 <p>
-                  By recognising Shadow Loops in real time—through thoughts,
+                  By recognising Shadow Loops in real time — through thoughts,
                   emotions, body sensations, behaviours, relationships, and
-                  nervous system responses—you begin creating space between the
-                  trigger and the response. That space is where integration
-                  begins.
+                  nervous system responses — you begin creating space between
+                  the trigger and the reaction.
                 </p>
 
                 <p>
-                  You are not the loop. The loop is a learned pattern. Patterns
-                  can be recognised, interrupted, and transformed.
+                  You are not the loop. The loop is a learned protective
+                  pattern. Patterns can be recognised, interrupted, and
+                  integrated.
                 </p>
               </div>
             </div>
@@ -176,7 +175,7 @@ export default function AboutPage() {
               href="/assessment"
               className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
             >
-              Find My Loop™
+              Find My Loop
             </a>
 
             <a
@@ -210,7 +209,7 @@ function Section({
 }) {
   return (
     <section className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-      <h2 className="text-3xl font-semibold text-yellow-300">
+      <h2 className="text-2xl font-semibold text-yellow-300 md:text-3xl">
         {title}
       </h2>
 

@@ -67,14 +67,14 @@ export default function IntegratedVisionBox({
       </p>
 
       <h3 className="mt-4 text-2xl font-semibold text-stone-100">
-        Meet your future self.
+        Imagine your Integrated Self.
       </h3>
 
       <p className="mt-4 leading-relaxed text-stone-300">
-        Describe the version of yourself you are becoming through this journey.
-        Imagine yourself living from {integratedState} in real situations,
-        relationships, choices, and moments of pressure.
-      </p>
+  Describe how you are learning to live from your Integrated Self through
+  this journey. Imagine yourself living from {integratedState} in real
+  situations, relationships, choices, and moments of pressure.
+</p>
 
       <div className="mt-6 rounded-2xl border border-yellow-300/10 bg-[#030712] p-5">
         <p className="font-semibold text-yellow-300">Reflection prompts</p>

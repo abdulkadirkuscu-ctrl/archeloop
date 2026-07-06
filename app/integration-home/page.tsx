@@ -9,44 +9,44 @@ const steps = [
     number: "1",
     title: "Know your loop",
     description:
-      "ArcheLoop Integration™ works best after completing Find My Loop™ and unlocking your ArcheLoop Report™. Your report identifies your Shadow Loop™, Integrated Self™, and recommended Integration Journey™.",
+      "ArcheLoop Integration works best after completing Find My Loop and unlocking your ArcheLoop Report. Your report identifies your Shadow Loop, Integrated Self, and recommended Integration Journey.",
     href: "/assessment",
-    cta: "Complete Find My Loop™",
+    cta: "Complete Find My Loop",
   },
   {
     number: "2",
     title: "Log real-life triggers",
     description:
-      "Use Triggered Pro™ when something triggers you. Track what happened, who was involved, where it happened, and which Shadow Loop™ was most active.",
+      "Use Triggered Pro when something triggers you. Track what happened, who was involved, where it happened, and which Shadow Loop was most active.",
     href: "/triggered-intelligence",
-    cta: "Open Triggered Pro™",
+    cta: "Open Triggered Pro",
   },
   {
     number: "3",
     title: "Review your patterns",
     description:
-      "Use your Progress Dashboard™ to see recurring loops, triggers, people, environments, and your current integration focus over time.",
+      "Use your Progress Dashboard to see recurring loops, triggers, people, environments, and your current integration focus over time.",
     href: "/progress-dashboard",
-    cta: "View Progress Dashboard™",
+    cta: "View Progress Dashboard",
   },
   {
     number: "4",
-    title: "Follow your Integration Journey™",
+    title: "Follow your Integration Journey",
     description:
-      "Move from awareness into interruption, embodiment, reflection, practice, and your Integrated Self™ through the pathway connected to your loop.",
+      "Move from awareness into interruption, embodiment, reflection, practice, and your Integrated Self through the pathway connected to your loop.",
     href: "/integration",
-    cta: "Explore Integration Journeys™",
+    cta: "Explore Integration Journeys",
   },
 ];
 
 const included = [
-  "Triggered Pro™",
-  "Progress Dashboard™",
-  "Integration Journeys™",
-  "My Integrated Vision™",
-  "Meet Your Integrated Self™",
-  "Practices & Reflection Prompts™",
-  "Personal Integration Tracking™",
+  "Triggered Pro",
+  "Progress Dashboard",
+  "Integration Journeys",
+  "My Integrated Vision",
+  "Meet Your Integrated Self",
+  "Practices & Reflection Prompts",
+  "Personal Integration Tracking",
 ];
 
 async function getIntegrationAccess() {
@@ -86,7 +86,7 @@ export default async function IntegrationHomePage() {
 
           <div className="relative mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
             <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              ArcheLoop Integration™
+              ArcheLoop Integration
             </p>
 
             <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
@@ -94,9 +94,9 @@ export default async function IntegrationHomePage() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-              The Integration Hub is available with ArcheLoop Integration™. It
-              includes Triggered Pro™, Progress Dashboard™, Integration
-              Journeys™, My Integrated Vision™, and Monthly Review™.
+              The Integration Hub is available with ArcheLoop Integration. It
+              includes Triggered Pro, Progress Dashboard, Integration
+              Journeys, My Integrated Vision, and Monthly Review.
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -104,14 +104,14 @@ export default async function IntegrationHomePage() {
                 href="/checkout?product=integration"
                 className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
               >
-                Start Integration™
+                Start Integration
               </Link>
 
               <Link
                 href="/checkout?product=bundle"
                 className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
               >
-                Choose Report + Integration™
+                Choose Report + Integration
               </Link>
             </div>
           </div>
@@ -131,7 +131,7 @@ export default async function IntegrationHomePage() {
 
         <div className="relative mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            ArcheLoop Integration™
+            ArcheLoop Integration
           </p>
 
           <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
@@ -139,9 +139,9 @@ export default async function IntegrationHomePage() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-            ArcheLoop Integration™ brings together Triggered Pro™, Progress
-            Dashboard™, Integration Journeys™, My Integrated Vision™, and your
-            Integrated Self™ into one transformation pathway.
+            ArcheLoop Integration brings together Triggered Pro, Progress
+            Dashboard, Integration Journeys, My Integrated Vision, and your
+            Integrated Self into one transformation pathway.
           </p>
 
           <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-yellow-300/10 bg-black/30 p-6 text-left">
@@ -150,15 +150,15 @@ export default async function IntegrationHomePage() {
             </p>
 
             <p className="mt-3 text-sm leading-relaxed text-stone-400">
-              ArcheLoop Integration™ is designed to be used after Find My Loop™.
-              Your ArcheLoop Report™ gives the system the pattern, loop, and
+              ArcheLoop Integration is designed to be used after Find My Loop.
+              Your ArcheLoop Report gives the system the pattern, loop, and
               integration pathway that makes the Integration tools personal.
             </p>
 
             <p className="mt-3 text-sm leading-relaxed text-stone-500">
-              If you have not completed Find My Loop™ yet, start there first.
-              If you already have your report, continue into Triggered Pro™,
-              your Dashboard™, and your Integration Journey™.
+              If you have not completed Find My Loop yet, start there first.
+              If you already have your report, continue into Triggered Pro,
+              your Dashboard, and your Integration Journey.
             </p>
           </div>
 
@@ -167,14 +167,14 @@ export default async function IntegrationHomePage() {
               href="/assessment"
               className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
             >
-              Complete Find My Loop™
+              Complete Find My Loop
             </Link>
 
             <Link
               href="/triggered-intelligence"
               className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
             >
-              Start With Triggered Pro™
+              Start With Triggered Pro
             </Link>
           </div>
         </div>
@@ -252,14 +252,14 @@ export default async function IntegrationHomePage() {
               href="/triggered-intelligence"
               className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
             >
-              Start With Triggered Pro™
+              Start With Triggered Pro
             </Link>
 
             <Link
               href="/progress-dashboard"
               className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
             >
-              View Progress Dashboard™
+              View Progress Dashboard
             </Link>
           </div>
         </div>

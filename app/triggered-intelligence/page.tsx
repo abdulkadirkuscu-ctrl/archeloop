@@ -169,7 +169,7 @@ if (!hasIntegrationAccess) {
 
         <div className="relative mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            Triggered Pro™
+            Triggered Pro
           </p>
 
           <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
@@ -177,9 +177,9 @@ if (!hasIntegrationAccess) {
           </h1>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-            Triggered Pro™ is part of ArcheLoop Integration™. It helps you log
-            real-life triggers, identify active Shadow Loops™, complete
-            Integration Check-Ins™, and track progress over time.
+            Triggered Pro is part of ArcheLoop Integration. It helps you log
+            real-life triggers, identify active Shadow Loops, complete
+            Integration Check-Ins, and track progress over time.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -187,14 +187,14 @@ if (!hasIntegrationAccess) {
               href="/checkout?product=integration"
               className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
             >
-              Start Integration™
+              Start Integration
             </Link>
 
             <Link
               href="/checkout?product=bundle"
               className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
             >
-              Choose Report + Integration™
+              Choose Report + Integration
             </Link>
           </div>
         </div>
@@ -216,15 +216,15 @@ if (!hasIntegrationAccess) {
           <div className="space-y-8">
             <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
               <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-                Triggered Pro™
+                Triggered Pro
               </p>
 
               <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
-                Identify the Shadow Loop™ Behind Your Reaction
+                Identify the Shadow Loop Behind Your Reaction
               </h1>
 
               <p className="mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-               Answer a few simple questions to identify the Shadow Loop™ driving your current reaction and receive guidance for your next integrated step.
+               Answer a few simple questions to identify the Shadow Loop driving your current reaction and receive guidance for your next integrated step.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -372,7 +372,7 @@ if (!hasIntegrationAccess) {
             </div>
 
 
-<PremiumPanel title="Integration Reflection™">
+<PremiumPanel title="Integration Reflection">
   <p className="text-lg font-semibold text-stone-100">
     What would {result.integratedIdentity} do right now?
   </p>
@@ -380,7 +380,7 @@ if (!hasIntegrationAccess) {
   {integratedVision ? (
     <div className="mt-4 rounded-2xl border border-yellow-300/10 bg-yellow-300/5 p-4">
       <p className="text-sm uppercase tracking-[0.18em] text-yellow-300/60">
-        My Integrated Vision™
+        My Integrated Vision
       </p>
 
       <p className="mt-3 leading-relaxed text-stone-300">
@@ -396,7 +396,7 @@ if (!hasIntegrationAccess) {
 
   <Link
     href={`/integration/${result.journey
-      .replace("™", "")
+      .replace("", "")
       .toLowerCase()
       .replaceAll(" ", "-")}`}
     className="mt-5 inline-flex rounded-full border border-yellow-300/20 bg-yellow-300/10 px-5 py-2 text-sm text-yellow-200 transition hover:border-yellow-300/60"
@@ -442,7 +442,7 @@ if (!hasIntegrationAccess) {
               </div>
             </PremiumPanel>
 
-<PremiumPanel title="Integration Check-In™">
+<PremiumPanel title="Integration Check-In">
   <div className="space-y-6">
     <CheckInQuestion
       title="When did you become aware you were in the loop?"
@@ -519,7 +519,7 @@ if (!hasIntegrationAccess) {
 
     <div className="relative max-w-xl rounded-[2rem] border border-yellow-300/30 bg-gradient-to-br from-[#15100A] via-[#0B1018] to-black p-8 text-center shadow-[0_0_120px_rgba(250,204,21,0.35)]">
       <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-        ArcheLoop Breakthrough™
+        ArcheLoop Breakthrough
       </p>
 
       <h2 className="mt-5 text-4xl font-bold text-yellow-200">
@@ -528,7 +528,7 @@ if (!hasIntegrationAccess) {
 
       <p className="mt-5 text-lg leading-relaxed text-stone-200">
         You interrupted {result.primaryLoop} and chose from your Integrated
-        Self™.
+        Self.
       </p>
 
       <p className="mt-5 text-sm uppercase tracking-[0.25em] text-yellow-300/70">

@@ -296,7 +296,7 @@ export default function AssessmentPage() {
       { journey: string; integratedState: string }
     > = {
       "Dimmed Light": {
-        journey: "Visibility Path™",
+        journey: "Visibility Path",
         integratedState: "Healthy Visibility",
       },
       "Paper Crown": {
@@ -308,39 +308,39 @@ export default function AssessmentPage() {
         integratedState: "Purposeful Action",
       },
       "Blank Page": {
-        journey: "Creative Expression Path™",
+        journey: "Creative Expression Path",
         integratedState: "Authentic Expression",
       },
       "Smoky Mirrors": {
-        journey: "Truth Path™",
+        journey: "Truth Path",
         integratedState: "Self-Honesty",
       },
       "Mind Maze": {
-        journey: "Clarity Path™",
+        journey: "Clarity Path",
         integratedState: "Clear Thinking",
       },
       "Emotional Lockdown": {
-        journey: "Vulnerability Path™",
+        journey: "Vulnerability Path",
         integratedState: "Emotional Openness",
       },
       "Fantasy Fog": {
-        journey: "Connection Path™",
+        journey: "Connection Path",
         integratedState: "Genuine Connection",
       },
       "Flooded Waters": {
-        journey: "Emotional Regulation Path™",
+        journey: "Emotional Regulation Path",
         integratedState: "Emotional Flow",
       },
       Compliance: {
-        journey: "Boundaries Path™",
+        journey: "Boundaries Path",
         integratedState: "Self-Respect",
       },
       Fortress: {
-        journey: "Trust Path™",
+        journey: "Trust Path",
         integratedState: "Connected Strength",
       },
       "Barren Ground": {
-        journey: "Vitality Path™",
+        journey: "Vitality Path",
         integratedState: "Inner Vitality",
       },
     }
@@ -399,19 +399,19 @@ export default function AssessmentPage() {
         <section className="px-6 py-24">
           <div className="mx-auto max-w-5xl text-center">
             <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              Find My Loop™ Complete
+              Find My Loop Complete
             </p>
 
             <h1 className="mt-5 text-5xl font-bold md:text-7xl">
-              Your ArcheLoop Report™
+              Your ArcheLoop Report
               <br />
               is ready.
             </h1>
 
             <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-              Your responses have been analysed to identify your Shadow Loop™,
-archetypal pattern, nervous system pattern, Integrated Self™, and
-recommended Integration Journey™.
+              Your responses have identified the Shadow Loop currently most active for you, 
+              along with your archetypal pattern, nervous system activation, 
+              Integration Journey, and Integrated Self.
             </p>
           </div>
         </section>
@@ -420,7 +420,7 @@ recommended Integration Journey™.
           <section className="px-6 pb-20">
             <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
               <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-                Primary Shadow Loop™
+                Primary Shadow Loop
               </p>
 
               <h2 className="mt-5 text-4xl font-bold text-yellow-300 md:text-6xl">
@@ -449,11 +449,13 @@ toward your Integrated Self.
 </p>
 
 <h2 className="mt-5 text-4xl font-bold md:text-6xl">
-  Continue Your ArcheLoop Journey™
+  Choose Your Next Step
 </h2>
 
 <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-  You've identified your Shadow Loop™. Now choose how you'd like to continue.
+  You've discovered your Shadow Loop.
+
+  Now choose how you'd like to continue your Integration Journey.
 </p>
             </div>
 
@@ -464,7 +466,7 @@ toward your Integrated Self.
                 </p>
 
                 <h3 className="mt-4 text-4xl font-bold text-yellow-300">
-                  ArcheLoop Report™
+                  ArcheLoop Report
                 </h3>
 
                 <p className="text-2xl font-semibold text-yellow-300">£19</p>
@@ -474,14 +476,12 @@ toward your Integrated Self.
 </p>
 
                 <p className="mt-5 leading-relaxed text-stone-300">
-                  Continue to your complete ArcheLoop Report™ and explore the
-                  deeper patterns behind your Shadow Loop™, nervous system
-                  responses, relationships, and integration pathway.
+                  Understand your Shadow Loop in depth and discover the beliefs, nervous system patterns, relational dynamics, and Integration Journey shaping your experience.
                 </p>
 
                 <div className="mt-7 grid gap-3 text-left">
                   {[
-                    "Primary & Secondary Shadow Loops™",
+                    "Primary & Secondary Shadow Loops",
                     "Core belief and core fear",
                     "Nervous system pattern",
                     "Relationship dynamics",
@@ -501,7 +501,7 @@ toward your Integrated Self.
                   href="/checkout?product=report"
                   className="mt-8 block rounded-full bg-yellow-300 px-8 py-4 text-center text-lg font-semibold text-black transition hover:bg-yellow-200"
                 >
-                  Continue to Full ArcheLoop Report™
+                  Continue to Full ArcheLoop Report
                 </a>
               </div>
 
@@ -511,7 +511,7 @@ toward your Integrated Self.
                 </p>
 
                 <h3 className="mt-4 text-4xl font-bold text-yellow-300">
-                  Report + First Month Integration™
+                  Report + First Month Integration
                 </h3>
 
                 <p className="text-2xl font-semibold text-yellow-300">£29</p>
@@ -521,19 +521,19 @@ toward your Integrated Self.
 </p>
 
                 <p className="mt-5 leading-relaxed text-stone-300">
-                  Everything in the ArcheLoop Report, plus your first month of
-ArcheLoop Integration to help you recognise patterns, track
-triggers, and build lasting change.
+                  Move beyond understanding.
+
+Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday life, interrupt automatic reactions, and begin living from your Integrated Self.
                 </p>
 
                 <div className="mt-7 grid gap-3 text-left">
                   {[
-                    "Full ArcheLoop Report™",
-                    "First month ArcheLoop Integration™",
-                    "Triggered Pro™",
-                    "Progress Dashboard™",
-                    "Integration Journeys™",
-                    "My Integrated Vision™",
+                    "Full ArcheLoop Report",
+                    "First month ArcheLoop Integration",
+                    "Triggered Pro",
+                    "Progress Dashboard",
+                    "Integration Journeys",
+                    "My Integrated Vision",
                   ].map((item) => (
                     <div
                       key={item}
@@ -548,7 +548,7 @@ triggers, and build lasting change.
                   href="/checkout?product=bundle"
                   className="mt-8 block rounded-full bg-yellow-300 px-8 py-4 text-center text-lg font-semibold text-black transition hover:bg-yellow-200"
                 >
-                 Choose Report + Integration™
+                 Choose Report + Integration
                 </a>
               </div>
             </div>
@@ -569,20 +569,26 @@ triggers, and build lasting change.
 
         <div className="relative mx-auto max-w-4xl space-y-8">
           <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-6 shadow-[0_0_60px_rgba(216,183,120,0.08)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              Find My Loop™
-            </p>
+           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+  Find My Loop
+</p>
 
-            <h1 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
-              Find My Loop™
-            </h1>
+<h1 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
+  Find My Loop
+</h1>
 
-            <p className="mt-3 max-w-3xl text-base leading-relaxed text-stone-300">
-              Complete the 60-question ArcheLoop assessment to generate your
-              personalised ArcheLoop Report™. Your report reveals your Shadow
-              Loop™, archetype, nervous system pattern, Integrated Self™, and
-              recommended Integration Journey™.
-            </p>
+<p className="mt-4 text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+  Understand • Interrupt • Integrate
+</p>
+
+<p className="mt-3 max-w-3xl text-base leading-relaxed text-stone-300">
+  Complete the 60-question assessment to discover your Shadow Loop.
+  <br />
+  <br />
+  Your personalised ArcheLoop Report reveals your archetypal pattern,
+  nervous system activation, Integration Journey, and the Integrated Self
+  your pattern points toward.
+</p>
           </div>
 
           <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-5 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
@@ -664,18 +670,19 @@ triggers, and build lasting change.
 
           <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-7 shadow-[0_0_55px_rgba(216,183,120,0.07)]">
             <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-              What You’ll Discover
+              Your ArcheLoop Report Includes
             </p>
 
             <div className="mt-5 grid gap-3 text-stone-300 md:grid-cols-2">
               {[
-                "Your Primary Shadow Loop™",
-                "Your Secondary Shadow Loop™",
-                "Your Archetype & Element",
-                "Your Nervous System Pattern",
-                "Your Integrated Self™",
-                "Your Personalised ArcheLoop Report™",
-              ].map((item) => (
+  "Primary Shadow Loop",
+  "Secondary Shadow Loop",
+  "Archetype & Element",
+  "Nervous System Pattern",
+  "Integration Journey",
+  "Integrated Self",
+  "Personalised ArcheLoop Report",
+].map((item) => (
                 <div
                   key={item}
                   className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4"

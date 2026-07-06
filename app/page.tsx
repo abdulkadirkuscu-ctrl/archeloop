@@ -147,7 +147,7 @@ export default function Home() {
 
   <div className="relative mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
     <p className="text-sm uppercase tracking-[0.4em] text-yellow-300/70">
-      ArcheLoop™
+      ArcheLoop
     </p>
 
 <p className="mt-4 text-sm uppercase tracking-[0.35em] text-yellow-300/70">
@@ -161,17 +161,7 @@ export default function Home() {
     </h1>
 
     <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-stone-300 md:text-xl">
-  Discover the Shadow Loop™ you keep repeating.
-</p>
-
-    <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-  ArcheLoop is an integrative archetypal self-awareness framework that
-helps people recognise recurring Shadow Loops, interrupt automatic
-reactions, and develop a more integrated way of being.
-</p>
-
-<p className="mx-auto mt-7 max-w-3xl text-xl font-semibold text-yellow-300">
-  Helping people live from their Integrated Self.
+  Discover your Shadow Loop.
 </p>
 
     <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -193,13 +183,31 @@ reactions, and develop a more integrated way of being.
   </div>
 </section>
 
+<section className="px-6 py-12">
+  <div className="mx-auto max-w-5xl border-y border-yellow-300/10 py-12 text-center">
+    <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+      Understand • Interrupt • Integrate
+    </p>
+
+    <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+      ArcheLoop is an integrative archetypal self-awareness framework that
+      helps people recognise recurring Shadow Loops, interrupt automatic
+      reactions, and develop a more integrated way of being.
+    </p>
+
+    <p className="mx-auto mt-6 max-w-3xl text-lg font-semibold leading-relaxed text-yellow-300">
+      Helping people live from their Integrated Self.
+    </p>
+  </div>
+</section>
+
       <section className="px-6 py-20">
         <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_60px_rgba(216,183,120,0.06)]">
           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
             Start With What Feels Familiar
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+          <h2 className="mt-5 text-3xl font-bold md:text-4xl">
             Do any of these patterns feel familiar?
           </h2>
 
@@ -214,11 +222,12 @@ reactions, and develop a more integrated way of being.
             ))}
           </div>
 
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-stone-400">
-            The loop may look different on the surface.
-            <br />
-            The pattern underneath is often the same.
-          </p>
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-stone-400">
+  These experiences may look different on the surface, but they often
+  reflect the same underlying protective pattern. ArcheLoop organises
+  these recurring patterns into twelve Shadow Loops so they become easier
+  to recognise and understand.
+</p>
 
           <a
             href="/assessment"
@@ -235,25 +244,21 @@ reactions, and develop a more integrated way of being.
             What Is A Shadow Loop™?
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-            The Core Of ArcheLoop™
-          </h2>
-
-          <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-            A Shadow Loop is a recurring emotional, behavioural, and nervous system
-pattern that emerges when archetypal energies collapse, compensate, or
-collide under pressure.
-          </p>
+          <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-stone-300">
+  A Shadow Loop is a recurring pattern of emotion, behaviour, and nervous
+  system activation that emerges when archetypal energies collapse,
+  compensate, or collide under pressure.
+</p>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
-            Most people only see the reaction.
-          </p>
+  Shadow Loops are not flaws or identities. They are protective strategies
+  that once helped you adapt.
+</p>
 
-          <p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-stone-400">
-            ArcheLoop™ helps you discover the hidden fear, protective response,
-            nervous system activation, archetypal pattern, and integrated path
-            beneath it.
-          </p>
+<p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-stone-400">
+  ArcheLoop helps you recognise those patterns so you can understand them,
+  interrupt automatic reactions, and move toward your Integrated Self.
+</p>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
             Awareness is the beginning of integration.
@@ -268,18 +273,14 @@ collide under pressure.
       Discover the 12 Shadow Loops™
     </p>
 
-    <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+    <h2 className="mt-5 text-3xl font-bold md:text-4xl">
       Every recurring pattern has a name.
     </h2>
 
-    <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-      Each Shadow Loop™ represents a different protective strategy your mind
-      and nervous system developed to keep you safe.
-    </p>
-
-    <p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-stone-400">
-      Find My Loop™ identifies the loop that is currently most active for you.
-    </p>
+    <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+  ArcheLoop organises recurring protective patterns into twelve Shadow
+  Loops, making them easier to recognise, understand, and work with.
+</p>
 
     <div className="mt-12 grid gap-5 lg:grid-cols-4">
   {shadowLoopPreview.map((group) => (
@@ -335,14 +336,14 @@ collide under pressure.
             What You’ll Discover
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-            Find the loop behind the reaction.
-          </h2>
+          <h2 className="mt-5 text-3xl font-bold md:text-4xl">
+  What Find My Loop reveals.
+</h2>
 
-          <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Find My Loop™ helps reveal your Shadow Loop™, archetypal pattern,
-            nervous system pattern, and personalised ArcheLoop Report™.
-          </p>
+<p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+  Your assessment reveals the structure of your current pattern and gives
+  you a personalised ArcheLoop Report.
+</p>
 
           <div className="mt-12 grid gap-5 text-left md:grid-cols-3">
             {discoveries.map((item) => (
@@ -366,14 +367,15 @@ collide under pressure.
               How ArcheLoop™ Works
             </p>
 
-            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+            <h2 className="mt-5 text-3xl font-bold md:text-4xl">
               A clear path from discovery to integration.
             </h2>
 
-            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-             ArcheLoop™ helps you move from “Why does this keep happening?” to
-“I can see the pattern, interrupt it, and practise a different way of responding.”
-            </p>
+           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+  ArcheLoop helps you move from “Why does this keep happening?” to
+  “I understand the pattern, I can interrupt it, and I can live from my
+  Integrated Self.”
+</p>
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -415,23 +417,21 @@ collide under pressure.
             Meet Your Integrated Self™
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+          <h2 className="mt-5 text-3xl font-bold md:text-4xl">
             You are not the loop.
           </h2>
 
           <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Every Shadow Loop™ points toward an integrated state: Healthy
-            Visibility, Authentic Expression, Self-Respect, Connected Strength,
-            Inner Vitality, and more.
+           Every Shadow Loop points toward an integrated state: Healthy Visibility,
+Clear Thinking, Emotional Flow, Connected Strength, and more.
           </p>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
-  Your Integrated Self is not someone new. It is the part of you 
-  that becomes more available as your Shadow Loops lose their grip. 
-  ArcheLoop helps you practise living from your Integrated Self.
+  Your Integrated Self is not someone new. It is the part of you that
+  becomes more available as your Shadow Loops lose their grip.
 </p>
 
-<p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-yellow-300">
+<p className="mx-auto mt-5 max-w-3xl text-lg font-semibold leading-relaxed text-yellow-300">
   ArcheLoop helps you practise living from your Integrated Self.
 </p>
 
@@ -451,7 +451,7 @@ collide under pressure.
               Choose Your Path
             </p>
 
-            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+            <h2 className="mt-5 text-3xl font-bold md:text-4xl">
               Start where you are.
             </h2>
 
@@ -516,7 +516,7 @@ collide under pressure.
             Begin Here
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+          <h2 className="mt-5 text-3xl font-bold md:text-4xl">
             Discover the Shadow Loop™ you keep repeating.
           </h2>
 

@@ -64,9 +64,13 @@ if (user) {
               ← Back to Integration
             </Link>
 
-            <p className="mt-8 text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              ArcheLoop Integration™
-            </p>
+           <p className="mt-8 text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+  ArcheLoop Integration
+</p>
+
+<p className="mt-4 text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+  Understand • Interrupt • Integrate
+</p>
 
             <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
               {journey.path}
@@ -88,16 +92,17 @@ if (user) {
             <div className="space-y-10">
               <div className="rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.12)]">
                 <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-                  Full Integration Journey™
+                  Full Integration Journey
                 </p>
 
                 <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-                  Your full {journey.path}
+                  Your {journey.path}
                 </h2>
 
                 <p className="mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-                  Use this path to practise moving from {journey.loop} toward{" "}
-                  {journey.integratedState}.
+                  This journey helps you move from {journey.loop} toward{" "}
+                  {journey.integratedState}  by recognising recurring patterns, 
+                  interrupting automatic reactions, and developing a more integrated way of being.
                 </p>
 
                 <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -128,12 +133,12 @@ if (user) {
 
               <div className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10">
                 <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-                  The Three Stages
-                </p>
+  The Integration Journey
+</p>
 
-                <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-                  Awareness. Interruption. Embodiment.
-                </h2>
+<h2 className="mt-5 text-4xl font-bold md:text-5xl">
+  Understand • Interrupt • Integrate
+</h2>
 
                 <div className="mt-10 space-y-8">
                   {journey.stages.map((stage) => (
@@ -202,7 +207,7 @@ if (user) {
 
               <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10">
                 <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-                  Meet Your Integrated Self™
+                  Meet Your Integrated Self
                 </p>
 
                 <h2 className="mt-5 text-4xl font-bold md:text-5xl">
@@ -234,31 +239,14 @@ if (user) {
                 </div>
               </div>
 
-              <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10">
-                <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-                  My Integrated Vision™
-                </p>
-
-                <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-                  Write the vision of {journey.integratedState}.
-                </h2>
-
-                <p className="mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-                  Use this space to describe how {journey.integratedState} would
-                  look in your real life. What would change in how you speak,
-                  respond, choose, relate, pause, create, protect, or express
-                  yourself?
-                </p>
-
-                <IntegratedVisionBox
-                  journeySlug={journey.slug}
-                  integratedState={journey.integratedState}
-                />
-              </div>
+              <IntegratedVisionBox
+  journeySlug={journey.slug}
+  integratedState={journey.integratedState}
+/>
 
               <div className="rounded-[2.5rem] border border-yellow-300/20 bg-black/40 p-10">
                 <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-                  Integrated Identity
+                  Living From Your Integrated Self
                 </p>
 
                 <div className="mt-8 grid gap-3 md:grid-cols-2">
@@ -275,7 +263,7 @@ if (user) {
 
               <div className="rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center">
                 <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-                  Final Integration Statement
+                  Your Integration Statement
                 </p>
 
                 <p className="mx-auto mt-6 max-w-3xl text-2xl leading-relaxed text-stone-100">
@@ -287,14 +275,14 @@ if (user) {
                     href="/triggered-intelligence"
                     className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
                   >
-                    Log Trigger In Triggered Pro™
+                    Log a Trigger
                   </Link>
 
                   <Link
                     href="/progress-dashboard"
                     className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
                   >
-                    View Progress Dashboard™
+                    View Progress Dashboard
                   </Link>
 
                   <Link
@@ -313,14 +301,13 @@ if (user) {
               </p>
 
               <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-                Continue into the full {journey.path}
+                Continue your {journey.path}
               </h2>
 
               <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-                This preview shows the direction of your path. The full
-                Integration Journey™ is available inside ArcheLoop
-                Integration™, where you can work with the complete structure,
-                practices, prompts, and progress tools.
+                This preview introduces your Integration Journey. 
+                Continue into ArcheLoop Integration to explore the complete path, 
+                including practices, reflection prompts, your Integrated Self, and personal progress tracking.
               </p>
 
               <div className="mt-10 grid gap-4 text-left md:grid-cols-2">
@@ -333,10 +320,10 @@ if (user) {
                   "Interruption stage",
                   "Embodiment stage",
                   "Practices & reflection prompts",
-                  "Meet Your Integrated Self™",
-                  "My Integrated Vision™",
+                  "Meet Your Integrated Self",
+                  "My Integrated Vision",
                   "Final integration statement",
-                  "Triggered Pro™ & Progress Dashboard™",
+                  "Triggered Pro & Progress Dashboard",
                 ].map((item) => (
                   <div
                     key={item}
@@ -357,9 +344,9 @@ if (user) {
                 </p>
 
                 <p className="mt-3 text-sm leading-relaxed text-stone-400">
-                  Launch price. Includes full Integration Journeys™, Triggered
-                  Pro™, Progress Dashboard™, My Integrated Vision™, and personal
-                  integration tracking.
+                  Launch Offer
+                  Includes full Integration Journeys, Triggered Pro, Progress Dashboard, 
+                  My Integrated Vision, and personal integration tracking.
                 </p>
 
                 <p className="mt-4 text-sm text-stone-500">
@@ -372,14 +359,14 @@ if (user) {
                   href="/checkout?product=integration"
                   className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
                 >
-                  Start Integration™
+                  Start Integration
                 </Link>
 
                 <Link
                   href="/checkout?product=bundle"
                   className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
                 >
-                  Choose Report + Integration™
+                  Choose Report + Integration
                 </Link>
 
                 <Link
