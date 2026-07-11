@@ -2,8 +2,7 @@
 
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
+import PageShell from "../components/PageShell";
 
 function ReportPreviewContent() {
   const searchParams = useSearchParams();
@@ -11,195 +10,175 @@ function ReportPreviewContent() {
 
   if (!selectedLoopName) {
     return (
-      <main className="min-h-screen bg-[#030712] text-stone-100">
-        <Nav />
+      <PageShell>
+        <section className="al-section text-center">
+          <div className="al-card mx-auto max-w-3xl p-10">
+            <h1 className="al-heading-md">No report data found</h1>
 
-        <section className="px-6 py-28 text-center">
-          <div className="mx-auto max-w-3xl rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-10">
-            <h1 className="text-4xl font-bold">No report data found</h1>
-
-            <p className="mt-5 text-stone-400">
-              Please complete Find My Loop™ first to generate your ArcheLoop
-              Report™.
+            <p className="al-text mt-5">
+              Please complete Find My Loop first to generate your ArcheLoop
+              Report.
             </p>
 
-            <a
-              href="/assessment"
-              className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 font-semibold text-black hover:bg-yellow-200"
-            >
-              Start Find My Loop™
+            <a href="/assessment" className="al-button-primary mt-8 inline-flex">
+              Start Find My Loop
             </a>
           </div>
         </section>
-
-        <Footer />
-      </main>
+      </PageShell>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
+    <PageShell>
+      <section className="al-section text-center">
+        <div className="al-hero-card">
+          <p className="al-kicker">Report Preview</p>
 
-      <section className="relative overflow-hidden px-6 py-28 text-center">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
-
-        <div className="relative mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            Report Preview
-          </p>
-
-          <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
-            Your ArcheLoop Report™
+          <h1 className="al-heading-xl">
+            Your ArcheLoop Report
             <br />
             is ready.
           </h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Your assessment has identified your primary Shadow Loop™ and
+          <p className="al-text-lg mx-auto mt-8 max-w-3xl">
+            Your assessment has identified your primary Shadow Loop and
             generated a personalised ArcheLoop profile. Continue to your full
             report to explore the deeper structure beneath your pattern.
           </p>
         </div>
       </section>
 
-      <section className="px-6 pb-12">
-        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-[#0B1018] p-10 text-center">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            Primary Shadow Loop™
-          </p>
+      <section className="al-section-tight">
+        <div className="al-premium-card mx-auto max-w-5xl p-10 text-center">
+          <p className="al-kicker">Primary Shadow Loop</p>
 
-          <h2 className="mt-5 text-4xl font-bold text-yellow-300 md:text-6xl">
+          <h2 className="mt-5 text-4xl font-bold text-[var(--al-accent)] md:text-6xl">
             {selectedLoopName}
           </h2>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+          <p className="al-text-lg mx-auto mt-6 max-w-3xl">
             This is a preview of your ArcheLoop Report. Your full report
-explains why this pattern may have formed, what activates it, how it
-affects your relationships, and the Integration Journey that helps
-you move toward your Integrated Self.
+            explains why this pattern may have formed, what activates it, how it
+            affects your relationships, and the Integration Journey that helps
+            you move toward your Integrated Self.
           </p>
         </div>
       </section>
 
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-7xl">
+      <section className="al-section">
+        <div className="al-container-wide">
           <div className="text-center">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-              Choose Your Next Step
-            </p>
+            <p className="al-kicker">Choose Your Next Step</p>
 
-            <h2 className="mt-5 text-4xl font-bold md:text-6xl">
+            <h2 className="al-heading-lg">
               Continue to your full report or begin integration.
             </h2>
 
-            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+            <p className="al-text-lg mx-auto mt-6 max-w-3xl">
               Start with your complete personalised report, or choose the bundle
               if you want the report plus your first month of ArcheLoop
-              Integration™.
+              Integration.
             </p>
           </div>
 
           <div className="mt-12 grid gap-8 md:grid-cols-2">
-            <div className="rounded-[2.5rem] border border-yellow-300/20 bg-[#0B1018] p-8">
-              <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
-                Personal Report
-              </p>
+            <PricingCard
+              label="Personal Report"
+              title="ArcheLoop Report"
+              price="£19"
+              regular="£29"
+              description="Continue to your full personalised report and understand the deeper structure beneath your Shadow Loop."
+              href="/checkout?product=report"
+              button="Continue To Full Report"
+              items={[
+                "Primary & Secondary Shadow Loops",
+                "Core belief and core fear",
+                "Nervous system pattern",
+                "Relationship dynamics",
+                "Body map interpretation",
+                "Integration blueprint",
+              ]}
+            />
 
-              <h3 className="mt-4 text-4xl font-bold text-yellow-300">
-                ArcheLoop Report™
-              </h3>
-
-              <p className="text-2xl font-semibold text-yellow-300">£19</p>
-
-<p className="mt-2 text-sm text-stone-500">
-  Regular price £29
-</p>
-
-              <p className="mt-5 leading-relaxed text-stone-300">
-                Continue to your full personalised report and understand the
-                deeper structure beneath your Shadow Loop™.
-              </p>
-
-              <div className="mt-7 grid gap-3 text-left">
-                {[
-                  "Primary & Secondary Shadow Loops™",
-                  "Core belief and core fear",
-                  "Nervous system pattern",
-                  "Relationship dynamics",
-                  "Body map interpretation",
-                  "Integration blueprint",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
-                  >
-                    ✓ {item}
-                  </div>
-                ))}
-              </div>
-
-              <a
-                href="/checkout?product=report"
-                className="mt-8 block rounded-full bg-yellow-300 px-8 py-4 text-center text-lg font-semibold text-black transition hover:bg-yellow-200"
-              >
-                Continue To Full Report
-              </a>
-            </div>
-
-            <div className="rounded-[2.5rem] border border-yellow-300/30 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.08)]">
-              <p className="text-sm uppercase tracking-[0.3em] text-yellow-300">
-                Most Complete Experience
-              </p>
-
-              <h3 className="mt-4 text-4xl font-bold text-yellow-300">
-                Report + First Month Integration™
-              </h3>
-
-              <p className="text-2xl font-semibold text-yellow-300">£29</p>
-
-<p className="mt-2 text-sm text-stone-500">
-  Regular price £58
-</p>
-
-              <p className="mt-5 leading-relaxed text-stone-300">
-                Everything in the ArcheLoop Report, plus your first month of
-ArcheLoop Integration to help you recognise patterns, track
-triggers, and build lasting change.
-              </p>
-
-              <div className="mt-7 grid gap-3 text-left">
-                {[
-                  "Full ArcheLoop Report™",
-                  "First month ArcheLoop Integration™",
-                  "Triggered Pro™",
-                  "Progress Dashboard™",
-                  "Integration Journeys™",
-                  "My Integrated Vision™",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
-                  >
-                    ✓ {item}
-                  </div>
-                ))}
-              </div>
-
-              <a
-                href="/checkout?product=bundle"
-                className="mt-8 block rounded-full bg-yellow-300 px-8 py-4 text-center text-lg font-semibold text-black transition hover:bg-yellow-200"
-              >
-                Choose Report + Integration
-              </a>
-            </div>
+            <PricingCard
+              premium
+              label="Most Complete Experience"
+              title="Report + First Month Integration"
+              price="£29"
+              regular="£58"
+              description="Everything in the ArcheLoop Report, plus your first month of ArcheLoop Integration to help you recognise patterns, track triggers, and build lasting change."
+              href="/checkout?product=bundle"
+              button="Choose Report + Integration"
+              items={[
+                "Full ArcheLoop Report",
+                "First month ArcheLoop Integration",
+                "Triggered Pro",
+                "Progress Dashboard",
+                "Integration Journeys",
+                "My Integrated Vision",
+              ]}
+            />
           </div>
-
         </div>
       </section>
+    </PageShell>
+  );
+}
 
-      <Footer />
-    </main>
+function PricingCard({
+  label,
+  title,
+  price,
+  regular,
+  description,
+  href,
+  button,
+  items,
+  premium = false,
+}: {
+  label: string;
+  title: string;
+  price: string;
+  regular: string;
+  description: string;
+  href: string;
+  button: string;
+  items: string[];
+  premium?: boolean;
+}) {
+  return (
+    <div className={premium ? "al-premium-card p-8" : "al-card p-8"}>
+      <p className="al-kicker">{label}</p>
+
+      <h3 className="mt-4 text-4xl font-bold text-[var(--al-accent)]">
+        {title}
+      </h3>
+
+      <div className="mt-4">
+        <p className="text-3xl font-semibold text-[var(--al-accent)]">
+          {price}
+        </p>
+        <p className="al-muted mt-1 text-sm">
+          Launch price · <span className="line-through">{regular}</span>{" "}
+          regular price
+        </p>
+      </div>
+
+      <p className="al-text mt-5">{description}</p>
+
+      <div className="mt-7 grid gap-3 text-left">
+        {items.map((item) => (
+          <div key={item} className="al-soft-card p-4 al-text">
+            ✓ {item}
+          </div>
+        ))}
+      </div>
+
+      <a href={href} className="al-button-primary mt-8 flex justify-center">
+        {button}
+      </a>
+    </div>
   );
 }
 
@@ -207,13 +186,11 @@ export default function ReportPreviewPage() {
   return (
     <Suspense
       fallback={
-        <main className="min-h-screen bg-[#030712] text-stone-100">
-          <Nav />
-          <section className="px-6 py-28 text-center">
-            <p className="text-stone-400">Loading your ArcheLoop Report™...</p>
+        <PageShell>
+          <section className="al-section text-center">
+            <p className="al-text">Loading your ArcheLoop Report...</p>
           </section>
-          <Footer />
-        </main>
+        </PageShell>
       }
     >
       <ReportPreviewContent />

@@ -52,48 +52,48 @@ export default function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-6 left-6 right-6 z-50 mx-auto max-w-4xl">
-      <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-6 shadow-[0_0_60px_rgba(216,183,120,0.15)]">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <h3 className="text-lg font-semibold text-yellow-300">
-              Cookie Preferences
-            </h3>
+  <div className="fixed bottom-6 left-6 right-6 z-50 mx-auto max-w-4xl">
+    <div className="al-premium-card p-6">
+      <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h3 className="text-xl font-semibold text-[var(--al-accent)]">
+            Cookie Preferences
+          </h3>
 
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-stone-300">
-              ArcheLoop uses cookies and similar technologies to improve site
-              performance and understand website usage through Google Analytics.
-              You can accept or reject analytics cookies. We only load Google
-              Analytics if you choose Accept.
-            </p>
+          <p className="al-text mt-3 max-w-2xl text-sm leading-relaxed">
+            ArcheLoop uses cookies and similar technologies to improve site
+            performance and understand website usage through Google Analytics.
+            You can accept or reject analytics cookies. We only load Google
+            Analytics if you choose Accept.
+          </p>
 
-            <Link
-              href="/privacy-policy"
-              className="mt-3 inline-block text-sm text-yellow-300 transition hover:text-yellow-200"
-            >
-              View Privacy Policy →
-            </Link>
-          </div>
+          <Link
+            href="/privacy-policy"
+            className="mt-4 inline-block text-sm font-medium text-[var(--al-accent)] transition hover:opacity-70"
+          >
+            View Privacy Policy →
+          </Link>
+        </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <button
-              type="button"
-              onClick={rejectCookies}
-              className="rounded-full border border-yellow-300/20 bg-black/30 px-5 py-2 text-sm font-semibold text-yellow-200 transition hover:border-yellow-300/60"
-            >
-              Reject
-            </button>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <button
+            type="button"
+            onClick={rejectCookies}
+            className="al-button-secondary"
+          >
+            Reject
+          </button>
 
-            <button
-              type="button"
-              onClick={acceptCookies}
-              className="rounded-full bg-yellow-300 px-5 py-2 text-sm font-semibold text-black transition hover:bg-yellow-200"
-            >
-              Accept
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={acceptCookies}
+            className="al-button-primary"
+          >
+            Accept
+          </button>
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 }

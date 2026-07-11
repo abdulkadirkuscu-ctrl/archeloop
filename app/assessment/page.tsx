@@ -393,22 +393,22 @@ export default function AssessmentPage() {
     }
 
     return (
-      <main className="min-h-screen bg-[#030712] text-stone-100">
+      <main className="al-page min-h-screen">
         <Nav />
 
-        <section className="px-6 py-24">
+        <section className="al-section">
           <div className="mx-auto max-w-5xl text-center">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+            <p className="al-kicker">
               Find My Loop Complete
             </p>
 
-            <h1 className="mt-5 text-5xl font-bold md:text-7xl">
+            <h1 className="al-heading-xl">
               Your ArcheLoop Report
               <br />
               is ready.
             </h1>
 
-            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
+            <p className="al-text-lg mx-auto mt-8 max-w-3xl">
               Your responses have identified the Shadow Loop currently most active for you, 
               along with your archetypal pattern, nervous system activation, 
               Integration Journey, and Integrated Self.
@@ -417,21 +417,21 @@ export default function AssessmentPage() {
         </section>
 
         {primaryLoopInfo && primaryLoop && (
-          <section className="px-6 pb-20">
-            <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
-              <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+          <section className="al-section-tight">
+            <div className="al-container al-premium-card p-10 text-center">
+              <p className="al-kicker">
                 Primary Shadow Loop
               </p>
 
-              <h2 className="mt-5 text-4xl font-bold text-yellow-300 md:text-6xl">
+              <h2 className="mt-5 text-4xl font-bold text-[var(--al-accent)] md:text-6xl">
                 {primaryLoopInfo.title}
               </h2>
 
-              <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+              <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed al-text">
                 {primaryLoopInfo.description}
               </p>
 
-              <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-stone-500">
+              <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed al-muted">
  This is a preview of your ArcheLoop Report. Your full report
 explores why this pattern developed, what activates it, how it
 influences your relationships and nervous system, and how to move
@@ -441,18 +441,18 @@ toward your Integrated Self.
           </section>
         )}
 
-        <section className="px-6 py-20">
+        <section className="al-section">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
-              <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+              <p className="al-kicker">
   Your Assessment Is Complete
 </p>
 
-<h2 className="mt-5 text-4xl font-bold md:text-6xl">
+<h2 className="al-heading-lg">
   Choose Your Next Step
 </h2>
 
-<p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+<p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed al-text">
   You've discovered your Shadow Loop.
 
   Now choose how you'd like to continue your Integration Journey.
@@ -460,22 +460,22 @@ toward your Integrated Self.
             </div>
 
             <div className="mt-12 grid gap-8 md:grid-cols-2">
-              <div className="rounded-[2.5rem] border border-yellow-300/20 bg-[#0B1018] p-8">
-                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+              <div className="al-card p-8">
+                <p className="text-sm uppercase tracking-[0.3em] al-kicker">
                   Personal Report
                 </p>
 
-                <h3 className="mt-4 text-4xl font-bold text-yellow-300">
+                <h3 className="mt-4 text-4xl font-bold text-[var(--al-accent)]">
                   ArcheLoop Report
                 </h3>
 
-                <p className="text-2xl font-semibold text-yellow-300">£19</p>
+                <p className="text-2xl font-semibold text-[var(--al-accent)]">£19</p>
 
-<p className="mt-2 text-sm text-stone-500">
+<p className="mt-2 text-sm al-muted">
   Regular price £29
 </p>
 
-                <p className="mt-5 leading-relaxed text-stone-300">
+                <p className="mt-5 leading-relaxed al-text">
                   Understand your Shadow Loop in depth and discover the beliefs, nervous system patterns, relational dynamics, and Integration Journey shaping your experience.
                 </p>
 
@@ -490,7 +490,7 @@ toward your Integrated Self.
                   ].map((item) => (
                     <div
                       key={item}
-                      className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
+                      className="al-soft-card p-4"
                     >
                       ✓ {item}
                     </div>
@@ -499,28 +499,28 @@ toward your Integrated Self.
 
                 <a
                   href="/checkout?product=report"
-                  className="mt-8 block rounded-full bg-yellow-300 px-8 py-4 text-center text-lg font-semibold text-black transition hover:bg-yellow-200"
+                  className="al-button-primary mt-8 w-full"
                 >
                   Continue to Full ArcheLoop Report
                 </a>
               </div>
 
-              <div className="rounded-[2.5rem] border border-yellow-300/30 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.08)]">
-                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300">
+              <div className="al-premium-card p-8">
+                <p className="text-sm uppercase tracking-[0.3em] text-[var(--al-accent)]">
                   Most Complete Experience
                 </p>
 
-                <h3 className="mt-4 text-4xl font-bold text-yellow-300">
+                <h3 className="mt-4 text-4xl font-bold text-[var(--al-accent)]">
                   Report + First Month Integration
                 </h3>
 
-                <p className="text-2xl font-semibold text-yellow-300">£29</p>
+                <p className="text-2xl font-semibold text-[var(--al-accent)]">£29</p>
 
-<p className="mt-2 text-sm text-stone-500">
+<p className="mt-2 text-sm al-muted">
   Regular price £58
 </p>
 
-                <p className="mt-5 leading-relaxed text-stone-300">
+                <p className="mt-5 leading-relaxed al-text">
                   Move beyond understanding.
 
 Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday life, interrupt automatic reactions, and begin living from your Integrated Self.
@@ -537,7 +537,7 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
                   ].map((item) => (
                     <div
                       key={item}
-                      className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
+                      className="al-soft-card p-4"
                     >
                       ✓ {item}
                     </div>
@@ -546,7 +546,7 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
 
                 <a
                   href="/checkout?product=bundle"
-                  className="mt-8 block rounded-full bg-yellow-300 px-8 py-4 text-center text-lg font-semibold text-black transition hover:bg-yellow-200"
+                  className="al-button-primary mt-8 w-full"
                 >
                  Choose Report + Integration
                 </a>
@@ -561,15 +561,14 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
   }
 
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
+    <main className="al-page min-h-screen">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-8">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.16),transparent_42%)]" />
+      <section className="al-section-tight">
 
         <div className="relative mx-auto max-w-4xl space-y-8">
-          <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-6 shadow-[0_0_60px_rgba(216,183,120,0.08)]">
-           <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+          <div className="al-premium-card p-6">
+           <p className="al-kicker">
   Find My Loop
 </p>
 
@@ -577,11 +576,11 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
   Find My Loop
 </h1>
 
-<p className="mt-4 text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+<p className="mt-4 text-sm uppercase tracking-[0.3em] text-[var(--al-accent)]/70">
   Understand • Interrupt • Integrate
 </p>
 
-<p className="mt-3 max-w-3xl text-base leading-relaxed text-stone-300">
+<p className="mt-6 al-text-lg max-w-3xl">
   Complete the 60-question assessment to discover your Shadow Loop.
   <br />
   <br />
@@ -591,9 +590,9 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
 </p>
           </div>
 
-          <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-5 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
+          <div className="al-card p-5">
             <div className="mb-8">
-              <div className="mb-3 flex justify-between text-sm text-yellow-300/60">
+              <div className="mb-3 flex justify-between text-sm al-kicker">
                 <span>
                   Question {currentQuestion + 1} of {orderedQuestions.length}
                 </span>
@@ -606,9 +605,9 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
                 </span>
               </div>
 
-              <div className="h-3 overflow-hidden rounded-full bg-black/50">
+              <div className="h-3 overflow-hidden rounded-full bg-[var(--al-surface-deep)]">
                 <div
-                  className="h-full rounded-full bg-yellow-300 transition-all duration-500"
+                  className="h-full rounded-full bg-[var(--al-accent)] transition-all duration-500"
                   style={{
                     width: `${
                       ((currentQuestion + 1) / orderedQuestions.length) * 100
@@ -622,7 +621,7 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
               {currentQuestion > 0 ? (
                 <button
                   onClick={goBack}
-                  className="rounded-full border border-yellow-300/20 bg-black/30 px-5 py-2 text-sm text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+                  className="al-button-secondary px-5 py-2 text-sm"
                 >
                   ← Back
                 </button>
@@ -634,15 +633,15 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
                 currentQuestion < orderedQuestions.length - 1 && (
                   <button
                     onClick={goNext}
-                    className="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-5 py-2 text-sm text-yellow-200 transition hover:border-yellow-300/60"
+                    className="al-button-secondary px-5 py-2 text-sm"
                   >
                     Next →
                   </button>
                 )}
             </div>
 
-            <div className="rounded-[1.5rem] border border-yellow-300/10 bg-black/30 p-5">
-              <h2 className="mb-5 text-2xl font-semibold leading-snug text-stone-100">
+            <div className="al-card p-5">
+              <h2 className="mb-5 text-2xl font-semibold leading-snug text-[var(--al-text)]">
                 {orderedQuestions[currentQuestion]?.text}
               </h2>
 
@@ -655,9 +654,9 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
                       key={answer.value}
                       onClick={() => handleAnswer(answer.value)}
                       className={`rounded-2xl border px-5 py-3 text-left font-medium transition ${
-                        active
-                          ? "border-yellow-300 bg-yellow-300 text-black shadow-[0_0_35px_rgba(216,183,120,0.18)]"
-                          : "border-yellow-300/10 bg-[#0B1018] text-stone-300 hover:border-yellow-300/50 hover:bg-[#111827]"
+                       active
+  ? "border-[var(--al-accent)] bg-[var(--al-accent)] text-[var(--al-bg)]"
+  : "border-[var(--al-border)] bg-[var(--al-surface)] text-[var(--al-text-soft)] hover:border-[var(--al-accent)]"
                       }`}
                     >
                       {answer.label}
@@ -668,34 +667,34 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-7 shadow-[0_0_55px_rgba(216,183,120,0.07)]">
-            <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-              Your ArcheLoop Report Includes
-            </p>
+      <div className="al-premium-card p-7">
+  <p className="al-kicker">
+    Your ArcheLoop Report Includes
+  </p>
 
-            <div className="mt-5 grid gap-3 text-stone-300 md:grid-cols-2">
-              {[
-  "Primary Shadow Loop",
-  "Secondary Shadow Loop",
-  "Archetype & Element",
-  "Nervous System Pattern",
-  "Integration Journey",
-  "Integrated Self",
-  "Personalised ArcheLoop Report",
-].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4"
-                >
-                  ✓ {item}
-                </div>
-              ))}
-            </div>
+  <div className="mt-6 grid gap-3 md:grid-cols-2">
+    {[
+      "Primary Shadow Loop",
+      "Secondary Shadow Loop",
+      "Archetype & Element",
+      "Nervous System Pattern",
+      "Integration Journey",
+      "Integrated Self",
+      "Personalised ArcheLoop Report",
+    ].map((item) => (
+      <div
+        key={item}
+        className="al-pill"
+      >
+        ✓ {item}
+      </div>
+    ))}
+  </div>
 
-            <p className="mt-5 text-sm text-stone-400">
-              60 questions • Approximately 5–7 minutes
-            </p>
-          </div>
+  <p className="mt-6 al-muted text-sm">
+    60 questions • Approximately 5–7 minutes
+  </p>
+</div>
         </div>
       </section>
 

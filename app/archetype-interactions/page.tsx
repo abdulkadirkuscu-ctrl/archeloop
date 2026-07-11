@@ -1,12 +1,9 @@
-import Footer from "../components/Footer"
-import Nav from "../components/Nav"
+import PageShell from "../components/PageShell";
+
 export default function ArchetypeInteractionsPage() {
-
   const interactions = [
-
     {
       title: "Magician ↔ Sovereign",
-      colour: "border-blue-400",
       healthy:
         "Healthy Air helps Fire gain perspective, insight, strategy, reflection, and wisdom. The Magician becomes the trusted advisor to the Sovereign.",
       shadow:
@@ -16,10 +13,8 @@ export default function ArchetypeInteractionsPage() {
       dynamic:
         "Air can destabilise Fire through uncertainty. Fire may seek Air for clarity when self-trust collapses.",
     },
-
     {
       title: "Lover ↔ Warrior",
-      colour: "border-red-400",
       healthy:
         "Healthy Earth protects Water safely. Healthy Water softens Earth and restores emotional connection, intimacy, and nourishment.",
       shadow:
@@ -29,10 +24,8 @@ export default function ArchetypeInteractionsPage() {
       dynamic:
         "Water often seeks Earth for protection. Earth may seek Water to reconnect with emotion and softness.",
     },
-
     {
       title: "Magician ↔ Warrior",
-      colour: "border-cyan-400",
       healthy:
         "Healthy Air gives Earth strategy, adaptability, planning, and perception. Healthy Earth grounds Air into action and embodiment.",
       shadow:
@@ -42,10 +35,8 @@ export default function ArchetypeInteractionsPage() {
       dynamic:
         "Air may struggle to act. Earth may struggle to reflect. Together they either stabilise each other or intensify internal conflict.",
     },
-
     {
       title: "Sovereign ↔ Lover",
-      colour: "border-yellow-400",
       healthy:
         "Healthy Fire gives Water confidence, warmth, permission, and direction. Healthy Water gives Fire emotional depth, tenderness, beauty, and humanity.",
       shadow:
@@ -55,10 +46,8 @@ export default function ArchetypeInteractionsPage() {
       dynamic:
         "Water often seeks Fire for certainty and direction. Fire may seek Water for emotional meaning and connection.",
     },
-
     {
       title: "Outsourcing Archetypal Energy",
-      colour: "border-green-500",
       healthy:
         "People naturally learn from archetypes they admire. Healthy relationships help integrate undeveloped energy safely.",
       shadow:
@@ -68,124 +57,92 @@ export default function ArchetypeInteractionsPage() {
       dynamic:
         "Projection creates temporary relief but long-term dependency if the energy is never integrated internally.",
     },
-
-  ]
+  ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
-<Nav />
+    <PageShell>
+      <section className="al-section">
+        <div className="al-container-wide">
+          <p className="al-kicker">Archetypal Dynamics</p>
 
-      <section className="px-6 py-24">
-        <div className="max-w-6xl mx-auto">
+          <h1 className="al-heading-xl">Archetype Interactions</h1>
 
-          <p className="uppercase tracking-[0.3em] text-gray-400 mb-4">
-            Archetypal Dynamics
-          </p>
-
-          <h1 className="text-6xl font-bold mb-8">
-            Archetype Interactions
-          </h1>
-
-          <p className="text-xl text-gray-300 max-w-4xl mb-16">
+          <p className="al-text-lg mt-8 max-w-4xl">
             Archetypes do not exist in isolation.
             Different energies attract, stabilise, provoke,
             suppress, challenge, or compensate for one another.
             Many shadow loops form relationally through these interactions.
           </p>
 
-          <div className="space-y-10">
-
+          <div className="mt-16 space-y-10">
             {interactions.map((interaction) => (
-              <div
-                key={interaction.title}
-                className={`border ${interaction.colour} rounded-3xl p-8 bg-zinc-950`}
-              >
-
-                <h2 className="text-4xl font-bold mb-8">
+              <div key={interaction.title} className="al-card p-8">
+                <h2 className="al-heading-md">
                   {interaction.title}
                 </h2>
 
-                <div className="grid md:grid-cols-2 gap-8 mb-8">
-
+                <div className="mt-8 grid gap-8 md:grid-cols-2">
                   <div>
-                    <h3 className="text-2xl font-semibold mb-4 text-green-400">
+                    <h3 className="mb-4 text-2xl font-semibold text-[var(--al-accent)]">
                       Healthy Dynamic
                     </h3>
 
-                    <p className="text-gray-300 text-lg">
+                    <p className="al-text-lg">
                       {interaction.healthy}
                     </p>
                   </div>
 
                   <div>
-                    <h3 className="text-2xl font-semibold mb-4 text-red-400">
+                    <h3 className="mb-4 text-2xl font-semibold text-[var(--al-accent)]">
                       Shadow Dynamic
                     </h3>
 
-                    <p className="text-gray-300 text-lg">
+                    <p className="al-text-lg">
                       {interaction.shadow}
                     </p>
                   </div>
-
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
-
-                  <div className="border border-zinc-800 rounded-2xl p-6">
-                    <h3 className="text-2xl font-semibold mb-4">
+                <div className="mt-8 grid gap-8 md:grid-cols-2">
+                  <div className="al-soft-card p-6">
+                    <h3 className="mb-4 text-2xl font-semibold">
                       Common Loops
                     </h3>
 
-                    <p className="text-gray-300">
+                    <p className="al-text">
                       {interaction.loops}
                     </p>
                   </div>
 
-                  <div className="border border-zinc-800 rounded-2xl p-6">
-                    <h3 className="text-2xl font-semibold mb-4">
+                  <div className="al-soft-card p-6">
+                    <h3 className="mb-4 text-2xl font-semibold">
                       Core Dynamic
                     </h3>
 
-                    <p className="text-gray-300">
+                    <p className="al-text">
                       {interaction.dynamic}
                     </p>
                   </div>
-
                 </div>
-
               </div>
             ))}
-
           </div>
 
-          <div className="flex gap-4 flex-wrap mt-16">
-
-            <a
-              href="/assessment"
-              className="bg-white text-black px-6 py-3 rounded-full font-semibold"
-            >
+          <div className="mt-16 flex flex-wrap gap-4">
+            <a href="/assessment" className="al-button-primary">
               Take Assessment
             </a>
 
-            <a
-              href="/triggered"
-              className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black"
-            >
+            <a href="/triggered" className="al-button-secondary">
               I Am Triggered
             </a>
 
-            <a
-              href="/"
-              className="border border-yellow-400 text-yellow-300 px-6 py-3 rounded-full font-semibold hover:bg-yellow-400 hover:text-black"
-            >
+            <a href="/" className="al-button-secondary">
               Return Home
             </a>
-
           </div>
-
         </div>
       </section>
-      <Footer />
-    </main>
-  )
+    </PageShell>
+  );
 }

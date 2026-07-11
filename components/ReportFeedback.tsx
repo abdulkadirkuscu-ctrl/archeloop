@@ -47,17 +47,13 @@ export default function ReportFeedback() {
 
   if (submitted) {
     return (
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            Feedback Received
-          </p>
+      <section className="al-section-tight">
+        <div className="al-container al-premium-card p-10 text-center">
+          <p className="al-kicker">Feedback Received</p>
 
-          <h2 className="mt-5 text-4xl font-bold text-stone-100">
-            Thank you.
-          </h2>
+          <h2 className="al-heading-lg">Thank you.</h2>
 
-          <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-stone-300">
+          <p className="al-text-lg mx-auto mt-5 max-w-2xl">
             Your feedback helps refine ArcheLoop™ and improve the report experience for early users.
           </p>
         </div>
@@ -66,25 +62,21 @@ export default function ReportFeedback() {
   }
 
   return (
-    <section className="px-6 py-24">
-      <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.08)] md:p-10">
+    <section className="al-section">
+      <div className="al-container al-premium-card p-8 md:p-10">
         <div className="text-center">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            Report Feedback
-          </p>
+          <p className="al-kicker">Report Feedback</p>
 
-          <h2 className="mt-5 text-4xl font-bold text-stone-100 md:text-5xl">
-            Help shape ArcheLoop™.
-          </h2>
+          <h2 className="al-heading-lg">Help shape ArcheLoop™.</h2>
 
-          <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-stone-300">
+          <p className="al-text-lg mx-auto mt-5 max-w-3xl">
             You are one of the first people experiencing the ArcheLoop Report™.
-Your feedback helps refine the system and improve the experience for future users.
+            Your feedback helps refine the system and improve the experience for future users.
           </p>
         </div>
 
-        <div className="mt-10 rounded-[2rem] border border-yellow-300/10 bg-black/30 p-6">
-          <p className="font-semibold text-stone-100">
+        <div className="al-soft-card mt-10 p-6">
+          <p className="font-semibold text-[var(--al-text)]">
             How accurate was this report?
           </p>
 
@@ -96,8 +88,8 @@ Your feedback helps refine the system and improve the experience for future user
                 onClick={() => setAccuracyScore(num)}
                 className={`rounded-full border px-3 py-2 font-semibold transition ${
                   accuracyScore === num
-                    ? "border-yellow-300 bg-yellow-300 text-black shadow-[0_0_30px_rgba(216,183,120,0.18)]"
-                    : "border-yellow-300/10 bg-[#0B1018] text-stone-300 hover:border-yellow-300/60 hover:text-yellow-200"
+                    ? "border-[var(--al-accent)] bg-[var(--al-accent)] text-[var(--al-bg)]"
+                    : "border-[var(--al-border)] bg-[var(--al-surface)] text-[var(--al-text-soft)] hover:border-[var(--al-accent)]"
                 }`}
               >
                 {num}
@@ -107,83 +99,39 @@ Your feedback helps refine the system and improve the experience for future user
         </div>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <div className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-6">
-            <label className="font-semibold text-stone-100">
-              What felt most accurate?
-            </label>
+          <FeedbackTextarea
+            label="What felt most accurate?"
+            value={mostAccurate}
+            onChange={setMostAccurate}
+            placeholder="What part of the report resonated most?"
+          />
 
-            <textarea
-              value={mostAccurate}
-              onChange={(e) => setMostAccurate(e.target.value)}
-              placeholder="What part of the report resonated most?"
-              className="mt-4 min-h-[130px] w-full rounded-2xl border border-yellow-300/10 bg-[#030712] p-4 text-stone-100 placeholder:text-stone-600 focus:border-yellow-300 focus:outline-none"
-            />
-          </div>
-
-          <div className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-6">
-            <label className="font-semibold text-stone-100">
-              What felt unclear or less accurate?
-            </label>
-
-            <textarea
-              value={leastAccurate}
-              onChange={(e) => setLeastAccurate(e.target.value)}
-              placeholder="What felt wrong, confusing, or less relevant?"
-              className="mt-4 min-h-[130px] w-full rounded-2xl border border-yellow-300/10 bg-[#030712] p-4 text-stone-100 placeholder:text-stone-600 focus:border-yellow-300 focus:outline-none"
-            />
-          </div>
+          <FeedbackTextarea
+            label="What felt unclear or less accurate?"
+            value={leastAccurate}
+            onChange={setLeastAccurate}
+            placeholder="What felt wrong, confusing, or less relevant?"
+          />
         </div>
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <div className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-6">
-            <p className="font-semibold text-stone-100">
-              Would you recommend ArcheLoop™?
-            </p>
+          <ChoiceGroup
+            label="Would you recommend ArcheLoop™?"
+            options={["Yes", "Maybe", "No"]}
+            value={recommend}
+            onChange={setRecommend}
+          />
 
-            <div className="mt-5 flex flex-wrap gap-3">
-              {["Yes", "Maybe", "No"].map((option) => (
-                <button
-                  key={option}
-                  type="button"
-                  onClick={() => setRecommend(option)}
-                  className={`rounded-full border px-5 py-2 font-semibold transition ${
-                    recommend === option
-                      ? "border-yellow-300 bg-yellow-300 text-black"
-                      : "border-yellow-300/10 bg-[#0B1018] text-stone-300 hover:border-yellow-300/60 hover:text-yellow-200"
-                  }`}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-6">
-            <p className="font-semibold text-stone-100">
-              Can we anonymously use part of your feedback?
-            </p>
-
-            <div className="mt-5 flex flex-wrap gap-3">
-              {["Yes", "No"].map((option) => (
-                <button
-                  key={option}
-                  type="button"
-                  onClick={() => setTestimonialPermission(option)}
-                  className={`rounded-full border px-5 py-2 font-semibold transition ${
-                    testimonialPermission === option
-                      ? "border-yellow-300 bg-yellow-300 text-black"
-                      : "border-yellow-300/10 bg-[#0B1018] text-stone-300 hover:border-yellow-300/60 hover:text-yellow-200"
-                  }`}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-          </div>
+          <ChoiceGroup
+            label="Can we anonymously use part of your feedback?"
+            options={["Yes", "No"]}
+            value={testimonialPermission}
+            onChange={setTestimonialPermission}
+          />
         </div>
 
-        <div className="mt-6 rounded-[2rem] border border-yellow-300/10 bg-black/30 p-6">
-          <label className="font-semibold text-stone-100">
+        <div className="al-soft-card mt-6 p-6">
+          <label className="font-semibold text-[var(--al-text)]">
             Email optional
           </label>
 
@@ -192,10 +140,10 @@ Your feedback helps refine the system and improve the experience for future user
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@email.com"
-            className="mt-4 w-full rounded-2xl border border-yellow-300/10 bg-[#030712] p-4 text-stone-100 placeholder:text-stone-600 focus:border-yellow-300 focus:outline-none"
+            className="mt-4 w-full rounded-2xl border border-[var(--al-border)] bg-[var(--al-bg-soft)] p-4 text-[var(--al-text)] placeholder:text-[var(--al-text-muted)] outline-none transition focus:border-[var(--al-accent)]"
           />
 
-          <p className="mt-3 text-sm text-stone-500">
+          <p className="al-muted mt-3 text-sm">
             Add your email only if you are happy for us to follow up about your
             feedback.
           </p>
@@ -206,12 +154,76 @@ Your feedback helps refine the system and improve the experience for future user
             type="button"
             onClick={submitFeedback}
             disabled={loading}
-            className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200 disabled:opacity-50"
+            className="al-button-primary disabled:opacity-50"
           >
             {loading ? "Submitting..." : "Submit Feedback"}
           </button>
         </div>
       </div>
     </section>
+  );
+}
+
+function FeedbackTextarea({
+  label,
+  value,
+  onChange,
+  placeholder,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+}) {
+  return (
+    <div className="al-soft-card p-6">
+      <label className="font-semibold text-[var(--al-text)]">
+        {label}
+      </label>
+
+      <textarea
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        className="mt-4 min-h-[130px] w-full rounded-2xl border border-[var(--al-border)] bg-[var(--al-bg-soft)] p-4 text-[var(--al-text)] placeholder:text-[var(--al-text-muted)] outline-none transition focus:border-[var(--al-accent)]"
+      />
+    </div>
+  );
+}
+
+function ChoiceGroup({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  options: string[];
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <div className="al-soft-card p-6">
+      <p className="font-semibold text-[var(--al-text)]">
+        {label}
+      </p>
+
+      <div className="mt-5 flex flex-wrap gap-3">
+        {options.map((option) => (
+          <button
+            key={option}
+            type="button"
+            onClick={() => onChange(option)}
+            className={`rounded-full border px-5 py-2 font-semibold transition ${
+              value === option
+                ? "border-[var(--al-accent)] bg-[var(--al-accent)] text-[var(--al-bg)]"
+                : "border-[var(--al-border)] bg-[var(--al-surface)] text-[var(--al-text-soft)] hover:border-[var(--al-accent)]"
+            }`}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }

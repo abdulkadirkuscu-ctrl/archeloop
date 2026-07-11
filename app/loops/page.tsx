@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 export const metadata: Metadata = {
   title: "The 12 Shadow Loops",
   description:
-   "Explore the 12 Shadow Loops inside ArcheLoop: recurring protective patterns connected to Fire, Air, Water, and Earth.",
+    "Explore the 12 Shadow Loops inside ArcheLoop: recurring protective patterns connected to Fire, Air, Water, and Earth.",
 };
 
 const loops = [
@@ -110,56 +110,42 @@ const loops = [
 
 export default function LoopsPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
+    <main className="al-page min-h-screen">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+      <section className="al-section">
+        <div className="al-container-wide space-y-16">
+          <div className="al-hero-card text-center">
+            <p className="al-kicker">ArcheLoop</p>
 
-        <div className="relative mx-auto max-w-7xl space-y-16">
-          <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              ArcheLoop
-            </p>
+            <h1 className="al-heading-xl">The 12 Shadow Loops</h1>
 
-            <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
-              The 12 Shadow Loops
-            </h1>
-
-            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
+            <p className="al-text-lg mx-auto mt-8 max-w-3xl">
               Every recurring pattern has a name. Shadow Loops are protective
-patterns your mind and nervous system may use when visibility,
-clarity, connection, or safety feels threatened.
+              patterns your mind and nervous system may use when visibility,
+              clarity, connection, or safety feels threatened.
             </p>
 
-            <a
-              href="/assessment"
-              className="mt-10 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-            >
+            <a href="/assessment" className="al-button-primary mt-10">
               Find My Loop
             </a>
           </div>
 
           <div className="space-y-20">
             {["Fire", "Air", "Water", "Earth"].map((element) => (
-              <section
-                key={element}
-                className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_60px_rgba(216,183,120,0.06)]"
-              >
+              <section key={element} className="al-premium-card p-8">
                 <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
                   <div>
-                    <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
-                      Elemental Pattern
-                    </p>
+                    <p className="al-kicker">Elemental Pattern</p>
 
-                    <h2 className="mt-3 text-4xl font-bold text-yellow-300">
+                    <h2 className="al-heading-md text-[var(--al-accent)]">
                       {element} Loops
                     </h2>
                   </div>
 
-                  <p className="max-w-xl text-stone-400">
+                  <p className="al-text max-w-xl">
                     Explore the three Shadow Loops connected to this element and
-archetype.
+                    archetype.
                   </p>
                 </div>
 
@@ -170,10 +156,8 @@ archetype.
                       <a
                         key={loop.slug}
                         href={`/loops/${loop.slug}`}
-                        className="group relative overflow-hidden rounded-[2rem] border border-yellow-300/10 bg-black/30 transition duration-500 hover:border-yellow-300/50 hover:shadow-[0_0_55px_rgba(216,183,120,0.10)]"
+                        className="al-card group overflow-hidden transition duration-500 hover:border-[var(--al-accent)]"
                       >
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.12),transparent_55%)] opacity-0 transition duration-500 group-hover:opacity-100" />
-
                         <div className="relative h-72 overflow-hidden">
                           <Image
                             src={loop.image}
@@ -184,20 +168,18 @@ archetype.
                           />
                         </div>
 
-                        <div className="relative z-10 p-7">
-                          <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
-                            Shadow Loop
-                          </p>
+                        <div className="p-7">
+                          <p className="al-kicker">Shadow Loop</p>
 
-                          <h3 className="mt-4 text-3xl font-bold transition group-hover:text-yellow-300">
+                          <h3 className="mt-4 text-3xl font-bold transition group-hover:text-[var(--al-accent)]">
                             {loop.name}
                           </h3>
 
-                          <p className="mt-5 leading-relaxed text-stone-300">
+                          <p className="al-text mt-5">
                             {loop.description}
                           </p>
 
-                          <p className="mt-8 font-semibold text-yellow-300">
+                          <p className="mt-8 font-semibold text-[var(--al-accent)]">
                             Explore Loop →
                           </p>
                         </div>

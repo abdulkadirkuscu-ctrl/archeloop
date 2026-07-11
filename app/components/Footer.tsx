@@ -2,26 +2,31 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-yellow-300/10 bg-black text-white">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 lg:grid-cols-4">
+    <footer className="al-site-footer">
+      <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="grid gap-14 lg:grid-cols-4">
+          {/* Brand */}
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold text-yellow-300">
+            <h2 className="al-brand-name">
               ArcheLoop
             </h2>
 
-            <p className="mt-3 text-sm uppercase tracking-[0.3em] text-stone-500">
-              Understand • Interrupt • Integrate
+            <p className="al-brand-tagline mt-5">
+              <span className="al-understand-word">Understand</span>
+              <span className="al-brand-divider">•</span>
+              <span className="al-interrupt-word">Interrupt</span>
+              <span className="al-brand-divider">•</span>
+              <span className="al-integrate-word">Integrate</span>
             </p>
 
-            <p className="mt-6 max-w-md leading-relaxed text-stone-300">
+            <p className="al-footer-description mt-7 max-w-lg">
               ArcheLoop is an integrative archetypal self-awareness framework
               that helps people recognise recurring Shadow Loops, interrupt
               automatic reactions, and develop a more integrated way of being.
             </p>
 
-            <p className="mt-6 text-lg font-semibold text-yellow-300">
-              Helping people live from their Integrated Self.
+            <p className="al-brand-mission-footer mt-8">
+              Helping people <em>live from their Integrated Self.</em>
             </p>
           </div>
 
@@ -48,8 +53,8 @@ export default function Footer() {
           />
         </div>
 
-        <div className="mt-14 flex flex-col gap-6 border-t border-yellow-300/10 pt-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-wrap gap-5 text-sm text-stone-400">
+        <div className="mt-16 flex flex-col gap-6 border-t border-[var(--al-footer-border)] pt-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-wrap gap-5 text-sm">
             {[
               ["About", "/about"],
               ["Contact", "/contact"],
@@ -60,19 +65,19 @@ export default function Footer() {
               <Link
                 key={href}
                 href={href}
-                className="transition hover:text-yellow-300"
+                className="al-footer-link"
               >
                 {label}
               </Link>
             ))}
           </div>
 
-          <p className="text-sm text-stone-500">
+          <p className="al-footer-copyright">
             © 2026 ArcheLoop. All rights reserved.
           </p>
         </div>
 
-        <p className="mt-8 text-xs leading-relaxed text-stone-500">
+        <p className="al-footer-disclaimer mt-8">
           ArcheLoop is an educational self-awareness framework and does not
           provide medical, psychological, psychiatric, therapeutic, legal, or
           financial advice.
@@ -91,16 +96,16 @@ function FooterGroup({
 }) {
   return (
     <div>
-      <h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-stone-500">
+      <h3 className="al-footer-heading">
         {title}
       </h3>
 
-      <div className="mt-5 flex flex-col gap-3 text-stone-300">
+      <div className="mt-5 flex flex-col gap-3">
         {links.map(([label, href]) => (
           <Link
             key={href}
             href={href}
-            className="transition hover:text-yellow-300"
+            className="al-footer-link"
           >
             {label}
           </Link>

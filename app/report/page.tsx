@@ -9,7 +9,7 @@ const previewIncludes = [
 ];
 
 const reportIncludes = [
-  "Primary and secondary Shadow Loops™",
+  "Primary and secondary Shadow Loops",
   "Nervous system response patterns",
   "Archetype and element analysis",
   "Relational activators and emotional triggers",
@@ -19,34 +19,34 @@ const reportIncludes = [
 ];
 
 const bundleIncludes = [
-  "Full ArcheLoop Report™",
-  "First month ArcheLoop Integration™",
-  "Triggered Pro™",
-  "Progress Dashboard™",
-  "Integration Journeys™",
-  "My Integrated Vision™",
+  "Full ArcheLoop Report",
+  "First month ArcheLoop Integration",
+  "Triggered Pro",
+  "Progress Dashboard",
+  "Integration Journeys",
+  "My Integrated Vision",
 ];
 
 export default function ReportPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
+    <main className="al-page min-h-screen">
       <Nav />
 
       <section className="relative overflow-hidden px-6 py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+        <div className="al-hero-glow" />
 
-        <div className="relative mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            ArcheLoop Report™
+        <div className="al-premium-card mx-auto max-w-6xl p-10 text-center">
+          <p className="al-kicker">
+            ArcheLoop Report
           </p>
 
-          <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
+          <h1 className="al-heading-xl mt-6">
             See the loop beneath
             <br />
             your emotional patterns.
           </h1>
 
-         <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
+         <p className="al-text-lg mx-auto mt-8 max-w-3xl">
   Your ArcheLoop Report reveals the deeper patterns behind recurring
   emotional reactions, relationship dynamics, nervous system responses,
   and protective strategies.
@@ -55,20 +55,20 @@ export default function ReportPage() {
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
               href="/assessment"
-              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              className="al-button-primary"
             >
-              Start Find My Loop™
+              Start Find My Loop
             </a>
 
             <a
               href="/checkout?product=report"
-              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+              className="al-button-secondary"
             >
               Continue to Full Report
             </a>
           </div>
 
-          <p className="mt-6 text-sm text-stone-500">
+          <p className="al-muted mt-6 text-sm">
             Launch price: £19, normally £29.
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function ReportPage() {
       <section className="px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-14 text-center">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+            <p className="text-sm uppercase tracking-[0.35em] al-kicker">
               How It Works
             </p>
 
@@ -92,13 +92,13 @@ export default function ReportPage() {
             {[
               [
     "01",
-    "Complete Find My Loop™",
+    "Complete Find My Loop",
     "Answer 60 questions exploring recurring emotional, relational, and nervous system patterns.",
   ],
   [
     "02",
     "Preview Your Report",
-    "See your primary Shadow Loop™, protection pattern, and first direction for interrupting the loop.",
+    "See your primary Shadow Loop, protection pattern, and first direction for interrupting the loop.",
   ],
   [
     "03",
@@ -108,17 +108,17 @@ export default function ReportPage() {
 ].map(([number, title, body]) => (
               <div
                 key={title}
-                className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]"
+                className="al-card p-8"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-300 text-sm font-bold text-black">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--al-accent)] text-[var(--al-bg)] font-bold">
                   {number}
                 </div>
 
-                <h3 className="mt-6 text-2xl font-semibold text-yellow-300">
+                <h3 className="mt-6 text-2xl font-semibold text-[var(--al-accent)]">
                   {title}
                 </h3>
 
-                <p className="mt-4 leading-relaxed text-stone-300">{body}</p>
+                <p className="al-text mt-4">{body}</p>
               </div>
             ))}
           </div>
@@ -126,8 +126,8 @@ export default function ReportPage() {
       </section>
 
       <section className="px-6 py-28">
-        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/10 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+        <div className="mx-auto max-w-5xl al-premium-card">
+          <p className="text-sm uppercase tracking-[0.35em] al-kicker">
             Why This Matters
           </p>
 
@@ -137,7 +137,7 @@ export default function ReportPage() {
             the whole pattern.
           </h2>
 
-          <div className="mx-auto mt-10 max-w-4xl space-y-7 text-xl leading-relaxed text-stone-300">
+          <div className="mx-auto mt-10 max-w-4xl space-y-7 text-xl leading-relaxed al-text">
             <p>
               Many people try to change behaviours without understanding the
               loop underneath them.
@@ -150,7 +150,7 @@ export default function ReportPage() {
             </p>
 
             <p>
-              The ArcheLoop Report™ helps make those deeper patterns visible so
+              The ArcheLoop Report helps make those deeper patterns visible so
               they can be interrupted consciously.
             </p>
           </div>
@@ -160,7 +160,7 @@ export default function ReportPage() {
       <section id="full-report" className="px-6 py-28">
         <div className="mx-auto max-w-6xl">
           <div className="mb-14 text-center">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+            <p className="text-sm uppercase tracking-[0.35em] al-kicker">
               Inside Your Report
             </p>
 
@@ -179,7 +179,7 @@ export default function ReportPage() {
             />
 
             <ReportCard
-              eyebrow="Full ArcheLoop Report™"
+              eyebrow="Full ArcheLoop Report"
               title="Understand the architecture."
               items={reportIncludes}
               premium
@@ -189,9 +189,9 @@ export default function ReportPage() {
       </section>
 
       <section className="px-6 py-28">
-        <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 shadow-[0_0_70px_rgba(216,183,120,0.08)]">
+        <div className="al-premium-card mx-auto max-w-6xl p-10">
           <div className="mb-14 text-center">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+            <p className="text-sm uppercase tracking-[0.35em] al-kicker">
             Your Next Step
             </p>
 
@@ -199,36 +199,37 @@ export default function ReportPage() {
               Choose your next step.
             </h2>
 
-            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-              Start with your full ArcheLoop Report™, or choose the bundle if
+            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed al-text">
+              Start with your full ArcheLoop Report, or choose the bundle if
               you want your report plus your first month of ArcheLoop
-              Integration™.
+              Integration.
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-8">
-              <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
-                Personal Report
-              </p>
+        <div className="grid gap-8 lg:grid-cols-2">
+  <div className="al-card p-8">
+    <p className="text-sm uppercase tracking-[0.25em] al-kicker">
+      Personal Report
+    </p>
 
-              <h3 className="mt-5 text-3xl font-bold text-yellow-300">
-                ArcheLoop Report™
-              </h3>
+    <h3 className="mt-5 text-3xl font-bold text-[var(--al-accent)]">
+      ArcheLoop Report
+    </h3>
 
-              <p className="text-3xl font-semibold text-yellow-300">£19</p>
+   <div className="mt-4">
+  <p className="text-3xl font-semibold text-[var(--al-accent)]">£19</p>
+  <p className="mt-1 text-sm al-muted">
+    Launch price · <span className="line-through">£29</span> regular price
+  </p>
+</div>
 
-<p className="mt-2 text-sm text-stone-500">
-  Regular price £29
-</p>
-
-              <p className="mt-5 leading-relaxed text-stone-300">
+              <p className="mt-5 leading-relaxed al-text">
                 Your personalised report showing your primary and secondary
-                Shadow Loops™, nervous system pattern, relationship dynamics,
+                Shadow Loops, nervous system pattern, relationship dynamics,
                 body activation map, and integration guidance.
               </p>
 
-              <div className="mt-7 space-y-4 text-stone-300">
+              <div className="mt-7 space-y-3">
                 {reportIncludes.map((item) => (
                   <p key={item}>✓ {item}</p>
                 ))}
@@ -236,34 +237,35 @@ export default function ReportPage() {
 
               <a
                 href="/checkout?product=report"
-                className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+                className="al-button-primary mt-8"
               >
                 Continue to Full Report
               </a>
             </div>
 
-            <div className="rounded-[2rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8 shadow-[0_0_50px_rgba(216,183,120,0.08)]">
-              <p className="text-sm uppercase tracking-[0.25em] text-yellow-300">
+          <div className="al-premium-card p-8">
+              <p className="text-sm uppercase tracking-[0.25em] al-kicker">
                 Most Complete Experience
               </p>
 
-              <h3 className="mt-5 text-3xl font-bold text-yellow-300">
-                Report + First Month Integration™
-              </h3>
+             <h3 className="mt-5 text-3xl font-bold text-[var(--al-accent)]">
+  Report + First Month Integration
+</h3>
 
-              <p className="text-3xl font-semibold text-yellow-300">£29</p>
+<div className="mt-4">
+  <p className="text-3xl font-semibold text-[var(--al-accent)]">£29</p>
+  <p className="mt-1 text-sm al-muted">
+    Launch bundle · <span className="line-through">£58</span> regular value
+  </p>
+</div>
 
-<p className="mt-2 text-sm text-stone-500">
-  Regular price £58
-</p>
-
-              <p className="mt-5 leading-relaxed text-stone-300">
-                Everything in the ArcheLoop Report™, plus your first month of
-                ArcheLoop Integration™ to help you recognise patterns, track
+              <p className="mt-5 leading-relaxed al-text">
+                Everything in the ArcheLoop Report, plus your first month of
+                ArcheLoop Integration to help you recognise patterns, track
                 triggers, and build lasting change.
               </p>
 
-              <div className="mt-7 space-y-4 text-stone-300">
+              <div className="mt-7 space-y-3">
                 {bundleIncludes.map((item) => (
                   <p key={item}>✓ {item}</p>
                 ))}
@@ -271,14 +273,14 @@ export default function ReportPage() {
 
               <a
                 href="/checkout?product=bundle"
-                className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+                className="al-button-primary mt-8"
               >
-                Choose Report + Integration™
+                Choose Report + Integration
               </a>
             </div>
           </div>
 
-          <p className="mx-auto mt-10 max-w-3xl text-center text-sm text-stone-500">
+          <p className="mx-auto mt-10 max-w-3xl text-center text-sm al-muted">
             ArcheLoop reports are educational self-development tools and are not
             medical, psychiatric, therapeutic, or diagnostic services.
           </p>
@@ -286,16 +288,16 @@ export default function ReportPage() {
       </section>
 
       <section className="px-6 py-24">
-        <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/10 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+        <div className="al-premium-card mx-auto max-w-4xl p-10 text-center">
+          <p className="text-sm uppercase tracking-[0.35em] al-kicker">
             Continue The Work
           </p>
 
           <h2 className="mt-5 text-4xl font-bold md:text-6xl">
-            ArcheLoop Integration™
+            ArcheLoop Integration
           </h2>
 
-         <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+         <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed al-text">
   After your report, Integration helps you recognise real-life triggers,
   interrupt recurring patterns, follow your Integration Journey, and move
   toward your Integrated Self over time.
@@ -304,16 +306,16 @@ export default function ReportPage() {
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <a
               href="/integration"
-              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+              className="al-button-secondary"
             >
               Explore Integration
             </a>
 
             <a
               href="/triggered"
-              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              className="al-button-primary"
             >
-              Try I Am Triggered™
+              Try I Am Triggered
             </a>
           </div>
         </div>
@@ -336,29 +338,14 @@ function ReportCard({
   premium: boolean;
 }) {
   return (
-    <div
-      className={`rounded-[2rem] border p-8 shadow-[0_0_55px_rgba(216,183,120,0.06)] ${
-        premium
-          ? "border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black"
-          : "border-yellow-300/10 bg-[#0B1018]"
-      }`}
-    >
-      <p
-        className={`text-sm uppercase tracking-[0.25em] ${
-          premium ? "text-yellow-300" : "text-yellow-300/60"
-        }`}
-      >
-        {eyebrow}
-      </p>
+    <div className={premium ? "al-premium-card p-8" : "al-card p-8"}>
+      <p className="al-kicker">{eyebrow}</p>
 
       <h3 className="mt-5 text-3xl font-bold">{title}</h3>
 
-      <div className="mt-7 space-y-4">
+      <div className="mt-6 space-y-3">
         {items.map((item) => (
-          <p
-            key={item}
-            className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
-          >
+          <p key={item} className="al-soft-card p-4 al-text">
             {item}
           </p>
         ))}

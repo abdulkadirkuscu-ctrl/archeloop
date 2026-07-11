@@ -42,26 +42,20 @@ export const metadata: Metadata = {
 
 export default function ArchetypesPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
+    <main className="al-page min-h-screen">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+      <section className="al-section">
+        <div className="al-container-wide space-y-14">
+          <div className="al-hero-card text-center">
+            <p className="al-kicker">ArcheLoop</p>
 
-        <div className="relative mx-auto max-w-7xl space-y-14">
-          <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              ArcheLoop™
-            </p>
+            <h1 className="al-heading-xl">The Four Archetypes</h1>
 
-            <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
-              The Four Archetypes
-            </h1>
-
-            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
+            <p className="al-text-lg mx-auto mt-8 max-w-3xl">
               ArcheLoop is built around four archetypal energies: Fire, Air,
-Water, and Earth. Each archetype represents a different way you
-express, protect, perceive, connect, and respond under pressure.
+              Water, and Earth. Each archetype represents a different way you
+              express, protect, perceive, connect, and respond under pressure.
             </p>
           </div>
 
@@ -70,35 +64,31 @@ express, protect, perceive, connect, and respond under pressure.
               <a
                 key={archetype.name}
                 href={`/archetypes/${archetype.name.toLowerCase()}`}
-                className="group overflow-hidden rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] shadow-[0_0_45px_rgba(216,183,120,0.05)] transition hover:border-yellow-300/50 hover:shadow-[0_0_70px_rgba(216,183,120,0.10)]"
+                className="al-card group overflow-hidden transition hover:border-[var(--al-accent)]"
               >
                 <div className="relative h-[520px] overflow-hidden">
                   <Image
-  src={archetype.image}
-  alt={archetype.name}
-  fill
-  priority={archetype.name === "Sovereign"}
-  sizes="(max-width: 768px) 100vw, 50vw"
-  className="object-cover opacity-90 transition duration-700 group-hover:scale-105"
-/>
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                    src={archetype.image}
+                    alt={archetype.name}
+                    fill
+                    priority={archetype.name === "Sovereign"}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover opacity-90 transition duration-700 group-hover:scale-105"
+                  />
                 </div>
 
                 <div className="p-8">
-                  <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
-                    {archetype.element}
-                  </p>
+                  <p className="al-kicker">{archetype.element}</p>
 
-                  <h2 className="mt-3 text-4xl font-bold text-yellow-300">
+                  <h2 className="mt-3 text-4xl font-bold text-[var(--al-accent)]">
                     {archetype.name}
                   </h2>
 
-                  <p className="mt-5 leading-relaxed text-stone-300">
+                  <p className="al-text mt-5">
                     {archetype.description}
                   </p>
 
-                  <p className="mt-7 font-semibold text-yellow-300">
+                  <p className="mt-7 font-semibold text-[var(--al-accent)]">
                     Explore Archetype →
                   </p>
                 </div>

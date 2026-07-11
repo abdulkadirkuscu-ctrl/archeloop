@@ -6,8 +6,8 @@ const elements = [
     archetype: "Sovereign",
     meaning: "Visibility, identity, presence, and self-worth.",
     image: "/sigils/fire-sigil.png",
-    colour: "text-yellow-300",
-    glow: "group-hover:border-yellow-300/50",
+    colour: "text-[var(--al-accent)]",
+    glow: "group-hover:border-[var(--al-border)]/50",
     bgGlow: "from-yellow-300/10",
   },
   {
@@ -41,7 +41,7 @@ const elements = [
 
 export default function ElementalSigils() {
   return (
-    <section className="px-6 py-28 border-y border-yellow-300/10 bg-[#0B1018]">
+    <section className="al-section">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <p className="uppercase tracking-[0.35em] text-gray-500 mb-5">
@@ -63,13 +63,13 @@ export default function ElementalSigils() {
           {elements.map((element) => (
             <div
               key={element.name}
-              className={`group relative overflow-hidden border border-yellow-300/10 rounded-[2rem] bg-gradient-to-b ${element.bgGlow} to-black p-5 transition-all duration-700 hover:-translate-y-1 ${element.glow}`}
+              className="group relative overflow-hidden al-card p-5 transition-all duration-700 hover:-translate-y-1"
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-700">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_60%)]" />
               </div>
 
-              <div className="relative aspect-square rounded-[1.5rem] overflow-hidden bg-black border border-zinc-900 mb-6">
+              <div className="relative mb-6 aspect-square overflow-hidden rounded-[1.5rem] border border-[var(--al-border)] bg-[var(--al-surface-deep)]">
                 <Image
                   src={element.image}
                   alt={`${element.name} sigil`}

@@ -1,6 +1,5 @@
 import Link from "next/link";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
+import PageShell from "../components/PageShell";
 import { supabaseServer } from "../../lib/supabaseServer";
 import { createSupabaseServerClient } from "../../lib/supabaseServerClient";
 
@@ -37,41 +36,40 @@ export default async function ProgressDashboardPage() {
 
   if (!user) {
     return (
-      <main className="min-h-screen bg-[#030712] text-stone-100">
-        <Nav />
+      <PageShell>
+        
         <section className="px-6 py-24 text-center">
-          <div className="mx-auto max-w-3xl rounded-[2rem] border border-yellow-300/20 bg-[#0B1018] p-10">
-            <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-              Progress Dashboard™
+          <div className="mx-auto max-w-3xl al-card p-10">
+            <p className="text-sm uppercase tracking-[0.3em] al-kicker">
+              Progress Dashboard
             </p>
 
             <h1 className="mt-4 text-4xl font-bold">
               Log in to view your dashboard.
             </h1>
 
-            <p className="mt-4 text-stone-300">
+            <p className="mt-4 al-text-lg">
               Your progress dashboard is connected to your ArcheLoop account.
             </p>
 
             <div className="mt-8 flex justify-center gap-4">
               <Link
                 href="/auth/login"
-                className="rounded-full bg-yellow-300 px-8 py-4 font-semibold text-black"
+                className="rounded-full al-button-primary px-8 py-4 font-semibold text-black"
               >
                 Log In
               </Link>
 
               <Link
                 href="/auth/signup"
-                className="rounded-full border border-yellow-300/20 px-8 py-4 font-semibold text-yellow-200"
+                className="rounded-full border border-var(--al-accent)/20 px-8 py-4 font-semibold text-[var(--al-accent)]"
               >
                 Create Account
               </Link>
             </div>
           </div>
         </section>
-        <Footer />
-      </main>
+      </PageShell>
     );
   }
 const { data: orders } = await supabaseServer
@@ -87,47 +85,46 @@ const hasIntegrationAccess =
 
 if (!hasIntegrationAccess) {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
+    <PageShell>
+      
 
       <section className="relative overflow-hidden px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+        <div className="absolute inset-0 al-hero-glow" />
 
-        <div className="relative mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            Progress Dashboard™
+        <div className="relative mx-auto max-w-4xl al-premium-card">
+          <p className="text-sm uppercase tracking-[0.35em] al-kicker">
+            Progress Dashboard
           </p>
 
-          <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
+          <h1 className="mt-5 al-heading-xl">
             Integration access is required.
           </h1>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-            The Progress Dashboard™ is part of ArcheLoop Integration™. It helps
-            you track recurring Shadow Loops™, triggers, people, environments,
-            Integration Check-Ins™, and your progress over time.
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed al-text-lg">
+            The Progress Dashboard is part of ArcheLoop Integration. It helps
+            you track recurring Shadow Loops, triggers, people, environments,
+            Integration Check-Ins, and your progress over time.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
               href="/checkout?product=integration"
-              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              className="rounded-full al-button-primary px-8 py-4 text-lg font-semibold text-black transition hover:al-button-primary"
             >
-              Start Integration™
+              Start Integration
             </Link>
 
             <Link
               href="/checkout?product=bundle"
-              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+              className="rounded-full al-button-secondary px-8 py-4 text-lg font-semibold text-[var(--al-accent)] transition hover:border-var(--al-accent)/60"
             >
-              Choose Report + Integration™
+              Choose Report + Integration
             </Link>
           </div>
         </div>
       </section>
 
-      <Footer />
-    </main>
+    </PageShell>
   );
 }
 
@@ -147,41 +144,41 @@ if (!hasIntegrationAccess) {
   const stats = buildStats(activations);
 
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
+    <PageShell>
+      
 
       <section className="relative overflow-hidden px-6 py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+        <div className="absolute inset-0 al-hero-glow" />
 
         <div className="relative mx-auto max-w-7xl space-y-8">
-          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+          <div className="al-premium-card p-10">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div>
-                <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-                  Progress Dashboard™
+                <p className="text-sm uppercase tracking-[0.35em] al-kicker">
+                  Progress Dashboard
                 </p>
 
-                <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
+                <h1 className="mt-6 al-heading-xl">
                   Your ArcheLoop Patterns
                 </h1>
 
-                <p className="mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-                  Track recurring Shadow Loops™, triggers, people,
-                  environments, and the pathway toward your Integrated Self™.
+                <p className="mt-6 max-w-3xl text-lg leading-relaxed al-text-lg">
+                  Track recurring Shadow Loops, triggers, people,
+                  environments, and the pathway toward your Integrated Self.
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/triggered-intelligence"
-                  className="rounded-full bg-yellow-300 px-6 py-3 text-sm font-semibold text-black transition hover:bg-yellow-200"
+                  className="rounded-full al-button-primary px-6 py-3 text-sm font-semibold text-black transition hover:al-button-primary"
                 >
                   Log New Activation
                 </Link>
 
                 <Link
                   href="/trigger-history"
-                  className="rounded-full border border-yellow-300/20 bg-black/30 px-6 py-3 text-sm font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+                  className="rounded-full al-button-secondary px-6 py-3 text-sm font-semibold al-text-lg transition hover:border-var(--al-accent)/60 hover:text-[var(--al-accent)]"
                 >
                   View Trigger History
                 </Link>
@@ -190,24 +187,24 @@ if (!hasIntegrationAccess) {
           </div>
 
           {activations.length === 0 ? (
-            <div className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-              <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+            <div className="al-premium-card p-10 text-center">
+              <p className="text-sm uppercase tracking-[0.3em] al-kicker">
                 No Activations Yet
               </p>
 
-              <h2 className="mt-5 text-3xl font-bold text-stone-100">
+              <h2 className="mt-5 text-3xl font-bold text-[var(--al-text)]">
                 Your dashboard will build as you log triggers.
               </h2>
 
-              <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-stone-300">
-                Save activations from Triggered Pro™ to begin seeing your most
+              <p className="mx-auto mt-5 max-w-2xl leading-relaxed al-text-lg">
+                Save activations from Triggered Pro to begin seeing your most
                 recurring loops, triggers, people, environments, and integration
                 focus.
               </p>
 
               <Link
                 href="/triggered-intelligence"
-                className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 font-semibold text-black transition hover:bg-yellow-200"
+                className="mt-8 inline-flex rounded-full al-button-primary px-8 py-4 font-semibold text-black transition hover:al-button-primary"
               >
                 Log First Activation
               </Link>
@@ -215,22 +212,22 @@ if (!hasIntegrationAccess) {
           ) : (
             <>
               <div className="grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
-                <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.10)]">
-                  <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+                <div className="al-premium-card p-8">
+                  <p className="text-sm uppercase tracking-[0.3em] al-kicker">
                     Current Pattern
                   </p>
 
-                  <h2 className="mt-5 text-5xl font-bold text-yellow-300">
+                  <h2 className="mt-5 text-5xl font-bold text-[var(--al-accent)]">
                     {stats.mostActiveLoop?.label || "—"}
                   </h2>
 
-                  <p className="mt-5 max-w-3xl text-lg leading-relaxed text-stone-300">
+                  <p className="mt-5 max-w-3xl text-lg leading-relaxed al-text-lg">
                     Your system most often enters{" "}
-                    <span className="text-stone-100">
+                    <span className="text-[var(--al-text)]">
                       {stats.mostActiveLoop?.label || "this loop"}
                     </span>{" "}
                     when{" "}
-                    <span className="text-stone-100">
+                    <span className="text-[var(--al-text)]">
                       {stats.mostActiveTrigger?.label || "a recurring trigger"}
                     </span>{" "}
                     appears. Awareness helps you interrupt the pattern and
@@ -245,18 +242,18 @@ if (!hasIntegrationAccess) {
                   </div>
                 </div>
 
-                <div className="rounded-[2.5rem] border border-yellow-300/20 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-                  <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+                <div className="al-card p-8">
+                  <p className="text-sm uppercase tracking-[0.3em] al-kicker">
                     Integrated Direction
                   </p>
 
-                  <h2 className="mt-5 text-3xl font-bold text-yellow-300">
+                  <h2 className="mt-5 text-3xl font-bold text-[var(--al-accent)]">
                     {stats.emergingState.label}
                   </h2>
 
-                  <p className="mt-5 leading-relaxed text-stone-300">
+                  <p className="mt-5 leading-relaxed al-text-lg">
                     Your current developmental movement points toward{" "}
-                    <span className="text-stone-100">{stats.emergingState.label}</span>.
+                    <span className="text-[var(--al-text)]">{stats.emergingState.label}</span>.
                     Use each activation as practice for this integrated state.
                   </p>
                 </div>
@@ -265,7 +262,7 @@ if (!hasIntegrationAccess) {
               <div className="grid gap-4 md:grid-cols-4">
                 <StatCard label="Saved Activations" value={String(activations.length)} />
                 <StatCard
-                  label="Loops Broken™"
+                  label="Loops Broken"
                   value={`${stats.loopsBroken} / ${stats.totalActivations}`}
                   detail={
                     stats.loopsBroken > 0
@@ -297,7 +294,7 @@ if (!hasIntegrationAccess) {
                 </div>
               </div>
 
-              <DashboardSection title="Loop Landscape™" subtitle="Which Shadow Loops are most active right now?">
+              <DashboardSection title="Loop Landscape" subtitle="Which Shadow Loops are most active right now?">
                 <div className="mt-8 space-y-4">
                   {stats.topLoops.map((loop) => {
                     const percentage = Math.round((loop.count / stats.totalActivations) * 100);
@@ -313,21 +310,21 @@ if (!hasIntegrationAccess) {
                 </div>
               </DashboardSection>
 
-              <DashboardSection title="Integrated Self Alignment™" subtitle="How consistently are you interrupting the loop?">
+              <DashboardSection title="Integrated Self Alignment" subtitle="How consistently are you interrupting the loop?">
                 {stats.hasIntegrationScore ? (
                   <>
-                    <h2 className="mt-4 text-6xl font-bold text-yellow-300">
+                    <h2 className="mt-4 text-6xl font-bold text-[var(--al-accent)]">
                       {stats.integrationScore}%
                     </h2>
 
-                    <p className="mt-4 max-w-3xl leading-relaxed text-stone-300">
+                    <p className="mt-4 max-w-3xl leading-relaxed al-text-lg">
                       This reflects how consistently you notice the loop, return
                       to centre, interrupt the automatic pattern, and respond
-                      from your Integrated Self™.
+                      from your Integrated Self.
                     </p>
 
-                    <p className="mt-3 text-sm text-stone-500">
-                      Based on {stats.completedCheckIns} completed Integration Check-In™
+                    <p className="mt-3 text-sm al-muted">
+                      Based on {stats.completedCheckIns} completed Integration Check-In
                       {stats.completedCheckIns === 1 ? "" : "s"}.
                     </p>
 
@@ -339,29 +336,29 @@ if (!hasIntegrationAccess) {
                     </div>
                   </>
                 ) : (
-                  <p className="mt-4 max-w-3xl leading-relaxed text-stone-300">
-                    Your Integrated Self Alignment™ will appear once you begin
-                    completing Integration Check-In™ questions.
+                  <p className="mt-4 max-w-3xl leading-relaxed al-text-lg">
+                    Your Integrated Self Alignment will appear once you begin
+                    completing Integration Check-In questions.
                   </p>
                 )}
               </DashboardSection>
 
-             <DashboardSection title="Loop Trend™" subtitle="How have your dominant Shadow Loops changed over time?">
+             <DashboardSection title="Loop Trend" subtitle="How have your dominant Shadow Loops changed over time?">
                 <div className="mt-8 space-y-4">
                   {stats.loopTrend.length === 0 ? (
-                    <p className="text-stone-400">Not enough trend data yet.</p>
+                    <p className="al-muted">Not enough trend data yet.</p>
                   ) : (
                     stats.loopTrend.map((loop) => (
-                      <div key={loop.label} className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5">
+                      <div key={loop.label} className="al-soft-card p-5">
                         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                           <div>
-                            <p className="text-xl font-semibold text-stone-100">{loop.label}</p>
-                            <p className="mt-1 text-sm text-stone-400">
+                            <p className="text-xl font-semibold text-[var(--al-text)]">{loop.label}</p>
+                            <p className="mt-1 text-sm al-muted">
                               Previous 30 days: {loop.previousCount} · Last 30 days: {loop.currentCount}
                             </p>
                           </div>
 
-                          <div className="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-4 py-2 text-sm font-semibold text-yellow-200">
+                          <div className="rounded-full border border-var(--al-accent)/20 al-button-primary/10 px-4 py-2 text-sm font-semibold text-[var(--al-accent)]">
                             {loop.previousCount === 0 && loop.currentCount > 0
                               ? "New in last 30 days"
                               : loop.change > 0
@@ -377,20 +374,20 @@ if (!hasIntegrationAccess) {
                 </div>
               </DashboardSection>
 
-              <div className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
+              <div className="al-premium-card p-8">
                 <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                   <div>
-                    <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+                    <p className="text-sm uppercase tracking-[0.3em] al-kicker">
                       Recent Activations
                     </p>
-                    <h2 className="mt-4 text-3xl font-semibold text-yellow-300">
+                    <h2 className="mt-4 text-3xl font-semibold text-[var(--al-accent)]">
                       Latest trigger logs
                     </h2>
                   </div>
 
                   <Link
                     href="/trigger-history"
-                    className="rounded-full border border-yellow-300/20 bg-black/30 px-5 py-2 text-sm font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+                    className="rounded-full al-button-secondary px-5 py-2 text-sm font-semibold text-[var(--al-accent)] transition hover:border-var(--al-accent)/60"
                   >
                     View Full History
                   </Link>
@@ -398,30 +395,30 @@ if (!hasIntegrationAccess) {
 
                 <div className="mt-6 space-y-4">
                   {activations.slice(0, 5).map((activation) => (
-                    <div key={activation.id} className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5">
-                      <p className="text-sm text-yellow-300/60">
+                    <div key={activation.id} className="al-soft-card p-5">
+                      <p className="text-sm al-kicker">
                         {new Date(activation.createdAt).toLocaleString()}
                       </p>
 
                       <div className="mt-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                         <div>
-                          <p className="text-xl font-semibold text-stone-100">
+                          <p className="text-xl font-semibold text-[var(--al-text)]">
                             {activation.primaryLoop}
                           </p>
 
-                          <p className="mt-1 text-sm text-stone-400">
+                          <p className="mt-1 text-sm al-muted">
                             {activation.trigger} · {activation.person} · {activation.environment}
                           </p>
                         </div>
 
-                        <div className="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-4 py-2 text-sm text-yellow-200">
+                        <div className="rounded-full border border-var(--al-accent)/20 al-button-primary/10 px-4 py-2 text-sm text-[var(--al-accent)]">
                           Loop Match {activation.confidence}%
                         </div>
                       </div>
 
                       {activation.loopBreakLevel && (
-                        <p className="mt-3 text-sm text-yellow-200">
-                          Integration Check-In™: {activation.loopBreakLevel}
+                        <p className="mt-3 text-sm text-[var(--al-accent)]">
+                          Integration Check-In: {activation.loopBreakLevel}
                         </p>
                       )}
                     </div>
@@ -433,8 +430,7 @@ if (!hasIntegrationAccess) {
         </div>
       </section>
 
-      <Footer />
-    </main>
+     </PageShell>
   );
 }
 
@@ -555,11 +551,11 @@ function DashboardSection({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.10)]">
-      <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
+    <div className="al-premium-card p-8">
+      <p className="text-sm uppercase tracking-[0.3em] al-kicker">
         {title}
       </p>
-      <h2 className="mt-4 text-3xl font-semibold text-stone-100">{subtitle}</h2>
+      <h2 className="mt-4 text-3xl font-semibold text-[var(--al-text)]">{subtitle}</h2>
       {children}
     </div>
   );
@@ -575,17 +571,17 @@ function ProgressRow({
   value: number;
 }) {
   return (
-    <div className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5">
+    <div className="al-soft-card p-5">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="text-xl font-semibold text-stone-100">{label}</p>
-          <p className="mt-1 text-sm text-stone-400">{detail}</p>
+          <p className="text-xl font-semibold text-[var(--al-text)]">{label}</p>
+          <p className="mt-1 text-sm al-muted">{detail}</p>
         </div>
-        <p className="text-xl font-bold text-yellow-300">{value}%</p>
+        <p className="text-xl font-bold text-[var(--al-accent)]">{value}%</p>
       </div>
 
-      <div className="mt-4 h-3 overflow-hidden rounded-full bg-black/50">
-        <div className="h-full rounded-full bg-yellow-300" style={{ width: `${value}%` }} />
+      <div className="mt-4 al-progress-track">
+        <div className="h-full rounded-full bg-[var(--al-accent)]" style={{ width: `${value}%` }} />
       </div>
     </div>
   );
@@ -593,14 +589,17 @@ function ProgressRow({
 
 function ProgressMetric({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5">
+    <div className="al-soft-card p-5">
       <div className="flex items-center justify-between gap-4">
-        <p className="font-semibold text-stone-100">{label}</p>
-        <p className="font-bold text-yellow-300">{value}%</p>
+        <p className="font-semibold text-[var(--al-text)]">{label}</p>
+        <p className="font-bold text-[var(--al-accent)]">{value}%</p>
       </div>
 
-      <div className="mt-4 h-3 overflow-hidden rounded-full bg-black/50">
-        <div className="h-full rounded-full bg-yellow-300" style={{ width: `${value}%` }} />
+      <div className="mt-4 al-progress-track">
+        <div
+    className="al-progress-fill"
+    style={{ width: `${value}%` }}
+/>
       </div>
     </div>
   );
@@ -608,44 +607,44 @@ function ProgressMetric({ label, value }: { label: string; value: number }) {
 
 function MiniInsight({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5">
-      <p className="text-xs uppercase tracking-[0.2em] text-yellow-300/50">
+    <div className="al-soft-card p-5">
+      <p className="text-xs uppercase tracking-[0.2em] text-[var(--al-accent)]/50">
         {label}
       </p>
-      <p className="mt-3 text-xl font-semibold text-stone-100">{value}</p>
+      <p className="mt-3 text-xl font-semibold text-[var(--al-text)]">{value}</p>
     </div>
   );
 }
 
 function StatCard({ label, value, detail }: { label: string; value: string; detail?: string }) {
   return (
-    <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-6 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-      <p className="text-sm uppercase tracking-[0.2em] text-yellow-300/60">{label}</p>
-      <p className="mt-4 text-3xl font-bold text-stone-100">{value || "—"}</p>
-      {detail && <p className="mt-2 text-sm text-stone-500">{detail}</p>}
+    <div className="al-card p-6">
+      <p className="text-sm uppercase tracking-[0.2em] al-kicker">{label}</p>
+      <p className="mt-4 text-3xl font-bold text-[var(--al-text)]">{value || "—"}</p>
+      {detail && <p className="mt-2 text-sm al-muted">{detail}</p>}
     </div>
   );
 }
 
 function RankedCard({ title, items }: { title: string; items: RankedItem[] }) {
   return (
-    <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-6 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-      <h2 className="text-2xl font-semibold text-yellow-300">{title}</h2>
+    <div className="al-card p-6">
+      <h2 className="text-2xl font-semibold text-[var(--al-accent)]">{title}</h2>
 
       {items.length === 0 ? (
-        <p className="mt-4 text-stone-400">No data yet.</p>
+        <p className="mt-4 al-muted">No data yet.</p>
       ) : (
         <div className="mt-5 space-y-4">
           {items.map((item, index) => (
             <div
               key={item.label}
-              className="flex items-center justify-between gap-4 rounded-2xl border border-yellow-300/10 bg-black/30 p-4"
+              className="flex items-center justify-between gap-4 al-soft-card p-4"
             >
               <div>
-                <p className="font-medium text-stone-100">
+                <p className="font-medium text-[var(--al-text)]">
                   {index + 1}. {item.label}
                 </p>
-                <p className="mt-1 text-sm text-yellow-300/60">
+                <p className="mt-1 text-sm al-kicker">
                   {item.count} {item.count === 1 ? "activation" : "activations"}
                 </p>
               </div>

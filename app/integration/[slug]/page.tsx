@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createSupabaseServerClient } from "../../../lib/supabaseServerClient";
-import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
+import PageShell from "../../components/PageShell";
 import { integrationJourneys } from "../../data/integrationJourneys";
 import { supabaseServer } from "../../../lib/supabaseServer";
 import IntegratedVisionBox from "../../components/IntegratedVisionBox";
@@ -27,54 +26,44 @@ export default async function IntegrationJourneyPage({ params }: Props) {
     event_value: journey.slug,
   });
 
- const supabaseAuth = await createSupabaseServerClient();
+  const supabaseAuth = await createSupabaseServerClient();
 
-const {
-  data: { user },
-} = await supabaseAuth.auth.getUser();
+  const {
+    data: { user },
+  } = await supabaseAuth.auth.getUser();
 
-let hasIntegrationAccess = false;
+  let hasIntegrationAccess = false;
 
-if (user) {
-  const { data: orders } = await supabaseServer
-    .from("archeloop_orders")
-    .select("product, status")
-    .eq("user_id", user.id)
-    .in("status", ["paid", "private_access", "founding_access"]);
+  if (user) {
+    const { data: orders } = await supabaseServer
+      .from("archeloop_orders")
+      .select("product, status")
+      .eq("user_id", user.id)
+      .in("status", ["paid", "private_access", "founding_access"]);
 
-  hasIntegrationAccess =
-    orders?.some(
-      (order) => order.product === "integration" || order.product === "bundle"
-    ) || false;
-}
+    hasIntegrationAccess =
+      orders?.some(
+        (order) => order.product === "integration" || order.product === "bundle"
+      ) || false;
+  }
 
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
-
-      <section className="relative overflow-hidden px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
-
-        <div className="relative mx-auto max-w-6xl space-y-10">
-          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+    <PageShell>
+      <section className="al-section">
+        <div className="al-container-wide space-y-10">
+          <div className="al-hero-card">
             <Link
               href="/integration"
-              className="text-sm text-yellow-300/70 hover:text-yellow-300"
+              className="text-sm text-[var(--al-accent)] transition hover:opacity-70"
             >
               ← Back to Integration
             </Link>
 
-           <p className="mt-8 text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-  ArcheLoop Integration
-</p>
+            <p className="al-kicker mt-8">ArcheLoop Integration</p>
 
-<p className="mt-4 text-sm uppercase tracking-[0.3em] text-yellow-300/60">
-  Understand • Interrupt • Integrate
-</p>
+            <p className="al-kicker mt-4">Understand • Interrupt • Integrate</p>
 
-            <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
-              {journey.path}
-            </h1>
+            <h1 className="al-heading-xl">{journey.path}</h1>
 
             <div className="mt-6 flex flex-wrap gap-3">
               <Badge>{journey.loop}</Badge>
@@ -83,23 +72,19 @@ if (user) {
               <Badge>{journey.integratedState}</Badge>
             </div>
 
-            <p className="mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
+            <p className="al-text-lg mt-8 max-w-3xl">
               {journey.overview}
             </p>
           </div>
 
           {hasIntegrationAccess ? (
             <div className="space-y-10">
-              <div className="rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.12)]">
-                <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-                  Full Integration Journey
-                </p>
+              <div className="al-premium-card p-10">
+                <p className="al-kicker">Full Integration Journey</p>
 
-                <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-                  Your {journey.path}
-                </h2>
+                <h2 className="al-heading-lg">Your {journey.path}</h2>
 
-                <p className="mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+                <p className="al-text-lg mt-6 max-w-3xl">
                   This journey helps you move from {journey.loop} toward{" "}
                   {journey.integratedState}  by recognising recurring patterns, 
                   interrupting automatic reactions, and developing a more integrated way of being.
@@ -116,49 +101,37 @@ if (user) {
                     ["Compensation Pattern", journey.compensation],
                     ["Inner Collision", journey.collision],
                   ].map(([title, text]) => (
-                    <div
-                      key={title}
-                      className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5"
-                    >
-                      <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
-                        {title}
-                      </p>
-                      <p className="mt-3 leading-relaxed text-stone-300">
-                        {text}
-                      </p>
+                    <div key={title} className="al-soft-card p-5">
+                      <p className="al-kicker">{title}</p>
+                      <p className="al-text mt-3">{text}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10">
-                <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-  The Integration Journey
-</p>
+              <div className="al-card p-10">
+                <p className="al-kicker">The Integration Journey</p>
 
-<h2 className="mt-5 text-4xl font-bold md:text-5xl">
-  Understand • Interrupt • Integrate
-</h2>
+                <h2 className="al-heading-lg">
+                  Understand • Interrupt • Integrate
+                </h2>
 
                 <div className="mt-10 space-y-8">
                   {journey.stages.map((stage) => (
-                    <div
-                      key={stage.title}
-                      className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-7"
-                    >
-                      <h3 className="text-3xl font-bold text-yellow-300">
+                    <div key={stage.title} className="al-soft-card p-7">
+                      <h3 className="text-3xl font-bold text-[var(--al-accent)]">
                         {stage.title}
                       </h3>
 
-                      <p className="mt-4 text-stone-300">
-                        <span className="font-semibold text-stone-100">
+                      <p className="al-text mt-4">
+                        <span className="font-semibold text-[var(--al-text)]">
                           Objective:
                         </span>{" "}
                         {stage.objective}
                       </p>
 
-                      <p className="mt-4 text-stone-300">
-                        <span className="font-semibold text-stone-100">
+                      <p className="al-text mt-4">
+                        <span className="font-semibold text-[var(--al-text)]">
                           Realisation:
                         </span>{" "}
                         {stage.realisation}
@@ -166,51 +139,41 @@ if (user) {
 
                       <div className="mt-6 grid gap-5 md:grid-cols-2">
                         <div>
-                          <p className="font-semibold text-stone-100">
+                          <p className="font-semibold text-[var(--al-text)]">
                             Practices
                           </p>
-                          <div className="mt-3 space-y-2">
+                          <div className="al-text mt-3 space-y-2">
                             {stage.practices.map((practice) => (
-                              <p key={practice} className="text-stone-300">
-                                ✓ {practice}
-                              </p>
+                              <p key={practice}>✓ {practice}</p>
                             ))}
                           </div>
                         </div>
 
                         <div>
-                          <p className="font-semibold text-stone-100">
+                          <p className="font-semibold text-[var(--al-text)]">
                             Reflection Prompts
                           </p>
-                          <div className="mt-3 space-y-2">
+                          <div className="al-text mt-3 space-y-2">
                             {stage.prompts.map((prompt) => (
-                              <p key={prompt} className="text-stone-300">
-                                → {prompt}
-                              </p>
+                              <p key={prompt}>→ {prompt}</p>
                             ))}
                           </div>
                         </div>
                       </div>
 
-                      <div className="mt-6 rounded-2xl border border-yellow-300/10 bg-[#030712] p-5">
-                        <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
-                          Success Marker
-                        </p>
-                        <p className="mt-3 text-stone-300">
-                          {stage.successMarker}
-                        </p>
+                      <div className="al-card mt-6 p-5">
+                        <p className="al-kicker">Success Marker</p>
+                        <p className="al-text mt-3">{stage.successMarker}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10">
-                <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-                  Meet Your Integrated Self
-                </p>
+              <div className="al-premium-card p-10">
+                <p className="al-kicker">Meet Your Integrated Self</p>
 
-                <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+                <h2 className="al-heading-lg">
                   Becoming {journey.integratedState}
                 </h2>
 
@@ -218,19 +181,12 @@ if (user) {
                   {journey.integratedSelf &&
                     Object.entries(journey.integratedSelf).map(
                       ([category, items]) => (
-                        <div
-                          key={category}
-                          className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5"
-                        >
-                          <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
-                            {category}
-                          </p>
+                        <div key={category} className="al-soft-card p-5">
+                          <p className="al-kicker">{category}</p>
 
-                          <div className="mt-4 space-y-2">
+                          <div className="al-text mt-4 space-y-2">
                             {items.map((item) => (
-                              <p key={item} className="text-stone-300">
-                                ✓ {item}
-                              </p>
+                              <p key={item}>✓ {item}</p>
                             ))}
                           </div>
                         </div>
@@ -240,71 +196,59 @@ if (user) {
               </div>
 
               <IntegratedVisionBox
-  journeySlug={journey.slug}
-  integratedState={journey.integratedState}
-/>
+                journeySlug={journey.slug}
+                integratedState={journey.integratedState}
+              />
 
-              <div className="rounded-[2.5rem] border border-yellow-300/20 bg-black/40 p-10">
-                <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-                  Living From Your Integrated Self
-                </p>
+              <div className="al-card p-10">
+                <p className="al-kicker">Living From Your Integrated Self</p>
 
                 <div className="mt-8 grid gap-3 md:grid-cols-2">
                   {journey.integratedIdentity.map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
-                    >
+                    <div key={item} className="al-soft-card p-4">
                       ✓ {item}
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center">
-                <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-                  Your Integration Statement
-                </p>
+              <div className="al-premium-card p-10 text-center">
+                <p className="al-kicker">Your Integration Statement</p>
 
-                <p className="mx-auto mt-6 max-w-3xl text-2xl leading-relaxed text-stone-100">
+                <p className="mx-auto mt-6 max-w-3xl text-2xl leading-relaxed text-[var(--al-text)]">
                   “{journey.finalStatement}”
                 </p>
 
                 <div className="mt-10 flex flex-wrap justify-center gap-4">
                   <Link
                     href="/triggered-intelligence"
-                    className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+                    className="al-button-primary"
                   >
                     Log a Trigger
                   </Link>
 
                   <Link
                     href="/progress-dashboard"
-                    className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+                    className="al-button-secondary"
                   >
                     View Progress Dashboard
                   </Link>
 
-                  <Link
-                    href="/integration"
-                    className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
-                  >
+                  <Link href="/integration" className="al-button-secondary">
                     Back to Integration
                   </Link>
                 </div>
               </div>
             </div>
           ) : (
-            <div className="rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.12)]">
-              <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-                Integration Journey Preview
-              </p>
+            <div className="al-premium-card p-10 text-center">
+              <p className="al-kicker">Integration Journey Preview</p>
 
-              <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+              <h2 className="al-heading-lg">
                 Continue your {journey.path}
               </h2>
 
-              <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+              <p className="al-text-lg mx-auto mt-6 max-w-3xl">
                 This preview introduces your Integration Journey. 
                 Continue into ArcheLoop Integration to explore the complete path, 
                 including practices, reflection prompts, your Integrated Self, and personal progress tracking.
@@ -325,31 +269,28 @@ if (user) {
                   "Final integration statement",
                   "Triggered Pro & Progress Dashboard",
                 ].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
-                  >
+                  <div key={item} className="al-soft-card p-4">
                     ✓ {item}
                   </div>
                 ))}
               </div>
 
-              <div className="mx-auto mt-10 max-w-2xl rounded-[2rem] border border-yellow-300/20 bg-black/30 p-6">
-                <p className="text-lg text-stone-500 line-through">
+              <div className="al-soft-card mx-auto mt-10 max-w-2xl p-6">
+                <p className="al-muted text-lg line-through">
                   £29/month
                 </p>
 
-                <p className="mt-1 text-3xl font-bold text-yellow-300">
+                <p className="mt-1 text-3xl font-bold text-[var(--al-accent)]">
                   £14.99/month
                 </p>
 
-                <p className="mt-3 text-sm leading-relaxed text-stone-400">
+                <p className="al-text mt-3 text-sm">
                   Launch Offer
                   Includes full Integration Journeys, Triggered Pro, Progress Dashboard, 
                   My Integrated Vision, and personal integration tracking.
                 </p>
 
-                <p className="mt-4 text-sm text-stone-500">
+                <p className="al-muted mt-4 text-sm">
                   Cancel anytime. Subscription renews monthly.
                 </p>
               </div>
@@ -357,22 +298,19 @@ if (user) {
               <div className="mt-10 flex flex-wrap justify-center gap-4">
                 <Link
                   href="/checkout?product=integration"
-                  className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+                  className="al-button-primary"
                 >
                   Start Integration
                 </Link>
 
                 <Link
                   href="/checkout?product=bundle"
-                  className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+                  className="al-button-secondary"
                 >
                   Choose Report + Integration
                 </Link>
 
-                <Link
-                  href="/integration"
-                  className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
-                >
+                <Link href="/integration" className="al-button-secondary">
                   Back to Integration
                 </Link>
               </div>
@@ -380,16 +318,10 @@ if (user) {
           )}
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </PageShell>
   );
 }
 
 function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-4 py-2 text-sm text-yellow-200">
-      {children}
-    </span>
-  );
+  return <span className="al-badge">{children}</span>;
 }

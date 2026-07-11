@@ -1,27 +1,20 @@
-import Footer from "../components/Footer";
-import Nav from "../components/Nav";
+import PageShell from "../components/PageShell";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
+    <PageShell>
+      <section className="al-section">
+        <div className="al-container space-y-10">
+          <div className="al-hero-card">
+            <p className="al-kicker">About ArcheLoop</p>
 
-      <section className="relative overflow-hidden px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
-
-        <div className="relative mx-auto max-w-5xl space-y-10">
-          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              About ArcheLoop
-            </p>
-
-            <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
+            <h1 className="al-heading-xl">
               Name the pattern.
               <br />
               Break the loop.
             </h1>
 
-            <p className="mt-8 max-w-3xl text-lg leading-relaxed text-stone-300">
+            <p className="al-text-lg mt-8 max-w-3xl">
               ArcheLoop is an integrative archetypal self-awareness framework
               that helps people recognise recurring Shadow Loops, interrupt
               automatic reactions, and develop a more integrated way of being.
@@ -139,16 +132,14 @@ export default function AboutPage() {
               </p>
             </Section>
 
-            <div className="rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.12)]">
-              <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-                Core Principle
-              </p>
+            <div className="al-premium-card p-10">
+              <p className="al-kicker">Core Principle</p>
 
-              <h2 className="mt-5 text-3xl font-bold md:text-4xl">
+              <h2 className="al-heading-lg">
                 Awareness is the beginning of integration.
               </h2>
 
-              <div className="mt-8 space-y-5 text-lg leading-relaxed text-stone-300">
+              <div className="al-text-lg mt-8 space-y-5">
                 <p>
                   ArcheLoop is built on a simple idea: when recurring patterns
                   become visible, new choices become possible.
@@ -171,32 +162,21 @@ export default function AboutPage() {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <a
-              href="/assessment"
-              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-            >
+            <a href="/assessment" className="al-button-primary">
               Find My Loop
             </a>
 
-            <a
-              href="/what-is-archeloop"
-              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
-            >
+            <a href="/what-is-archeloop" className="al-button-secondary">
               Learn the Framework
             </a>
 
-            <a
-              href="/"
-              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
-            >
+            <a href="/" className="al-button-secondary">
               Return Home
             </a>
           </div>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </PageShell>
   );
 }
 
@@ -208,12 +188,12 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-      <h2 className="text-2xl font-semibold text-yellow-300 md:text-3xl">
+    <section className="al-card p-8">
+      <h2 className="text-2xl font-semibold text-[var(--al-accent)] md:text-3xl">
         {title}
       </h2>
 
-      <div className="mt-6 space-y-5 text-lg leading-relaxed text-stone-300">
+      <div className="al-text-lg mt-6 space-y-5">
         {children}
       </div>
     </section>

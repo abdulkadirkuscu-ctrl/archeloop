@@ -10,51 +10,50 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
+    <main className="al-page">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
-
-        <div className="relative max-w-4xl mx-auto space-y-10">
-          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70 mb-5">
+      <section className="al-section">
+        
+        <div className="al-container space-y-10">
+          <div className="al-premium-card p-10 text-center">
+            <p className="al-kicker mb-5">
               Contact
             </p>
 
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-8">
+            <h1 className="al-heading-lg mb-8">
               Contact ArcheLoop
             </h1>
 
-            <p className="max-w-2xl mx-auto text-xl text-stone-300 leading-relaxed">
+            <p className="mx-auto max-w-2xl al-text-lg">
               Questions, collaborations, feedback, media enquiries, partnerships,
               or support.
             </p>
           </div>
 
-          <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-            <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+          <div className="al-card p-10 text-center">
+            <p className="al-kicker">
               Email
             </p>
 
-            <p className="mt-5 text-3xl font-semibold text-yellow-300">
+            <p className="mt-5 text-3xl font-semibold text-[var(--al-accent)]">
               info@archeloop.com
             </p>
 
-            <p className="mt-6 text-stone-300 leading-relaxed">
+            <p className="al-text mt-6">
               We aim to respond to all enquiries as quickly as possible.
             </p>
 
             <a
               href="mailto:info@archeloop.com?subject=Contact%20ArcheLoop"
-              className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              className="al-button-primary mt-8 inline-flex"
             >
               Email ArcheLoop
             </a>
           </div>
 
-          <div className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-8 text-center">
-            <p className="text-sm text-stone-400 leading-relaxed">
+          <div className="al-card p-8 text-center">
+            <p className="al-text text-sm">
               ArcheLoop is an educational self-development system and is not a
               crisis, medical, psychiatric, psychological, legal, or therapeutic
               service.

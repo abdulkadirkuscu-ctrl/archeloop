@@ -1,8 +1,7 @@
 import Link from "next/link";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
 import { supabaseServer } from "../../lib/supabaseServer";
 import { createSupabaseServerClient } from "../../lib/supabaseServerClient";
+import PageShell from "../components/PageShell";
 
 type Activation = {
   id: string;
@@ -38,34 +37,33 @@ export default async function MonthlyReviewPage() {
 
   if (!user) {
     return (
-      <main className="min-h-screen bg-[#030712] text-stone-100">
-        <Nav />
+      <PageShell>
 
         <section className="px-6 py-24 text-center">
-          <div className="mx-auto max-w-3xl rounded-[2rem] border border-yellow-300/20 bg-[#0B1018] p-10">
-            <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-              Monthly Integration Review™
+          <div className="mx-auto max-w-3xl al-card p-10">
+            <p className="text-sm uppercase tracking-[0.3em] al-highlight/70">
+              Monthly Integration Review
             </p>
 
             <h1 className="mt-4 text-4xl font-bold">
               Log in to view your monthly review.
             </h1>
 
-            <p className="mt-4 text-stone-300">
-              Your Monthly Integration Review™ is connected to your ArcheLoop account.
+            <p className="mt-4 al-text">
+              Your Monthly Integration Review is connected to your ArcheLoop account.
             </p>
 
             <div className="mt-8 flex justify-center gap-4">
               <Link
                 href="/auth/login"
-                className="rounded-full bg-yellow-300 px-8 py-4 font-semibold text-black"
+                className="al-button-primary"
               >
                 Log In
               </Link>
 
               <Link
                 href="/auth/signup"
-                className="rounded-full border border-yellow-300/20 px-8 py-4 font-semibold text-yellow-200"
+                className="rounded-full border border-[var(--al-border)] px-8 py-4 font-semibold al-highlight"
               >
                 Create Account
               </Link>
@@ -73,8 +71,7 @@ export default async function MonthlyReviewPage() {
           </div>
         </section>
 
-        <Footer />
-      </main>
+       </PageShell>
     );
   }
   
@@ -91,47 +88,45 @@ const hasIntegrationAccess =
 
 if (!hasIntegrationAccess) {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
+    <PageShell>
 
       <section className="relative overflow-hidden px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+        <div className="al-hero-glow" />
 
-        <div className="relative mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-            Monthly Integration Review™
+        <div className="relative mx-auto max-w-4xl al-premium-card p-10 text-center">
+          <p className="text-sm uppercase tracking-[0.35em] al-highlight/70">
+            Monthly Integration Review
           </p>
 
           <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
             Integration access is required.
           </h1>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-            Monthly Review™ is part of ArcheLoop Integration™. It helps you
-            reflect on your recent triggers, recurring Shadow Loops™, relational
-            patterns, breakthrough moments, and Integrated Self Alignment™.
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed al-text">
+            Monthly Review is part of ArcheLoop Integration. It helps you
+            reflect on your recent triggers, recurring Shadow Loops, relational
+            patterns, breakthrough moments, and Integrated Self Alignment.
           </p>
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
               href="/checkout?product=integration"
-              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              className="al-button-primary"
             >
-              Start Integration™
+              Start Integration
             </Link>
 
             <Link
               href="/checkout?product=bundle"
-              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+             className="al-button-secondary"
             >
-              Choose Report + Integration™
+              Choose Report + Integration
             </Link>
           </div>
         </div>
       </section>
 
-      <Footer />
-    </main>
+     </PageShell>
   );
 }
 
@@ -269,38 +264,37 @@ if (!hasIntegrationAccess) {
   };
 }
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
+   <PageShell>
 
       <section className="relative overflow-hidden px-6 py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+        <div className="al-hero-glow" />
 
         <div className="relative mx-auto max-w-7xl space-y-8">
-          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              Monthly Integration Review™
+          <div className="al-premium-card p-10">
+            <p className="text-sm uppercase tracking-[0.35em] al-highlight/70">
+              Monthly Integration Review
             </p>
 
             <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
               Your {review.monthName} Integration Review
             </h1>
 
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-              Review the Shadow Loops™, triggers, relationships, environments,
-              and Integrated Self™ patterns that shaped your month.
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed al-text">
+              Review the patterns that shaped your month, understand what activated them, 
+              and see how your responses are changing over time.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/triggered-intelligence"
-                className="rounded-full bg-yellow-300 px-6 py-3 text-sm font-semibold text-black transition hover:bg-yellow-200"
+               className="al-button-primary"
               >
                 Log New Activation
               </Link>
 
               <Link
                 href="/progress-dashboard"
-                className="rounded-full border border-yellow-300/20 bg-black/30 px-6 py-3 text-sm font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+                className="al-button-secondary"
               >
                 View Progress Dashboard
               </Link>
@@ -308,23 +302,23 @@ if (!hasIntegrationAccess) {
           </div>
 
           {review.monthlyActivations.length === 0 ? (
-            <div className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-              <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+            <div className="al-card p-10 text-center">
+              <p className="text-sm uppercase tracking-[0.3em] al-highlight/60">
                 No Monthly Data Yet
               </p>
 
               <h2 className="mt-5 text-3xl font-bold">
-                Your Monthly Integration Review™ will build as you log triggers.
+                Your Monthly Integration Review will build as you log triggers.
               </h2>
 
-              <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-stone-300">
-                Use Triggered Pro™ throughout the month to see your recurring
-                loops, relational patterns, and Integrated Self Alignment™.
+              <p className="mx-auto mt-5 max-w-2xl leading-relaxed al-text">
+                Use Triggered Pro throughout the month to see your recurring
+                loops, relational patterns, and Integrated Self Alignment.
               </p>
 
               <Link
                 href="/triggered-intelligence"
-                className="mt-8 inline-flex rounded-full bg-yellow-300 px-8 py-4 font-semibold text-black transition hover:bg-yellow-200"
+                className="mt-8 al-button-primary"
               >
                 Log First Activation
               </Link>
@@ -344,7 +338,7 @@ if (!hasIntegrationAccess) {
                 />
 
                 <ReviewStat
-                  label="Integrated Self Alignment™"
+                  label="Integrated Self Alignment"
                   value={
                     review.completedCheckIns > 0
                       ? `${review.alignmentScore}%`
@@ -358,46 +352,46 @@ if (!hasIntegrationAccess) {
                 <ReviewStat
                   label="Breakthrough Moments"
                   value={String(review.breakthroughs.length)}
-                  detail="I Broke The Loop™"
+                  detail="I Broke The Loop"
                 />
               </div>
 
-              <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.10)]">
-                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-                  Monthly Summary™
+              <div className="al-premium-card p-8">
+                <p className="text-sm uppercase tracking-[0.3em] al-highlight/70">
+                  Monthly Summary
                 </p>
 
-                <h2 className="mt-4 text-3xl font-semibold text-yellow-300">
+                <h2 className="mt-4 text-3xl font-semibold al-highlight">
                   {review.currentJourney.label !== "—"
                     ? `You are walking the ${review.currentJourney.label}`
                     : "Your monthly pattern is forming"}
                 </h2>
 
-                <p className="mt-5 max-w-4xl text-lg leading-relaxed text-stone-300">
+                <p className="mt-5 max-w-4xl text-lg leading-relaxed al-text">
                   This month,{" "}
-                  <span className="text-stone-100">
+                  <span className="al-primary-text">
                     {review.mostActiveLoop.label}
                   </span>{" "}
-                  was your most active Shadow Loop™. It appeared most often
+                  was your most active Shadow Loop. It appeared most often
                   around{" "}
-                  <span className="text-stone-100">
+                  <span className="al-primary-text">
                     {review.mostActivePerson.label}
                   </span>{" "}
                   in{" "}
-                  <span className="text-stone-100">
+                  <span className="al-primary-text">
                     {review.mostActiveEnvironment.label}
                   </span>{" "}
                   during{" "}
-                  <span className="text-stone-100">
+                  <span className="al-primary-text">
                     {review.mostActiveTrigger.label}
                   </span>{" "}
                   situations.
                 </p>
 
                 {review.integratedState.label !== "—" && (
-                  <p className="mt-5 max-w-4xl text-lg leading-relaxed text-stone-300">
+                  <p className="mt-5 max-w-4xl text-lg leading-relaxed al-text">
                     Your integration direction is{" "}
-                    <span className="text-yellow-300">
+                    <span className="al-highlight">
                       {review.integratedState.label}
                     </span>
                     . The monthly practice is not to avoid activation, but to
@@ -408,14 +402,14 @@ if (!hasIntegrationAccess) {
               </div>
 
               <div className="grid gap-6 lg:grid-cols-2">
-                <ReviewPanel title="Loop Landscape™">
+                <ReviewPanel title="Loop Landscape">
                   <RankedProgress
                     items={review.topLoops}
                     total={review.monthlyActivations.length}
                   />
                 </ReviewPanel>
 
-                <ReviewPanel title="Relational Pattern™">
+                <ReviewPanel title="Relational Pattern">
                   <div className="grid gap-4">
                     <MiniItem
                       label="Most Activating Person"
@@ -433,21 +427,21 @@ if (!hasIntegrationAccess) {
                 </ReviewPanel>
               </div>
 
-              <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-8 shadow-[0_0_70px_rgba(216,183,120,0.10)]">
-                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-                  Integrated Self Alignment™
+              <div className="al-premium-card p-8">
+                <p className="text-sm uppercase tracking-[0.3em] al-highlight/70">
+                  Integrated Self Alignment
                 </p>
 
                 {review.completedCheckIns > 0 ? (
                   <>
-                    <h2 className="mt-4 text-6xl font-bold text-yellow-300">
+                    <h2 className="mt-4 text-6xl font-bold al-highlight">
                       {review.alignmentScore}%
                     </h2>
 
-                    <p className="mt-4 max-w-3xl leading-relaxed text-stone-300">
+                    <p className="mt-4 max-w-3xl leading-relaxed al-text">
                       This reflects how consistently you noticed the loop,
                       returned to centre, interrupted the automatic pattern, and
-                      responded from your Integrated Self™ this month.
+                      responded from your Integrated Self this month.
                     </p>
 
                     <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -475,32 +469,32 @@ if (!hasIntegrationAccess) {
                       Not enough check-in data yet
                     </h2>
 
-                    <p className="mt-4 max-w-3xl leading-relaxed text-stone-300">
-                      Complete the full Integration Check-In™ after logging
-                      activations to begin measuring Integrated Self Alignment™.
+                    <p className="mt-4 max-w-3xl leading-relaxed al-text">
+                      Complete the full Integration Check-In after logging
+                      activations to begin measuring Integrated Self Alignment.
                     </p>
                   </>
                 )}
               </div>
 
-              <div className="rounded-[2.5rem] border border-yellow-300/20 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
-                  Monthly Reassessment™
+              <div className="al-card p-8">
+                <p className="text-sm uppercase tracking-[0.3em] al-highlight/60">
+                  Monthly Reassessment
                 </p>
 
-                <h2 className="mt-4 text-3xl font-semibold text-yellow-300">
+                <h2 className="mt-4 text-3xl font-semibold al-highlight">
                   Ready to compare your current loop profile?
                 </h2>
 
-                <p className="mt-4 max-w-3xl leading-relaxed text-stone-300">
-  Retaking Find My Loop™ once per month helps you reflect on whether your Shadow Loop™ profile is shifting over time. As your history grows, ArcheLoop™ can compare your original pattern with your current integration progress.
+                <p className="mt-4 max-w-3xl leading-relaxed al-text">
+  Retaking Find My Loop once per month helps you reflect on whether your Shadow Loop profile is shifting over time. As your history grows, ArcheLoop can compare your original pattern with your current integration progress.
 </p>
 
                 <Link
                   href="/assessment"
-                  className="mt-6 inline-flex rounded-full bg-yellow-300 px-6 py-3 font-semibold text-black transition hover:bg-yellow-200"
+                 className="mt-6 al-button-primary"
                 >
-                  Retake Find My Loop™
+                  Retake Find My Loop
                 </Link>
               </div>
             </>
@@ -508,8 +502,7 @@ if (!hasIntegrationAccess) {
         </div>
       </section>
 
-      <Footer />
-    </main>
+     </PageShell>
   );
 }
 
@@ -523,14 +516,14 @@ function ReviewStat({
   detail?: string;
 }) {
   return (
-    <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-6 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-      <p className="text-sm uppercase tracking-[0.2em] text-yellow-300/60">
+    <div className="al-card p-6">
+      <p className="text-sm uppercase tracking-[0.2em] al-highlight/60">
         {label}
       </p>
 
-      <p className="mt-4 text-3xl font-bold text-stone-100">{value}</p>
+      <p className="mt-4 text-3xl font-bold al-primary-text">{value}</p>
 
-      {detail && <p className="mt-2 text-sm text-stone-500">{detail}</p>}
+      {detail && <p className="mt-2 text-sm al-muted">{detail}</p>}
     </div>
   );
 }
@@ -543,8 +536,8 @@ function ReviewPanel({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-6 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-      <h2 className="text-2xl font-semibold text-yellow-300">{title}</h2>
+    <div className="al-card p-6">
+      <h2 className="text-2xl font-semibold al-highlight">{title}</h2>
       <div className="mt-6">{children}</div>
     </div>
   );
@@ -552,12 +545,12 @@ function ReviewPanel({
 
 function MiniItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5">
-      <p className="text-xs uppercase tracking-[0.2em] text-yellow-300/50">
+    <div className="al-soft-card p-5">
+      <p className="text-xs uppercase tracking-[0.2em] al-highlight/50">
         {label}
       </p>
 
-      <p className="mt-3 text-xl font-semibold text-stone-100">{value}</p>
+      <p className="mt-3 text-xl font-semibold al-primary-text">{value}</p>
     </div>
   );
 }
@@ -577,27 +570,27 @@ function RankedProgress({
         return (
           <div
             key={item.label}
-            className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5"
+            className="al-soft-card p-5"
           >
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-xl font-semibold text-stone-100">
+                <p className="text-xl font-semibold al-primary-text">
                   {item.label}
                 </p>
-                <p className="mt-1 text-sm text-stone-400">
+                <p className="mt-1 text-sm al-text">
                   {item.count}{" "}
                   {item.count === 1 ? "activation" : "activations"}
                 </p>
               </div>
 
-              <p className="text-xl font-bold text-yellow-300">
+              <p className="text-xl font-bold al-highlight">
                 {percentage}%
               </p>
             </div>
 
-            <div className="mt-4 h-3 overflow-hidden rounded-full bg-black/50">
-              <div
-                className="h-full rounded-full bg-yellow-300"
+           <div className="mt-4 al-progress-track">
+    <div
+        className="al-progress-fill"
                 style={{ width: `${percentage}%` }}
               />
             </div>
@@ -610,15 +603,15 @@ function RankedProgress({
 
 function ProgressMetric({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5">
+    <div className="al-soft-card p-5">
       <div className="flex items-center justify-between gap-4">
-        <p className="font-semibold text-stone-100">{label}</p>
-        <p className="font-bold text-yellow-300">{value}%</p>
+        <p className="font-semibold al-primary-text">{label}</p>
+        <p className="font-bold al-highlight">{value}%</p>
       </div>
 
-      <div className="mt-4 h-3 overflow-hidden rounded-full bg-black/50">
+      <div className="mt-4 h-3 overflow-hidden rounded-full bg-[var(--al-surface-deep)]">
         <div
-          className="h-full rounded-full bg-yellow-300"
+          className="h-full rounded-full bg-[var(--al-accent)]"
           style={{ width: `${value}%` }}
         />
       </div>

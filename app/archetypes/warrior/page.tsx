@@ -1,66 +1,50 @@
-import Nav from "../../components/Nav"
-import Footer from "../../components/Footer"
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+
 export default function WarriorPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
+    <main className="al-page min-h-screen">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-24">
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+      <section className="al-section">
+        <div className="al-container space-y-16">
+          <div>
+            <p className="al-kicker">Earth Element</p>
 
-  <div className="relative mx-auto max-w-5xl">
-          <p className="uppercase tracking-[0.3em] text-green-300 mb-4">
-            Earth Element
-          </p>
+            <h1 className="al-heading-xl">The Warrior Archetype</h1>
 
-          <h1 className="text-6xl font-bold mb-6">
-            The Warrior Archetype
-          </h1>
-
-          <p className="text-xl text-gray-300 max-w-3xl mb-12">
-            The Warrior governs boundaries, grounded action, protection,
-            discipline, responsibility, and the capacity to act with strength
-            without becoming rigid or aggressive.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            <div className="border border-green-500 rounded-2xl p-6 bg-[#0B1018]">
-              <h2 className="text-2xl font-bold mb-3">Healthy Earth</h2>
-              <p className="text-gray-300">
-                Healthy Earth creates boundaries, consistency, grounded action,
-                protection, discipline, and embodied strength.
-              </p>
-            </div>
-
-            <div className="border border-yellow-300/10 rounded-2xl p-6 bg-[#0B1018]">
-              <h2 className="text-2xl font-bold mb-3">Core Emotion</h2>
-              <p className="text-gray-300">
-                Anger as protection when integrated. Fear, resentment, or
-                survival pressure when distorted.
-              </p>
-            </div>
-
-            <div className="border border-yellow-300/10 rounded-2xl p-6 bg-[#0B1018]">
-              <h2 className="text-2xl font-bold mb-3">Body Map</h2>
-              <p className="text-gray-300">
-                Legs, feet, root, jaw, arms, hands, posture, survival energy,
-                fatigue, rigidity, and grounded movement.
-              </p>
-            </div>
+            <p className="al-text-lg mt-8 max-w-3xl">
+              The Warrior governs boundaries, grounded action, protection,
+              discipline, responsibility, and the capacity to act with strength
+              without becoming rigid or aggressive.
+            </p>
           </div>
 
-          <section className="mb-16">
-            <h2 className="text-4xl font-bold mb-6">
-              When the Warrior is Healthy
-            </h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            <InfoCard
+              title="Healthy Earth"
+              text="Healthy Earth creates boundaries, consistency, grounded action, protection, discipline, and embodied strength."
+            />
 
-            <p className="text-gray-300 text-lg mb-6">
+            <InfoCard
+              title="Core Emotion"
+              text="Anger as protection when integrated. Fear, resentment, or survival pressure when distorted."
+            />
+
+            <InfoCard
+              title="Body Map"
+              text="Legs, feet, root, jaw, arms, hands, posture, survival energy, fatigue, rigidity, and grounded movement."
+            />
+          </div>
+
+          <ContentSection title="When the Warrior is Healthy">
+            <p className="al-text-lg mb-6">
               Healthy Warrior energy does not mean fighting everyone. It means
               knowing where you stand, protecting your values, taking grounded
               action, and setting boundaries without abandoning connection.
             </p>
 
-            <ul className="grid md:grid-cols-2 gap-4">
+            <div className="grid gap-4 md:grid-cols-2">
               {[
                 "You can say no without excessive guilt.",
                 "You take action without overexplaining.",
@@ -69,72 +53,43 @@ export default function WarriorPage() {
                 "You stay grounded when challenged.",
                 "You can act consistently even when motivation changes.",
               ].map((item) => (
-                <li key={item} className="border border-yellow-300/10 rounded-xl p-4">
+                <div key={item} className="al-soft-card p-4">
                   {item}
-                </li>
+                </div>
               ))}
-            </ul>
-          </section>
-
-          <section className="mb-16">
-            <h2 className="text-4xl font-bold mb-6">
-              Warrior Shadow Loops
-            </h2>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="border border-green-700 rounded-2xl p-6">
-                <h3 className="text-2xl font-bold mb-3">
-                  Compliance Loop
-                </h3>
-                <p className="text-gray-300 mb-4">
-                  Suppressed Earth. Boundaries collapse and you over-adapt to
-                  avoid conflict, rejection, or disapproval.
-                </p>
-                <p className="text-green-300">
-                  Core belief: “It is safer to go along.”
-                </p>
-              </div>
-
-              <div className="border border-green-700 rounded-2xl p-6">
-                <h3 className="text-2xl font-bold mb-3">
-                  Fortress Loop
-                </h3>
-                <p className="text-gray-300 mb-4">
-                  Inflated Earth. Protection becomes rigid control,
-                  hyper-independence, walls, or emotional distance.
-                </p>
-                <p className="text-green-300">
-                  Core belief: “I must protect myself at all costs.”
-                </p>
-              </div>
-
-              <div className="border border-green-700 rounded-2xl p-6">
-                <h3 className="text-2xl font-bold mb-3">
-                  Barren Ground Loop
-                </h3>
-                <p className="text-gray-300 mb-4">
-                  Colliding Earth. You keep enduring responsibility while losing
-                  nourishment, rest, joy, or support.
-                </p>
-                <p className="text-green-300">
-                  Core belief: “I must endure.”
-                </p>
-              </div>
             </div>
-          </section>
+          </ContentSection>
 
-          <section className="mb-16">
-            <h2 className="text-4xl font-bold mb-6">
-              Somatic Signals
-            </h2>
+          <ContentSection title="Warrior Shadow Loops">
+            <div className="grid gap-6 md:grid-cols-3">
+              <ShadowCard
+                title="Compliance Loop"
+                text="Suppressed Earth. Boundaries collapse and you over-adapt to avoid conflict, rejection, or disapproval."
+                belief="It is safer to go along."
+              />
 
-            <p className="text-gray-300 text-lg mb-6">
+              <ShadowCard
+                title="Fortress Loop"
+                text="Inflated Earth. Protection becomes rigid control, hyper-independence, walls, or emotional distance."
+                belief="I must protect myself at all costs."
+              />
+
+              <ShadowCard
+                title="Barren Ground Loop"
+                text="Colliding Earth. You keep enduring responsibility while losing nourishment, rest, joy, or support."
+                belief="I must endure."
+              />
+            </div>
+          </ContentSection>
+
+          <ContentSection title="Somatic Signals">
+            <p className="al-text-lg mb-6">
               Distorted Warrior energy often appears through jaw tension, heavy
               legs, exhaustion, rigid posture, clenched hands, survival fatigue,
               or difficulty moving from thought into action.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid gap-4 md:grid-cols-2">
               {[
                 "Heavy legs or frozen movement",
                 "Jaw tension or clenched fists",
@@ -143,60 +98,105 @@ export default function WarriorPage() {
                 "Difficulty saying no",
                 "Feeling responsible for keeping everything together",
               ].map((item) => (
-                <div key={item} className="border border-yellow-300/10 rounded-xl p-4">
+                <div key={item} className="al-soft-card p-4">
                   {item}
                 </div>
               ))}
             </div>
-          </section>
+          </ContentSection>
 
-          <section className="mb-16">
-            <h2 className="text-4xl font-bold mb-6">
-              How to Strengthen Healthy Warrior
-            </h2>
+          <ContentSection title="How to Strengthen Healthy Warrior" variant="accent">
+            <p className="mb-6 text-lg leading-relaxed">
+              Warrior integration begins with grounded action. The goal is not
+              to become harsh. The goal is to protect your life, energy, and
+              values with clarity and steadiness.
+            </p>
 
-            <div className="bg-white text-black rounded-3xl p-8">
-              <p className="text-lg mb-6">
-                Warrior integration begins with grounded action. The goal is not
-                to become harsh. The goal is to protect your life, energy, and
-                values with clarity and steadiness.
-              </p>
-
-              <ul className="space-y-3">
-                {[
-                  "Say one honest no or not now.",
-                  "Take one practical action you have been avoiding.",
-                  "Feel your feet on the ground before responding.",
-                  "Protect one hour of your time today.",
-                  "State one boundary clearly and calmly.",
-                ].map((item) => (
-                  <li key={item} className="border border-black rounded-xl p-4">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div className="space-y-3">
+              {[
+                "Say one honest no or not now.",
+                "Take one practical action you have been avoiding.",
+                "Feel your feet on the ground before responding.",
+                "Protect one hour of your time today.",
+                "State one boundary clearly and calmly.",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-xl border border-[var(--al-bg)]/40 p-4"
+                >
+                  {item}
+                </div>
+              ))}
             </div>
-          </section>
+          </ContentSection>
 
-          <div className="flex gap-4 flex-wrap">
-            <a href="/assessment" className="bg-white text-black px-6 py-3 rounded-full font-semibold">
-              Find My Loop™
+          <div className="flex flex-wrap gap-4">
+            <a href="/assessment" className="al-button-primary">
+              Find My Loop
             </a>
 
-            <a
-              href="/practices"
-              className="border border-green-500 text-green-300 px-6 py-3 rounded-full font-semibold hover:bg-green-500 hover:text-black"
-            >
+            <a href="/practices" className="al-button-secondary">
               Explore Practices
             </a>
 
-            <a href="/" className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black">
+            <a href="/" className="al-button-secondary">
               Return Home
             </a>
           </div>
         </div>
       </section>
+
       <Footer />
     </main>
-  )
+  );
+}
+
+function InfoCard({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="al-card p-6">
+      <h2 className="text-2xl font-bold">{title}</h2>
+      <p className="al-text mt-3">{text}</p>
+    </div>
+  );
+}
+
+function ShadowCard({
+  title,
+  text,
+  belief,
+}: {
+  title: string;
+  text: string;
+  belief: string;
+}) {
+  return (
+    <div className="al-card p-6">
+      <h3 className="text-2xl font-bold">{title}</h3>
+      <p className="al-text mt-4">{text}</p>
+      <p className="mt-5 font-semibold text-[var(--al-accent)]">
+        Core belief: “{belief}”
+      </p>
+    </div>
+  );
+}
+
+function ContentSection({
+  title,
+  children,
+  variant = "default",
+}: {
+  title: string;
+  children: React.ReactNode;
+  variant?: "default" | "accent";
+}) {
+  return (
+    <section
+      className={`p-8 ${
+        variant === "accent" ? "al-accent-card" : "al-card"
+      }`}
+    >
+      <h2 className="al-heading-md mb-6">{title}</h2>
+      {children}
+    </section>
+  );
 }

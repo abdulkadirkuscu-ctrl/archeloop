@@ -61,25 +61,25 @@ export default function IntegratedVisionBox({
   }
 
   return (
-    <div className="mt-8 rounded-[2rem] border border-yellow-300/10 bg-black/30 p-6">
-      <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
-        My Integrated Vision
-      </p>
+    <div className="al-card mt-8 p-6">
+      <p className="al-kicker">My Integrated Vision</p>
 
-      <h3 className="mt-4 text-2xl font-semibold text-stone-100">
+      <h3 className="mt-4 text-2xl font-semibold text-[var(--al-text)]">
         Imagine your Integrated Self.
       </h3>
 
-      <p className="mt-4 leading-relaxed text-stone-300">
-  Describe how you are learning to live from your Integrated Self through
-  this journey. Imagine yourself living from {integratedState} in real
-  situations, relationships, choices, and moments of pressure.
-</p>
+      <p className="al-text mt-4">
+        Describe how you are learning to live from your Integrated Self through
+        this journey. Imagine yourself living from {integratedState} in real
+        situations, relationships, choices, and moments of pressure.
+      </p>
 
-      <div className="mt-6 rounded-2xl border border-yellow-300/10 bg-[#030712] p-5">
-        <p className="font-semibold text-yellow-300">Reflection prompts</p>
+      <div className="al-soft-card mt-6 p-5">
+        <p className="font-semibold text-[var(--al-accent)]">
+          Reflection prompts
+        </p>
 
-        <ul className="mt-4 space-y-2 text-sm leading-relaxed text-stone-300">
+        <ul className="al-text mt-4 space-y-2 text-sm leading-relaxed">
           <li>• How do you think differently?</li>
           <li>• How do you respond under pressure?</li>
           <li>• What changes in your relationships?</li>
@@ -93,10 +93,10 @@ export default function IntegratedVisionBox({
         onChange={(e) => setVisionText(e.target.value)}
         disabled={!editing}
         placeholder={`When I am living from ${integratedState}, I...`}
-        className="mt-6 min-h-[220px] w-full rounded-[2rem] border border-yellow-300/10 bg-black/40 p-6 text-stone-100 placeholder:text-stone-600 outline-none transition focus:border-yellow-300 disabled:opacity-70"
+        className="al-textarea mt-6 disabled:opacity-70"
       />
 
-      <div className="mt-3 flex flex-wrap items-center justify-between gap-3 text-sm text-stone-500">
+      <div className="al-muted mt-3 flex flex-wrap items-center justify-between gap-3 text-sm">
         <p>{visionText.length} / 2000</p>
         <p>Your vision can be updated at any time.</p>
       </div>
@@ -109,8 +109,8 @@ export default function IntegratedVisionBox({
             disabled={loading || !visionText.trim()}
             className={`rounded-full px-7 py-3 font-semibold transition ${
               visionText.trim()
-                ? "bg-yellow-300 text-black hover:bg-yellow-200"
-                : "cursor-not-allowed bg-yellow-300/30 text-black/40"
+                ? "al-button-primary"
+                : "cursor-not-allowed border border-[var(--al-border)] bg-[var(--al-surface-deep)] text-[var(--al-text-muted)]"
             } disabled:opacity-60`}
           >
             {loading ? "Saving..." : "Save My Vision"}
@@ -122,20 +122,20 @@ export default function IntegratedVisionBox({
               setEditing(true);
               setSaved(false);
             }}
-            className="rounded-full bg-yellow-300 px-7 py-3 font-semibold text-black transition hover:bg-yellow-200"
+            className="al-button-primary"
           >
             Edit My Vision
           </button>
         )}
 
         {saved && (
-          <p className="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-5 py-3 text-sm text-yellow-200">
+          <p className="al-badge">
             ✓ Saved to your Integration Journey.
           </p>
         )}
       </div>
 
-      <p className="mt-5 text-sm leading-relaxed text-stone-500">
+      <p className="al-muted mt-5 text-sm leading-relaxed">
         Your vision is saved to your ArcheLoop account and can support your
         Triggered Pro reflections, Progress Dashboard, and Integration Journey.
       </p>

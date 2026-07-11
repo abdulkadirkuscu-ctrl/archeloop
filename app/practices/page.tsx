@@ -1,5 +1,4 @@
-import Footer from "../components/Footer";
-import Nav from "../components/Nav";
+import PageShell from "../components/PageShell";
 
 const practices = [
   {
@@ -62,23 +61,17 @@ const practices = [
 
 export default function PracticesPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
+    <PageShell>
+      <section className="al-section">
+        <div className="al-container-wide space-y-12">
+          <div className="al-hero-card">
+            <p className="al-kicker">Integration Practices</p>
 
-      <section className="relative overflow-hidden px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
-
-        <div className="relative mx-auto max-w-6xl space-y-12">
-          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              Integration Practices
-            </p>
-
-            <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
+            <h1 className="al-heading-xl">
               Practise Your Integrated Response
             </h1>
 
-            <p className="mt-8 max-w-4xl text-xl leading-relaxed text-stone-300">
+            <p className="al-text-lg mt-8 max-w-4xl">
               These practices help restore healthy expression in each archetype.
               Use them when an energy feels suppressed, inflated, distorted, or
               stuck.
@@ -87,28 +80,22 @@ export default function PracticesPage() {
 
           <div className="grid gap-8 md:grid-cols-2">
             {practices.map((practice) => (
-              <div
-                key={practice.archetype}
-                className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_55px_rgba(216,183,120,0.06)]"
-              >
-                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
+              <div key={practice.archetype} className="al-card p-8">
+                <p className="al-kicker">
                   {practice.archetype} / {practice.element}
                 </p>
 
-                <h2 className="mt-4 text-3xl font-bold text-yellow-300">
+                <h2 className="mt-4 text-3xl font-bold text-[var(--al-accent)]">
                   {practice.title}
                 </h2>
 
-                <p className="mt-5 leading-relaxed text-stone-300">
+                <p className="al-text mt-5">
                   {practice.description}
                 </p>
 
                 <ul className="mt-7 space-y-3">
                   {practice.exercises.map((exercise) => (
-                    <li
-                      key={exercise}
-                      className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 leading-relaxed text-stone-300"
-                    >
+                    <li key={exercise} className="al-soft-card p-4">
                       {exercise}
                     </li>
                   ))}
@@ -117,43 +104,32 @@ export default function PracticesPage() {
             ))}
           </div>
 
-          <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.12)]">
-            <h2 className="text-4xl font-bold leading-tight md:text-5xl">
+          <div className="al-premium-card mx-auto max-w-5xl p-10 text-center">
+            <h2 className="al-heading-lg">
               Practice is how the loop begins to change.
             </h2>
 
-            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
+            <p className="al-text-lg mx-auto mt-6 max-w-3xl">
               Small, repeatable actions help your Integrated Self become more
-familiar than the old protective pattern.
+              familiar than the old protective pattern.
             </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <a
-                href="/"
-                className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
-              >
+              <a href="/" className="al-button-secondary">
                 Return Home
               </a>
 
-              <a
-                href="/assessment"
-                className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-              >
+              <a href="/assessment" className="al-button-primary">
                 Find My Loop
               </a>
 
-              <a
-                href="/triggered"
-                className="rounded-full border border-yellow-300/20 bg-yellow-300/10 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
-              >
+              <a href="/triggered" className="al-button-secondary">
                 I Am Triggered
               </a>
             </div>
           </div>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </PageShell>
   );
 }

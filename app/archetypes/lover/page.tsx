@@ -1,65 +1,50 @@
-import Nav from "../../components/Nav"
-import Footer from "../../components/Footer"
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+
 export default function LoverPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-     <Nav />
+    <main className="al-page min-h-screen">
+      <Nav />
 
-      <section className="relative overflow-hidden px-6 py-24">
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+      <section className="al-section">
+        <div className="al-container space-y-16">
+          <div>
+            <p className="al-kicker">Water Element</p>
 
-  <div className="relative mx-auto max-w-5xl">
-          <p className="uppercase tracking-[0.3em] text-red-300 mb-4">
-            Water Element
-          </p>
+            <h1 className="al-heading-xl">The Lover Archetype</h1>
 
-          <h1 className="text-6xl font-bold mb-6">
-            The Lover Archetype
-          </h1>
-
-          <p className="text-xl text-gray-300 max-w-3xl mb-12">
-            The Lover governs emotion, connection, intimacy, grief, beauty,
-            creativity, and the capacity to feel deeply without losing yourself.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            <div className="border border-red-400 rounded-2xl p-6 bg-[#0B1018]">
-              <h2 className="text-2xl font-bold mb-3">Healthy Water</h2>
-              <p className="text-gray-300">
-                Healthy Water creates emotional flow, connection, vulnerability,
-                intimacy, creativity, and the ability to feel without collapse.
-              </p>
-            </div>
-
-            <div className="border border-yellow-300/10 rounded-2xl p-6 bg-[#0B1018]">
-              <h2 className="text-2xl font-bold mb-3">Core Emotion</h2>
-              <p className="text-gray-300">
-                Love and connection when integrated. Grief, longing, or numbness
-                when distorted.
-              </p>
-            </div>
-
-            <div className="border border-yellow-300/10 rounded-2xl p-6 bg-[#0B1018]">
-              <h2 className="text-2xl font-bold mb-3">Body Map</h2>
-              <p className="text-gray-300">
-                Heart, belly, sacral area, emotional breath, tenderness,
-                openness, numbness, and emotional flooding.
-              </p>
-            </div>
+            <p className="al-text-lg mt-8 max-w-3xl">
+              The Lover governs emotion, connection, intimacy, grief, beauty,
+              creativity, and the capacity to feel deeply without losing
+              yourself.
+            </p>
           </div>
 
-          <section className="mb-16">
-            <h2 className="text-4xl font-bold mb-6">
-              When the Lover is Healthy
-            </h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            <InfoCard
+              title="Healthy Water"
+              text="Healthy Water creates emotional flow, connection, vulnerability, intimacy, creativity, and the ability to feel without collapse."
+            />
 
-            <p className="text-gray-300 text-lg mb-6">
+            <InfoCard
+              title="Core Emotion"
+              text="Love and connection when integrated. Grief, longing, or numbness when distorted."
+            />
+
+            <InfoCard
+              title="Body Map"
+              text="Heart, belly, sacral area, emotional breath, tenderness, openness, numbness, and emotional flooding."
+            />
+          </div>
+
+          <ContentSection title="When the Lover is Healthy">
+            <p className="al-text-lg mb-6">
               Healthy Lover energy allows you to feel, connect, create, and
               receive without abandoning yourself. It does not mean emotional
               chaos. It means safe emotional flow.
             </p>
 
-            <ul className="grid md:grid-cols-2 gap-4">
+            <div className="grid gap-4 md:grid-cols-2">
               {[
                 "You can feel deeply without becoming overwhelmed.",
                 "You express affection without losing yourself.",
@@ -68,72 +53,43 @@ export default function LoverPage() {
                 "You create beauty and meaning through feeling.",
                 "You can grieve, love, and open without collapsing.",
               ].map((item) => (
-                <li key={item} className="border border-yellow-300/10 rounded-xl p-4">
+                <div key={item} className="al-soft-card p-4">
                   {item}
-                </li>
+                </div>
               ))}
-            </ul>
-          </section>
-
-          <section className="mb-16">
-            <h2 className="text-4xl font-bold mb-6">
-              Lover Shadow Loops
-            </h2>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="border border-red-700 rounded-2xl p-6">
-                <h3 className="text-2xl font-bold mb-3">
-                  Emotional Lockdown Loop
-                </h3>
-                <p className="text-gray-300 mb-4">
-                  Suppressed Water. Feelings are numbed, hidden, or avoided
-                  because vulnerability feels unsafe.
-                </p>
-                <p className="text-red-300">
-                  Core belief: “Feeling is dangerous.”
-                </p>
-              </div>
-
-              <div className="border border-red-700 rounded-2xl p-6">
-                <h3 className="text-2xl font-bold mb-3">
-                  Fantasy Fog Loop
-                </h3>
-                <p className="text-gray-300 mb-4">
-                  Inflated Water. Imagination, longing, or idealisation replaces
-                  direct contact with reality.
-                </p>
-                <p className="text-red-300">
-                  Core belief: “It is safer in my inner world.”
-                </p>
-              </div>
-
-              <div className="border border-red-700 rounded-2xl p-6">
-                <h3 className="text-2xl font-bold mb-3">
-                  Flooded Waters Loop
-                </h3>
-                <p className="text-gray-300 mb-4">
-                  Colliding Water. Emotion becomes too intense to regulate,
-                  creating overwhelm, urgency, or collapse.
-                </p>
-                <p className="text-red-300">
-                  Core belief: “My feelings are too much.”
-                </p>
-              </div>
             </div>
-          </section>
+          </ContentSection>
 
-          <section className="mb-16">
-            <h2 className="text-4xl font-bold mb-6">
-              Somatic Signals
-            </h2>
+          <ContentSection title="Lover Shadow Loops">
+            <div className="grid gap-6 md:grid-cols-3">
+              <ShadowCard
+                title="Emotional Lockdown Loop"
+                text="Suppressed Water. Feelings are numbed, hidden, or avoided because vulnerability feels unsafe."
+                belief="Feeling is dangerous."
+              />
 
-            <p className="text-gray-300 text-lg mb-6">
+              <ShadowCard
+                title="Fantasy Fog Loop"
+                text="Inflated Water. Imagination, longing, or idealisation replaces direct contact with reality."
+                belief="It is safer in my inner world."
+              />
+
+              <ShadowCard
+                title="Flooded Waters Loop"
+                text="Colliding Water. Emotion becomes too intense to regulate, creating overwhelm, urgency, or collapse."
+                belief="My feelings are too much."
+              />
+            </div>
+          </ContentSection>
+
+          <ContentSection title="Somatic Signals">
+            <p className="al-text-lg mb-6">
               Distorted Lover energy often appears through emotional flooding,
               numbness, chest heaviness, belly sensitivity, longing, or the
               feeling of being overwhelmed by connection.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid gap-4 md:grid-cols-2">
               {[
                 "Chest heaviness or heart ache",
                 "Emotional numbness or shutdown",
@@ -142,60 +98,105 @@ export default function LoverPage() {
                 "Difficulty receiving care",
                 "Escaping into fantasy or imagined connection",
               ].map((item) => (
-                <div key={item} className="border border-yellow-300/10 rounded-xl p-4">
+                <div key={item} className="al-soft-card p-4">
                   {item}
                 </div>
               ))}
             </div>
-          </section>
+          </ContentSection>
 
-          <section className="mb-16">
-            <h2 className="text-4xl font-bold mb-6">
-              How to Strengthen Healthy Lover
-            </h2>
+          <ContentSection title="How to Strengthen Healthy Lover" variant="accent">
+            <p className="text-lg leading-relaxed mb-6">
+              Lover integration begins with safe contact. You do not have to
+              feel everything at once. The practice is to allow emotion in
+              small, grounded doses.
+            </p>
 
-            <div className="bg-white text-black rounded-3xl p-8">
-              <p className="text-lg mb-6">
-                Lover integration begins with safe contact. You do not have to
-                feel everything at once. The practice is to allow emotion in
-                small, grounded doses.
-              </p>
-
-              <ul className="space-y-3">
-                {[
-                  "Name one feeling without judging it.",
-                  "Place a hand on your heart and breathe slowly for one minute.",
-                  "Share one honest emotion with a safe person.",
-                  "Notice beauty in one small thing today.",
-                  "Let yourself receive care without immediately giving back.",
-                ].map((item) => (
-                  <li key={item} className="border border-black rounded-xl p-4">
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div className="space-y-3">
+              {[
+                "Name one feeling without judging it.",
+                "Place a hand on your heart and breathe slowly for one minute.",
+                "Share one honest emotion with a safe person.",
+                "Notice beauty in one small thing today.",
+                "Let yourself receive care without immediately giving back.",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-xl border border-[var(--al-bg)]/40 p-4"
+                >
+                  {item}
+                </div>
+              ))}
             </div>
-          </section>
+          </ContentSection>
 
-          <div className="flex gap-4 flex-wrap">
-            <a href="/assessment" className="bg-white text-black px-6 py-3 rounded-full font-semibold">
-              Find My Loop™
+          <div className="flex flex-wrap gap-4">
+            <a href="/assessment" className="al-button-primary">
+              Find My Loop
             </a>
 
-            <a
-              href="/practices"
-              className="border border-red-400 text-red-300 px-6 py-3 rounded-full font-semibold hover:bg-red-400 hover:text-black"
-            >
+            <a href="/practices" className="al-button-secondary">
               Explore Practices
             </a>
 
-            <a href="/" className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black">
+            <a href="/" className="al-button-secondary">
               Return Home
             </a>
           </div>
         </div>
       </section>
+
       <Footer />
     </main>
-  )
+  );
+}
+
+function InfoCard({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="al-card p-6">
+      <h2 className="text-2xl font-bold">{title}</h2>
+      <p className="al-text mt-3">{text}</p>
+    </div>
+  );
+}
+
+function ShadowCard({
+  title,
+  text,
+  belief,
+}: {
+  title: string;
+  text: string;
+  belief: string;
+}) {
+  return (
+    <div className="al-card p-6">
+      <h3 className="text-2xl font-bold">{title}</h3>
+      <p className="al-text mt-4">{text}</p>
+      <p className="mt-5 font-semibold text-[var(--al-accent)]">
+        Core belief: “{belief}”
+      </p>
+    </div>
+  );
+}
+
+function ContentSection({
+  title,
+  children,
+  variant = "default",
+}: {
+  title: string;
+  children: React.ReactNode;
+  variant?: "default" | "accent";
+}) {
+  return (
+    <section
+      className={`p-8 ${
+        variant === "accent" ? "al-accent-card" : "al-card"
+      }`}
+    >
+      <h2 className="al-heading-md mb-6">{title}</h2>
+      {children}
+    </section>
+  );
 }

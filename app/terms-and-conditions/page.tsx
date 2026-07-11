@@ -3,28 +3,30 @@ import Footer from "../components/Footer";
 
 export default function TermsAndConditionsPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
+    <main className="min-h-screen al-page">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.16),transparent_42%)]" />
-
-        <div className="relative mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+      <section className="al-section">
+        <div className="relative mx-auto max-w-5xl al-premium-card p-10">
+          <p className="al-kicker">
             Legal
           </p>
 
-          <h1 className="mt-5 text-5xl font-bold">Terms & Conditions</h1>
+          <h1 className="mt-5 al-heading-xl">
+            Terms & Conditions
+          </h1>
 
-          <p className="mt-6 text-stone-300">Last updated: June 2026</p>
+          <p className="mt-6 al-text">
+            Last updated: July 2026
+          </p>
         </div>
 
-        <div className="relative mx-auto mt-10 max-w-5xl space-y-6 rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
+        <div className="relative mx-auto mt-10 max-w-5xl space-y-6 al-card p-8">
           <Section title="1. About ArcheLoop">
             ArcheLoop is an educational self-development platform designed to
             help users reflect on emotional patterns, archetypes, Shadow Loops™,
-            nervous system responses, relational dynamics, and integration
-            journeys.
+            nervous system responses, relational dynamics, and Integration
+            Journeys™.
           </Section>
 
           <Section title="2. Not Medical or Therapeutic Advice">
@@ -42,10 +44,11 @@ export default function TermsAndConditionsPage() {
           </Section>
 
           <Section title="4. Assessment and Report Results">
-            ArcheLoop assessments, reports, loop descriptions, Integration
-            Journeys™, and Triggered tools are reflective frameworks. Results
-            are based on your responses and should be interpreted as
-            self-awareness prompts, not fixed labels or factual diagnoses.
+            ArcheLoop assessments, reports, Shadow Loop™ descriptions,
+            Integration Journeys™, and Triggered tools are reflective
+            frameworks. Results are based on your responses and should be
+            interpreted as self-awareness prompts, not fixed labels or factual
+            diagnoses.
           </Section>
 
           <Section title="5. Products, Purchases and Subscriptions">
@@ -65,16 +68,17 @@ export default function TermsAndConditionsPage() {
 
           <Section title="7. Triggered Pro™ and Saved Data">
             Some tools may save information in your browser or account, such as
-            saved activations, trigger history, report data, progress dashboard
-            data, or integration reflections. If data is stored locally on your
-            device, it may not be available on another browser or device.
+            saved activations, trigger history, report data, Progress
+            Dashboard™, Monthly Reviews™, or integration reflections. If data is
+            stored locally on your device, it may not be available on another
+            browser or device.
           </Section>
 
           <Section title="8. Intellectual Property">
             ArcheLoop™, Shadow Loops™, Integration Journeys™, written content,
             frameworks, designs, branding, reports, and related materials belong
             to ArcheLoop unless otherwise stated. You may not copy, reproduce,
-            sell, publish, or redistribute ArcheLoop materials without
+            sell, publish, or redistribute ArcheLoop materials without written
             permission.
           </Section>
 
@@ -87,26 +91,27 @@ export default function TermsAndConditionsPage() {
 
           <Section title="10. Cookies and Analytics">
             ArcheLoop may use cookies and similar technologies, including Google
-            Analytics, to understand website usage and improve the site. You can
-            accept or reject optional analytics cookies through the cookie
+            Analytics, to understand website usage and improve the platform. You
+            can accept or reject optional analytics cookies through the cookie
             consent banner.
           </Section>
 
           <Section title="11. Limitation of Liability">
-            ArcheLoop is provided on an “as is” basis. We do our best to provide
-            useful and thoughtful content, but we do not guarantee that the
-            website, tools, reports, or content will be error-free,
-            uninterrupted, or suitable for every individual situation.
+            ArcheLoop is provided on an "as is" basis. While we strive to
+            provide accurate and valuable educational content, we do not
+            guarantee that the website, reports, tools, or services will be
+            uninterrupted, error-free, or suitable for every individual
+            situation.
           </Section>
 
           <Section title="12. Changes to These Terms">
             We may update these Terms & Conditions from time to time. Continued
-            use of the website after updates means you accept the revised terms.
+            use of ArcheLoop after updates means you accept the revised terms.
           </Section>
 
           <Section title="13. Contact">
-            For questions about these terms, contact us through the Contact page
-            on this website.
+            If you have questions about these Terms & Conditions, please contact
+            us through the Contact page on this website.
           </Section>
         </div>
       </section>
@@ -124,10 +129,14 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-2xl border border-yellow-300/10 bg-black/30 p-6">
-      <h2 className="text-xl font-semibold text-yellow-300">{title}</h2>
+    <section className="al-soft-card p-6">
+      <h2 className="text-xl font-semibold text-[var(--al-accent)]">
+        {title}
+      </h2>
 
-      <p className="mt-4 leading-relaxed text-stone-300">{children}</p>
+      <p className="mt-4 leading-relaxed al-text">
+        {children}
+      </p>
     </section>
   );
 }

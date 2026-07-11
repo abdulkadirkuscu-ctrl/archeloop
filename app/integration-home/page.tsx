@@ -78,22 +78,22 @@ export default async function IntegrationHomePage() {
 
   if (!hasIntegrationAccess) {
     return (
-      <main className="min-h-screen bg-[#030712] text-stone-100">
+      <main className="al-page">
         <Nav />
 
-        <section className="relative overflow-hidden px-6 py-24">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+        <section className="al-section">
+          
 
-          <div className="relative mx-auto max-w-4xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+          <div className="al-premium-card al-container p-10 text-center">
+            <p className="al-kicker">
               ArcheLoop Integration
             </p>
 
-            <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
+            <h1 className="mt-5 al-heading-lg">
               Integration access is required.
             </h1>
 
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+            <p className="mx-auto mt-6 max-w-3xl al-text-lg">
               The Integration Hub is available with ArcheLoop Integration. It
               includes Triggered Pro, Progress Dashboard, Integration
               Journeys, My Integrated Vision, and Monthly Review.
@@ -102,14 +102,14 @@ export default async function IntegrationHomePage() {
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link
                 href="/checkout?product=integration"
-                className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+                className="al-button-primary"
               >
                 Start Integration
               </Link>
 
               <Link
                 href="/checkout?product=bundle"
-                className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+                className="al-button-secondary"
               >
                 Choose Report + Integration
               </Link>
@@ -123,39 +123,39 @@ export default async function IntegrationHomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
+    <main className="al-page">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+      <section className="al-section">
+        
 
-        <div className="relative mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
+        <div className="al-premium-card al-container p-10 text-center">
+          <p className="al-kicker">
             ArcheLoop Integration
           </p>
 
-          <h1 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">
+          <h1 className="mt-5 al-heading-lg">
             Your Integration Hub.
           </h1>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+          <p className="mx-auto mt-6 max-w-3xl al-text-lg">
             ArcheLoop Integration brings together Triggered Pro, Progress
             Dashboard, Integration Journeys, My Integrated Vision, and your
             Integrated Self into one transformation pathway.
           </p>
 
-          <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-yellow-300/10 bg-black/30 p-6 text-left">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-yellow-300/70">
+          <div className="al-card mx-auto mt-8 max-w-3xl p-6 text-left">
+            <p className="al-kicker">
               Important
             </p>
 
-            <p className="mt-3 text-sm leading-relaxed text-stone-400">
+            <p className="al-text mt-3 text-sm">
               ArcheLoop Integration is designed to be used after Find My Loop.
               Your ArcheLoop Report gives the system the pattern, loop, and
               integration pathway that makes the Integration tools personal.
             </p>
 
-            <p className="mt-3 text-sm leading-relaxed text-stone-500">
+            <p className="al-text mt-3 text-sm">
               If you have not completed Find My Loop yet, start there first.
               If you already have your report, continue into Triggered Pro,
               your Dashboard, and your Integration Journey.
@@ -165,14 +165,14 @@ export default async function IntegrationHomePage() {
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
               href="/assessment"
-              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              className="al-button-primary"
             >
               Complete Find My Loop
             </Link>
 
             <Link
               href="/triggered-intelligence"
-              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+              className="al-button-primary"
             >
               Start With Triggered Pro
             </Link>
@@ -180,17 +180,17 @@ export default async function IntegrationHomePage() {
         </div>
       </section>
 
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-6xl text-center">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+      <section className="al-section-tight">
+        <div className="al-container-wide text-center">
+          <p className="al-kicker">
             How Integration Works
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+          <h2 className="mt-5 al-heading-lg">
             From insight into practice.
           </h2>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
+          <p className="mx-auto mt-6 max-w-3xl al-text-lg">
             Your report explains the pattern. Integration helps you recognise it
             in real life, interrupt it with awareness, and practise the
             integrated response over time.
@@ -200,23 +200,23 @@ export default async function IntegrationHomePage() {
             {steps.map((step) => (
               <div
                 key={step.number}
-                className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-7 text-left"
+                className="al-card p-7 text-left"
               >
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-yellow-300 text-lg font-bold text-black">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--al-accent)] text-white text-lg font-bold">
                   {step.number}
                 </div>
 
-                <h3 className="mt-5 text-2xl font-bold text-yellow-300">
+                <h3 className="mt-5 text-2xl font-bold text-[var(--al-accent)]">
                   {step.title}
                 </h3>
 
-                <p className="mt-4 leading-relaxed text-stone-300">
+                <p className="mt-4 al-text">
                   {step.description}
                 </p>
 
                 <Link
                   href={step.href}
-                  className="mt-6 inline-flex rounded-full border border-yellow-300/20 bg-black/30 px-5 py-3 text-sm font-semibold text-yellow-200 transition hover:border-yellow-300/60"
+                  className="al-button-secondary mt-6 inline-flex"
                 >
                   {step.cta}
                 </Link>
@@ -226,13 +226,13 @@ export default async function IntegrationHomePage() {
         </div>
       </section>
 
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
+      <section className="al-section-tight">
+        <div className="al-premium-card al-container p-10 text-center">
+          <p className="al-kicker">
             Included In Integration
           </p>
 
-          <h2 className="mt-5 text-4xl font-bold md:text-5xl">
+          <h2 className="mt-5 al-heading-lg">
             One system for real-life change.
           </h2>
 
@@ -240,7 +240,7 @@ export default async function IntegrationHomePage() {
             {included.map((item) => (
               <div
                 key={item}
-                className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 text-stone-300"
+                className="al-card p-4"
               >
                 ✓ {item}
               </div>
@@ -250,14 +250,14 @@ export default async function IntegrationHomePage() {
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
               href="/triggered-intelligence"
-              className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
+              className="al-button-primary"
             >
               Start With Triggered Pro
             </Link>
 
             <Link
               href="/progress-dashboard"
-              className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
+              className="al-button-secondary"
             >
               View Progress Dashboard
             </Link>

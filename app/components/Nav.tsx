@@ -43,12 +43,9 @@ export default function Nav() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-yellow-300/10 bg-[#030712]/90 backdrop-blur-xl">
+    <header className="al-site-header sticky top-0 z-50">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <Link
-          href="/"
-          className="text-2xl font-bold tracking-tight text-stone-100 transition duration-300 hover:text-yellow-300"
-        >
+        <Link href="/" className="al-brand-name">
           ArcheLoop
         </Link>
 
@@ -57,7 +54,7 @@ export default function Nav() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-stone-300 transition duration-300 hover:text-yellow-300"
+              className="al-nav-link"
             >
               {item.label}
             </Link>
@@ -68,7 +65,7 @@ export default function Nav() {
           {loggedIn ? (
             <Link
               href="/account"
-              className="text-sm font-medium text-stone-300 transition duration-300 hover:text-yellow-300"
+              className="al-nav-link"
             >
               My Account
             </Link>
@@ -76,14 +73,14 @@ export default function Nav() {
             <>
               <Link
                 href="/auth/login"
-                className="text-sm font-medium text-stone-300 transition duration-300 hover:text-yellow-300"
+                className="al-nav-link"
               >
                 Log In
               </Link>
 
               <Link
                 href="/auth/signup"
-                className="hidden rounded-full border border-yellow-300/20 px-5 py-2 text-sm font-semibold text-yellow-200 transition duration-300 hover:border-yellow-300/60 md:block"
+                className="al-button-secondary hidden px-5 py-2 text-sm md:inline-flex"
               >
                 Create Account
               </Link>
@@ -92,7 +89,7 @@ export default function Nav() {
 
           <Link
             href="/triggered"
-            className="rounded-full bg-yellow-300 px-6 py-3 text-sm font-semibold text-black transition duration-300 hover:bg-yellow-200"
+            className="al-button-primary px-6 py-3 text-sm"
           >
             I Am Triggered
           </Link>

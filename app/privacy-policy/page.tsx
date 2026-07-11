@@ -1,29 +1,20 @@
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
+import PageShell from "../components/PageShell";
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
+    <PageShell>
+      <section className="al-section">
+        <div className="al-container space-y-10">
+          <div className="al-premium-card p-10">
+            <p className="al-kicker">ArcheLoop™</p>
 
-      <section className="relative overflow-hidden px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+            <h1 className="al-heading-xl">Privacy Policy</h1>
 
-        <div className="relative max-w-5xl mx-auto space-y-10">
-          <div className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              ArcheLoop™
+            <p className="al-text-lg mt-8 max-w-3xl">
+              This policy explains what information may be collected, how it may
+              be used, and the steps taken to protect your privacy while using
+              ArcheLoop.
             </p>
-
-            <h1 className="mt-6 text-4xl md:text-5xl font-bold leading-tight">
-              Privacy Policy
-            </h1>
-
-            <p className="mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-  This policy explains what information may be collected, how it may
-  be used, and the steps taken to protect your privacy while using
-  ArcheLoop.
-</p>
           </div>
 
           <PolicySection title="1. Introduction">
@@ -36,7 +27,7 @@ export default function PrivacyPolicyPage() {
               Depending on how you use the website, we may collect:
             </p>
 
-            <ul className="space-y-2 text-stone-300">
+            <ul className="space-y-2">
               <li>• Name and email address</li>
               <li>• Messages submitted through contact forms</li>
               <li>• Assessment responses and self-development reflections</li>
@@ -49,7 +40,7 @@ export default function PrivacyPolicyPage() {
               Information may be used to:
             </p>
 
-            <ul className="space-y-2 text-stone-300">
+            <ul className="space-y-2">
               <li>• Respond to messages or enquiries</li>
               <li>• Improve the ArcheLoop experience</li>
               <li>• Provide educational or self-development resources</li>
@@ -80,16 +71,16 @@ export default function PrivacyPolicyPage() {
             information by contacting ArcheLoop directly.
           </PolicySection>
 
-          <div className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-            <h2 className="text-3xl font-semibold text-yellow-300">
+          <div className="al-card p-8">
+            <h2 className="text-3xl font-semibold text-[var(--al-accent)]">
               8. Contact
             </h2>
 
-            <p className="mt-5 text-lg leading-relaxed text-stone-300">
+            <p className="al-text-lg mt-5">
               For privacy-related enquiries:
             </p>
 
-            <p className="mt-4 text-xl font-semibold text-yellow-300">
+            <p className="mt-4 text-xl font-semibold text-[var(--al-accent)]">
               info@archeloop.com
             </p>
           </div>
@@ -99,9 +90,7 @@ export default function PrivacyPolicyPage() {
           </PolicySection>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </PageShell>
   );
 }
 
@@ -113,12 +102,12 @@ function PolicySection({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]">
-      <h2 className="text-3xl font-semibold text-yellow-300">
+    <section className="al-card p-8">
+      <h2 className="text-3xl font-semibold text-[var(--al-accent)]">
         {title}
       </h2>
 
-      <div className="mt-6 text-lg leading-relaxed text-stone-300">
+      <div className="al-text-lg mt-6">
         {children}
       </div>
     </section>

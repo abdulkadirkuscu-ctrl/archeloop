@@ -1,7 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
+import PageShell from "../components/PageShell";
 
 export const metadata: Metadata = {
   title: "What Is ArcheLoop?",
@@ -86,119 +85,82 @@ const steps = [
 
 export default function WhatIsArcheLoopPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
+    <PageShell>
+      <section className="al-section">
+        <div className="al-container-wide space-y-20">
+          <div className="al-hero-card text-center">
+            <p className="al-kicker">ArcheLoop</p>
 
-      <section className="relative overflow-hidden px-6 py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+            <h1 className="al-heading-xl">What Is ArcheLoop?</h1>
 
-        <div className="relative mx-auto max-w-7xl space-y-20">
-          <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              ArcheLoop
+            <p className="al-text-lg mx-auto mt-8 max-w-3xl">
+              ArcheLoop is an integrative archetypal self-awareness framework
+              that helps people recognise recurring Shadow Loops, interrupt
+              automatic reactions, and develop a more integrated way of being.
             </p>
 
-            <h1 className="mt-6 text-5xl font-bold leading-tight md:text-7xl">
-              What Is ArcheLoop?
-            </h1>
-
-            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-stone-300">
-  ArcheLoop is an integrative archetypal self-awareness framework that
-  helps people recognise recurring Shadow Loops, interrupt automatic
-  reactions, and develop a more integrated way of being.
-</p>
-
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
-  Rather than asking "What's wrong with me?", ArcheLoop asks
-  "What pattern am I repeating?" By recognising recurring protective
-  strategies, we create the possibility for awareness, interruption,
-  and integration.
-</p>
+            <p className="al-text mx-auto mt-6 max-w-3xl">
+              Rather than asking “What’s wrong with me?”, ArcheLoop asks “What
+              pattern am I repeating?” By recognising recurring protective
+              strategies, we create the possibility for awareness, interruption,
+              and integration.
+            </p>
 
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <a
-                href="/assessment"
-                className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-              >
+              <a href="/assessment" className="al-button-primary">
                 Find My Loop
               </a>
 
-              <a
-                href="/loops"
-                className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
-              >
+              <a href="/loops" className="al-button-secondary">
                 Explore Shadow Loops
               </a>
             </div>
           </div>
 
-<div className="mt-14 border-t border-b border-yellow-300/10 py-10 text-center">
-  <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-    Understand • Interrupt • Integrate
-  </p>
+          <div className="al-philosophy-strip">
+            <p className="al-kicker">Understand • Interrupt • Integrate</p>
 
-  <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-    ArcheLoop is an integrative archetypal self-awareness framework that
-    helps people recognise recurring Shadow Loops, interrupt automatic
-    reactions, and develop a more integrated way of being.
-  </p>
-
-  <p className="mx-auto mt-6 text-lg font-medium text-yellow-300">
-    Helping people live from their Integrated Self.
-  </p>
-</div>
-
-          <section className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-              Core Principle
+            <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+              ArcheLoop is an integrative archetypal self-awareness framework
+              that helps people recognise recurring Shadow Loops, interrupt
+              automatic reactions, and develop a more integrated way of being.
             </p>
 
-            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-              You are not the loop.
-            </h2>
+            <p className="al-gold mx-auto mt-6 text-lg font-semibold">
+              Helping people live from their Integrated Self.
+            </p>
+          </div>
 
-           <div className="mx-auto mt-6 max-w-3xl space-y-6 text-lg leading-relaxed text-stone-300">
-  <p>
-    A Shadow Loop is not your identity.
-  </p>
+          <section className="al-premium-card p-10 text-center">
+            <p className="al-kicker">Core Principle</p>
 
-  <p>
-    It is a recurring pattern of emotion, behaviour, and nervous system
-    activation that emerges when archetypal energies collapse,
-    compensate, or collide under pressure.
-  </p>
+            <h2 className="al-heading-lg al-gold">You are not the loop.</h2>
 
-  <p className="font-medium text-yellow-300">
-    Awareness is the beginning of integration.
-  </p>
-</div>
+            <div className="al-text-lg mx-auto mt-6 max-w-3xl space-y-6">
+              <p>A Shadow Loop is not your identity.</p>
+
+              <p>
+                It is a recurring pattern of emotion, behaviour, and nervous
+                system activation that emerges when archetypal energies
+                collapse, compensate, or collide under pressure.
+              </p>
+
+              <p className="al-gold font-semibold">
+                Awareness is the beginning of integration.
+              </p>
+            </div>
           </section>
 
           <section>
-            <div className="mb-12 text-center">
-              <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-                The Foundation
-              </p>
-
-              <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-                The Four Archetypes
-              </h2>
-
-              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-  Every person has access to four archetypal energies: Fire, Air,
-  Water, and Earth.
-
-  Together they shape how we think, relate, protect, express
-  ourselves, and respond under pressure.
-</p>
-            </div>
+            <SectionIntro
+              kicker="The Foundation"
+              title="The Four Archetypes"
+              text="Every person has access to four archetypal energies: Fire, Air, Water, and Earth. Together they shape how we think, relate, protect, express ourselves, and respond under pressure."
+            />
 
             <div className="grid gap-6 md:grid-cols-2">
               {archetypes.map((item) => (
-                <div
-                  key={item.archetype}
-                  className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]"
-                >
+                <div key={item.archetype} className="al-card p-8">
                   <div className="flex items-center gap-5">
                     <Image
                       src={item.image}
@@ -209,21 +171,17 @@ export default function WhatIsArcheLoopPage() {
                     />
 
                     <div>
-                      <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
-                        {item.element}
-                      </p>
+                      <p className="al-kicker">{item.element}</p>
 
-                      <h3 className="mt-2 text-3xl font-bold text-yellow-300">
+                      <h3 className="mt-2 text-3xl font-bold text-[var(--al-accent)]">
                         {item.archetype}
                       </h3>
                     </div>
                   </div>
 
-                  <p className="mt-6 leading-relaxed text-stone-300">
-                    {item.text}
-                  </p>
+                  <p className="al-text mt-6">{item.text}</p>
 
-                  <p className="mt-5 text-lg italic text-stone-500">
+                  <p className="al-muted mt-5 text-lg italic">
                     “{item.question}”
                   </p>
                 </div>
@@ -232,148 +190,121 @@ export default function WhatIsArcheLoopPage() {
           </section>
 
           <section>
-            <div className="mb-12 text-center">
-              <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-                How Shadow Loops Form
-              </p>
-
-              <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-                Collapse. Compensate. Collide.
-              </h2>
-
-              <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-                Shadow Loops emerge when archetypal energies collapse,
-compensate, or collide under pressure. The
-                surface behaviour may look different, but underneath it usually
-                follows one of three patterns.
-              </p>
-            </div>
+            <SectionIntro
+              kicker="How Shadow Loops Form"
+              title="Collapse. Compensate. Collide."
+              text="Shadow Loops emerge when archetypal energies collapse, compensate, or collide under pressure. The surface behaviour may look different, but underneath it usually follows one of three patterns."
+            />
 
             <div className="grid gap-6 md:grid-cols-3">
               {formations.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-[2rem] border border-yellow-300/10 bg-[#0B1018] p-8 shadow-[0_0_45px_rgba(216,183,120,0.05)]"
-                >
-                  <p className="text-sm uppercase tracking-[0.25em] text-yellow-300/60">
-                    {item.subtitle}
-                  </p>
+                <div key={item.title} className="al-card p-8">
+                  <p className="al-kicker">{item.subtitle}</p>
 
-                  <h3 className="mt-4 text-3xl font-bold text-yellow-300">
+                  <h3 className="mt-4 text-3xl font-bold text-[var(--al-accent)]">
                     {item.title}
                   </h3>
 
-                  <p className="mt-5 text-xl leading-relaxed text-stone-100">
+                  <p className="mt-5 text-xl leading-relaxed text-[var(--al-text)]">
                     “{item.belief}”
                   </p>
 
-                  <p className="mt-5 leading-relaxed text-stone-300">
-                    {item.text}
-                  </p>
+                  <p className="al-text mt-5">{item.text}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          <section className="rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 shadow-[0_0_70px_rgba(216,183,120,0.08)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-              Shadow Loop
-            </p>
+          <section className="al-card p-10">
+            <p className="al-kicker">Shadow Loop</p>
 
-            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-              What is a Shadow Loop?
-            </h2>
+            <h2 className="al-heading-lg">What is a Shadow Loop?</h2>
 
-            <div className="mt-8 max-w-4xl space-y-6 text-xl leading-relaxed text-stone-300">
+            <div className="al-text-lg mt-8 max-w-4xl space-y-6">
               <p>
-A Shadow Loop is a recurring pattern of emotion, behaviour, and nervous
-system activation that emerges when archetypal energies collapse,
-compensate, or collide under pressure.
-</p>
+                A Shadow Loop is a recurring pattern of emotion, behaviour, and
+                nervous system activation that emerges when archetypal energies
+                collapse, compensate, or collide under pressure.
+              </p>
 
-<p>
-Shadow Loops are not flaws or identities. They are protective strategies
-that once helped you adapt.
-</p>
+              <p>
+                Shadow Loops are not flaws or identities. They are protective
+                strategies that once helped you adapt.
+              </p>
 
-<p>
-ArcheLoop helps you recognise those patterns, interrupt automatic
-reactions, and live from your Integrated Self.
-</p>
+              <p>
+                ArcheLoop helps you recognise those patterns, interrupt
+                automatic reactions, and live from your Integrated Self.
+              </p>
             </div>
           </section>
 
           <section>
-            <div className="mb-12 text-center">
-              <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-                How ArcheLoop Works
-              </p>
-
-             <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-  The ArcheLoop Process
-</h2>
-
-<p className="mt-5 text-lg uppercase tracking-[0.3em] text-yellow-300/70">
-  Understand • Interrupt • Integrate
-</p>
-            </div>
+            <SectionIntro
+              kicker="How ArcheLoop Works"
+              title="The ArcheLoop Process"
+              text="Understand • Interrupt • Integrate"
+            />
 
             <div className="grid gap-6 md:grid-cols-4">
               {steps.map((step) => (
-                <div
-                  key={step.number}
-                  className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-7"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-yellow-300 text-lg font-bold text-black">
+                <div key={step.number} className="al-card p-7">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--al-accent)] text-lg font-bold text-[var(--al-bg)]">
                     {step.number}
                   </div>
 
-                  <h3 className="mt-5 text-2xl font-bold text-yellow-300">
+                  <h3 className="mt-5 text-2xl font-bold text-[var(--al-accent)]">
                     {step.title}
                   </h3>
 
-                  <p className="mt-4 leading-relaxed text-stone-300">
-                    {step.text}
-                  </p>
+                  <p className="al-text mt-4">{step.text}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          <section className="rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-              Begin Here
+          <section className="al-premium-card p-10 text-center">
+            <p className="al-kicker">Begin Here</p>
+
+            <h2 className="al-heading-lg">Discover your Shadow Loop.</h2>
+
+            <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+              Begin by discovering your Shadow Loop and receive your
+              personalised ArcheLoop Report with your Integration Journey.
             </p>
 
-            <h2 className="mt-5 text-4xl font-bold md:text-5xl">
-  Discover your Shadow Loop.
-</h2>
-
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-  Begin by discovering your Shadow Loop and receive your personalised
-  ArcheLoop Report with your Integration Journey.
-</p>
-
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <a
-                href="/assessment"
-                className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-              >
+              <a href="/assessment" className="al-button-primary">
                 Find My Loop
               </a>
 
-              <a
-                href="/loops"
-                className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-yellow-200 transition hover:border-yellow-300/60"
-              >
+              <a href="/loops" className="al-button-secondary">
                 Explore the 12 Shadow Loops
               </a>
             </div>
           </section>
         </div>
       </section>
+    </PageShell>
+  );
+}
 
-      <Footer />
-    </main>
+function SectionIntro({
+  kicker,
+  title,
+  text,
+}: {
+  kicker: string;
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="mb-12 text-center">
+      <p className="al-kicker">{kicker}</p>
+
+      <h2 className="al-heading-lg">{title}</h2>
+
+      <p className="al-text-lg mx-auto mt-6 max-w-3xl">{text}</p>
+    </div>
   );
 }

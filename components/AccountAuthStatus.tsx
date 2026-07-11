@@ -27,24 +27,19 @@ export default function AccountAuthStatus() {
 
   if (email) {
     return (
-      <section className="px-6 pb-10">
-        <div className="mx-auto max-w-5xl rounded-[2rem] border border-yellow-300/20 bg-[#0B1018] p-8 text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-            Account Active
-          </p>
+      <section className="al-section-tight">
+        <div className="al-container al-card p-8 text-center">
+          <p className="al-kicker">Account Active</p>
 
-          <h2 className="mt-4 text-3xl font-bold text-yellow-300">
+          <h2 className="al-heading-md text-[var(--al-accent)]">
             You are logged in.
           </h2>
 
-          <p className="mt-4 text-stone-300">
+          <p className="al-text mt-4">
             Signed in as {email}
           </p>
 
-          <button
-            onClick={signOut}
-            className="mt-6 rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 font-semibold text-yellow-200 transition hover:border-yellow-300/60"
-          >
+          <button onClick={signOut} className="al-button-secondary mt-6">
             Log Out
           </button>
         </div>
@@ -53,32 +48,24 @@ export default function AccountAuthStatus() {
   }
 
   return (
-    <section className="px-6 pb-10">
-      <div className="mx-auto max-w-5xl rounded-[2rem] border border-yellow-300/20 bg-[#0B1018] p-8 text-center">
-        <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-          Save Your ArcheLoop Journey™
-        </p>
+    <section className="al-section-tight">
+      <div className="al-container al-card p-8 text-center">
+        <p className="al-kicker">Save Your ArcheLoop Journey</p>
 
-        <h2 className="mt-4 text-3xl font-bold text-yellow-300">
-         Create an account to keep your report, trigger history, progress, and monthly reviews.
+        <h2 className="al-heading-md text-[var(--al-accent)]">
+          Create an account to keep your report, trigger history, progress, and monthly reviews.
         </h2>
 
-        <p className="mx-auto mt-4 max-w-3xl text-stone-300">
-        Your account lets you return to your ArcheLoop Report™, saved activations, Progress Dashboard™, and Monthly Review™ from any device.
+        <p className="al-text mx-auto mt-4 max-w-3xl">
+          Your account lets you return to your ArcheLoop Report, saved activations, Progress Dashboard, and Monthly Review from any device.
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Link
-            href="/auth/signup"
-            className="rounded-full bg-yellow-300 px-8 py-4 font-semibold text-black transition hover:bg-yellow-200"
-          >
+          <Link href="/auth/signup" className="al-button-primary">
             Create Account
           </Link>
 
-          <Link
-            href="/auth/login"
-            className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 font-semibold text-yellow-200 transition hover:border-yellow-300/60"
-          >
+          <Link href="/auth/login" className="al-button-secondary">
             Log In
           </Link>
         </div>

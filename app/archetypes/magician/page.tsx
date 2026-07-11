@@ -1,78 +1,49 @@
-import Nav from "../../components/Nav"
-import Footer from "../../components/Footer"
+import Nav from "../../components/Nav";
+import Footer from "../../components/Footer";
+
 export default function MagicianPage() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
+    <main className="al-page min-h-screen">
       <Nav />
 
-      <section className="relative overflow-hidden px-6 py-24">
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
+      <section className="al-section">
+        <div className="al-container space-y-16">
+          <div>
+            <p className="al-kicker">Air Element</p>
 
-  <div className="relative mx-auto max-w-5xl">
+            <h1 className="al-heading-xl">The Magician Archetype</h1>
 
-          <p className="uppercase tracking-[0.3em] text-blue-300 mb-4">
-            Air Element
-          </p>
-
-          <h1 className="text-6xl font-bold mb-6">
-            The Magician Archetype
-          </h1>
-
-          <p className="text-xl text-gray-300 max-w-3xl mb-12">
-            The Magician governs perception, thought, interpretation,
-            language, insight, understanding, and mental clarity.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-
-            <div className="border border-blue-400 rounded-2xl p-6 bg-[#0B1018]">
-              <h2 className="text-2xl font-bold mb-3">
-                Healthy Air
-              </h2>
-
-              <p className="text-gray-300">
-                Healthy Air creates clarity, insight, perception,
-                curiosity, communication, and trusted thinking.
-              </p>
-            </div>
-
-            <div className="border border-yellow-300/10 rounded-2xl p-6 bg-[#0B1018]">
-              <h2 className="text-2xl font-bold mb-3">
-                Core Emotion
-              </h2>
-
-              <p className="text-gray-300">
-                Clarity when integrated. Fear and confusion when distorted.
-              </p>
-            </div>
-
-            <div className="border border-yellow-300/10 rounded-2xl p-6 bg-[#0B1018]">
-              <h2 className="text-2xl font-bold mb-3">
-                Body Map
-              </h2>
-
-              <p className="text-gray-300">
-                Head, throat, eyes, ears, mental focus,
-                cognitive overload, speech, and perception.
-              </p>
-            </div>
-
+            <p className="al-text-lg mt-8 max-w-3xl">
+              The Magician governs perception, thought, interpretation,
+              language, insight, understanding, and mental clarity.
+            </p>
           </div>
 
-          <section className="mb-16">
+          <div className="grid gap-6 md:grid-cols-3">
+            <InfoCard
+              title="Healthy Air"
+              text="Healthy Air creates clarity, insight, perception, curiosity, communication, and trusted thinking."
+            />
 
-            <h2 className="text-4xl font-bold mb-6">
-              When the Magician is Healthy
-            </h2>
+            <InfoCard
+              title="Core Emotion"
+              text="Clarity when integrated. Fear and confusion when distorted."
+            />
 
-            <p className="text-gray-300 text-lg mb-6">
-              Healthy Magician energy allows you to understand reality
-              clearly without collapsing into fear or obsession.
-              It creates insight without paralysis.
+            <InfoCard
+              title="Body Map"
+              text="Head, throat, eyes, ears, mental focus, cognitive overload, speech, and perception."
+            />
+          </div>
+
+          <ContentSection title="When the Magician is Healthy">
+            <p className="al-text-lg mb-6">
+              Healthy Magician energy allows you to understand reality clearly
+              without collapsing into fear or obsession. It creates insight
+              without paralysis.
             </p>
 
-            <ul className="grid md:grid-cols-2 gap-4">
-
+            <div className="grid gap-4 md:grid-cols-2">
               {[
                 "You trust your perception.",
                 "You can think clearly under pressure.",
@@ -81,95 +52,43 @@ export default function MagicianPage() {
                 "You can reflect without obsessing.",
                 "You allow clarity to emerge through action.",
               ].map((item) => (
-                <li
-                  key={item}
-                  className="border border-yellow-300/10 rounded-xl p-4"
-                >
+                <div key={item} className="al-soft-card p-4">
                   {item}
-                </li>
+                </div>
               ))}
-
-            </ul>
-
-          </section>
-
-          <section className="mb-16">
-
-            <h2 className="text-4xl font-bold mb-6">
-              Magician Shadow Loops
-            </h2>
-
-            <div className="grid md:grid-cols-3 gap-6">
-
-              <div className="border border-blue-700 rounded-2xl p-6">
-
-                <h3 className="text-2xl font-bold mb-3">
-                  Blank Page Loop
-                </h3>
-
-                <p className="text-gray-300 mb-4">
-                  Suppressed Air. The mind freezes under pressure
-                  and thoughts disappear when needed most.
-                </p>
-
-                <p className="text-blue-300">
-                  Core belief: “Nothing comes to me when it matters.”
-                </p>
-
-              </div>
-
-              <div className="border border-blue-700 rounded-2xl p-6">
-
-                <h3 className="text-2xl font-bold mb-3">
-                  Smoky Mirrors Loop
-                </h3>
-
-                <p className="text-gray-300 mb-4">
-                  Inflated Air. Reality becomes distorted through
-                  rationalisation, reinterpretation, or mental control.
-                </p>
-
-                <p className="text-blue-300">
-                  Core belief: “If I control the story, I will be safe.”
-                </p>
-
-              </div>
-
-              <div className="border border-blue-700 rounded-2xl p-6">
-
-                <h3 className="text-2xl font-bold mb-3">
-                  Mind Maze Loop
-                </h3>
-
-                <p className="text-gray-300 mb-4">
-                  Colliding Air. Overthinking blocks movement,
-                  creating endless mental rehearsal without action.
-                </p>
-
-                <p className="text-blue-300">
-                  Core belief: “I must think more before acting.”
-                </p>
-
-              </div>
-
             </div>
+          </ContentSection>
 
-          </section>
+          <ContentSection title="Magician Shadow Loops">
+            <div className="grid gap-6 md:grid-cols-3">
+              <ShadowCard
+                title="Blank Page Loop"
+                text="Suppressed Air. The mind freezes under pressure and thoughts disappear when needed most."
+                belief="Nothing comes to me when it matters."
+              />
 
-          <section className="mb-16">
+              <ShadowCard
+                title="Smoky Mirrors Loop"
+                text="Inflated Air. Reality becomes distorted through rationalisation, reinterpretation, or mental control."
+                belief="If I control the story, I will be safe."
+              />
 
-            <h2 className="text-4xl font-bold mb-6">
-              Somatic Signals
-            </h2>
+              <ShadowCard
+                title="Mind Maze Loop"
+                text="Colliding Air. Overthinking blocks movement, creating endless mental rehearsal without action."
+                belief="I must think more before acting."
+              />
+            </div>
+          </ContentSection>
 
-            <p className="text-gray-300 text-lg mb-6">
-              Distorted Magician energy often appears through mental
-              overload, cognitive fog, dissociation, throat tension,
-              headaches, or nervous system activation around thinking and speaking.
+          <ContentSection title="Somatic Signals">
+            <p className="al-text-lg mb-6">
+              Distorted Magician energy often appears through mental overload,
+              cognitive fog, dissociation, throat tension, headaches, or nervous
+              system activation around thinking and speaking.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-4">
-
+            <div className="grid gap-4 md:grid-cols-2">
               {[
                 "Foggy thinking or confusion",
                 "Head pressure or headaches",
@@ -178,83 +97,105 @@ export default function MagicianPage() {
                 "Mental spirals and looping thoughts",
                 "Difficulty accessing words under stress",
               ].map((item) => (
+                <div key={item} className="al-soft-card p-4">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </ContentSection>
+
+          <ContentSection title="How to Strengthen Healthy Magician" variant="accent">
+            <p className="mb-6 text-lg leading-relaxed">
+              Magician integration happens when perception becomes grounded.
+              Clarity grows through movement, embodiment, and reality contact —
+              not endless thinking.
+            </p>
+
+            <div className="space-y-3">
+              {[
+                "Take one action before seeking complete certainty.",
+                "Separate facts from imagined stories.",
+                "Speak one sentence even if imperfect.",
+                "Write down one clear thought.",
+                "Pause and ask: what do I actually know right now?",
+              ].map((item) => (
                 <div
                   key={item}
-                  className="border border-yellow-300/10 rounded-xl p-4"
+                  className="rounded-xl border border-[var(--al-bg)]/40 p-4"
                 >
                   {item}
                 </div>
               ))}
-
             </div>
+          </ContentSection>
 
-          </section>
-
-          <section className="mb-16">
-
-            <h2 className="text-4xl font-bold mb-6">
-              How to Strengthen Healthy Magician
-            </h2>
-
-            <div className="bg-white text-black rounded-3xl p-8">
-
-              <p className="text-lg mb-6">
-                Magician integration happens when perception becomes grounded.
-                Clarity grows through movement, embodiment, and reality contact —
-                not endless thinking.
-              </p>
-
-              <ul className="space-y-3">
-
-                {[
-                  "Take one action before seeking complete certainty.",
-                  "Separate facts from imagined stories.",
-                  "Speak one sentence even if imperfect.",
-                  "Write down one clear thought.",
-                  "Pause and ask: what do I actually know right now?",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="border border-black rounded-xl p-4"
-                  >
-                    {item}
-                  </li>
-                ))}
-
-              </ul>
-
-            </div>
-
-          </section>
-
-          <div className="flex gap-4 flex-wrap">
-
-            <a
-              href="/assessment"
-              className="bg-white text-black px-6 py-3 rounded-full font-semibold"
-            >
-              Find My Loop™
+          <div className="flex flex-wrap gap-4">
+            <a href="/assessment" className="al-button-primary">
+              Find My Loop
             </a>
 
-            <a
-              href="/practices"
-              className="border border-blue-400 text-blue-300 px-6 py-3 rounded-full font-semibold hover:bg-blue-400 hover:text-black"
-            >
+            <a href="/practices" className="al-button-secondary">
               Explore Practices
             </a>
 
-            <a
-              href="/"
-              className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black"
-            >
+            <a href="/" className="al-button-secondary">
               Return Home
             </a>
-
           </div>
-
         </div>
       </section>
+
       <Footer />
     </main>
-  )
+  );
+}
+
+function InfoCard({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="al-card p-6">
+      <h2 className="text-2xl font-bold">{title}</h2>
+      <p className="al-text mt-3">{text}</p>
+    </div>
+  );
+}
+
+function ShadowCard({
+  title,
+  text,
+  belief,
+}: {
+  title: string;
+  text: string;
+  belief: string;
+}) {
+  return (
+    <div className="al-card p-6">
+      <h3 className="text-2xl font-bold">{title}</h3>
+      <p className="al-text mt-4">{text}</p>
+      <p className="mt-5 font-semibold text-[var(--al-accent)]">
+        Core belief: “{belief}”
+      </p>
+    </div>
+  );
+}
+
+function ContentSection({
+  title,
+  children,
+  variant = "default",
+}: {
+  title: string;
+  children: React.ReactNode;
+  variant?: "default" | "accent";
+}) {
+  return (
+    <section
+      className={`p-8 ${
+        variant === "accent" ? "al-accent-card" : "al-card"
+      }`}
+    >
+      <h2 className="al-heading-md mb-6">{title}</h2>
+      {children}
+    </section>
+  );
 }

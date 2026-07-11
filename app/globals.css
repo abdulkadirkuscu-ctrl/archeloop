@@ -1,77 +1,226 @@
 @import "tailwindcss";
 
 :root {
-  --background: #03070d;
-  --foreground: #f6f1e7;
+/* =====================================================
+   ARCHELOOP PALETTE — MIRAGE REFINED v1.0
+===================================================== */
 
-  --archeloop-night: #03070d;
-  --archeloop-deep: #07111b;
-  --archeloop-surface: #0b1420;
-  --archeloop-surface-soft: #101b2a;
+--al-bg: #101218;
+--al-bg-soft: #171B24;
 
-  --archeloop-light: #d8b778;
-  --archeloop-dawn: #f0d58a;
-  --archeloop-mist: #aeb8c6;
-  --archeloop-muted: #7f8a99;
+--al-surface: #202633;
+--al-surface-soft: #293140;
+--al-surface-deep: #353F50;
 
-  --archeloop-purple: #241a36;
-  --archeloop-teal: #153f4a;
-  --archeloop-sage: #27382f;
+--al-text: #F5F3EE;
+--al-text-soft: #D9D6CF;
+--al-text-muted: #9FA3AB;
 
-  --archeloop-border: rgba(216, 183, 120, 0.14);
-  --archeloop-glow: rgba(216, 183, 120, 0.12);
+/* Brand / guidance — refined sapphire */
+
+--al-accent: #6687E8;
+--al-accent-soft: #8CA5F0;
+--al-accent-deep: #4664BD;
+
+/* Interruption / transformation — blue violet */
+
+--al-secondary: #8580D8;
+--al-secondary-soft: #A49FE8;
+--al-secondary-deep: #625DB0;
+
+/* Integration / value — soft champagne */
+
+--al-tertiary: #D9B96F;
+--al-tertiary-soft: #E8CF98;
+--al-tertiary-deep: #A88A45;
+
+/* Understand • Interrupt • Integrate */
+
+--al-understand: #6687E8;
+--al-understand-soft: #8CA5F0;
+--al-understand-deep: #4664BD;
+
+--al-interrupt: #7FAE78;
+--al-interrupt-soft: #A2C79C;
+--al-interrupt-deep: #587A53;
+
+--al-integrate: #E0C77E;
+--al-integrate-soft: #EDDAA5;
+--al-integrate-deep: #AC914D;
+
+/* Light and atmosphere */
+
+--al-glow: rgba(102, 135, 232, 0.20);
+
+--al-border: rgba(245, 243, 238, 0.10);
+--al-border-strong: rgba(245, 243, 238, 0.19);
+
+--al-shadow: rgba(0, 0, 0, 0.48);
+--al-shadow-strong: rgba(0, 0, 0, 0.72);
+
+/* Archetype colours */
+
+--fire: #D9B96F;
+--air: #8CA5F0;
+--water: #8580D8;
+--earth: #718174;
+
+/* Button text */
+
+--al-action-text: #FFFFFF;
+
+/* =====================================================
+   BRAND IDENTITY COLOURS — PALETTE AWARE
+===================================================== */
+
+/* ArcheLoop remains one consistent colour */
+
+--al-brand-start: var(--al-button);
+--al-brand-middle: var(--al-button);
+--al-brand-end: var(--al-button);
+
+/* Three stages of the journey */
+
+--al-understand-soft: #8CA5F0;
+--al-understand-deep: #4664BD;
+
+--al-interrupt-soft: #96CDB9;
+--al-interrupt-deep: #4F876F;
+
+--al-integrate-soft: #EDDAA5;
+--al-integrate-deep: #AC914D;
+
+ /* =====================================================
+   SEMANTIC UI COLOURS
+===================================================== */
+
+/* Primary action and brand */
+
+--al-button: var(--al-accent);
+--al-button-hover: var(--al-accent-deep);
+--al-button-text: var(--al-action-text);
+
+/* Links */
+
+--al-link: var(--al-accent-soft);
+--al-link-hover: var(--al-tertiary);
+
+/* Headings and emphasis */
+
+--al-heading-highlight: var(--al-accent);
+--al-quote: var(--al-tertiary);
+
+/* Progress and numbers */
+
+--al-progress: var(--al-accent);
+--al-progress-end: var(--al-tertiary);
+--al-number: var(--al-tertiary);
+
+/* Pricing */
+
+--al-price: var(--al-tertiary);
+
+/* Cards, icons and badges */
+
+--al-card-highlight: var(--al-accent);
+--al-icon: var(--al-accent-soft);
+--al-badge: var(--al-secondary);
+--al-tag: var(--al-interrupt);
+
+/* Borders */
+
+--al-border-highlight: var(--al-accent-soft);
+
+ /* =====================================================
+   HEADER & FOOTER (Palette Aware)
+===================================================== */
+
+/* Header */
+
+--al-header-bg: color-mix(
+  in srgb,
+  var(--al-bg) 88%,
+  transparent
+);
+
+--al-header-text: var(--al-text);
+--al-header-muted: var(--al-text-muted);
+--al-header-border: var(--al-border);
+--al-header-hover: var(--al-secondary);
+
+/* Footer */
+
+--al-footer-bg: var(--al-bg-soft);
+--al-footer-surface: var(--al-surface);
+--al-footer-heading: var(--al-text);
+--al-footer-text: var(--al-text-soft);
+--al-footer-muted: var(--al-text-muted);
+--al-footer-link: var(--al-text-soft);
+--al-footer-link-hover: var(--al-secondary);
+--al-footer-border: var(--al-border);
+
+  /* Legacy compatibility */
+
+  --background: var(--al-bg);
+  --foreground: var(--al-text);
+
+  --night: var(--al-bg);
+  --mist: var(--al-surface);
+  --stone: var(--al-surface-deep);
+  --stone-soft: var(--al-surface);
+
+  --gold: var(--al-accent);
+  --gold-soft: var(--al-accent-soft);
+  --gold-deep: var(--al-accent-deep);
+  --dawn: var(--al-accent-soft);
+  --light: var(--al-text);
+
+  --archeloop-night: var(--al-bg);
+  --archeloop-deep: var(--al-bg-soft);
+  --archeloop-surface: var(--al-surface);
+  --archeloop-surface-soft: var(--al-surface-deep);
+  --archeloop-light: var(--al-accent);
+  --archeloop-dawn: var(--al-accent-soft);
+  --archeloop-mist: var(--al-text-muted);
+  --archeloop-muted: var(--al-text-muted);
+  --archeloop-border: var(--al-border);
+  --archeloop-border-soft: var(--al-border);
+  --archeloop-glow: var(--al-glow);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--al-bg);
+  --color-foreground: var(--al-text);
   --font-sans: var(--font-body);
   --font-heading: var(--font-heading);
 }
+/* =====================================================
+   BASE
+===================================================== */
 
 html {
   font-size: 93.75%;
-  background: var(--background);
+  background: var(--al-bg);
   scroll-behavior: smooth;
 }
 
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 50% 0%, rgba(216, 183, 120, 0.14), transparent 28%),
-    radial-gradient(circle at 18% 24%, rgba(36, 26, 54, 0.34), transparent 34%),
-    radial-gradient(circle at 82% 18%, rgba(21, 63, 74, 0.22), transparent 34%),
-    radial-gradient(circle at 50% 72%, rgba(216, 183, 120, 0.05), transparent 38%),
-    linear-gradient(180deg, #03070d 0%, #07111b 42%, #03070d 100%);
-  color: var(--foreground);
+    radial-gradient(circle at 50% 0%, var(--al-glow), transparent 30%),
+    linear-gradient(
+      180deg,
+      var(--al-bg) 0%,
+      var(--al-bg-soft) 52%,
+      var(--al-bg) 100%
+    );
+  color: var(--al-text);
   font-family: var(--font-body);
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.035), transparent 35%),
-    radial-gradient(circle at 50% 10%, rgba(216, 183, 120, 0.07), transparent 30%),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.018), transparent 45%);
-  filter: blur(22px);
-}
-
+body::before,
 body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.22;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(circle at top, black, transparent 72%);
+  display: none;
 }
 
 h1,
@@ -82,7 +231,7 @@ h5,
 h6 {
   font-family: var(--font-heading);
   letter-spacing: -0.045em;
-  color: var(--foreground);
+  color: var(--al-text);
 }
 
 p {
@@ -90,62 +239,270 @@ p {
 }
 
 ::selection {
-  background: rgba(216, 183, 120, 0.35);
-  color: #f6f1e7;
+  background: var(--al-glow);
+  color: var(--al-text);
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
+/* =====================================================
+   MOTION
+===================================================== */
+
+@keyframes alFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
   }
 
-  50% {
-    transform: translateY(-8px);
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes alFloatGlow {
+  0% {
+    transform: translateY(24px) scale(0.8);
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 1;
   }
 
   100% {
-    transform: translateY(0px);
+    transform: translateY(-80px) scale(1.15);
+    opacity: 0;
   }
 }
 
-.al-section {
-  padding: 7rem 1.5rem;
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.al-page {
+  background: var(--al-bg);
+  color: var(--al-text);
 }
 
-.al-container {
+.al-section {
+  padding: 5.5rem 1.5rem;
+}
+
+.al-section-tight {
+  padding: 3.75rem 1.5rem;
+}
+
+.al-container,
+.al-container-wide {
   width: 100%;
+  max-width: 74rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+
+/* =====================================================
+   TYPOGRAPHY
+===================================================== */
+
+.al-kicker {
+  font-size: 0.78rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--al-heading-highlight);
+  font-weight: 700;
+}
+
+.al-heading-xl {
+  margin-top: 1.25rem;
+  font-size: clamp(1.85rem, 3.6vw, 3rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: var(--al-text);
+  text-wrap: balance;
+}
+
+.al-heading-lg {
+  margin-top: 1.25rem;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: var(--al-text);
+}
+
+.al-heading-md {
+  margin-top: 1rem;
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
+  line-height: 1.15;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  color: var(--al-text);
+}
+
+.al-text-lg {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.75;
+  color: var(--al-text-soft);
+}
+
+.al-text {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--al-text-muted);
+}
+
+.al-muted {
+  color: var(--al-text-muted);
+}
+
+.al-highlight,
+.al-accent,
+.al-gold {
+  color: var(--al-accent);
+}
+
+.al-primary-text {
+  color: var(--al-text);
+}
+
+/* =====================================================
+   HERO / GLOW
+===================================================== */
+
+.al-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 1.5rem 5rem;
+  text-align: center;
+}
+
+.al-hero-card {
   max-width: 72rem;
   margin: 0 auto;
+  border: 1px solid var(--al-border);
+  border-radius: 3rem;
+  background:
+    radial-gradient(circle at top, var(--al-glow), transparent 46%),
+    linear-gradient(180deg, var(--al-surface-soft), var(--al-bg-soft));
+  box-shadow: 0 30px 90px var(--al-shadow);
+  padding: 3.5rem 2rem;
+}
+
+.al-hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at top, var(--al-glow), transparent 42%);
+}
+
+.al-breakthrough-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at center,
+      var(--al-glow),
+      transparent 35%,
+      transparent 70%
+    );
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.al-card,
+.al-soft-card,
+.al-premium-card,
+.al-stone-card {
+  border: 1px solid var(--al-border);
+  color: var(--al-text);
+  border-radius: 2rem;
+  box-shadow: 0 24px 70px var(--al-shadow);
 }
 
 .al-card {
-  border: 1px solid var(--archeloop-border);
-  background: rgba(11, 20, 32, 0.78);
-  border-radius: 2rem;
-  box-shadow: 0 0 70px rgba(216, 183, 120, 0.06);
+  background: var(--al-surface);
 }
 
-.al-kicker {
-  font-size: 0.8rem;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: rgba(216, 183, 120, 0.68);
+.al-soft-card {
+  background: var(--al-surface-soft);
 }
+
+.al-stone-card {
+  background: var(--al-surface-deep);
+}
+
+.al-premium-card {
+  border-radius: 2.5rem;
+  background:
+    radial-gradient(circle at top, var(--al-glow), transparent 52%),
+    linear-gradient(180deg, var(--al-surface-soft), var(--al-surface));
+}
+
+.al-accent-card {
+  border: 1px solid var(--al-accent);
+  background: var(--al-accent);
+  color: var(--al-bg);
+  border-radius: 2rem;
+  box-shadow: 0 24px 70px var(--al-glow);
+}
+
+.al-pill,
+.al-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--al-border);
+  border-radius: 999px;
+  background: var(--al-surface-soft);
+  color: var(--al-text-soft);
+}
+
+.al-pill {
+  padding: 1rem 1.4rem;
+}
+
+.al-badge {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
 
 .al-button-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: var(--archeloop-light);
-  color: var(--archeloop-night);
-  font-weight: 700;
+  border: 1px solid var(--al-button-hover);
+  background: var(--al-button);
+  color: var(--al-button-text);
+  font-weight: 800;
   padding: 1rem 2rem;
-  transition: all 220ms ease;
+  box-shadow:
+  0 16px 38px rgba(102, 135, 232, 0.24),
+  inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .al-button-primary:hover {
-  background: var(--archeloop-dawn);
+  background: var(--al-button-hover);
+  border-color: var(--al-button-hover);
+  transform: translateY(-2px);
+  box-shadow:
+  0 22px 55px rgba(102, 135, 232, 0.34),
+  inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .al-button-secondary {
@@ -153,15 +510,1118 @@ p {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  border: 1px solid rgba(216, 183, 120, 0.22);
-  background: rgba(255, 255, 255, 0.035);
-  color: var(--foreground);
-  font-weight: 700;
+  border: 1px solid var(--al-border-strong);
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--al-text);
+  font-weight: 750;
   padding: 1rem 2rem;
-  transition: all 220ms ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
 }
 
-.al-button-secondary:hover {
-  border-color: rgba(216, 183, 120, 0.6);
-  color: var(--archeloop-dawn);
+.al-button-secondary:hover,
+.al-button-secondary:focus-visible {
+  border-color: var(--al-accent-soft);
+  background: rgba(102, 135, 232, 0.10);
+  color: var(--al-accent-soft);
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 38px rgba(102, 135, 232, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+.al-button-secondary:active {
+  border-color: var(--al-accent);
+  background: rgba(102, 135, 232, 0.16);
+  color: var(--al-text);
+  transform: translateY(0);
+}
+
+/* =====================================================
+   FORMS
+===================================================== */
+
+.al-input,
+.al-textarea,
+.al-select {
+  width: 100%;
+  border-radius: 1.5rem;
+  border: 1px solid var(--al-border);
+  background: var(--al-surface-soft);
+  color: var(--al-text);
+  padding: 1rem 1.25rem;
+  outline: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.al-input::placeholder,
+.al-textarea::placeholder {
+  color: var(--al-text-muted);
+}
+
+.al-input:focus,
+.al-textarea:focus,
+.al-select:focus {
+  border-color: var(--al-accent);
+  box-shadow: 0 0 0 4px var(--al-glow);
+}
+
+.al-textarea {
+  min-height: 12rem;
+  resize: vertical;
+}
+
+/* =====================================================
+   PROGRESS / METRICS
+===================================================== */
+
+.al-progress-track {
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--al-surface-deep);
+}
+
+.al-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--al-progress),
+    var(--al-secondary),
+    var(--al-progress-end)
+  );
+  box-shadow: 0 0 22px var(--al-glow);
+}
+
+.al-stat-card {
+  border: 1px solid var(--al-border);
+  border-radius: 2rem;
+  background: var(--al-surface);
+  color: var(--al-text);
+  padding: 1.5rem;
+  box-shadow: 0 24px 70px var(--al-shadow);
+}
+
+.al-info-card {
+  border: 1px solid var(--al-border);
+  border-radius: 1.5rem;
+  background: var(--al-surface-soft);
+  padding: 1.25rem;
+}
+
+/* =====================================================
+   OVERLAYS
+===================================================== */
+
+.al-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* =====================================================
+   DIVIDERS / DECORATION
+===================================================== */
+
+.al-philosophy-strip {
+  max-width: 64rem;
+  margin: 0 auto;
+  border-top: 1px solid var(--al-border);
+  border-bottom: 1px solid var(--al-border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.al-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--al-border-strong),
+    transparent
+  );
+}
+
+.al-fade-in {
+  animation: alFadeIn 900ms ease both;
+}
+
+/* Editorial emphasis */
+
+.al-serif-italic {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.al-word-mark {
+  display: block;
+  font-size: clamp(3rem, 9vw, 8rem);
+  line-height: 0.85;
+  letter-spacing: -0.08em;
+}
+
+.al-word-small {
+  display: block;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--al-text-muted);
+}
+
+/* Story sections */
+
+.al-shadow-section {
+  background:
+    radial-gradient(circle at top left, var(--al-glow), transparent 38%),
+    linear-gradient(180deg, var(--al-bg), var(--al-bg-soft));
+}
+
+.al-awareness-section {
+  background:
+    radial-gradient(circle at top right, var(--al-glow), transparent 34%),
+    var(--al-surface-soft);
+  color: var(--al-text);
+}
+
+.al-integration-section {
+  background:
+    linear-gradient(180deg, var(--al-surface), var(--al-bg-soft));
+  color: var(--al-text);
+}
+
+/* Kindle / page-turn feeling */
+
+.al-page-turn {
+  transform-origin: left center;
+  animation: alPageTurn 700ms cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+@keyframes alPageTurn {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateY(-8deg) translateX(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: perspective(1200px) rotateY(0deg) translateX(0);
+  }
+}
+
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 0.25s;
+  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* =====================================================
+   PREMIUM SYMBOLIC COLOUR SYSTEM
+===================================================== */
+
+.al-shadow-word {
+  color: var(--al-accent);
+}
+
+.al-awareness-word {
+  color: var(--al-secondary);
+}
+
+.al-integration-word {
+  color: var(--al-tertiary);
+}
+
+.al-secondary {
+  color: var(--al-secondary);
+}
+
+.al-tertiary {
+  color: var(--al-tertiary);
+}
+
+/* Safe solid emphasis */
+
+.al-emphasis {
+  color: var(--al-accent);
+  font-weight: 700;
+}
+
+.al-emphasis-awareness {
+  color: var(--al-secondary);
+  font-weight: 700;
+}
+
+.al-emphasis-integration {
+  color: var(--al-tertiary);
+  font-weight: 700;
+}
+
+/* Gradient text — use on full headings, not tiny inline words */
+
+.al-gradient-text {
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    var(--al-accent) 0%,
+    var(--al-secondary) 48%,
+    var(--al-tertiary) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Stable breakthrough text */
+
+.al-breakthrough {
+  display: inline-block;
+  color: var(--al-secondary);
+  -webkit-text-fill-color: var(--al-secondary);
+}
+
+/* =====================================================
+   SIGNATURE SLOGANS
+===================================================== */
+
+.al-slogan-band {
+  position: relative;
+  max-width: 58rem;
+  margin: 3.25rem auto;
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+}
+
+.al-slogan-band::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(36rem, 90%);
+  height: 12rem;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    var(--al-glow),
+    transparent 68%
+  );
+  opacity: 0.65;
+}
+
+.al-slogan-line {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(1.55rem, 2.7vw, 2.35rem);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+  color: var(--al-text);
+  text-wrap: balance;
+}
+
+.al-slogan-line em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--al-accent);
+}
+
+.al-slogan-line .al-awareness-word {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.al-slogan-line .al-integration-word {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.al-slogan-support {
+  position: relative;
+  z-index: 1;
+  max-width: 46rem;
+  margin: 1.5rem auto 0;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--al-text-muted);
+}
+
+/* Smaller mission statement */
+
+.al-mission-line {
+  font-family: var(--font-heading);
+  font-size: clamp(1.65rem, 3vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+  font-weight: 650;
+  color: var(--al-text);
+  text-wrap: balance;
+}
+
+.al-mission-line em {
+  color: var(--al-tertiary);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Underlined statement */
+
+.al-statement-underline {
+  position: relative;
+  display: inline-block;
+  color: var(--al-text);
+}
+
+.al-statement-underline::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -0.3em;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--al-accent),
+    var(--al-secondary),
+    var(--al-tertiary)
+  );
+}
+
+/* =====================================================
+   STORY / SECTION COLOUR MOMENTS
+===================================================== */
+
+.al-section-shadow {
+  background:
+    radial-gradient(circle at 12% 10%, var(--al-glow), transparent 34%),
+    linear-gradient(180deg, var(--al-bg), var(--al-bg-soft));
+}
+
+.al-section-awareness {
+  background:
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(166, 93, 120, 0.14),
+      transparent 34%
+    ),
+    var(--al-surface-soft);
+}
+
+.al-section-integration {
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(176, 141, 79, 0.14),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      var(--al-surface),
+      var(--al-bg-soft)
+    );
+}
+
+.al-accent-rule {
+  width: 5rem;
+  height: 3px;
+  margin: 1.5rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--al-accent),
+    var(--al-secondary),
+    var(--al-tertiary)
+  );
+}
+
+/* =====================================================
+   INTERACTIVE STATES
+===================================================== */
+
+.al-choice {
+  border: 1px solid var(--al-border);
+  background: var(--al-surface);
+  color: var(--al-text);
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.al-choice:hover {
+  border-color: var(--al-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 45px var(--al-shadow);
+}
+
+.al-choice-active {
+  border-color: var(--al-accent);
+  background: var(--al-accent);
+  color: #fff;
+  box-shadow: 0 18px 45px var(--al-glow);
+}
+
+/* =====================================================
+   SMALL VISUAL DETAILS
+===================================================== */
+
+.al-sigil-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at top,
+    var(--al-glow),
+    transparent 60%
+  );
+}
+
+.al-dot-glow {
+  box-shadow: 0 0 12px var(--al-glow);
+}
+
+.al-living-light {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 20%),
+      var(--al-glow),
+      transparent 45%
+    );
+  opacity: 0.7;
+  transition: opacity 250ms ease;
+}
+
+/* =====================================================
+   ARCHELOOP BRAND IDENTITY
+===================================================== */
+
+.al-brand-name {
+  display:inline-block;
+
+  font-family:var(--font-heading);
+
+  font-size:1.35rem;
+
+  font-weight:800;
+
+  letter-spacing:-0.05em;
+
+  color:var(--al-button);
+
+  transition:all .25s ease;
+}
+
+.al-brand-name:hover{
+    color:var(--al-button-hover);
+}
+
+.al-brand-tagline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.7rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.al-understand-word {
+  color: var(--al-understand);
+}
+
+.al-interrupt-word {
+  color: var(--al-interrupt);
+}
+
+.al-integrate-word {
+  color: var(--al-integrate);
+}
+
+.al-brand-divider {
+  color: var(--al-text-muted);
+  opacity: 0.55;
+}
+
+/* Mission statement */
+
+.al-brand-mission {
+  position: relative;
+  display: inline-block;
+  max-width: 48rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.7rem, 3vw, 2.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  color: var(--al-text);
+  text-wrap: balance;
+}
+
+.al-brand-mission em {
+  color: var(--al-integrate);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.al-brand-mission-footer {
+  max-width: 32rem;
+  color: var(--al-text-soft);
+  font-family: var(--font-heading);
+  font-size: clamp(1.02rem, 1.35vw, 1.18rem);
+  line-height: 1.75;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.al-brand-mission-footer em {
+  background: linear-gradient(
+    90deg,
+    var(--al-secondary),
+    var(--al-tertiary)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.al-brand-mission::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 2px;
+  margin: 1.5rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--al-understand),
+    var(--al-interrupt),
+    var(--al-integrate)
+  );
+}
+
+/* Header */
+
+.al-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background: color-mix(
+    in srgb,
+    var(--al-header-bg) 92%,
+    transparent
+  );
+
+  border-bottom: 1px solid var(--al-header-border);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  box-shadow: 0 8px 30px var(--al-shadow);
+}
+
+.al-nav-link {
+  color: var(--al-header-muted);
+  transition: color 180ms ease;
+}
+
+.al-nav-link:hover,
+.al-nav-link-active {
+  color: var(--al-header-hover);
+}
+
+/* Footer */
+
+.al-site-footer {
+  border-top: 1px solid var(--al-footer-border);
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(214, 178, 110, 0.08),
+      transparent 35%
+    ),
+    var(--al-footer-bg);
+  color: var(--al-footer-text);
+}
+
+.al-footer-heading {
+  color: var(--al-footer-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.al-footer-link {
+  color: var(--al-footer-link);
+  transition: color 180ms ease;
+}
+
+.al-footer-link:hover {
+  color: var(--al-footer-link-hover);
+}
+
+.al-footer-description {
+  color: var(--al-footer-text);
+  line-height: 1.75;
+}
+
+.al-footer-copyright {
+  color: var(--al-footer-muted);
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.al-footer-disclaimer {
+  max-width: 58rem;
+  color: var(--al-footer-muted);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+  .al-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .al-section-tight {
+  padding: 3.75rem 1.5rem;
+}
+
+  .al-hero {
+    padding: 5rem 1.25rem 4rem;
+  }
+
+  .al-hero-card {
+    border-radius: 2rem;
+    padding: 3rem 1.5rem;
+  }
+
+  .al-button-primary,
+  .al-button-secondary {
+    width: 100%;
+  }
+
+  .al-slogan-band {
+    margin: 3.5rem auto;
+    padding-inline: 0;
+  }
+
+ .al-slogan-line {
+  font-size: clamp(1.65rem, 7.5vw, 2.4rem);
+}
+
+ .al-mission-line {
+  font-size: clamp(1.45rem, 2.5vw, 2.3rem);
+}
+}
+/* =====================================================
+   HOMEPAGE / SHARED COMPOSITION
+===================================================== */
+
+.al-tagline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem 1rem;
+  margin-top: 1.5rem;
+  font-size: clamp(0.82rem, 1.6vw, 1.05rem);
+  line-height: 1.4;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.al-tagline-divider {
+  color: var(--al-text-muted);
+  opacity: 0.65;
+}
+
+.al-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+/* =====================================================
+   LOOP CARDS
+===================================================== */
+
+.al-loop-group {
+  padding: 1rem;
+}
+
+.al-loop-card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--al-border);
+  border-radius: 1.5rem;
+  background: var(--al-surface-soft);
+  color: var(--al-text);
+  text-align: left;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.al-loop-card:hover {
+  border-color: var(--al-border-highlight);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 55px var(--al-shadow);
+}
+
+.al-loop-image {
+  position: relative;
+  width: 100%;
+  height: 7rem;
+  overflow: hidden;
+}
+
+.al-loop-image img {
+  object-fit: cover;
+}
+
+.al-loop-card-title {
+  margin: 0;
+  padding: 0.8rem;
+  color: var(--al-text);
+  font-weight: 700;
+  transition: color 180ms ease;
+}
+
+.al-loop-card:hover .al-loop-card-title {
+  color: var(--al-link-hover);
+}
+
+/* =====================================================
+   INTEGRATION JOURNEY HIERARCHY
+===================================================== */
+
+.al-loop-name {
+  color: var(--al-text);
+  font-size: 1.25rem;
+  line-height: 1.25;
+  font-weight: 750;
+}
+
+.al-path-label {
+  color: var(--al-text-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.al-path-name {
+  display: inline-block;
+  margin-top: 0.45rem;
+  color: var(--al-interrupt);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  line-height: 1.15;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.al-integrated-label {
+  margin-top: 1.25rem;
+  color: var(--al-text-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.al-integrated-state {
+  margin-top: 0.35rem;
+  color: var(--al-integrate);
+  font-size: 1.05rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.al-journey-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  color: var(--al-link);
+  font-size: 0.9rem;
+  font-weight: 750;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.al-journey-link:hover {
+  color: var(--al-link-hover);
+  transform: translateX(3px);
+}
+
+/* =====================================================
+   FEATURES / JOURNEY
+===================================================== */
+
+.al-feature-item,
+.al-feature-row {
+  border: 1px solid var(--al-border);
+  border-radius: 1.25rem;
+  background: var(--al-surface-soft);
+  color: var(--al-text-soft);
+  padding: 1.1rem 1.25rem;
+}
+
+.al-journey-card {
+  border: 1px solid var(--al-border);
+  border-radius: 2rem;
+  background: var(--al-surface);
+  color: var(--al-text);
+  padding: 1.5rem;
+  box-shadow: 0 24px 70px var(--al-shadow);
+}
+
+.al-number-badge {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--al-border-highlight);
+  border-radius: 999px;
+  background: var(--al-surface-soft);
+  color: var(--al-number);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.al-journey-title {
+  color: var(--al-heading-highlight);
+  font-size: 1.25rem;
+  line-height: 1.25;
+  font-weight: 700;
+}
+/* =====================================================
+   INTEGRATION JOURNEY HIERARCHY — COMPACT
+===================================================== */
+
+.al-integration-preview-card {
+  display: block;
+  padding: 1.15rem 1.2rem;
+  border: 1px solid var(--al-border);
+  border-radius: 1.15rem;
+  background:
+    linear-gradient(
+      180deg,
+      var(--al-surface-soft),
+      var(--al-surface)
+    );
+  color: var(--al-text);
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.al-integration-preview-card:hover {
+  border-color: var(--al-border-highlight);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 38px var(--al-shadow);
+}
+
+.al-loop-name {
+  color: var(--al-text-soft);
+  font-size: 0.96rem;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.al-path-block {
+  margin-top: 0.85rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid color-mix(
+    in srgb,
+    var(--al-interrupt) 32%,
+    transparent
+  );
+  border-radius: 0.85rem;
+  background: color-mix(
+    in srgb,
+    var(--al-interrupt) 8%,
+    transparent
+  );
+}
+
+.al-path-label {
+  color: var(--al-text-muted);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.al-path-name {
+  margin-top: 0.3rem;
+  color: var(--al-interrupt-soft);
+  font-family: var(--font-heading);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.12;
+  font-style: italic;
+  font-weight: 750;
+}
+
+.al-integration-divider {
+  width: 100%;
+  height: 1px;
+  margin: 1rem 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--al-border),
+    transparent
+  );
+}
+
+.al-integrated-label {
+  color: var(--al-text-muted);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.al-integrated-state {
+  margin-top: 0.25rem;
+  color: var(--al-integrate);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.al-journey-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  color: var(--al-link);
+  font-size: 0.82rem;
+  font-weight: 750;
+  transition:
+    color 180ms ease,
+    gap 180ms ease;
+}
+
+.al-integration-preview-card:hover .al-journey-link {
+  gap: 0.6rem;
+  color: var(--al-link-hover);
+}
+
+/* =====================================================
+   PRICING
+===================================================== */
+
+.al-product-title {
+  margin-top: 1rem;
+  color: var(--al-heading-highlight);
+  font-size: clamp(1.8rem, 3vw, 2.25rem);
+  line-height: 1.05;
+  font-weight: 750;
+}
+
+.al-price-current {
+  margin-top: 0.35rem;
+  color: var(--al-price);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1;
+  font-weight: 800;
+}
+
+.al-price-old {
+  color: var(--al-text-muted);
+  font-size: 0.9rem;
+}
+
+.al-price-old span {
+  color: inherit;
+  text-decoration-line: line-through;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: currentColor;
+}
+
+.al-price-note {
+  margin-top: 0.65rem;
+  color: var(--al-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   CTA PANEL
+===================================================== */
+
+.al-cta-panel {
+  border: 1px solid var(--al-border-highlight);
+  border-radius: 2.5rem;
+  background:
+    radial-gradient(circle at top, var(--al-glow), transparent 52%),
+    linear-gradient(180deg, var(--al-surface-soft), var(--al-surface));
+  padding: clamp(2rem, 5vw, 4rem);
+  text-align: center;
+  box-shadow: 0 30px 90px var(--al-shadow);
+}
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

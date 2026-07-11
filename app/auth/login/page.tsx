@@ -3,8 +3,7 @@
 import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
+import PageShell from "../../components/PageShell";
 import { supabaseClient } from "../../../lib/supabaseClient";
 
 export default function LoginPage() {
@@ -46,74 +45,77 @@ function LoginContent() {
   }
 
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
+    <PageShell>
+      <section className="al-section">
+        <div className="al-container max-w-xl">
+          <div className="al-card p-8">
+            <p className="al-kicker">Login</p>
 
-      <section className="px-6 py-24">
-        <div className="mx-auto max-w-xl rounded-[2rem] border border-yellow-300/20 bg-[#0B1018] p-8">
-          <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/70">
-            Login
-          </p>
+            <h1 className="al-heading-lg">Welcome back</h1>
 
-          <h1 className="mt-4 text-4xl font-bold">Welcome back</h1>
+            <p className="al-text mt-4">
+              Log in to access your ArcheLoop report, integration progress,
+              trigger history, and monthly reviews.
+            </p>
 
-          <p className="mt-4 text-stone-300">
-            Log in to access your ArcheLoop report, integration progress,
-            trigger history, and monthly reviews.
-          </p>
+            <form onSubmit={handleLogin} className="mt-8 space-y-4">
+              <input
+                type="email"
+                required
+                placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-2xl border border-[var(--al-border)] bg-[var(--al-bg-soft)] px-5 py-4 text-[var(--al-text)] placeholder:text-[var(--al-text-muted)] outline-none transition focus:border-[var(--al-accent)]"
+              />
 
-          <form onSubmit={handleLogin} className="mt-8 space-y-4">
-            <input
-              type="email"
-              required
-              placeholder="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-2xl border border-zinc-700 bg-black px-5 py-4 text-white outline-none focus:border-yellow-300"
-            />
+              <input
+                type="password"
+                required
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full rounded-2xl border border-[var(--al-border)] bg-[var(--al-bg-soft)] px-5 py-4 text-[var(--al-text)] placeholder:text-[var(--al-text-muted)] outline-none transition focus:border-[var(--al-accent)]"
+              />
 
-            <input
-              type="password"
-              required
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-2xl border border-zinc-700 bg-black px-5 py-4 text-white outline-none focus:border-yellow-300"
-            />
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full rounded-full bg-yellow-300 px-6 py-4 font-semibold text-black transition hover:bg-yellow-200 disabled:opacity-60"
-            >
-              {loading ? "Logging In..." : "Log In"}
-            </button>
-          </form>
-
-          {message && <p className="mt-5 text-sm text-yellow-200">{message}</p>}
-
-          <div className="mt-6 space-y-2 text-sm text-stone-400">
-            <p>
-              New to ArcheLoop?{" "}
-              <Link
-                href={`/auth/signup?redirectTo=${encodeURIComponent(redirectTo)}`}
-                className="text-yellow-300"
+              <button
+                type="submit"
+                disabled={loading}
+                className="al-button-primary w-full disabled:opacity-60"
               >
-                Create an account
-              </Link>
-            </p>
+                {loading ? "Logging In..." : "Log In"}
+              </button>
+            </form>
 
-            <p>
-              Forgot your password?{" "}
-              <Link href="/auth/reset-password" className="text-yellow-300">
-                Reset password
-              </Link>
-            </p>
+            {message && (
+              <p className="mt-5 text-sm text-[var(--al-accent)]">
+                {message}
+              </p>
+            )}
+
+            <div className="al-muted mt-6 space-y-2 text-sm">
+              <p>
+                New to ArcheLoop?{" "}
+                <Link
+                  href={`/auth/signup?redirectTo=${encodeURIComponent(redirectTo)}`}
+                  className="font-semibold text-[var(--al-accent)]"
+                >
+                  Create an account
+                </Link>
+              </p>
+
+              <p>
+                Forgot your password?{" "}
+                <Link
+                  href="/auth/reset-password"
+                  className="font-semibold text-[var(--al-accent)]"
+                >
+                  Reset password
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </PageShell>
   );
 }

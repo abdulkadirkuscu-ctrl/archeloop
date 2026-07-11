@@ -1,5 +1,4 @@
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
+import PageShell from "./components/PageShell";
 import Image from "next/image";
 
 const shadowLoopPreview = [
@@ -49,57 +48,56 @@ const patterns = [
 ];
 
 const discoveries = [
-  "Your Primary Shadow Loop™",
-  "Your Secondary Shadow Loop™",
+  "Your Primary Shadow Loop",
+  "Your Secondary Shadow Loop",
   "Your Archetype & Element",
   "Your Nervous System Pattern",
-  "Your Integrated Self™",
-  "Your Personalised ArcheLoop Report™",
+  "Your Integrated Self",
+  "Your Personalised ArcheLoop Report",
 ];
 
 const userJourney = [
   {
     number: "1",
     title: "Discover What Keeps Repeating",
-    text: "Complete the 60-question assessment and identify the unconscious Shadow Loop™ driving your reactions, relationships, decisions, and emotional patterns.",
+    text: "Complete the 60-question assessment and identify the unconscious Shadow Loop driving your reactions, relationships, decisions, and emotional patterns.",
   },
   {
     number: "2",
     title: "Understand Why It Happens",
-    text: "Receive your personalised ArcheLoop Report™ showing what activates the loop, how your nervous system responds, what belief keeps it alive, and what your Integrated Self™ looks like.",
+    text: "Receive your personalised ArcheLoop Report showing what activates the loop, how your nervous system responds, what belief keeps it alive, and what your Integrated Self looks like.",
   },
   {
     number: "3",
     title: "Catch It In Real Life",
-    text: "Use I Am Triggered™ to recognise your Shadow Loop™ when it appears in real situations, conversations, relationships, and emotional moments.",
+    text: "Use I Am Triggered to recognise your Shadow Loop when it appears in real situations, conversations, relationships, and emotional moments.",
   },
   {
     number: "4",
     title: "Interrupt The Pattern",
-    text: "Use ArcheLoop Integration™ to practise new responses before the old loop controls your choices.",
+    text: "Use ArcheLoop Integration to practise new responses before the old loop controls your choices.",
   },
   {
     number: "5",
     title: "Track What Activates You",
-    text: "See which people, environments, emotions, and situations trigger your Shadow Loop™ most often through your Progress Dashboard™ and Monthly Review™.",
+    text: "See which people, environments, emotions, and situations trigger your Shadow Loop most often through your Progress Dashboard and Monthly Review.",
   },
   {
     number: "6",
-    title: "Become Your Integrated Self™",
+    title: "Become Your Integrated Self",
     text: "Move from unconscious reaction into healthier choices, steadier responses, and the integrated state your loop points toward.",
   },
 ];
 
-
 const products = [
   {
     label: "Free",
-    title: "Explore ArcheLoop™",
+    title: "Explore ArcheLoop",
     priceType: "free",
     items: [
-      "The 12 Shadow Loops™",
+      "The 12 Shadow Loops",
       "Archetypes, Body Map, Nervous System & Practices",
-      "Basic I Am Triggered™",
+      "Basic I Am Triggered",
       "Educational self-development pages",
     ],
     href: "/loops",
@@ -107,250 +105,236 @@ const products = [
   },
   {
     label: "Recommended First Step",
-    title: "Find My Loop™",
+    title: "Find My Loop",
     priceType: "launch-report",
     items: [
-      "60-question Find My Loop™ assessment",
-      "Primary & Secondary Shadow Loops™",
+      "60-question Find My Loop assessment",
+      "Primary & Secondary Shadow Loops",
       "Archetype & Element",
       "Nervous System Pattern",
-      "Integrated Self™",
-      "Full ArcheLoop Report™",
+      "Integrated Self",
+      "Full ArcheLoop Report",
     ],
     href: "/assessment",
-    cta: "Find My Loop™",
+    cta: "Find My Loop",
   },
   {
     label: "Transformation",
-    title: "ArcheLoop Integration™",
-priceType: "launch-integration",
+    title: "ArcheLoop Integration",
+    priceType: "launch-integration",
     items: [
-      "Triggered Pro™",
-      "Progress Dashboard™",
-      "Integration Journeys™",
-      "My Integrated Vision™",
-      "Practices & Reflection Prompts™",
-      "Personal Integration Tracking™",
+      "Triggered Pro",
+      "Progress Dashboard",
+      "Integration Journeys",
+      "My Integrated Vision",
+      "Practices & Reflection Prompts",
+      "Personal Integration Tracking",
     ],
     href: "/integration",
-    cta: "Explore Integration™",
+    cta: "Explore Integration",
   },
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#030712] text-stone-100">
-      <Nav />
+<PageShell>
 
- <section className="relative overflow-hidden px-6 py-24 text-center">
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(216,183,120,0.18),transparent_42%)]" />
-
-  <div className="relative mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-    <p className="text-sm uppercase tracking-[0.4em] text-yellow-300/70">
-      ArcheLoop
-    </p>
-
-<p className="mt-4 text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-  Understand • Interrupt • Integrate
+      <section className="al-hero">
+        <div className="al-hero-card al-fade-in">
+        <p className="al-brand-tagline justify-center">
+  <span className="al-understand-word">Understand</span>
+  <span className="al-brand-divider">•</span>
+  <span className="al-interrupt-word">Interrupt</span>
+  <span className="al-brand-divider">•</span>
+  <span className="al-integrate-word">Integrate</span>
 </p>
 
-    <h1 className="mt-6 text-4xl font-bold leading-tight md:text-5xl">
-      Why do certain patterns
-      <br />
-      keep repeating?
-    </h1>
+          <h1 className="al-heading-xl">
+  Why do certain{" "}
+  <span className="al-serif-italic al-secondary">patterns</span>
+  <br />
+  keep repeating?
+</h1>
 
-    <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-stone-300 md:text-xl">
-  Discover your Shadow Loop.
+         <p className="al-text-lg mx-auto mt-8 max-w-2xl">
+  Discover the pattern behind what keeps repeating.
 </p>
 
-    <div className="mt-10 flex flex-wrap justify-center gap-4">
-      <a
-        href="/assessment"
-        className="rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-      >
-        Find My Loop™
-      </a>
+          <div className="al-actions">
+            <a href="/assessment" className="al-button-primary">
+              Find My Loop
+            </a>
 
-      <a
-        href="/triggered"
-        className="rounded-full border border-yellow-300/20 bg-black/30 px-8 py-4 text-lg font-semibold text-stone-300 transition hover:border-yellow-300/60 hover:text-yellow-200"
-      >
-        Try I Am Triggered™
-      </a>
-    </div>
+            <a href="/triggered" className="al-button-secondary">
+              Try I Am Triggered
+            </a>
+          </div>
+        </div>
+      </section>
 
-  </div>
-</section>
 
-<section className="px-6 py-12">
-  <div className="mx-auto max-w-5xl border-y border-yellow-300/10 py-12 text-center">
-    <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/70">
-      Understand • Interrupt • Integrate
-    </p>
+      <section className="al-section-tight">
+        <div className="al-philosophy-strip">
+         <p className="al-kicker">
+  <span className="al-shadow-word">Understand</span>
+  <span className="mx-2 al-muted">•</span>
+  <span className="al-awareness-word">Interrupt</span>
+  <span className="mx-2 al-muted">•</span>
+  <span className="al-integration-word">Integrate</span>
+</p>
 
-    <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-      ArcheLoop is an integrative archetypal self-awareness framework that
-      helps people recognise recurring Shadow Loops, interrupt automatic
-      reactions, and develop a more integrated way of being.
-    </p>
-
-    <p className="mx-auto mt-6 max-w-3xl text-lg font-semibold leading-relaxed text-yellow-300">
-      Helping people live from their Integrated Self.
-    </p>
-  </div>
-</section>
-
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_60px_rgba(216,183,120,0.06)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-            Start With What Feels Familiar
+          <p className="al-text-lg mx-auto mt-7 max-w-3xl">
+            ArcheLoop is an integrative archetypal self-awareness framework that
+            helps people recognise recurring Shadow Loops, interrupt automatic
+            reactions, and develop a more integrated way of being.
           </p>
 
-          <h2 className="mt-5 text-3xl font-bold md:text-4xl">
+ <div className="al-slogan-band">
+  <p className="al-slogan-line">
+    Helping people <em>live from their Integrated Self.</em>
+  </p>
+</div>
+        </div>
+      </section>
+
+      <section className="al-section">
+        <div className="al-container al-premium-card p-10 text-center">
+          <p className="al-kicker">Start With What Feels Familiar</p>
+
+          <h2 className="al-heading-md">
             Do any of these patterns feel familiar?
           </h2>
 
           <div className="mx-auto mt-12 flex max-w-4xl flex-wrap justify-center gap-4">
             {patterns.map((pattern) => (
-              <div
-                key={pattern}
-                className="rounded-full border border-yellow-300/10 bg-black/30 px-6 py-4 text-base text-stone-300 md:text-lg"
-              >
+              <div key={pattern} className="al-pill">
                 {pattern}
               </div>
             ))}
           </div>
 
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-stone-400">
-  These experiences may look different on the surface, but they often
-  reflect the same underlying protective pattern. ArcheLoop organises
-  these recurring patterns into twelve Shadow Loops so they become easier
-  to recognise and understand.
-</p>
+          <p className="al-text mx-auto mt-8 max-w-3xl">
+            These experiences may look different on the surface, but they often
+            reflect the same underlying protective pattern. ArcheLoop organises
+            these recurring patterns into twelve Shadow Loops so they become
+            easier to recognise and understand.
+          </p>
 
-          <a
-            href="/assessment"
-            className="mt-12 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-          >
-            Find My Loop™
+          <a href="/assessment" className="al-button-primary mt-12">
+            Find My Loop
           </a>
         </div>
       </section>
 
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_60px_rgba(216,183,120,0.06)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-            What Is A Shadow Loop™?
+      <section className="al-section">
+        <div className="al-container al-card p-10 text-center">
+          <p className="al-kicker">What Is A Shadow Loop?</p>
+
+          <p className="al-text-lg mx-auto mt-8 max-w-3xl">
+            A Shadow Loop is a recurring pattern of emotion, behaviour, and
+            nervous system activation that emerges when archetypal energies
+            collapse, compensate, or collide under pressure.
           </p>
 
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-stone-300">
-  A Shadow Loop is a recurring pattern of emotion, behaviour, and nervous
-  system activation that emerges when archetypal energies collapse,
-  compensate, or collide under pressure.
-</p>
+       <div className="al-slogan-band">
+  <p className="al-slogan-line">
+    You are not the <em>loop.</em>
+  </p>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
-  Shadow Loops are not flaws or identities. They are protective strategies
-  that once helped you adapt.
-</p>
+  <p className="al-slogan-support">
+    A Shadow Loop is a protective pattern, not your identity.
+  </p>
 
-<p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-stone-400">
-  ArcheLoop helps you recognise those patterns so you can understand them,
-  interrupt automatic reactions, and move toward your Integrated Self.
-</p>
+  <p className="al-text mx-auto mt-4 max-w-3xl">
+    It is an adaptive response that once helped you survive, protect, or cope
+    under pressure.
+  </p>
+</div>
 
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
-            Awareness is the beginning of integration.
+          <p className="al-text mx-auto mt-4 max-w-3xl">
+            ArcheLoop helps you recognise those patterns so you can understand
+            them, interrupt automatic reactions, and move toward your Integrated
+            Self.
           </p>
+
+     <div className="al-slogan-band">
+  <p className="al-slogan-line">
+    Awareness is the beginning of{" "}
+    <span className="al-awareness-word al-serif-italic">
+      integration.
+    </span>
+  </p>
+
+  <div className="al-accent-rule" />
+</div>
         </div>
       </section>
 
+     <section className="al-section">
+  <div className="al-container-wide al-premium-card p-10 text-center">
+    <p className="al-kicker">Discover the 12 Shadow Loops</p>
 
-<section className="px-6 py-20">
-  <div className="mx-auto max-w-7xl rounded-[2.5rem] border border-yellow-300/10 bg-[#0B1018] p-10 text-center shadow-[0_0_60px_rgba(216,183,120,0.06)]">
-    <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-      Discover the 12 Shadow Loops™
-    </p>
-
-    <h2 className="mt-5 text-3xl font-bold md:text-4xl">
+    <h2 className="al-heading-md">
       Every recurring pattern has a name.
     </h2>
 
-    <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-  ArcheLoop organises recurring protective patterns into twelve Shadow
-  Loops, making them easier to recognise, understand, and work with.
-</p>
+    <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+      ArcheLoop organises recurring protective patterns into twelve Shadow
+      Loops, making them easier to recognise, understand, and work with.
+    </p>
 
     <div className="mt-12 grid gap-5 lg:grid-cols-4">
-  {shadowLoopPreview.map((group) => (
-    <div
-      key={group.element}
-      className="rounded-[2rem] border border-yellow-300/10 bg-black/25 p-4"
-    >
-      <p className="mb-4 text-center text-sm uppercase tracking-[0.25em] text-yellow-300/60">
-        {group.element}
-      </p>
+      {shadowLoopPreview.map((group) => (
+        <div key={group.element} className="al-card al-loop-group">
+          <p className="al-kicker mb-4 text-center">{group.element}</p>
 
-      <div className="grid gap-3">
-        {group.loops.map((loop) => (
-          <a
-            key={loop.slug}
-            href={`/loops/${loop.slug}`}
-            className="group overflow-hidden rounded-[1.25rem] border border-yellow-300/10 bg-black/30 text-left transition hover:border-yellow-300/50"
-          >
-            <div className="relative h-28 overflow-hidden">
-              <Image
-                src={loop.image}
-                alt={loop.name}
-                fill
-                sizes="(max-width: 1024px) 100vw, 25vw"
-                className="object-cover opacity-90 transition duration-500 group-hover:scale-105"
-              />
-            </div>
+          <div className="grid gap-3">
+            {group.loops.map((loop) => (
+              <a
+                key={loop.slug}
+                href={`/loops/${loop.slug}`}
+                className="al-loop-card group"
+              >
+                <div className="al-loop-image">
+                  <Image
+                    src={loop.image}
+                    alt={loop.name}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 25vw"
+                    className="object-cover opacity-90 transition duration-500 group-hover:scale-105"
+                  />
+                </div>
 
-            <div className="p-3">
-              <h3 className="text-base font-semibold text-stone-100 group-hover:text-yellow-300">
-                {loop.name}
-              </h3>
-            </div>
-          </a>
-        ))}
-      </div>
+                <h3 className="al-loop-card-title">
+                  {loop.name}
+                </h3>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
-  ))}
-</div>
 
-    <a
-      href="/loops"
-      className="mt-10 inline-flex rounded-full border border-yellow-300/20 bg-yellow-300/10 px-8 py-4 font-semibold text-yellow-200 transition hover:border-yellow-300/60"
-    >
-      Explore All Shadow Loops™
+    <a href="/loops" className="al-button-secondary mt-10">
+      Explore All Shadow Loops
     </a>
   </div>
 </section>
 
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-6xl rounded-[2.5rem] border border-yellow-300/10 bg-gradient-to-br from-[#0B1018] via-[#050814] to-black p-10 text-center shadow-[0_0_70px_rgba(216,183,120,0.08)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-            What You’ll Discover
+      <section className="al-section">
+        <div className="al-container al-card p-10 text-center">
+          <p className="al-kicker">What You’ll Discover</p>
+
+          <h2 className="al-heading-md">What Find My Loop reveals.</h2>
+
+          <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+            Your assessment reveals the structure of your current pattern and
+            gives you a personalised ArcheLoop Report.
           </p>
-
-          <h2 className="mt-5 text-3xl font-bold md:text-4xl">
-  What Find My Loop reveals.
-</h2>
-
-<p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-  Your assessment reveals the structure of your current pattern and gives
-  you a personalised ArcheLoop Report.
-</p>
 
           <div className="mt-12 grid gap-5 text-left md:grid-cols-3">
             {discoveries.map((item) => (
-              <div
-                key={item}
-                className="rounded-2xl border border-yellow-300/10 bg-black/30 p-5 text-stone-300"
-              >
+              <div key={item} className="al-feature-item">
                 ✓ {item}
               </div>
             ))}
@@ -358,136 +342,117 @@ export default function Home() {
         </div>
       </section>
 
-
-
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-7xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.10)]">
+      <section className="al-section">
+        <div className="al-container-wide al-premium-card p-10">
           <div className="text-center">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-              How ArcheLoop™ Works
+            <p className="al-kicker">How ArcheLoop Works</p>
+
+           <h2 className="al-heading-md">
+  A clear path from{" "}
+  <span className="al-shadow-word">Shadow Loop</span> to{" "}
+  <span className="al-integration-word al-serif-italic">
+    Integrated Self.
+  </span>
+</h2>
+
+            <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+              ArcheLoop helps you move from “Why does this keep happening?” to
+              “I understand the pattern, I can interrupt it, and I can live from
+              my Integrated Self.”
             </p>
-
-            <h2 className="mt-5 text-3xl font-bold md:text-4xl">
-              A clear path from discovery to integration.
-            </h2>
-
-           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-300">
-  ArcheLoop helps you move from “Why does this keep happening?” to
-  “I understand the pattern, I can interrupt it, and I can live from my
-  Integrated Self.”
-</p>
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {userJourney.map((step) => (
-              <div
-                key={step.number}
-                className="rounded-[2rem] border border-yellow-300/10 bg-black/30 p-6 shadow-[0_0_35px_rgba(216,183,120,0.04)]"
-              >
-                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-yellow-300 text-sm font-bold text-black">
-                  {step.number}
-                </div>
+              <div key={step.number} className="al-journey-card">
+              <div className="al-number-badge">
+  {step.number}
+</div>
 
-                <h3 className="text-xl font-semibold text-yellow-300">
-                  {step.title}
-                </h3>
+                <h3 className="al-journey-title">
+  {step.title}
+</h3>
 
-                <p className="mt-3 leading-relaxed text-stone-300">
-                  {step.text}
-                </p>
+                <p className="al-text mt-3">{step.text}</p>
               </div>
             ))}
           </div>
 
           <div className="mt-12 text-center">
-            <a
-              href="/assessment"
-              className="inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-            >
-              Start With Find My Loop™
+            <a href="/assessment" className="al-button-primary">
+              Start With Find My Loop
             </a>
           </div>
         </div>
       </section>
 
+      <section className="al-section">
+        <div className="al-container al-premium-card p-10 text-center">
+          <p className="al-kicker">Meet Your Integrated Self</p>
 
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/20 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 text-center shadow-[0_0_80px_rgba(216,183,120,0.10)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-            Meet Your Integrated Self™
-          </p>
-
-          <h2 className="mt-5 text-3xl font-bold md:text-4xl">
-            You are not the loop.
-          </h2>
-
-          <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-           Every Shadow Loop points toward an integrated state: Healthy Visibility,
-Clear Thinking, Emotional Flow, Connected Strength, and more.
-          </p>
-
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-stone-400">
-  Your Integrated Self is not someone new. It is the part of you that
-  becomes more available as your Shadow Loops lose their grip.
+         <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+  Every Shadow Loop points toward an integrated state: Healthy Visibility,
+  Clear Thinking, Emotional Flow, Connected Strength, and more.
 </p>
 
-<p className="mx-auto mt-5 max-w-3xl text-lg font-semibold leading-relaxed text-yellow-300">
-  ArcheLoop helps you practise living from your Integrated Self.
+<p className="al-text mx-auto mt-6 max-w-3xl">
+  The goal is not to eliminate every Shadow Loop.
 </p>
 
-          <a
-            href="/integration"
-            className="mt-10 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-          >
-            Preview Integration Journeys™
+<p className="al-text mx-auto mt-4 max-w-3xl">
+  The goal is to recognise the pattern, strengthen your Integrated Self, and
+  spend more of your life living from it.
+</p>
+
+<div className="al-slogan-band">
+  <p className="al-mission-line">
+    Helping people{" "}
+    <em>live from their Integrated Self.</em>
+  </p>
+</div>
+
+          <a href="/integration" className="al-button-secondary mt-10">
+            Preview Integration Journeys
           </a>
         </div>
       </section>
 
-      <section className="px-6 py-20">
-        <div className="mx-auto max-w-7xl">
+      <section className="al-section">
+        <div className="al-container-wide">
           <div className="text-center">
-            <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-              Choose Your Path
-            </p>
+            <p className="al-kicker">Choose Your Path</p>
 
-            <h2 className="mt-5 text-3xl font-bold md:text-4xl">
-              Start where you are.
-            </h2>
+            <h2 className="al-heading-md">Start where you are.</h2>
 
-            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-              Explore ArcheLoop™ for free, discover your Shadow Loop™ with Find
-              My Loop™, or continue into ArcheLoop Integration™ for deeper
+            <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+              Explore ArcheLoop for free, discover your Shadow Loop with Find My
+              Loop, or continue into ArcheLoop Integration for deeper
               transformation.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {products.map((product) => (
-              <div
-                key={product.title}
-                className={`rounded-[2.5rem] p-8 shadow-[0_0_55px_rgba(216,183,120,0.06)] ${
-                  product.priceType === "launch-report"
-                    ? "border border-yellow-300/30 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black"
-                    : "border border-yellow-300/10 bg-[#0B1018]"
-                }`}
-              >
-                <p className="text-sm uppercase tracking-[0.3em] text-yellow-300/60">
-                  {product.label}
-                </p>
+             <div
+  key={product.title}
+  className={`p-8 ${
+    product.priceType === "launch-report"
+      ? "al-premium-card"
+      : "al-card"
+  }`}
+>
 
-                <h3 className="mt-4 text-3xl font-bold text-yellow-300">
-                  {product.title}
-                </h3>
+                <p className="al-kicker">{product.label}</p>
+
+               <h3 className="al-product-title">
+  {product.title}
+</h3>
 
                 <PricingBlock type={product.priceType} />
 
                 <ul className="mt-7 space-y-3">
                   {product.items.map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-2xl border border-yellow-300/10 bg-black/30 p-4 leading-relaxed text-stone-300"
-                    >
+                    <li key={item} className="al-soft-card p-4">
                       {item}
                     </li>
                   ))}
@@ -495,10 +460,10 @@ Clear Thinking, Emotional Flow, Connected Strength, and more.
 
                 <a
                   href={product.href}
-                  className={`mt-8 inline-flex rounded-full px-6 py-3 font-semibold transition ${
-                  product.priceType === "launch-report"
-                      ? "bg-yellow-300 text-black hover:bg-yellow-200"
-                      : "border border-yellow-300/20 bg-yellow-300/10 text-yellow-200 hover:border-yellow-300/60"
+                  className={`mt-8 ${
+                    product.priceType === "launch-report"
+                      ? "al-button-primary"
+                      : "al-button-secondary"
                   }`}
                 >
                   {product.cta}
@@ -509,42 +474,37 @@ Clear Thinking, Emotional Flow, Connected Strength, and more.
         </div>
       </section>
 
+      <section className="al-section text-center">
+        <div className="al-container al-cta-panel">
+          <p className="al-kicker">Begin Here</p>
 
-      <section className="px-6 py-20 text-center">
-        <div className="mx-auto max-w-5xl rounded-[2.5rem] border border-yellow-300/25 bg-gradient-to-br from-yellow-300/10 via-[#0B1018] to-black p-10 shadow-[0_0_80px_rgba(216,183,120,0.12)]">
-          <p className="text-sm uppercase tracking-[0.35em] text-yellow-300/60">
-            Begin Here
+          <h2 className="al-heading-md">
+  Discover the pattern behind what keeps repeating.
+</h2>
+
+          <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+            Start with Find My Loop and receive your personalised ArcheLoop
+            Report.
           </p>
 
-          <h2 className="mt-5 text-3xl font-bold md:text-4xl">
-            Discover the Shadow Loop™ you keep repeating.
-          </h2>
-
-          <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-stone-300">
-            Start with Find My Loop™ and receive your personalised ArcheLoop
-            Report™.
-          </p>
-
-          <a
-            href="/assessment"
-            className="mt-10 inline-flex rounded-full bg-yellow-300 px-8 py-4 text-lg font-semibold text-black transition hover:bg-yellow-200"
-          >
-            Find My Loop™
+          <a href="/assessment" className="al-button-primary mt-10">
+            Find My Loop
           </a>
         </div>
       </section>
 
-      <Footer />
-    </main>
+    </PageShell>
   );
 }
+
 function PricingBlock({ type }: { type: string }) {
   if (type === "free") {
     return (
       <div className="mt-4">
-        <p className="text-2xl font-semibold text-stone-100">£0</p>
-        <p className="mt-2 text-sm text-stone-400">
-          Free educational access and basic I Am Triggered™.
+        <p className="al-price-current">£0</p>
+
+        <p className="al-price-note">
+          Free educational access and basic I Am Triggered.
         </p>
       </div>
     );
@@ -553,13 +513,13 @@ function PricingBlock({ type }: { type: string }) {
   if (type === "launch-report") {
     return (
       <div className="mt-4">
-        <p className="text-sm text-stone-500">
-          Regular price <span className="line-through">£29</span>
+        <p className="al-price-old">
+          Regular price <span>£29</span>
         </p>
 
-        <p className="mt-1 text-3xl font-bold text-yellow-300">£19</p>
+        <p className="al-price-current">£19</p>
 
-        <p className="mt-2 text-sm text-stone-400">
+        <p className="al-price-note">
           Launch offer for early members.
         </p>
       </div>
@@ -568,13 +528,13 @@ function PricingBlock({ type }: { type: string }) {
 
   return (
     <div className="mt-4">
-      <p className="text-sm text-stone-500">
-        Regular price <span className="line-through">£29/month</span>
+      <p className="al-price-old">
+        Regular price <span>£29/month</span>
       </p>
 
-      <p className="mt-1 text-3xl font-bold text-yellow-300">£14.99/month</p>
+      <p className="al-price-current">£14.99/month</p>
 
-      <p className="mt-2 text-sm text-stone-400">
+      <p className="al-price-note">
         Launch offer for early members.
       </p>
     </div>
