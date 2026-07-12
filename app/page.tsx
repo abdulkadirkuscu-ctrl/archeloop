@@ -435,11 +435,11 @@ export default function Home() {
             {products.map((product) => (
              <div
   key={product.title}
-  className={`p-8 ${
-    product.priceType === "launch-report"
-      ? "al-premium-card"
-      : "al-card"
-  }`}
+ className={`al-pricing-card p-8 ${
+  product.priceType === "launch-report"
+    ? "al-premium-card"
+    : "al-card"
+}`}
 >
 
                 <p className="al-kicker">{product.label}</p>
@@ -496,11 +496,10 @@ export default function Home() {
     </PageShell>
   );
 }
-
 function PricingBlock({ type }: { type: string }) {
   if (type === "free") {
     return (
-      <div className="mt-4">
+      <div className="al-pricing-block">
         <p className="al-price-current">£0</p>
 
         <p className="al-price-note">
@@ -512,7 +511,7 @@ function PricingBlock({ type }: { type: string }) {
 
   if (type === "launch-report") {
     return (
-      <div className="mt-4">
+      <div className="al-pricing-block">
         <p className="al-price-old">
           Regular price <span>£29</span>
         </p>
@@ -527,7 +526,7 @@ function PricingBlock({ type }: { type: string }) {
   }
 
   return (
-    <div className="mt-4">
+    <div className="al-pricing-block">
       <p className="al-price-old">
         Regular price <span>£29/month</span>
       </p>

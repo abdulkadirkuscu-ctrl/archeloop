@@ -24,9 +24,9 @@ export default function TermsAndConditionsPage() {
         <div className="relative mx-auto mt-10 max-w-5xl space-y-6 al-card p-8">
           <Section title="1. About ArcheLoop">
             ArcheLoop is an educational self-development platform designed to
-            help users reflect on emotional patterns, archetypes, Shadow Loops™,
+            help users reflect on emotional patterns, archetypes, Shadow Loops,
             nervous system responses, relational dynamics, and Integration
-            Journeys™.
+            Journeys.
           </Section>
 
           <Section title="2. Not Medical or Therapeutic Advice">
@@ -44,8 +44,8 @@ export default function TermsAndConditionsPage() {
           </Section>
 
           <Section title="4. Assessment and Report Results">
-            ArcheLoop assessments, reports, Shadow Loop™ descriptions,
-            Integration Journeys™, and Triggered tools are reflective
+            ArcheLoop assessments, reports, Shadow Loop descriptions,
+            Integration Journeys, and Triggered tools are reflective
             frameworks. Results are based on your responses and should be
             interpreted as self-awareness prompts, not fixed labels or factual
             diagnoses.
@@ -66,16 +66,16 @@ export default function TermsAndConditionsPage() {
             when purchasing or accessing paid features.
           </Section>
 
-          <Section title="7. Triggered Pro™ and Saved Data">
+          <Section title="7. Triggered Pro and Saved Data">
             Some tools may save information in your browser or account, such as
             saved activations, trigger history, report data, Progress
-            Dashboard™, Monthly Reviews™, or integration reflections. If data is
+            Dashboard, Monthly Reviews, or integration reflections. If data is
             stored locally on your device, it may not be available on another
             browser or device.
           </Section>
 
           <Section title="8. Intellectual Property">
-            ArcheLoop™, Shadow Loops™, Integration Journeys™, written content,
+            ArcheLoop, Shadow Loops, Integration Journeys, written content,
             frameworks, designs, branding, reports, and related materials belong
             to ArcheLoop unless otherwise stated. You may not copy, reproduce,
             sell, publish, or redistribute ArcheLoop materials without written

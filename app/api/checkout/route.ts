@@ -9,17 +9,17 @@ const PRIVATE_ACCESS_CODES = ["FOUNDING50"];
 
 const products = {
   report: {
-    name: "Find My Loop™",
+    name: "Find My Loop",
     amount: 2900,
     mode: "payment" as const,
   },
   integration: {
-    name: "ArcheLoop Integration™",
+    name: "ArcheLoop Integration",
     amount: 2900,
     mode: "subscription" as const,
   },
   bundle: {
-    name: "Report + First Month Integration™",
+    name: "Report + First Month Integration",
     amount: 3900,
     mode: "payment" as const,
   },

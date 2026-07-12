@@ -8,52 +8,52 @@ const products = [
   {
     id: "report",
     label: "Recommended First Step",
-    title: "Find My Loop™",
+    title: "Find My Loop",
     subtitle: "Understand the pattern.",
     price: "£19",
     description:
-      "Launch offer. Includes the 60-question assessment and full personalised ArcheLoop Report™.",
+      "Launch offer. Includes the 60-question assessment and full personalised ArcheLoop Report.",
     items: [
-      "60-question Find My Loop™ assessment",
-      "Primary & Secondary Shadow Loops™",
+      "60-question Find My Loop assessment",
+      "Primary & Secondary Shadow Loops",
       "Archetype & Element",
       "Nervous System Pattern",
-      "Integrated Self™",
-      "Full ArcheLoop Report™",
+      "Integrated Self",
+      "Full ArcheLoop Report",
     ],
   },
   {
     id: "integration",
     label: "Transformation",
-    title: "ArcheLoop Integration™",
+    title: "ArcheLoop Integration",
     subtitle: "Transform the pattern.",
     price: "£14.99/month",
     description:
-      "Launch offer. Includes Triggered Pro™, Progress Dashboard™, Integration Journeys™, My Integrated Vision™, and personal tracking.",
+      "Launch offer. Includes Triggered Pro, Progress Dashboard, Integration Journeys, My Integrated Vision, and personal tracking.",
     items: [
-      "Triggered Pro™",
-      "Progress Dashboard™",
-      "Integration Journeys™",
-      "My Integrated Vision™",
-      "Monthly Review™",
-      "Personal Integration Tracking™",
+      "Triggered Pro",
+      "Progress Dashboard",
+      "Integration Journeys",
+      "My Integrated Vision",
+      "Monthly Review",
+      "Personal Integration Tracking",
     ],
   },
   {
     id: "bundle",
     label: "Best Value",
-    title: "Report + First Month Integration™",
+    title: "Report + First Month Integration",
     subtitle: "Understand and begin transformation.",
     price: "£29",
     description:
-      "Includes your full ArcheLoop Report™ and first month of ArcheLoop Integration™.",
+      "Includes your full ArcheLoop Report and first month of ArcheLoop Integration.",
     items: [
-      "Full ArcheLoop Report™",
-      "First month ArcheLoop Integration™",
-      "Triggered Pro™",
-      "Progress Dashboard™",
-      "Integration Journeys™",
-      "My Integrated Vision™",
+      "Full ArcheLoop Report",
+      "First month ArcheLoop Integration",
+      "Triggered Pro",
+      "Progress Dashboard",
+      "Integration Journeys",
+      "My Integrated Vision",
     ],
   },
 ];
@@ -149,14 +149,14 @@ export default function CheckoutPage() {
               {(completedProduct === "report" ||
                 completedProduct === "bundle") && (
                 <a href="/assessment" className="al-button-secondary">
-                  Start Find My Loop™
+                  Start Find My Loop
                 </a>
               )}
 
               {(completedProduct === "integration" ||
                 completedProduct === "bundle") && (
                 <a href="/integration-home" className="al-button-secondary">
-                  Open Integration Hub™
+                  Open Integration Hub
                 </a>
               )}
             </div>

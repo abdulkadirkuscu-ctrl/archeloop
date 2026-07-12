@@ -1231,10 +1231,77 @@ p {
     padding: 3rem 1.5rem;
   }
 
-  .al-button-primary,
-  .al-button-secondary {
-    width: 100%;
-  }
+  /* =====================================================
+   MOBILE BUTTONS
+===================================================== */
+
+.al-button-primary,
+.al-button-secondary {
+  width: auto;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.al-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.al-actions .al-button-primary,
+.al-actions .al-button-secondary {
+  width: 100%;
+  max-width: 230px;
+  min-height: 42px;
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.al-nav-actions {
+  gap: 0.5rem;
+}
+
+.al-nav-actions .al-button-primary,
+.al-nav-actions .al-button-secondary {
+  width: 100%;
+  min-height: 40px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.82rem;
+}
+
+.al-philosophy-strip {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.al-philosophy-strip .al-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  letter-spacing: 0.12em;
+}
+
+.al-philosophy-strip .al-text-lg {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+body {
+  overflow-x: hidden;
+}
 
   .al-slogan-band {
     margin: 3.5rem auto;
@@ -1566,33 +1633,127 @@ p {
   font-weight: 750;
 }
 
-.al-price-current {
-  margin-top: 0.35rem;
-  color: var(--al-price);
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  line-height: 1;
-  font-weight: 800;
+/* ---------- Pricing Container ---------- */
+
+.al-pricing-block {
+  margin-top: 1.5rem;
+  padding: 1.35rem;
+  border: 1px solid var(--al-border);
+  border-radius: 1.25rem;
+  background: var(--al-surface-soft);
+  text-align: center;
 }
+
+/* ---------- Current Price ---------- */
+
+.al-price-current {
+  margin-top: 0.45rem;
+  font-family: var(--font-heading);
+  color: var(--al-price);
+  font-size: clamp(1.7rem, 3vw, 2.15rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* ---------- Previous Price ---------- */
 
 .al-price-old {
   color: var(--al-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  font-weight: 500;
 }
 
 .al-price-old span {
   color: inherit;
-  text-decoration-line: line-through;
-  text-decoration-thickness: 1.5px;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
   text-decoration-color: currentColor;
 }
 
+.al-pricing-block {
+  margin-top: 1.5rem;
+  padding: 1.35rem;
+  border: 1px solid var(--al-border);
+  border-radius: 1.25rem;
+  background: var(--al-surface-soft);
+  text-align: center;
+}
+
+/* Centre pricing-card buttons */
+
+.al-product-title,
+.al-price-current,
+.al-price-old,
 .al-price-note {
-  margin-top: 0.65rem;
+  text-align: center;
+}
+
+.al-pricing-block + ul + .al-button-primary,
+.al-pricing-block + ul + .al-button-secondary {
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.al-pricing-card {
+  text-align: center;
+}
+
+.al-pricing-card ul {
+  text-align: left;
+}
+
+.al-pricing-card .al-button-primary,
+.al-pricing-card .al-button-secondary {
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =====================================================
+   PAGE CONTENT SPACING
+===================================================== */
+
+.al-page-gap {
+  margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .al-page-gap {
+    margin-top: 2rem;
+  }
+}
+/* ---------- Supporting Text ---------- */
+
+.al-price-note {
+  margin-top: 0.6rem;
   color: var(--al-text-muted);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   line-height: 1.6;
 }
 
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+
+  .al-pricing-block {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .al-price-current {
+    font-size: 1.8rem;
+  }
+
+  .al-price-old,
+  .al-price-note {
+    font-size: 0.78rem;
+  }
+}
 /* =====================================================
    CTA PANEL
 ===================================================== */

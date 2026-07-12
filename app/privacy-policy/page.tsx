@@ -6,7 +6,7 @@ export default function PrivacyPolicyPage() {
       <section className="al-section">
         <div className="al-container space-y-10">
           <div className="al-premium-card p-10">
-            <p className="al-kicker">ArcheLoop™</p>
+            <p className="al-kicker">ArcheLoop</p>
 
             <h1 className="al-heading-xl">Privacy Policy</h1>
 

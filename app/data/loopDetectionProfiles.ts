@@ -2,7 +2,7 @@ export const loopDetectionProfiles = {
   dimmedLight: {
     name: "Dimmed Light",
     archetype: "Sovereign",
-    journey: "Visibility Path™",
+    journey: "Visibility Path",
     integratedIdentity: "Healthy Visibility",
     suggestedPractices: [
       "Share one genuine opinion",
@@ -74,7 +74,7 @@ export const loopDetectionProfiles = {
   paperCrown: {
     name: "Paper Crown",
     archetype: "Sovereign",
-    journey: "Authentic Sovereignty Path™",
+    journey: "Authentic Sovereignty Path",
 integratedIdentity: "Authentic Leadership",
     suggestedPractices: [
       "Celebrate effort instead of validation",
@@ -139,7 +139,7 @@ integratedIdentity: "Authentic Leadership",
   stalledFlame: {
     name: "Stalled Flame",
     archetype: "Sovereign",
-    journey: "Action Path™",
+    journey: "Action Path",
 integratedIdentity: "Purposeful Action",
     suggestedPractices: [
       "Take one meaningful action",
@@ -200,7 +200,7 @@ integratedIdentity: "Purposeful Action",
   blankPage: {
     name: "Blank Page",
     archetype: "Magician",
-   journey: "Creative Expression Path™",
+   journey: "Creative Expression Path",
 integratedIdentity: "Authentic Expression",
     suggestedPractices: [
       "Choose one next step",
@@ -260,7 +260,7 @@ integratedIdentity: "Authentic Expression",
   smokyMirrors: {
     name: "Smoky Mirrors",
     archetype: "Magician",
-    journey: "Truth Path™",
+    journey: "Truth Path",
     integratedIdentity: "Self-Honesty",
     suggestedPractices: [
       "Challenge assumptions",
@@ -321,7 +321,7 @@ integratedIdentity: "Authentic Expression",
   mindMaze: {
     name: "Mind Maze",
     archetype: "Magician",
-    journey: "Clarity Path™",
+    journey: "Clarity Path",
 integratedIdentity: "Clear Thinking",
     suggestedPractices: [
       "Make one imperfect decision",
@@ -381,7 +381,7 @@ integratedIdentity: "Clear Thinking",
   emotionalLockdown: {
     name: "Emotional Lockdown",
     archetype: "Lover",
-    journey: "Vulnerability Path™",
+    journey: "Vulnerability Path",
 integratedIdentity: "Emotional Openness",
     suggestedPractices: [
       "Share one honest feeling",
@@ -442,7 +442,7 @@ integratedIdentity: "Emotional Openness",
   fantasyFog: {
     name: "Fantasy Fog",
     archetype: "Lover",
-   journey: "Connection Path™",
+   journey: "Connection Path",
 integratedIdentity: "Genuine Connection",
     suggestedPractices: [
       "Notice facts versus fantasy",
@@ -503,7 +503,7 @@ integratedIdentity: "Genuine Connection",
   floodedWaters: {
     name: "Flooded Waters",
     archetype: "Lover",
-    journey: "Emotional Regulation Path™",
+    journey: "Emotional Regulation Path",
 integratedIdentity: "Emotional Flow",
     suggestedPractices: [
       "Pause before reacting",
@@ -566,7 +566,7 @@ integratedIdentity: "Emotional Flow",
   compliance: {
     name: "Compliance",
     archetype: "Warrior",
-    journey: "Boundaries Path™",
+    journey: "Boundaries Path",
     integratedIdentity: "Self-Respect",
     suggestedPractices: [
       "Say no once today",
@@ -633,7 +633,7 @@ integratedIdentity: "Emotional Flow",
   fortress: {
     name: "Fortress",
     archetype: "Warrior",
-    journey: "Trust Path™",
+    journey: "Trust Path",
 integratedIdentity: "Connected Strength",
     suggestedPractices: [
       "Ask for help",
@@ -697,7 +697,7 @@ integratedIdentity: "Connected Strength",
   barrenGround: {
     name: "Barren Ground",
     archetype: "Warrior",
- journey: "Vitality Path™",
+ journey: "Vitality Path",
 integratedIdentity: "Inner Vitality",
     suggestedPractices: [
       "Reconnect with purpose",

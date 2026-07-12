@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import Hero from "../../components/ui/Hero";
+import Kicker from "../../components/ui/Kicker";
+import PageTitle from "../../components/ui/PageTitle";
+import PageIntro from "../../components/ui/PageIntro";
+import SectionTitle from "../../components/ui/SectionTitle";
 
 export const metadata: Metadata = {
   title: "The 12 Shadow Loops",
@@ -113,34 +118,41 @@ export default function LoopsPage() {
     <main className="al-page min-h-screen">
       <Nav />
 
-      <section className="al-section">
-        <div className="al-container-wide space-y-16">
-          <div className="al-hero-card text-center">
-            <p className="al-kicker">ArcheLoop</p>
+    <section className="al-section">
+  <div className="al-container-wide space-y-16">
 
-            <h1 className="al-heading-xl">The 12 Shadow Loops</h1>
+    <Hero>
+      <Kicker>ArcheLoop</Kicker>
 
-            <p className="al-text-lg mx-auto mt-8 max-w-3xl">
-              Every recurring pattern has a name. Shadow Loops are protective
-              patterns your mind and nervous system may use when visibility,
-              clarity, connection, or safety feels threatened.
-            </p>
+      <PageTitle>
+        The 12 Shadow Loops
+      </PageTitle>
 
-            <a href="/assessment" className="al-button-primary mt-10">
-              Find My Loop
-            </a>
-          </div>
+      <PageIntro>
+        Every recurring pattern has a name. Shadow Loops are protective
+        patterns your mind and nervous system may use when visibility,
+        clarity, connection, or safety feels threatened.
+      </PageIntro>
 
-          <div className="space-y-20">
+      <a
+        href="/assessment"
+        className="al-button-primary mt-10"
+      >
+        Find My Loop
+      </a>
+    </Hero>
+
+    <div className="al-page-gap space-y-20"></div>
+          <div className="al-page-gap space-y-20">
             {["Fire", "Air", "Water", "Earth"].map((element) => (
               <section key={element} className="al-premium-card p-8">
                 <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
                   <div>
-                    <p className="al-kicker">Elemental Pattern</p>
+                   <Kicker>Elemental Pattern</Kicker>
 
-                    <h2 className="al-heading-md text-[var(--al-accent)]">
-                      {element} Loops
-                    </h2>
+                    <SectionTitle className="text-[var(--al-accent)]">
+  {element} Loops
+</SectionTitle>
                   </div>
 
                   <p className="al-text max-w-xl">
@@ -169,7 +181,7 @@ export default function LoopsPage() {
                         </div>
 
                         <div className="p-7">
-                          <p className="al-kicker">Shadow Loop</p>
+                          <Kicker>Shadow Loop</Kicker>
 
                           <h3 className="mt-4 text-3xl font-bold transition group-hover:text-[var(--al-accent)]">
                             {loop.name}
@@ -188,7 +200,7 @@ export default function LoopsPage() {
                 </div>
               </section>
             ))}
-          </div>
+                    </div>
         </div>
       </section>
 

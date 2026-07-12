@@ -158,7 +158,7 @@ export default function TriggeredIntelligencePage() {
   }
 
   function journeySlug(journey: string) {
-    return journey.toLowerCase().replaceAll("™", "").replaceAll(" ", "-");
+    return journey.toLowerCase().replaceAll("", "").replaceAll(" ", "-");
   }
 
   if (checkingAccess) {

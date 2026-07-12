@@ -300,11 +300,11 @@ export default function AssessmentPage() {
         integratedState: "Healthy Visibility",
       },
       "Paper Crown": {
-        journey: "Authentic Sovereignty Path™",
+        journey: "Authentic Sovereignty Path",
         integratedState: "Authentic Leadership",
       },
       "Stalled Flame": {
-        journey: "Action Path™",
+        journey: "Action Path",
         integratedState: "Purposeful Action",
       },
       "Blank Page": {

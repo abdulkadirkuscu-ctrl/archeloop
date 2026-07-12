@@ -15,7 +15,7 @@ export default function IntelligencePreviewPage() {
     <main className="al-page min-h-screen px-6 py-16">
       <section className="al-container space-y-8">
         <div>
-          <p className="al-kicker">ArcheLoop Intelligence Engine V2™</p>
+          <p className="al-kicker">ArcheLoop Intelligence Engine V2</p>
 
           <h1 className="al-heading-lg">Intelligence Preview</h1>
 

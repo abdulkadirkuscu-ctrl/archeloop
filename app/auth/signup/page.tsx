@@ -53,7 +53,7 @@ function SignupContent() {
           <div className="al-card p-8">
             <p className="al-kicker">Create Account</p>
 
-            <h1 className="al-heading-lg">Join ArcheLoop™</h1>
+            <h1 className="al-heading-lg">Join ArcheLoop</h1>
 
             <p className="al-text mt-4">
               Create your account to save your report, trigger history,

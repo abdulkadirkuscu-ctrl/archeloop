@@ -14,10 +14,10 @@ export type IntegrationSuccessMetric = {
 export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   {
     loop: "Dimmed Light",
-    path: "Visibility Path™",
+    path: "Visibility Path",
     integratedState: "Healthy Visibility",
     integratedIdentity: {
-      name: "The Visible Sovereign™",
+      name: "The Visible Sovereign",
       description:
         "The Visible Sovereign no longer hides their voice, ideas, or presence. They allow themselves to be seen without needing to perform, impress, or seek permission. They express themselves honestly, contribute naturally, and trust their right to take up space.",
     },
@@ -49,10 +49,10 @@ export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   },
   {
     loop: "Paper Crown",
-    path: "Authentic Sovereignty Path™",
+    path: "Authentic Sovereignty Path",
     integratedState: "Authentic Leadership",
     integratedIdentity: {
-      name: "The Authentic Sovereign™",
+      name: "The Authentic Sovereign",
       description:
         "The Authentic Sovereign leads from inner worth rather than performance. They no longer need achievement, approval, or status to feel valuable. They create, lead, and succeed from purpose rather than insecurity.",
     },
@@ -83,10 +83,10 @@ export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   },
   {
     loop: "Stalled Flame",
-    path: "Action Path™",
+    path: "Action Path",
     integratedState: "Purposeful Action",
     integratedIdentity: {
-      name: "The Moving Sovereign™",
+      name: "The Moving Sovereign",
       description:
         "The Moving Sovereign turns vision into action. They no longer wait for perfect certainty before beginning. They trust movement, take imperfect steps, and allow momentum to build through action.",
     },
@@ -117,10 +117,10 @@ export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   },
   {
     loop: "Blank Page",
-    path: "Creative Expression Path™",
+    path: "Creative Expression Path",
     integratedState: "Authentic Expression",
     integratedIdentity: {
-      name: "The Expressive Magician™",
+      name: "The Expressive Magician",
       description:
         "The Expressive Magician trusts that meaning emerges through expression. They no longer wait for perfect ideas before speaking, writing, creating, or contributing. Their voice becomes clearer through use.",
     },
@@ -151,10 +151,10 @@ export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   },
   {
     loop: "Smoky Mirrors",
-    path: "Truth Path™",
+    path: "Truth Path",
     integratedState: "Self-Honesty",
     integratedIdentity: {
-      name: "The Clear Magician™",
+      name: "The Clear Magician",
       description:
         "The Clear Magician chooses truth over distortion. They are willing to see reality clearly, name what is uncomfortable, and make decisions from honesty rather than self-deception.",
     },
@@ -185,10 +185,10 @@ export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   },
   {
     loop: "Mind Maze",
-    path: "Clarity Path™",
+    path: "Clarity Path",
     integratedState: "Clear Thinking",
     integratedIdentity: {
-      name: "The Decisive Magician™",
+      name: "The Decisive Magician",
       description:
         "The Decisive Magician uses thought as a tool rather than a prison. They can separate facts from fears, make decisions without perfect certainty, and let action create clarity.",
     },
@@ -219,10 +219,10 @@ export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   },
   {
     loop: "Emotional Lockdown",
-    path: "Vulnerability Path™",
+    path: "Vulnerability Path",
     integratedState: "Emotional Openness",
     integratedIdentity: {
-      name: "The Open Lover™",
+      name: "The Open Lover",
       description:
         "The Open Lover allows emotion to be felt and shared safely. They no longer need to shut down to survive closeness. They remain open-hearted while staying connected to themselves.",
     },
@@ -253,10 +253,10 @@ export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   },
   {
     loop: "Fantasy Fog",
-    path: "Connection Path™",
+    path: "Connection Path",
     integratedState: "Grounded Intimacy",
     integratedIdentity: {
-      name: "The Grounded Lover™",
+      name: "The Grounded Lover",
       description:
         "The Grounded Lover chooses real connection over fantasy, projection, or longing. They remain present with what is available, build intimacy through reality, and allow relationships to be human rather than perfect.",
     },
@@ -287,10 +287,10 @@ export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   },
   {
     loop: "Flooded Waters",
-    path: "Emotional Regulation Path™",
+    path: "Emotional Regulation Path",
     integratedState: "Emotional Flow",
     integratedIdentity: {
-      name: "The Regulated Lover™",
+      name: "The Regulated Lover",
       description:
         "The Regulated Lover feels deeply without drowning. They understand emotion as information rather than command, and can stay connected to themselves while intense feelings move through.",
     },
@@ -321,10 +321,10 @@ export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   },
   {
     loop: "Compliance",
-    path: "Boundaries Path™",
+    path: "Boundaries Path",
     integratedState: "Self-Respect",
     integratedIdentity: {
-      name: "The Grounded Warrior™",
+      name: "The Grounded Warrior",
       description:
         "The Grounded Warrior protects self-respect without becoming harsh or disconnected. They can express needs, hold limits, and remain connected without abandoning themselves for approval.",
     },
@@ -355,10 +355,10 @@ export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   },
   {
     loop: "Fortress",
-    path: "Trust Path™",
+    path: "Trust Path",
     integratedState: "Connected Strength",
     integratedIdentity: {
-      name: "The Connected Warrior™",
+      name: "The Connected Warrior",
       description:
         "The Connected Warrior no longer mistakes isolation for strength. They can protect themselves while allowing support, trust selectively, and remain open without abandoning discernment.",
     },
@@ -389,10 +389,10 @@ export const integrationSuccessMetrics: IntegrationSuccessMetric[] = [
   },
   {
     loop: "Barren Ground",
-    path: "Self-Worth Path™",
+    path: "Self-Worth Path",
     integratedState: "Inner Value",
     integratedIdentity: {
-      name: "The Living Warrior™",
+      name: "The Living Warrior",
       description:
         "The Living Warrior no longer lives only in survival, duty, or endurance. They protect vitality, allow nourishment, and recognise worth beyond productivity.",
     },

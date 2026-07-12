@@ -1,0 +1,257 @@
+# Query: ™
+# ContextLines: 1
+
+83 results - 10 files
+
+api\checkout\route.ts:
+  11    report: {
+  12:     name: "Find My Loop",
+  13      amount: 2900,
+
+  16    integration: {
+  17:     name: "ArcheLoop Integration",
+  18      amount: 2900,
+
+  21    bundle: {
+  22:     name: "Report + First Month Integration",
+  23      amount: 3900,
+
+assessment\page.tsx:
+  302        "Paper Crown": {
+  303:         journey: "Authentic Sovereignty Path",
+  304          integratedState: "Authentic Leadership",
+
+  306        "Stalled Flame": {
+  307:         journey: "Action Path",
+  308          integratedState: "Purposeful Action",
+
+auth\signup\page.tsx:
+  55  
+  56:             <h1 className="al-heading-lg">Join ArcheLoop</h1>
+  57  
+
+checkout\page.tsx:
+   10      label: "Recommended First Step",
+   11:     title: "Find My Loop",
+   12      subtitle: "Understand the pattern.",
+
+   14      description:
+   15:       "Launch offer. Includes the 60-question assessment and full personalised ArcheLoop Report.",
+   16      items: [
+   17:       "60-question Find My Loop assessment",
+   18:       "Primary & Secondary Shadow Loops",
+   19        "Archetype & Element",
+   20        "Nervous System Pattern",
+   21:       "Integrated Self",
+   22:       "Full ArcheLoop Report",
+   23      ],
+
+   27      label: "Transformation",
+   28:     title: "ArcheLoop Integration",
+   29      subtitle: "Transform the pattern.",
+
+   31      description:
+   32:       "Launch offer. Includes Triggered Pro, Progress Dashboard, Integration Journeys, My Integrated Vision, and personal tracking.",
+   33      items: [
+   34:       "Triggered Pro",
+   35:       "Progress Dashboard",
+   36:       "Integration Journeys",
+   37:       "My Integrated Vision",
+   38:       "Monthly Review",
+   39:       "Personal Integration Tracking",
+   40      ],
+
+   44      label: "Best Value",
+   45:     title: "Report + First Month Integration",
+   46      subtitle: "Understand and begin transformation.",
+
+   48      description:
+   49:       "Includes your full ArcheLoop Report and first month of ArcheLoop Integration.",
+   50      items: [
+   51:       "Full ArcheLoop Report",
+   52:       "First month ArcheLoop Integration",
+   53:       "Triggered Pro",
+   54:       "Progress Dashboard",
+   55:       "Integration Journeys",
+   56:       "My Integrated Vision",
+   57      ],
+
+  151                  <a href="/assessment" className="al-button-secondary">
+  152:                   Start Find My Loop
+  153                  </a>
+
+  158                  <a href="/integration-home" className="al-button-secondary">
+  159:                   Open Integration Hub
+  160                  </a>
+
+data\integrationSuccessMetrics.ts:
+   16      loop: "Dimmed Light",
+   17:     path: "Visibility Path",
+   18      integratedState: "Healthy Visibility",
+   19      integratedIdentity: {
+   20:       name: "The Visible Sovereign",
+   21        description:
+
+   51      loop: "Paper Crown",
+   52:     path: "Authentic Sovereignty Path",
+   53      integratedState: "Authentic Leadership",
+   54      integratedIdentity: {
+   55:       name: "The Authentic Sovereign",
+   56        description:
+
+   85      loop: "Stalled Flame",
+   86:     path: "Action Path",
+   87      integratedState: "Purposeful Action",
+   88      integratedIdentity: {
+   89:       name: "The Moving Sovereign",
+   90        description:
+
+  119      loop: "Blank Page",
+  120:     path: "Creative Expression Path",
+  121      integratedState: "Authentic Expression",
+  122      integratedIdentity: {
+  123:       name: "The Expressive Magician",
+  124        description:
+
+  153      loop: "Smoky Mirrors",
+  154:     path: "Truth Path",
+  155      integratedState: "Self-Honesty",
+  156      integratedIdentity: {
+  157:       name: "The Clear Magician",
+  158        description:
+
+  187      loop: "Mind Maze",
+  188:     path: "Clarity Path",
+  189      integratedState: "Clear Thinking",
+  190      integratedIdentity: {
+  191:       name: "The Decisive Magician",
+  192        description:
+
+  221      loop: "Emotional Lockdown",
+  222:     path: "Vulnerability Path",
+  223      integratedState: "Emotional Openness",
+  224      integratedIdentity: {
+  225:       name: "The Open Lover",
+  226        description:
+
+  255      loop: "Fantasy Fog",
+  256:     path: "Connection Path",
+  257      integratedState: "Grounded Intimacy",
+  258      integratedIdentity: {
+  259:       name: "The Grounded Lover",
+  260        description:
+
+  289      loop: "Flooded Waters",
+  290:     path: "Emotional Regulation Path",
+  291      integratedState: "Emotional Flow",
+  292      integratedIdentity: {
+  293:       name: "The Regulated Lover",
+  294        description:
+
+  323      loop: "Compliance",
+  324:     path: "Boundaries Path",
+  325      integratedState: "Self-Respect",
+  326      integratedIdentity: {
+  327:       name: "The Grounded Warrior",
+  328        description:
+
+  357      loop: "Fortress",
+  358:     path: "Trust Path",
+  359      integratedState: "Connected Strength",
+  360      integratedIdentity: {
+  361:       name: "The Connected Warrior",
+  362        description:
+
+  391      loop: "Barren Ground",
+  392:     path: "Self-Worth Path",
+  393      integratedState: "Inner Value",
+  394      integratedIdentity: {
+  395:       name: "The Living Warrior",
+  396        description:
+
+data\loopDetectionProfiles.ts:
+    4      archetype: "Sovereign",
+    5:     journey: "Visibility Path",
+    6      integratedIdentity: "Healthy Visibility",
+
+   76      archetype: "Sovereign",
+   77:     journey: "Authentic Sovereignty Path",
+   78  integratedIdentity: "Authentic Leadership",
+
+  141      archetype: "Sovereign",
+  142:     journey: "Action Path",
+  143  integratedIdentity: "Purposeful Action",
+
+  202      archetype: "Magician",
+  203:    journey: "Creative Expression Path",
+  204  integratedIdentity: "Authentic Expression",
+
+  262      archetype: "Magician",
+  263:     journey: "Truth Path",
+  264      integratedIdentity: "Self-Honesty",
+
+  323      archetype: "Magician",
+  324:     journey: "Clarity Path",
+  325  integratedIdentity: "Clear Thinking",
+
+  383      archetype: "Lover",
+  384:     journey: "Vulnerability Path",
+  385  integratedIdentity: "Emotional Openness",
+
+  444      archetype: "Lover",
+  445:    journey: "Connection Path",
+  446  integratedIdentity: "Genuine Connection",
+
+  505      archetype: "Lover",
+  506:     journey: "Emotional Regulation Path",
+  507  integratedIdentity: "Emotional Flow",
+
+  568      archetype: "Warrior",
+  569:     journey: "Boundaries Path",
+  570      integratedIdentity: "Self-Respect",
+
+  635      archetype: "Warrior",
+  636:     journey: "Trust Path",
+  637  integratedIdentity: "Connected Strength",
+
+  699      archetype: "Warrior",
+  700:  journey: "Vitality Path",
+  701  integratedIdentity: "Inner Vitality",
+
+intelligence-preview\page.tsx:
+  17          <div>
+  18:           <p className="al-kicker">ArcheLoop Intelligence Engine V2</p>
+  19  
+
+privacy-policy\page.tsx:
+  8            <div className="al-premium-card p-10">
+  9:             <p className="al-kicker">ArcheLoop</p>
+  10  
+
+terms-and-conditions\page.tsx:
+  26              ArcheLoop is an educational self-development platform designed to
+  27:             help users reflect on emotional patterns, archetypes, Shadow Loops,
+  28              nervous system responses, relational dynamics, and Integration
+  29:             Journeys.
+  30            </Section>
+
+  46            <Section title="4. Assessment and Report Results">
+  47:             ArcheLoop assessments, reports, Shadow Loop descriptions,
+  48:             Integration Journeys, and Triggered tools are reflective
+  49              frameworks. Results are based on your responses and should be
+
+  68  
+  69:           <Section title="7. Triggered Pro and Saved Data">
+  70              Some tools may save information in your browser or account, such as
+  71              saved activations, trigger history, report data, Progress
+  72:             Dashboard, Monthly Reviews, or integration reflections. If data is
+  73              stored locally on your device, it may not be available on another
+
+  77            <Section title="8. Intellectual Property">
+  78:             ArcheLoop, Shadow Loops, Integration Journeys, written content,
+  79              frameworks, designs, branding, reports, and related materials belong
+
+triggered-intelligence\page.tsx:
+  160    function journeySlug(journey: string) {
+  161:     return journey.toLowerCase().replaceAll("", "").replaceAll(" ", "-");
+  162    }

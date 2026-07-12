@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+
+import Hero from "../../components/ui/Hero";
+import Kicker from "../../components/ui/Kicker";
+import PageIntro from "../../components/ui/PageIntro";
+import PageTitle from "../../components/ui/PageTitle";
 
 const archetypes = [
   {
@@ -46,47 +52,45 @@ export default function ArchetypesPage() {
       <Nav />
 
       <section className="al-section">
-        <div className="al-container-wide space-y-14">
-          <div className="al-hero-card text-center">
-            <p className="al-kicker">ArcheLoop</p>
+        <div className="al-container-wide">
+          <Hero>
+            <Kicker>ArcheLoop</Kicker>
 
-            <h1 className="al-heading-xl">The Four Archetypes</h1>
+            <PageTitle>The Four Archetypes</PageTitle>
 
-            <p className="al-text-lg mx-auto mt-8 max-w-3xl">
+            <PageIntro>
               ArcheLoop is built around four archetypal energies: Fire, Air,
               Water, and Earth. Each archetype represents a different way you
               express, protect, perceive, connect, and respond under pressure.
-            </p>
-          </div>
+            </PageIntro>
+          </Hero>
 
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="al-page-gap grid gap-8 md:grid-cols-2">
             {archetypes.map((archetype) => (
               <a
                 key={archetype.name}
                 href={`/archetypes/${archetype.name.toLowerCase()}`}
-                className="al-card group overflow-hidden transition hover:border-[var(--al-accent)]"
+                className="al-card group overflow-hidden transition duration-500 hover:border-[var(--al-accent)]"
               >
-                <div className="relative h-[520px] overflow-hidden">
+                <div className="relative h-[360px] overflow-hidden sm:h-[440px] lg:h-[520px]">
                   <Image
                     src={archetype.image}
-                    alt={archetype.name}
+                    alt={`${archetype.name} archetype`}
                     fill
                     priority={archetype.name === "Sovereign"}
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover opacity-90 transition duration-700 group-hover:scale-105"
+                    className="object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
 
-                <div className="p-8">
-                  <p className="al-kicker">{archetype.element}</p>
+                <div className="p-6 sm:p-8">
+                  <Kicker>{archetype.element}</Kicker>
 
-                  <h2 className="mt-3 text-4xl font-bold text-[var(--al-accent)]">
+                  <h2 className="mt-3 text-3xl font-bold text-[var(--al-accent)] sm:text-4xl">
                     {archetype.name}
                   </h2>
 
-                  <p className="al-text mt-5">
-                    {archetype.description}
-                  </p>
+                  <p className="al-text mt-5">{archetype.description}</p>
 
                   <p className="mt-7 font-semibold text-[var(--al-accent)]">
                     Explore Archetype →
