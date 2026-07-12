@@ -61,7 +61,9 @@ function SignupContent() {
     setLoading(true);
 
     try {
-      const emailRedirectTo = `${window.location.origin}${redirectTo}`;
+      const emailRedirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(
+        redirectTo
+      )}`;
 
       const { data, error } = await supabaseClient.auth.signUp({
         email: email.trim(),

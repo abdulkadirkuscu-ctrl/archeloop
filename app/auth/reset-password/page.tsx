@@ -8,24 +8,30 @@ import { supabaseClient } from "../../../lib/supabaseClient";
 export default function ResetPasswordPage() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState<"success" | "error" | "">(
+    ""
+  );
   const [loading, setLoading] = useState(false);
 
   async function handleReset(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setMessage("");
+    setMessageType("");
 
     const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/login`,
+      redirectTo: `${window.location.origin}/auth/callback?next=/auth/update-password`,
     });
 
     if (error) {
       setMessage(error.message);
+      setMessageType("error");
       setLoading(false);
       return;
     }
 
     setMessage("Check your email for a password reset link.");
+    setMessageType("success");
     setLoading(false);
   }
 
@@ -43,14 +49,27 @@ export default function ResetPasswordPage() {
             </p>
 
             <form onSubmit={handleReset} className="mt-8 space-y-4">
-              <input
-                type="email"
-                required
-                placeholder="Email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-2xl border border-[var(--al-border)] bg-[var(--al-bg-soft)] px-5 py-4 text-[var(--al-text)] placeholder:text-[var(--al-text-muted)] outline-none transition focus:border-[var(--al-accent)]"
-              />
+              <div>
+                <label
+                  htmlFor="reset-email"
+                  className="mb-2 block text-sm font-semibold text-[var(--al-text)]"
+                >
+                  Email address
+                </label>
+
+                <input
+                  id="reset-email"
+                  name="email"
+                  type="email"
+                  inputMode="email"
+                  autoComplete="email"
+                  required
+                  placeholder="Email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full rounded-2xl border border-[var(--al-border)] bg-[var(--al-bg-soft)] px-5 py-4 text-[var(--al-text)] placeholder:text-[var(--al-text-muted)] outline-none transition focus:border-[var(--al-accent)]"
+                />
+              </div>
 
               <button
                 type="submit"
@@ -62,7 +81,14 @@ export default function ResetPasswordPage() {
             </form>
 
             {message && (
-              <p className="mt-5 text-sm text-[var(--al-accent)]">
+              <p
+                role={messageType === "error" ? "alert" : "status"}
+                className={`mt-5 text-sm ${
+                  messageType === "error"
+                    ? "text-red-400"
+                    : "text-[var(--al-accent)]"
+                }`}
+              >
                 {message}
               </p>
             )}
