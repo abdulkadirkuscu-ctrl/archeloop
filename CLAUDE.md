@@ -1,1 +1,8 @@
-@AGENTS.md
+- Read docs/DESIGN_BIBLE.md and docs/COPY_GUIDE.md before editing.
+- Explain the plan before changing files.
+- Make the smallest possible change.
+- Never use project-wide Find and Replace.
+- Never modify auth, Stripe, Supabase, database schema, pricing, routes, or scoring logic without explicit approval.
+- Never install packages without approval.
+- Never commit or push unless explicitly instructed.
+- Always run npm run build after edits.
