@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Manrope } from "next/font/google";
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 
 import "./globals.css";
@@ -74,15 +72,8 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${headingFont.variable} ${bodyFont.variable} h-full antialiased`}
     >
-      <body className="al-page flex min-h-full flex-col">
-  <Nav />
-
-  <main className="flex-1">
-    {children}
-  </main>
-
-  <Footer />
-
+      <body className="al-page min-h-full">
+  {children}
   <CookieConsent />
 </body>
     </html>
