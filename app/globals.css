@@ -34,19 +34,24 @@
 --al-tertiary-soft: #E8CF98;
 --al-tertiary-deep: #A88A45;
 
-/* Understand • Interrupt • Integrate */
+/* =====================================================
+   UNDERSTAND • INTERRUPT • INTEGRATE
+===================================================== */
 
+/* Understand = insight / pattern recognition */
 --al-understand: #6687E8;
 --al-understand-soft: #8CA5F0;
 --al-understand-deep: #4664BD;
 
---al-interrupt: #7FAE78;
---al-interrupt-soft: #A2C79C;
---al-interrupt-deep: #587A53;
+/* Interrupt = action / decision / campaign emphasis */
+--al-interrupt: #E0C77E;
+--al-interrupt-soft: #EDDAA5;
+--al-interrupt-deep: #AC914D;
 
---al-integrate: #E0C77E;
---al-integrate-soft: #EDDAA5;
---al-integrate-deep: #AC914D;
+/* Integrate = growth / healthy direction */
+--al-integrate: #7FAE78;
+--al-integrate-soft: #A2C79C;
+--al-integrate-deep: #587A53;
 
 /* Light and atmosphere */
 
@@ -79,16 +84,6 @@
 --al-brand-middle: var(--al-button);
 --al-brand-end: var(--al-button);
 
-/* Three stages of the journey */
-
---al-understand-soft: #8CA5F0;
---al-understand-deep: #4664BD;
-
---al-interrupt-soft: #96CDB9;
---al-interrupt-deep: #4F876F;
-
---al-integrate-soft: #EDDAA5;
---al-integrate-deep: #AC914D;
 
  /* =====================================================
    SEMANTIC UI COLOURS
@@ -1066,6 +1061,20 @@ p {
 .al-brand-divider {
   color: var(--al-text-muted);
   opacity: 0.55;
+}
+
+/* Semantic highlighted language */
+
+.al-shadow-word {
+  color: var(--al-understand);
+}
+
+.al-awareness-word {
+  color: var(--al-interrupt);
+}
+
+.al-integration-word {
+  color: var(--al-integrate);
 }
 
 /* Mission statement */

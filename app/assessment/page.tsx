@@ -560,35 +560,45 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
     )
   }
 
-  return (
-    <main className="al-page min-h-screen">
-      <Nav />
+ return (
+  <main className="al-page min-h-screen">
+    <Nav />
 
-      <section className="al-section-tight">
+    <section className="al-section-tight">
+      <div className="relative mx-auto max-w-4xl space-y-8">
 
-        <div className="relative mx-auto max-w-4xl space-y-8">
-          <div className="al-premium-card p-6">
-           <p className="al-kicker">
-  Find My Loop
-</p>
+        <div className="al-premium-card p-8 text-center">
 
-<h1 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
-  Find My Loop
-</h1>
+          <p className="al-kicker">
+            Assessment
+          </p>
 
-<p className="mt-4 text-sm uppercase tracking-[0.3em] text-[var(--al-accent)]/70">
-  Understand • Interrupt • Integrate
-</p>
+          <h1 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
+            Find My Loop
+          </h1>
 
-<p className="mt-6 al-text-lg max-w-3xl">
-  Complete the 60-question assessment to discover your Shadow Loop.
-  <br />
-  <br />
-  Your personalised ArcheLoop Report reveals your archetypal pattern,
-  nervous system activation, Integration Journey, and the Integrated Self
-  your pattern points toward.
-</p>
-          </div>
+          <p className="al-brand-tagline mt-5 justify-center">
+            <span className="al-understand-word">Understand</span>
+
+            <span className="al-brand-divider">•</span>
+
+            <span className="al-interrupt-word">Interrupt</span>
+
+            <span className="al-brand-divider">•</span>
+
+            <span className="al-integrate-word">Integrate</span>
+          </p>
+
+          <p className="mt-6 al-text-lg mx-auto max-w-3xl">
+            Complete the 60-question assessment to discover your Shadow Loop.
+            <br />
+            <br />
+            Your personalised ArcheLoop Report reveals your archetypal
+            pattern, nervous system activation, Integration Journey, and
+            the Integrated Self your pattern points toward.
+          </p>
+
+        </div>
 
           <div className="al-card p-5">
             <div className="mb-8">
@@ -650,17 +660,17 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
                   const active = responses[currentQuestion] === answer.value
 
                   return (
-                    <button
-                      key={answer.value}
-                      onClick={() => handleAnswer(answer.value)}
-                      className={`rounded-2xl border px-5 py-3 text-left font-medium transition ${
-                       active
-  ? "border-[var(--al-accent)] bg-[var(--al-accent)] text-[var(--al-bg)]"
-  : "border-[var(--al-border)] bg-[var(--al-surface)] text-[var(--al-text-soft)] hover:border-[var(--al-accent)]"
-                      }`}
-                    >
-                      {answer.label}
-                    </button>
+              <button
+  key={answer.value}
+  onClick={() => handleAnswer(answer.value)}
+  className={`rounded-2xl border px-5 py-3 text-left font-medium transition ${
+    active
+      ? "border-[var(--al-accent)] bg-[var(--al-accent)] text-[var(--al-bg)]"
+      : "border-[var(--al-border)] bg-[var(--al-surface)] text-[var(--al-text-soft)] hover:border-[var(--al-accent)]"
+  }`}
+>
+  {answer.label}
+</button>
                   )
                 })}
               </div>

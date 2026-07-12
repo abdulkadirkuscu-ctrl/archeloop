@@ -109,15 +109,23 @@ export default async function IntegrationJourneyPage({ params }: Props) {
                 </div>
               </div>
 
-              <div className="al-card p-10">
-                <p className="al-kicker">The Integration Journey</p>
+<div className="al-card p-10">
+  <p className="al-kicker">The Integration Journey</p>
 
-                <h2 className="al-heading-lg">
-                  Understand • Interrupt • Integrate
-                </h2>
+  <h2 className="al-heading-lg">
+    <span className="al-understand-word">Understand</span>
 
-                <div className="mt-10 space-y-8">
-                  {journey.stages.map((stage) => (
+    <span className="al-brand-divider"> • </span>
+
+    <span className="al-interrupt-word">Interrupt</span>
+
+    <span className="al-brand-divider"> • </span>
+
+    <span className="al-integrate-word">Integrate</span>
+  </h2>
+
+  <div className="mt-10 space-y-8">
+    {journey.stages.map((stage) => (
                     <div key={stage.title} className="al-soft-card p-7">
                       <h3 className="text-3xl font-bold text-[var(--al-accent)]">
                         {stage.title}

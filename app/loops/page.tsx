@@ -112,47 +112,40 @@ const loops = [
     slug: "barren-ground",
   },
 ];
-
 export default function LoopsPage() {
   return (
     <main className="al-page min-h-screen">
       <Nav />
 
-    <section className="al-section">
-  <div className="al-container-wide space-y-16">
+      <section className="al-section">
+        <div className="al-container-wide">
+          <Hero>
+            <Kicker>ArcheLoop</Kicker>
 
-    <Hero>
-      <Kicker>ArcheLoop</Kicker>
+            <PageTitle>The 12 Shadow Loops</PageTitle>
 
-      <PageTitle>
-        The 12 Shadow Loops
-      </PageTitle>
+            <PageIntro>
+              Every recurring pattern has a name.{" "}
+              <span className="al-shadow-word">Shadow Loops</span> are
+              protective patterns your mind and nervous system may use when
+              visibility, clarity, connection, or safety feels threatened.
+            </PageIntro>
 
-      <PageIntro>
-        Every recurring pattern has a name. Shadow Loops are protective
-        patterns your mind and nervous system may use when visibility,
-        clarity, connection, or safety feels threatened.
-      </PageIntro>
+            <a href="/assessment" className="al-button-primary mt-10">
+              Find My Loop
+            </a>
+          </Hero>
 
-      <a
-        href="/assessment"
-        className="al-button-primary mt-10"
-      >
-        Find My Loop
-      </a>
-    </Hero>
-
-    <div className="al-page-gap space-y-20"></div>
           <div className="al-page-gap space-y-20">
             {["Fire", "Air", "Water", "Earth"].map((element) => (
-              <section key={element} className="al-premium-card p-8">
-                <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <section key={element} className="al-premium-card p-6 sm:p-8">
+                <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                   <div>
-                   <Kicker>Elemental Pattern</Kicker>
+                    <Kicker>Elemental Pattern</Kicker>
 
                     <SectionTitle className="text-[var(--al-accent)]">
-  {element} Loops
-</SectionTitle>
+                      {element} Loops
+                    </SectionTitle>
                   </div>
 
                   <p className="al-text max-w-xl">
@@ -168,19 +161,19 @@ export default function LoopsPage() {
                       <a
                         key={loop.slug}
                         href={`/loops/${loop.slug}`}
-                        className="al-card group overflow-hidden transition duration-500 hover:border-[var(--al-accent)]"
+                        className="al-card group overflow-hidden transition duration-500 hover:-translate-y-1 hover:border-[var(--al-accent)]"
                       >
-                        <div className="relative h-72 overflow-hidden">
+                        <div className="relative h-64 overflow-hidden sm:h-72">
                           <Image
                             src={loop.image}
-                            alt={loop.name}
+                            alt={`${loop.name} Shadow Loop`}
                             fill
                             sizes="(max-width: 768px) 100vw, 33vw"
                             className="object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
                           />
                         </div>
 
-                        <div className="p-7">
+                        <div className="p-6 sm:p-7">
                           <Kicker>Shadow Loop</Kicker>
 
                           <h3 className="mt-4 text-3xl font-bold transition group-hover:text-[var(--al-accent)]">
@@ -200,7 +193,28 @@ export default function LoopsPage() {
                 </div>
               </section>
             ))}
-                    </div>
+          </div>
+
+          <div className="al-page-gap text-center">
+            <div className="al-cta-panel">
+              <Kicker>Begin With Awareness</Kicker>
+
+              <SectionTitle>
+                Discover which{" "}
+                <span className="al-shadow-word">Shadow Loop</span> is most
+                active for you.
+              </SectionTitle>
+
+              <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+                Complete Find My Loop and receive your personalised ArcheLoop
+                Report.
+              </p>
+
+              <a href="/assessment" className="al-button-primary mt-10">
+                Find My Loop
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

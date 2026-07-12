@@ -143,9 +143,13 @@ export default function Home() {
         <div className="al-hero-card al-fade-in">
         <p className="al-brand-tagline justify-center">
   <span className="al-understand-word">Understand</span>
+
   <span className="al-brand-divider">•</span>
+
   <span className="al-interrupt-word">Interrupt</span>
+
   <span className="al-brand-divider">•</span>
+
   <span className="al-integrate-word">Integrate</span>
 </p>
 
@@ -157,7 +161,7 @@ export default function Home() {
 </h1>
 
          <p className="al-text-lg mx-auto mt-8 max-w-2xl">
-  Discover the pattern behind what keeps repeating.
+  Discover why the same patterns keep repeating.
 </p>
 
           <div className="al-actions">
@@ -173,29 +177,27 @@ export default function Home() {
       </section>
 
 
-      <section className="al-section-tight">
-        <div className="al-philosophy-strip">
-         <p className="al-kicker">
-  <span className="al-shadow-word">Understand</span>
-  <span className="mx-2 al-muted">•</span>
-  <span className="al-awareness-word">Interrupt</span>
-  <span className="mx-2 al-muted">•</span>
-  <span className="al-integration-word">Integrate</span>
-</p>
+     <section className="al-section-tight">
+  <div className="al-philosophy-strip">
+    <p className="al-kicker">What ArcheLoop Does</p>
 
-          <p className="al-text-lg mx-auto mt-7 max-w-3xl">
-            ArcheLoop is an integrative archetypal self-awareness framework that
-            helps people recognise recurring Shadow Loops, interrupt automatic
-            reactions, and develop a more integrated way of being.
-          </p>
+    <p className="al-text-lg mx-auto mt-7 max-w-3xl">
+      ArcheLoop is an integrative archetypal self-awareness framework that
+      helps people recognise recurring{" "}
+      <span className="al-shadow-word">Shadow Loops</span>, interrupt automatic
+      reactions, and develop a more integrated way of being.
+    </p>
 
- <div className="al-slogan-band">
-  <p className="al-slogan-line">
-    Helping people <em>live from their Integrated Self.</em>
-  </p>
-</div>
-        </div>
-      </section>
+    <div className="al-accent-rule mx-auto mt-8" />
+
+    <div className="al-slogan-band">
+      <p className="al-slogan-line">
+        Helping people live from their{" "}
+        <em className="al-integration-word">Integrated Self.</em>
+      </p>
+    </div>
+  </div>
+</section>
 
       <section className="al-section">
         <div className="al-container al-premium-card p-10 text-center">
@@ -237,9 +239,10 @@ export default function Home() {
           </p>
 
        <div className="al-slogan-band">
-  <p className="al-slogan-line">
-    You are not the <em>loop.</em>
-  </p>
+ <p className="al-slogan-line">
+  You are not the{" "}
+  <em className="al-shadow-word">loop.</em>
+</p>
 
   <p className="al-slogan-support">
     A Shadow Loop is a protective pattern, not your identity.
@@ -259,11 +262,11 @@ export default function Home() {
 
      <div className="al-slogan-band">
   <p className="al-slogan-line">
-    Awareness is the beginning of{" "}
-    <span className="al-awareness-word al-serif-italic">
-      integration.
-    </span>
-  </p>
+  Awareness is the beginning of{" "}
+  <span className="al-integration-word al-serif-italic">
+    integration.
+  </span>
+</p>
 
   <div className="al-accent-rule" />
 </div>
@@ -347,9 +350,10 @@ export default function Home() {
           <div className="text-center">
             <p className="al-kicker">How ArcheLoop Works</p>
 
-           <h2 className="al-heading-md">
+          <h2 className="al-heading-md">
   A clear path from{" "}
-  <span className="al-shadow-word">Shadow Loop</span> to{" "}
+  <span className="al-shadow-word">Shadow Loop</span>
+  {" "}to{" "}
   <span className="al-integration-word al-serif-italic">
     Integrated Self.
   </span>
@@ -391,24 +395,40 @@ export default function Home() {
           <p className="al-kicker">Meet Your Integrated Self</p>
 
          <p className="al-text-lg mx-auto mt-6 max-w-3xl">
-  Every Shadow Loop points toward an integrated state: Healthy Visibility,
-  Clear Thinking, Emotional Flow, Connected Strength, and more.
+  Every{" "}
+  <span className="al-shadow-word">Shadow Loop</span>
+  {" "}points toward an{" "}
+  <span className="al-integration-word">
+    integrated state
+  </span>
+  : Healthy Visibility,
+  Clear Thinking,
+  Emotional Flow,
+  Connected Strength,
+  and more.
 </p>
 
 <p className="al-text mx-auto mt-6 max-w-3xl">
-  The goal is not to eliminate every Shadow Loop.
+  The goal is not to eliminate every{" "}
+  <span className="al-shadow-word">
+    Shadow Loop
+  </span>.
 </p>
 
 <p className="al-text mx-auto mt-4 max-w-3xl">
-  The goal is to recognise the pattern, strengthen your Integrated Self, and
-  spend more of your life living from it.
+  The goal is to recognise the pattern,
+  strengthen your{" "}
+  <span className="al-integration-word">
+    Integrated Self
+  </span>,
+  and spend more of your life living from it.
 </p>
 
 <div className="al-slogan-band">
   <p className="al-mission-line">
-    Helping people{" "}
-    <em>live from their Integrated Self.</em>
-  </p>
+  Helping people live from their{" "}
+  <em className="al-integration-word">Integrated Self.</em>
+</p>
 </div>
 
           <a href="/integration" className="al-button-secondary mt-10">
@@ -444,7 +464,7 @@ export default function Home() {
 
                 <p className="al-kicker">{product.label}</p>
 
-               <h3 className="al-product-title">
+              <h3 className="al-product-title">
   {product.title}
 </h3>
 
