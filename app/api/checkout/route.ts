@@ -15,7 +15,7 @@ const products = {
   },
   integration: {
     name: "ArcheLoop Integration",
-    amount: 1499,
+    amount: 1500,
     mode: "subscription" as const,
   },
   bundle: {

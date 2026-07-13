@@ -27,7 +27,7 @@ const products = [
     label: "Transformation",
     title: "ArcheLoop Integration",
     subtitle: "Transform the pattern.",
-    price: "£14.99/month",
+    price: "£15/month",
     description:
       "Launch offer. Includes Triggered Pro, Progress Dashboard, Integration Journeys, My Integrated Vision, and personal tracking.",
     items: [

@@ -289,7 +289,7 @@ export default async function IntegrationJourneyPage({ params }: Props) {
                 </p>
 
                 <p className="mt-1 text-3xl font-bold text-[var(--al-accent)]">
-                  £14.99/month
+                  £15/month
                 </p>
 
                 <p className="al-text mt-3 text-sm">

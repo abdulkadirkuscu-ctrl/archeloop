@@ -121,7 +121,7 @@ export default function IntegrationPage() {
             <p className="al-muted text-lg line-through">£29/month</p>
 
             <p className="mt-1 text-3xl font-bold text-[var(--al-accent)]">
-              £14.99/month
+              £15/month
             </p>
 
             <p className="al-text mt-3 text-sm">

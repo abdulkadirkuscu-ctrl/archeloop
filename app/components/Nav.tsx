@@ -4,44 +4,57 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabaseClient } from "../../lib/supabaseClient";
 
-const navItems = [
-  {
-    label: "Shadow Loops",
-    href: "/loops",
-  },
-  {
-    label: "Find My Loop",
-    href: "/assessment",
-  },
-  {
-    label: "Integration",
-    href: "/integration",
-  },
-];
-
 export default function Nav() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [hasIntegrationAccess, setHasIntegrationAccess] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     let mounted = true;
 
-    async function checkUser() {
+    async function checkAccess(session: { access_token: string } | null) {
+      if (!mounted) return;
+
+      setLoggedIn(!!session);
+
+      if (!session?.access_token) {
+        setHasIntegrationAccess(false);
+        return;
+      }
+
+      try {
+        const res = await fetch("/api/checkout/access", {
+          headers: {
+            Authorization: `Bearer ${session.access_token}`,
+          },
+        });
+
+        const data = await res.json();
+
+        if (mounted) {
+          setHasIntegrationAccess(Boolean(data.hasIntegrationAccess));
+        }
+      } catch {
+        if (mounted) {
+          setHasIntegrationAccess(false);
+        }
+      }
+    }
+
+    async function init() {
       const {
         data: { session },
       } = await supabaseClient.auth.getSession();
 
-      if (mounted) {
-        setLoggedIn(!!session);
-      }
+      await checkAccess(session);
     }
 
-    checkUser();
+    init();
 
     const {
       data: { subscription },
     } = supabaseClient.auth.onAuthStateChange((_event, session) => {
-      setLoggedIn(!!session);
+      checkAccess(session);
     });
 
     return () => {
@@ -49,6 +62,20 @@ export default function Nav() {
       subscription.unsubscribe();
     };
   }, []);
+
+  const navItems = [
+    {
+      label: "Shadow Loops",
+      href: "/loops",
+    },
+    {
+      label: "Find My Loop",
+      href: "/assessment",
+    },
+    hasIntegrationAccess
+      ? { label: "My Integration", href: "/integration-home" }
+      : { label: "Integration", href: "/integration" },
+  ];
 
   function closeMenu() {
     setMenuOpen(false);
@@ -95,10 +122,10 @@ export default function Nav() {
             )}
 
             <Link
-              href="/triggered"
+              href={hasIntegrationAccess ? "/triggered-intelligence" : "/triggered"}
               className="al-button-primary px-6 py-3 text-sm"
             >
-              I Am Triggered
+              {hasIntegrationAccess ? "Triggered Pro" : "I Am Triggered"}
             </Link>
           </div>
 
@@ -184,11 +211,11 @@ export default function Nav() {
               )}
 
               <Link
-                href="/triggered"
+                href={hasIntegrationAccess ? "/triggered-intelligence" : "/triggered"}
                 onClick={closeMenu}
                 className="al-button-primary w-full px-4 py-2.5 text-sm"
               >
-                I Am Triggered
+                {hasIntegrationAccess ? "Triggered Pro" : "I Am Triggered"}
               </Link>
             </div>
           </div>

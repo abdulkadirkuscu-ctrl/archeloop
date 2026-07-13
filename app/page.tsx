@@ -663,7 +663,7 @@ function PricingBlock({ type }: { type: string }) {
       </p>
 
       <p className="al-price-current">
-        £14.99<span className="al-price-suffix">/month</span>
+        £15<span className="al-price-suffix">/month</span>
       </p>
 
       <p className="al-price-note">
