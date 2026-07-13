@@ -20,7 +20,7 @@ export default function ResetPasswordPage() {
     setMessageType("");
 
     const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/callback?next=/auth/update-password`,
+      redirectTo: `${window.location.origin}/auth/confirm?next=/auth/update-password`,
     });
 
     if (error) {
@@ -39,14 +39,16 @@ export default function ResetPasswordPage() {
     <PageShell>
       <section className="al-section">
         <div className="al-container max-w-xl">
-          <div className="al-card p-8">
-            <p className="al-kicker">Reset Password</p>
+          <div className="al-card p-6 sm:p-8">
+            <div className="text-center">
+              <p className="al-kicker">Reset Password</p>
 
-            <h1 className="al-heading-lg">Recover your account</h1>
+              <h1 className="al-heading-lg">Recover your account</h1>
 
-            <p className="al-text mt-4">
-              Enter your email and we’ll send you a password reset link.
-            </p>
+              <p className="al-text mx-auto mt-4 max-w-lg">
+                Enter your email and we’ll send you a password reset link.
+              </p>
+            </div>
 
             <form onSubmit={handleReset} className="mt-8 space-y-4">
               <div>
@@ -64,7 +66,7 @@ export default function ResetPasswordPage() {
                   inputMode="email"
                   autoComplete="email"
                   required
-                  placeholder="Email address"
+                  placeholder="you@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full rounded-2xl border border-[var(--al-border)] bg-[var(--al-bg-soft)] px-5 py-4 text-[var(--al-text)] placeholder:text-[var(--al-text-muted)] outline-none transition focus:border-[var(--al-accent)]"
@@ -74,23 +76,23 @@ export default function ResetPasswordPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="al-button-primary w-full disabled:opacity-60"
+                className="al-button-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading ? "Sending..." : "Send Reset Link"}
               </button>
             </form>
 
             {message && (
-              <p
+              <div
                 role={messageType === "error" ? "alert" : "status"}
-                className={`mt-5 text-sm ${
+                className={`mt-5 rounded-2xl border p-4 text-sm ${
                   messageType === "error"
-                    ? "text-red-400"
-                    : "text-[var(--al-accent)]"
+                    ? "border-red-400/40 bg-red-400/10 text-red-300"
+                    : "border-[var(--al-integrate)]/40 bg-[var(--al-integrate)]/10 text-[var(--al-integrate-soft)]"
                 }`}
               >
                 {message}
-              </p>
+              </div>
             )}
 
             <p className="al-muted mt-6 text-sm">

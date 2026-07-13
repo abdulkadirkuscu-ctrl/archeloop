@@ -61,7 +61,7 @@ function SignupContent() {
     setLoading(true);
 
     try {
-      const emailRedirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(
+      const emailRedirectTo = `${window.location.origin}/auth/confirm?next=${encodeURIComponent(
         redirectTo
       )}`;
 
@@ -211,6 +211,7 @@ function SignupContent() {
 
                 {confirmPassword.length > 0 && (
                   <p
+                    aria-live="polite"
                     className={`mt-2 text-sm ${
                       passwordsMatch
                         ? "text-[var(--al-integrate)]"
@@ -235,7 +236,7 @@ function SignupContent() {
 
             {message && (
               <div
-                role="status"
+                role={messageType === "error" ? "alert" : "status"}
                 className={`mt-5 rounded-2xl border p-4 text-sm ${
                   messageType === "success"
                     ? "border-[var(--al-integrate)]/40 bg-[var(--al-integrate)]/10 text-[var(--al-integrate-soft)]"

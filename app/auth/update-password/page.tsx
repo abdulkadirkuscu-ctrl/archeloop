@@ -118,7 +118,7 @@ export default function UpdatePasswordPage() {
 
                 <Link
                   href="/auth/reset-password"
-                  className="al-button-primary mt-6 inline-flex"
+                  className="al-button-secondary mt-6 inline-flex"
                 >
                   Request a new reset link
                 </Link>
@@ -192,6 +192,21 @@ export default function UpdatePasswordPage() {
                           : "border-[var(--al-border)] focus:border-[var(--al-accent)]"
                     }`}
                   />
+
+                  {confirmPassword.length > 0 && (
+                    <p
+                      aria-live="polite"
+                      className={`mt-2 text-sm ${
+                        passwordsMatch
+                          ? "text-[var(--al-integrate)]"
+                          : "text-red-400"
+                      }`}
+                    >
+                      {passwordsMatch
+                        ? "Passwords match."
+                        : "Passwords do not match."}
+                    </p>
+                  )}
                 </div>
 
                 <button
@@ -205,16 +220,16 @@ export default function UpdatePasswordPage() {
             )}
 
             {message && (
-              <p
+              <div
                 role={messageType === "error" ? "alert" : "status"}
-                className={`mt-5 text-sm ${
+                className={`mt-5 rounded-2xl border p-4 text-sm ${
                   messageType === "error"
-                    ? "text-red-400"
-                    : "text-[var(--al-accent)]"
+                    ? "border-red-400/40 bg-red-400/10 text-red-300"
+                    : "border-[var(--al-integrate)]/40 bg-[var(--al-integrate)]/10 text-[var(--al-integrate-soft)]"
                 }`}
               >
                 {message}
-              </p>
+              </div>
             )}
           </div>
         </div>

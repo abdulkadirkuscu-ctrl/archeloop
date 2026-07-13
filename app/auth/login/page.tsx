@@ -27,6 +27,7 @@ function LoginContent() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState<"success" | "error" | "">(
     ""
@@ -68,15 +69,17 @@ function LoginContent() {
     <PageShell>
       <section className="al-section">
         <div className="al-container max-w-xl">
-          <div className="al-card p-8">
-            <p className="al-kicker">Login</p>
+          <div className="al-card p-6 sm:p-8">
+            <div className="text-center">
+              <p className="al-kicker">Login</p>
 
-            <h1 className="al-heading-lg">Welcome back</h1>
+              <h1 className="al-heading-lg">Welcome back</h1>
 
-            <p className="al-text mt-4">
-              Log in to access your ArcheLoop report, integration progress,
-              trigger history, and monthly reviews.
-            </p>
+              <p className="al-text mx-auto mt-4 max-w-lg">
+                Log in to access your ArcheLoop report, integration progress,
+                trigger history, and monthly reviews.
+              </p>
+            </div>
 
             <form onSubmit={handleLogin} className="mt-8 space-y-4">
               <div>
@@ -94,7 +97,7 @@ function LoginContent() {
                   inputMode="email"
                   autoComplete="email"
                   required
-                  placeholder="Email address"
+                  placeholder="you@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full rounded-2xl border border-[var(--al-border)] bg-[var(--al-bg-soft)] px-5 py-4 text-[var(--al-text)] placeholder:text-[var(--al-text-muted)] outline-none transition focus:border-[var(--al-accent)]"
@@ -102,20 +105,30 @@ function LoginContent() {
               </div>
 
               <div>
-                <label
-                  htmlFor="login-password"
-                  className="mb-2 block text-sm font-semibold text-[var(--al-text)]"
-                >
-                  Password
-                </label>
+                <div className="mb-2 flex items-center justify-between gap-4">
+                  <label
+                    htmlFor="login-password"
+                    className="block text-sm font-semibold text-[var(--al-text)]"
+                  >
+                    Password
+                  </label>
+
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((current) => !current)}
+                    className="text-sm font-semibold text-[var(--al-accent)]"
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
 
                 <input
                   id="login-password"
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
                   required
-                  placeholder="Password"
+                  placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full rounded-2xl border border-[var(--al-border)] bg-[var(--al-bg-soft)] px-5 py-4 text-[var(--al-text)] placeholder:text-[var(--al-text-muted)] outline-none transition focus:border-[var(--al-accent)]"
@@ -125,23 +138,23 @@ function LoginContent() {
               <button
                 type="submit"
                 disabled={loading}
-                className="al-button-primary w-full disabled:opacity-60"
+                className="al-button-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading ? "Logging In..." : "Log In"}
               </button>
             </form>
 
             {message && (
-              <p
+              <div
                 role={messageType === "error" ? "alert" : "status"}
-                className={`mt-5 text-sm ${
+                className={`mt-5 rounded-2xl border p-4 text-sm ${
                   messageType === "error"
-                    ? "text-red-400"
-                    : "text-[var(--al-accent)]"
+                    ? "border-red-400/40 bg-red-400/10 text-red-300"
+                    : "border-[var(--al-integrate)]/40 bg-[var(--al-integrate)]/10 text-[var(--al-integrate-soft)]"
                 }`}
               >
                 {message}
-              </p>
+              </div>
             )}
 
             <div className="al-muted mt-6 space-y-2 text-sm">
