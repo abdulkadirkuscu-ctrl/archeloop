@@ -1,5 +1,6 @@
 import PageShell from "./components/PageShell";
 import Image from "next/image";
+import { loops } from "./data/loops";
 
 const shadowLoopPreview = [
   {
@@ -94,6 +95,7 @@ const products = [
     label: "Free",
     title: "Explore ArcheLoop",
     priceType: "free",
+    note: "",
     items: [
       "The 12 Shadow Loops",
       "Archetypes, Body Map, Nervous System & Practices",
@@ -104,9 +106,10 @@ const products = [
     cta: "Explore Free Resources",
   },
   {
-    label: "Recommended First Step",
+    label: "Start Here",
     title: "Find My Loop",
     priceType: "launch-report",
+    note: "",
     items: [
       "60-question Find My Loop assessment",
       "Primary & Secondary Shadow Loops",
@@ -119,9 +122,26 @@ const products = [
     cta: "Find My Loop",
   },
   {
+    label: "Recommended Complete Path",
+    title: "Report + Integration Bundle",
+    priceType: "launch-bundle",
+    note: "",
+    items: [
+      "Full ArcheLoop Report",
+      "First month ArcheLoop Integration",
+      "Triggered Pro",
+      "Progress Dashboard",
+      "Integration Journeys",
+      "My Integrated Vision",
+    ],
+    href: "/checkout?product=bundle",
+    cta: "Choose Report + Integration",
+  },
+  {
     label: "Transformation",
     title: "ArcheLoop Integration",
     priceType: "launch-integration",
+    note: "Designed for members continuing from their ArcheLoop Report.",
     items: [
       "Triggered Pro",
       "Progress Dashboard",
@@ -163,6 +183,16 @@ export default function Home() {
          <p className="al-text-lg mx-auto mt-8 max-w-2xl">
   Discover why the same patterns keep repeating.
 </p>
+
+          <div className="al-muted mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm">
+            <span>60 Questions</span>
+            <span className="al-brand-divider">•</span>
+            <span>5–7 Minutes</span>
+            <span className="al-brand-divider">•</span>
+            <span>Personalised Report</span>
+            <span className="al-brand-divider">•</span>
+            <span>From £19</span>
+          </div>
 
           <div className="al-actions">
             <a href="/assessment" className="al-button-primary">
@@ -273,6 +303,27 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="al-section">
+        <div className="al-container al-card p-10 text-center">
+          <p className="al-kicker">What You’ll Discover</p>
+
+          <h2 className="al-heading-md">What Find My Loop reveals.</h2>
+
+          <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+            Your assessment reveals the structure of your current pattern and
+            gives you a personalised ArcheLoop Report.
+          </p>
+
+          <div className="mt-12 grid gap-5 text-left md:grid-cols-3">
+            {discoveries.map((item) => (
+              <div key={item} className="al-feature-item">
+                ✓ {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
      <section className="al-section">
   <div className="al-container-wide al-premium-card p-10 text-center">
     <p className="al-kicker">Discover the 12 Shadow Loops</p>
@@ -323,27 +374,6 @@ export default function Home() {
     </a>
   </div>
 </section>
-
-      <section className="al-section">
-        <div className="al-container al-card p-10 text-center">
-          <p className="al-kicker">What You’ll Discover</p>
-
-          <h2 className="al-heading-md">What Find My Loop reveals.</h2>
-
-          <p className="al-text-lg mx-auto mt-6 max-w-3xl">
-            Your assessment reveals the structure of your current pattern and
-            gives you a personalised ArcheLoop Report.
-          </p>
-
-          <div className="mt-12 grid gap-5 text-left md:grid-cols-3">
-            {discoveries.map((item) => (
-              <div key={item} className="al-feature-item">
-                ✓ {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="al-section">
         <div className="al-container-wide al-premium-card p-10">
@@ -440,6 +470,82 @@ export default function Home() {
       <section className="al-section">
         <div className="al-container-wide">
           <div className="text-center">
+            <p className="al-kicker">See What You Receive</p>
+
+            <h2 className="al-heading-md">Inside your ArcheLoop Report.</h2>
+
+            <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+              A sample from the ArcheLoop Report, shown in the same format
+              your personalised report will use.
+            </p>
+          </div>
+
+          <div className="al-premium-card mx-auto mt-12 max-w-4xl p-10">
+            <p className="al-kicker">Sample Report Preview</p>
+
+            <h3 className="mt-4 text-3xl font-bold text-[var(--al-accent)] md:text-4xl">
+              {loops["Emotional Lockdown"].title}
+            </h3>
+
+            <p className="al-text-lg mt-5 max-w-3xl">
+              {loops["Emotional Lockdown"].description}
+            </p>
+
+            <div className="mt-10 grid gap-4 md:grid-cols-3">
+              <div className="al-soft-card p-5">
+                <p className="al-kicker">Primary Shadow Loop</p>
+                <p className="mt-2 text-lg font-semibold text-[var(--al-text)]">
+                  {loops["Emotional Lockdown"].title}
+                </p>
+              </div>
+
+              <div className="al-soft-card p-5">
+                <p className="al-kicker">Secondary Shadow Loop</p>
+                <p className="mt-2 text-lg font-semibold text-[var(--al-text)]">
+                  {loops["Emotional Lockdown"].secondaryLoops[0]}
+                </p>
+              </div>
+
+              <div className="al-soft-card p-5">
+                <p className="al-kicker">Archetype</p>
+                <p className="mt-2 text-lg font-semibold text-[var(--al-text)]">
+                  {loops["Emotional Lockdown"].archetype}
+                </p>
+              </div>
+
+              <div className="al-soft-card p-5">
+                <p className="al-kicker">Nervous System Pattern</p>
+                <p className="mt-2 text-lg font-semibold text-[var(--al-text)]">
+                  {loops["Emotional Lockdown"].nervousSystem}
+                </p>
+              </div>
+
+              <div className="al-soft-card p-5">
+                <p className="al-kicker">Integration Journey</p>
+                <p className="mt-2 text-lg font-semibold text-[var(--al-text)]">
+                  Vulnerability Path
+                </p>
+              </div>
+
+              <div className="al-soft-card p-5">
+                <p className="al-kicker">Integrated Self</p>
+                <p className="mt-2 text-lg font-semibold text-[var(--al-text)]">
+                  Emotional Openness
+                </p>
+              </div>
+            </div>
+
+            <p className="al-muted mt-8 text-sm">
+              Sample structure only. Your ArcheLoop Report is generated from
+              your own Find My Loop assessment.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="al-section">
+        <div className="al-container-wide">
+          <div className="text-center">
             <p className="al-kicker">Choose Your Path</p>
 
             <h2 className="al-heading-md">Start where you are.</h2>
@@ -451,12 +557,12 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {products.map((product) => (
              <div
   key={product.title}
  className={`al-pricing-card p-8 ${
-  product.priceType === "launch-report"
+  product.priceType === "launch-report" || product.priceType === "launch-bundle"
     ? "al-premium-card"
     : "al-card"
 }`}
@@ -478,10 +584,14 @@ export default function Home() {
                   ))}
                 </ul>
 
+                {product.note && (
+                  <p className="al-muted mt-5 text-sm">{product.note}</p>
+                )}
+
                 <a
                   href={product.href}
                   className={`mt-8 ${
-                    product.priceType === "launch-report"
+                    product.priceType === "launch-report" || product.priceType === "launch-bundle"
                       ? "al-button-primary"
                       : "al-button-secondary"
                   }`}
@@ -540,6 +650,22 @@ function PricingBlock({ type }: { type: string }) {
 
         <p className="al-price-note">
           Launch offer for early members.
+        </p>
+      </div>
+    );
+  }
+
+  if (type === "launch-bundle") {
+    return (
+      <div className="al-pricing-block">
+        <p className="al-price-old">
+          Regular price <span>£58</span>
+        </p>
+
+        <p className="al-price-current">£29</p>
+
+        <p className="al-price-note">
+          Report + first month Integration, together.
         </p>
       </div>
     );
