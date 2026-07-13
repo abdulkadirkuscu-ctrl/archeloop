@@ -27,6 +27,24 @@ export async function POST(req: Request) {
       );
     }
 
+    const { data: orders } = await supabaseServer
+      .from("archeloop_orders")
+      .select("product, status")
+      .eq("user_id", user.id)
+      .in("status", ["paid", "private_access", "founding_access"]);
+
+    const hasIntegrationAccess =
+      orders?.some(
+        (order) => order.product === "integration" || order.product === "bundle"
+      ) || false;
+
+    if (!hasIntegrationAccess) {
+      return NextResponse.json(
+        { error: "ArcheLoop Integration access is required to save activations." },
+        { status: 403 }
+      );
+    }
+
     const { error } = await supabaseServer
       .from("archeloop_activations")
       .insert({
