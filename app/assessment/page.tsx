@@ -2,10 +2,11 @@
 
 import Footer from "../components/Footer"
 import Nav from "../components/Nav"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { questions, assessmentOrder } from "../data/questions"
 import { loops } from "../data/loops"
 import { trackEvent } from "../../lib/trackEvent"
+import { supabaseClient } from "../../lib/supabaseClient"
 
 const answerOptions = [
   { label: "Strongly agree", value: 5 },
@@ -31,10 +32,276 @@ const orderedQuestions = assessmentOrder
   .map((id) => questions.find((q) => q.id === id))
   .filter(Boolean)
 
+const journeyByLoop: Record<
+  string,
+  { journey: string; integratedState: string }
+> = {
+  "Dimmed Light": {
+    journey: "Visibility Path",
+    integratedState: "Healthy Visibility",
+  },
+  "Paper Crown": {
+    journey: "Authentic Sovereignty Path",
+    integratedState: "Authentic Leadership",
+  },
+  "Stalled Flame": {
+    journey: "Action Path",
+    integratedState: "Purposeful Action",
+  },
+  "Blank Page": {
+    journey: "Creative Expression Path",
+    integratedState: "Authentic Expression",
+  },
+  "Smoky Mirrors": {
+    journey: "Truth Path",
+    integratedState: "Self-Honesty",
+  },
+  "Mind Maze": {
+    journey: "Clarity Path",
+    integratedState: "Clear Thinking",
+  },
+  "Emotional Lockdown": {
+    journey: "Vulnerability Path",
+    integratedState: "Emotional Openness",
+  },
+  "Fantasy Fog": {
+    journey: "Connection Path",
+    integratedState: "Genuine Connection",
+  },
+  "Flooded Waters": {
+    journey: "Emotional Regulation Path",
+    integratedState: "Emotional Flow",
+  },
+  Compliance: {
+    journey: "Boundaries Path",
+    integratedState: "Self-Respect",
+  },
+  Fortress: {
+    journey: "Trust Path",
+    integratedState: "Connected Strength",
+  },
+  "Barren Ground": {
+    journey: "Vitality Path",
+    integratedState: "Inner Vitality",
+  },
+}
+
+type PendingReportData = {
+  primaryLoop: string
+  integratedScores: any[]
+  loopLandscape: any[]
+  premiumDataReady: any
+}
+
+type PendingReportPayload = {
+  reportData: PendingReportData
+  selectedProduct: "report" | "bundle" | null
+  createdAt: string
+}
+
+const PENDING_REPORT_KEY = "archeloop_pending_report"
+const PENDING_REPORT_MAX_AGE_MS = 24 * 60 * 60 * 1000
+
+function readPendingReport(): PendingReportPayload | null {
+  if (typeof window === "undefined") return null
+
+  try {
+    const raw = window.localStorage.getItem(PENDING_REPORT_KEY)
+    if (!raw) return null
+
+    const parsed = JSON.parse(raw) as PendingReportPayload
+
+    const isValidShape =
+      parsed &&
+      typeof parsed.createdAt === "string" &&
+      parsed.reportData &&
+      typeof parsed.reportData.primaryLoop === "string" &&
+      Array.isArray(parsed.reportData.loopLandscape)
+
+    if (!isValidShape) {
+      window.localStorage.removeItem(PENDING_REPORT_KEY)
+      return null
+    }
+
+    const age = Date.now() - Date.parse(parsed.createdAt)
+
+    if (!Number.isFinite(age) || age < 0 || age > PENDING_REPORT_MAX_AGE_MS) {
+      window.localStorage.removeItem(PENDING_REPORT_KEY)
+      return null
+    }
+
+    return parsed
+  } catch {
+    window.localStorage.removeItem(PENDING_REPORT_KEY)
+    return null
+  }
+}
+
+function writePendingReport(reportData: PendingReportData) {
+  if (typeof window === "undefined") return
+
+  const payload: PendingReportPayload = {
+    reportData,
+    selectedProduct: null,
+    createdAt: new Date().toISOString(),
+  }
+
+  try {
+    window.localStorage.setItem(PENDING_REPORT_KEY, JSON.stringify(payload))
+  } catch {
+    // localStorage unavailable (private browsing, quota) - safe to ignore
+  }
+}
+
+function writePendingProduct(product: "report" | "bundle") {
+  const existing = readPendingReport()
+  if (!existing) return
+
+  const payload: PendingReportPayload = {
+    ...existing,
+    selectedProduct: product,
+  }
+
+  try {
+    window.localStorage.setItem(PENDING_REPORT_KEY, JSON.stringify(payload))
+  } catch {
+    // ignore
+  }
+}
+
+function clearPendingReport() {
+  if (typeof window === "undefined") return
+
+  try {
+    window.localStorage.removeItem(PENDING_REPORT_KEY)
+  } catch {
+    // ignore
+  }
+}
+
 export default function AssessmentPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [responses, setResponses] = useState<number[]>([])
   const [finished, setFinished] = useState(false)
+  const [restoredReportData, setRestoredReportData] =
+    useState<PendingReportData | null>(null)
+  const [pendingNotice, setPendingNotice] = useState("")
+  const [saving, setSaving] = useState(false)
+  const [saveError, setSaveError] = useState("")
+
+  const savingRef = useRef(false)
+  const resumeHandledRef = useRef(false)
+  const hasPersistedRef = useRef(false)
+  const reportDataRef = useRef<PendingReportData | null>(null)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const isResume = params.get("resume") === "checkout"
+    const pending = readPendingReport()
+
+    if (pending) {
+      setRestoredReportData(pending.reportData)
+      setFinished(true)
+    } else if (isResume) {
+      setPendingNotice(
+        "We couldn't find your completed assessment. It may have expired. Please retake Find My Loop below."
+      )
+    }
+
+    if (isResume && pending && !resumeHandledRef.current) {
+      resumeHandledRef.current = true
+      void resumeCheckout(pending)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  async function saveAndContinue(
+    product: "report" | "bundle",
+    reportData: PendingReportData
+  ) {
+    if (savingRef.current) return
+    savingRef.current = true
+    setSaving(true)
+    setSaveError("")
+
+    try {
+      const res = await fetch("/api/reports", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ reportData }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setSaveError(data.error || "Could not save your report. Please try again.")
+        return
+      }
+
+      trackEvent("report_opened", reportData.primaryLoop)
+
+      const journeyInfo = journeyByLoop[reportData.primaryLoop]
+      const secondaryLoopName = reportData.loopLandscape?.[1]?.loop || ""
+      const primaryLoopInfoForCookie =
+        loops[reportData.primaryLoop as keyof typeof loops]
+
+      document.cookie = `archeloop_report_summary=${encodeURIComponent(
+        JSON.stringify({
+          primaryLoop: reportData.primaryLoop,
+          secondaryLoop: secondaryLoopName,
+          archetype: primaryLoopInfoForCookie?.archetype || "",
+          element: primaryLoopInfoForCookie?.element || "",
+          journey: journeyInfo?.journey || "",
+          integratedState: journeyInfo?.integratedState || "",
+        })
+      )}; path=/; max-age=2592000`
+
+      clearPendingReport()
+      window.location.href = `/checkout?product=${product}`
+    } catch {
+      setSaveError(
+        "Something went wrong while saving your report. Please try again."
+      )
+    } finally {
+      savingRef.current = false
+      setSaving(false)
+    }
+  }
+
+  async function resumeCheckout(pending: PendingReportPayload) {
+    const {
+      data: { session },
+    } = await supabaseClient.auth.getSession()
+
+    if (!session) return
+
+    const product = pending.selectedProduct === "bundle" ? "bundle" : "report"
+    await saveAndContinue(product, pending.reportData)
+  }
+
+  async function handleProductClick(product: "report" | "bundle") {
+    if (savingRef.current) return
+    if (!reportDataRef.current) return
+
+    writePendingProduct(product)
+    setSaving(true)
+
+    const {
+      data: { session },
+    } = await supabaseClient.auth.getSession()
+
+    if (!session) {
+      setSaving(false)
+      window.location.href =
+        "/auth/login?redirectTo=" +
+        encodeURIComponent("/assessment?resume=checkout")
+      return
+    }
+
+    await saveAndContinue(product, reportDataRef.current)
+  }
 
   function handleAnswer(value: number) {
     if (currentQuestion === 0 && responses.length === 0) {
@@ -291,104 +558,27 @@ export default function AssessmentPage() {
       weakestHealthyArchetype,
     }
 
-    const journeyByLoop: Record<
-      string,
-      { journey: string; integratedState: string }
-    > = {
-      "Dimmed Light": {
-        journey: "Visibility Path",
-        integratedState: "Healthy Visibility",
-      },
-      "Paper Crown": {
-        journey: "Authentic Sovereignty Path",
-        integratedState: "Authentic Leadership",
-      },
-      "Stalled Flame": {
-        journey: "Action Path",
-        integratedState: "Purposeful Action",
-      },
-      "Blank Page": {
-        journey: "Creative Expression Path",
-        integratedState: "Authentic Expression",
-      },
-      "Smoky Mirrors": {
-        journey: "Truth Path",
-        integratedState: "Self-Honesty",
-      },
-      "Mind Maze": {
-        journey: "Clarity Path",
-        integratedState: "Clear Thinking",
-      },
-      "Emotional Lockdown": {
-        journey: "Vulnerability Path",
-        integratedState: "Emotional Openness",
-      },
-      "Fantasy Fog": {
-        journey: "Connection Path",
-        integratedState: "Genuine Connection",
-      },
-      "Flooded Waters": {
-        journey: "Emotional Regulation Path",
-        integratedState: "Emotional Flow",
-      },
-      Compliance: {
-        journey: "Boundaries Path",
-        integratedState: "Self-Respect",
-      },
-      Fortress: {
-        journey: "Trust Path",
-        integratedState: "Connected Strength",
-      },
-      "Barren Ground": {
-        journey: "Vitality Path",
-        integratedState: "Inner Vitality",
-      },
-    }
-
-    async function saveReportAndRedirect() {
-      try {
-        const res = await fetch("/api/reports", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            reportData: {
-              primaryLoop: primaryLoop[0],
-              integratedScores,
-              loopLandscape,
-              premiumDataReady,
-            },
-          }),
-        })
-
-        const data = await res.json()
-
-        if (!res.ok) {
-          alert(data.error || "Could not create report.")
-          return
+    const computedReportData: PendingReportData | null = primaryLoop
+      ? {
+          primaryLoop: primaryLoop[0],
+          integratedScores,
+          loopLandscape,
+          premiumDataReady,
         }
+      : null
 
-        trackEvent("report_opened", primaryLoop[0])
+    const activePrimaryLoopInfo = restoredReportData
+      ? loops[restoredReportData.primaryLoop as keyof typeof loops] || null
+      : primaryLoopInfo
 
-        const primaryLoopName = primaryLoop[0]
-        const secondaryLoopName = secondaryLoop?.[0] || ""
-        const journeyInfo = journeyByLoop[primaryLoopName]
+    if (restoredReportData) {
+      reportDataRef.current = restoredReportData
+    } else if (computedReportData) {
+      reportDataRef.current = computedReportData
 
-        document.cookie = `archeloop_report_summary=${encodeURIComponent(
-          JSON.stringify({
-            primaryLoop: primaryLoopName,
-            secondaryLoop: secondaryLoopName,
-            archetype: primaryLoopInfo?.archetype || "",
-            element: primaryLoopInfo?.element || "",
-            journey: journeyInfo?.journey || "",
-            integratedState: journeyInfo?.integratedState || "",
-          })
-        )}; path=/; max-age=2592000`
-
-        window.location.href = `/report/${data.reportId}`
-      } catch {
-        alert("Something went wrong while creating your report.")
+      if (!hasPersistedRef.current) {
+        hasPersistedRef.current = true
+        writePendingReport(computedReportData)
       }
     }
 
@@ -409,14 +599,14 @@ export default function AssessmentPage() {
             </h1>
 
             <p className="al-text-lg mx-auto mt-8 max-w-3xl">
-              Your responses have identified the Shadow Loop currently most active for you, 
-              along with your archetypal pattern, nervous system activation, 
+              Your responses have identified the Shadow Loop currently most active for you,
+              along with your archetypal pattern, nervous system activation,
               Integration Journey, and Integrated Self.
             </p>
           </div>
         </section>
 
-        {primaryLoopInfo && primaryLoop && (
+        {activePrimaryLoopInfo && (
           <section className="al-section-tight">
             <div className="al-container al-premium-card p-10 text-center">
               <p className="al-kicker">
@@ -424,11 +614,11 @@ export default function AssessmentPage() {
               </p>
 
               <h2 className="mt-5 text-4xl font-bold text-[var(--al-accent)] md:text-6xl">
-                {primaryLoopInfo.title}
+                {activePrimaryLoopInfo.title}
               </h2>
 
               <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed al-text">
-                {primaryLoopInfo.description}
+                {activePrimaryLoopInfo.description}
               </p>
 
               <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed al-muted">
@@ -497,12 +687,14 @@ toward your Integrated Self.
                   ))}
                 </div>
 
-                <a
-                  href="/checkout?product=report"
-                  className="al-button-primary mt-8 w-full"
+                <button
+                  type="button"
+                  onClick={() => handleProductClick("report")}
+                  disabled={saving}
+                  className="al-button-primary mt-8 w-full disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Continue to Full ArcheLoop Report
-                </a>
+                  {saving ? "Saving..." : "Continue to Full ArcheLoop Report"}
+                </button>
               </div>
 
               <div className="al-premium-card p-8">
@@ -544,14 +736,25 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
                   ))}
                 </div>
 
-                <a
-                  href="/checkout?product=bundle"
-                  className="al-button-primary mt-8 w-full"
+                <button
+                  type="button"
+                  onClick={() => handleProductClick("bundle")}
+                  disabled={saving}
+                  className="al-button-primary mt-8 w-full disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                 Choose Report + Integration
-                </a>
+                  {saving ? "Saving..." : "Choose Report + Integration"}
+                </button>
               </div>
             </div>
+
+            {saveError && (
+              <p
+                role="alert"
+                className="mx-auto mt-8 max-w-2xl text-center text-sm text-red-400"
+              >
+                {saveError}
+              </p>
+            )}
           </div>
         </section>
 
@@ -563,6 +766,16 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
  return (
   <main className="al-page min-h-screen">
     <Nav />
+
+    {pendingNotice && (
+      <section className="al-section-tight">
+        <div className="mx-auto max-w-4xl">
+          <p role="alert" className="al-card p-4 text-center text-sm text-red-400">
+            {pendingNotice}
+          </p>
+        </div>
+      </section>
+    )}
 
     <section className="al-section-tight">
       <div className="relative mx-auto max-w-4xl space-y-8">
