@@ -1665,6 +1665,14 @@ body {
   letter-spacing: -0.03em;
 }
 
+.al-price-suffix {
+  font-size: 0.42em;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--al-text-muted);
+  margin-left: 0.15em;
+}
+
 /* ---------- Previous Price ---------- */
 
 .al-price-old {

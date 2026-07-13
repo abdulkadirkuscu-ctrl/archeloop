@@ -92,20 +92,6 @@ const userJourney = [
 
 const products = [
   {
-    label: "Free",
-    title: "Explore ArcheLoop",
-    priceType: "free",
-    note: "",
-    items: [
-      "The 12 Shadow Loops",
-      "Archetypes, Body Map, Nervous System & Practices",
-      "Basic I Am Triggered",
-      "Educational self-development pages",
-    ],
-    href: "/loops",
-    cta: "Explore Free Resources",
-  },
-  {
     label: "Start Here",
     title: "Find My Loop",
     priceType: "launch-report",
@@ -557,7 +543,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
             {products.map((product) => (
              <div
   key={product.title}
@@ -601,6 +587,17 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          <p className="al-muted mt-8 text-center text-sm">
+            Not ready to purchase?{" "}
+            <a
+              href="/loops"
+              className="text-[var(--al-accent)] underline-offset-4 hover:underline"
+            >
+              Explore ArcheLoop for free
+            </a>
+            .
+          </p>
         </div>
       </section>
 
@@ -627,18 +624,6 @@ export default function Home() {
   );
 }
 function PricingBlock({ type }: { type: string }) {
-  if (type === "free") {
-    return (
-      <div className="al-pricing-block">
-        <p className="al-price-current">£0</p>
-
-        <p className="al-price-note">
-          Free educational access and basic I Am Triggered.
-        </p>
-      </div>
-    );
-  }
-
   if (type === "launch-report") {
     return (
       <div className="al-pricing-block">
@@ -677,7 +662,9 @@ function PricingBlock({ type }: { type: string }) {
         Regular price <span>£29/month</span>
       </p>
 
-      <p className="al-price-current">£14.99/month</p>
+      <p className="al-price-current">
+        £14.99<span className="al-price-suffix">/month</span>
+      </p>
 
       <p className="al-price-note">
         Launch offer for early members.
