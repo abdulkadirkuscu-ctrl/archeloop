@@ -97,9 +97,9 @@ export default async function IntegrationJourneyPage({ params }: Props) {
                     ["Hidden Longing", journey.hiddenLonging],
                     ["Body Activation", journey.bodyActivation],
                     ["Primary State", journey.primaryState],
-                    ["Suppression Pattern", journey.suppression],
-                    ["Compensation Pattern", journey.compensation],
-                    ["Inner Collision", journey.collision],
+                    ["Collapse Pattern", journey.suppression],
+                    ["Compensate Pattern", journey.compensation],
+                    ["Collide Pattern", journey.collision],
                   ].map(([title, text]) => (
                     <div key={title} className="al-soft-card p-5">
                       <p className="al-kicker">{title}</p>

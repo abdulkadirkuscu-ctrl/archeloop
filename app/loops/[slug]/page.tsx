@@ -1,10 +1,21 @@
 import Footer from "../../components/Footer";
 import Nav from "../../components/Nav";
 import { loops } from "../../data/loops";
+import { RESPONSE_STYLE_LABELS } from "../../data/scoring";
 import Image from "next/image";
 
 function slugify(name: string) {
   return name.toLowerCase().replace(/\s+/g, "-");
+}
+
+// Locked public-facing response-style language: Collapse, Compensate,
+// Collide. loop.mechanism still stores the internal Suppression /
+// Compensation / Collision value for backward compatibility.
+function responseStyleLabel(mechanism: string) {
+  return (
+    RESPONSE_STYLE_LABELS[mechanism as keyof typeof RESPONSE_STYLE_LABELS] ||
+    mechanism
+  );
 }
 
 export default async function LoopPage({
@@ -39,7 +50,7 @@ export default async function LoopPage({
         <div className="al-container space-y-16">
           <div>
             <p className="al-kicker">
-              {loop.element} Element • {loop.mechanism}
+              {loop.element} Element • {responseStyleLabel(loop.mechanism)}
             </p>
 
             <h1 className="al-heading-xl">{loop.title}</h1>

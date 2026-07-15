@@ -7,6 +7,12 @@ import { questions, assessmentOrder } from "../data/questions"
 import { loops } from "../data/loops"
 import { trackEvent } from "../../lib/trackEvent"
 import { supabaseClient } from "../../lib/supabaseClient"
+import {
+  scoreAssessment,
+  type ScoredQuestion,
+  type AssessmentResult,
+  type ArchetypeScore,
+} from "../data/scoring"
 
 const answerOptions = [
   { label: "Strongly agree", value: 5 },
@@ -15,18 +21,6 @@ const answerOptions = [
   { label: "Disagree", value: 2 },
   { label: "Strongly disagree", value: 1 },
 ]
-
-function scoreToPercent(score: number) {
-  const scale: Record<number, number> = {
-    1: 0,
-    2: 25,
-    3: 50,
-    4: 75,
-    5: 100,
-  }
-
-  return scale[score] ?? 0
-}
 
 const orderedQuestions = assessmentOrder
   .map((id) => questions.find((q) => q.id === id))
@@ -86,11 +80,17 @@ const journeyByLoop: Record<
   },
 }
 
-type PendingReportData = {
+// Report v2 saved snapshot: the full AssessmentResult, plus compatibility
+// aliases so app/assessment/page.tsx and components/FullReport.tsx keep
+// working against the field names they already read. scoringVersion (carried
+// through from AssessmentResult) is what gates Report v2 rendering in
+// FullReport.tsx - old saved reports simply lack this field and fall back to
+// the pre-v2 layout untouched.
+type PendingReportData = Omit<AssessmentResult, "primaryLoop" | "secondaryLoop"> & {
   primaryLoop: string
-  integratedScores: any[]
-  loopLandscape: any[]
-  premiumDataReady: any
+  secondaryLoop: string
+  confidence: number
+  integratedScores: ArchetypeScore[]
 }
 
 type PendingReportPayload = {
@@ -333,237 +333,25 @@ export default function AssessmentPage() {
   }
 
   if (finished) {
-    const archetypeToElement: Record<string, string> = {
-      Sovereign: "Fire",
-      Magician: "Air",
-      Lover: "Water",
-      Warrior: "Earth",
-    }
+    const result = scoreAssessment(responses, orderedQuestions as ScoredQuestion[])
 
-    const healthyScores: Record<string, number> = {}
-    const healthyCounts: Record<string, number> = {}
-
-    const suppressionScores: Record<string, number> = {}
-    const suppressionCounts: Record<string, number> = {}
-
-    const compensationScores: Record<string, number> = {}
-    const compensationCounts: Record<string, number> = {}
-
-    const collisionScores: Record<string, number> = {}
-    const collisionCounts: Record<string, number> = {}
-
-    const loopScores: Record<string, number> = {}
-
-    responses.forEach((rawScore, index) => {
-      const question = orderedQuestions[index]
-      if (!question) return
-
-      const score = scoreToPercent(rawScore)
-      const archetype = question.archetype
-
-      if (question.mechanism === "Healthy") {
-        healthyScores[archetype] = (healthyScores[archetype] || 0) + score
-        healthyCounts[archetype] = (healthyCounts[archetype] || 0) + 1
-      }
-
-      if (question.mechanism === "Suppression") {
-        suppressionScores[archetype] =
-          (suppressionScores[archetype] || 0) + score
-        suppressionCounts[archetype] =
-          (suppressionCounts[archetype] || 0) + 1
-      }
-
-      if (question.mechanism === "Compensation") {
-        compensationScores[archetype] =
-          (compensationScores[archetype] || 0) + score
-        compensationCounts[archetype] =
-          (compensationCounts[archetype] || 0) + 1
-      }
-
-      if (question.mechanism === "Collision") {
-        collisionScores[archetype] =
-          (collisionScores[archetype] || 0) + score
-        collisionCounts[archetype] =
-          (collisionCounts[archetype] || 0) + 1
-      }
-
-      if (question.mechanism !== "Healthy") {
-        loopScores[question.category] =
-          (loopScores[question.category] || 0) + score
-      }
-    })
-
-    const archetypes = ["Sovereign", "Magician", "Lover", "Warrior"]
-
-    const integratedScores = archetypes.map((archetype) => {
-      const healthyPercent = Math.round(
-        (healthyScores[archetype] || 0) / (healthyCounts[archetype] || 1)
-      )
-
-      const suppressionPercent = Math.round(
-        (suppressionScores[archetype] || 0) /
-          (suppressionCounts[archetype] || 1)
-      )
-
-      const compensationPercent = Math.round(
-        (compensationScores[archetype] || 0) /
-          (compensationCounts[archetype] || 1)
-      )
-
-      const collisionPercent = Math.round(
-        (collisionScores[archetype] || 0) /
-          (collisionCounts[archetype] || 1)
-      )
-
-      const shadowPercent = Math.round(
-        (suppressionPercent + compensationPercent + collisionPercent) / 3
-      )
-
-      const integratedPercent = Math.max(
-        0,
-        Math.round(healthyPercent - shadowPercent * 0.6)
-      )
-
-      return {
-        archetype,
-        element: archetypeToElement[archetype],
-        healthyPercent,
-        shadowPercent,
-        suppressionPercent,
-        compensationPercent,
-        collisionPercent,
-        integratedPercent,
-      }
-    })
-
-    const elementalPresenceRaw = integratedScores.map((item) => {
-      const presence = Math.max(
-        1,
-        Math.round(item.healthyPercent - item.shadowPercent * 0.35)
-      )
-
-      return {
-        element: item.element,
-        archetype: item.archetype,
-        percentage: presence,
-      }
-    })
-
-    const totalElementalPresence = elementalPresenceRaw.reduce(
-      (sum, item) => sum + item.percentage,
-      0
-    )
-
-    const elementalActivation = elementalPresenceRaw.map((item) => ({
-      element: item.element,
-      archetype: item.archetype,
-      percentage: Math.round((item.percentage / totalElementalPresence) * 100),
-    }))
-
-    const totalIntegrated = integratedScores.reduce(
-      (sum, item) => sum + item.integratedPercent,
-      0
-    )
-
-    const elementalPercentages = integratedScores.map((item) => ({
-      element: item.element,
-      percentage:
-        totalIntegrated > 0
-          ? Math.round((item.integratedPercent / totalIntegrated) * 100)
-          : 25,
-    }))
-
-    const loopToArchetype: Record<string, string> = {
-      "Dimmed Light": "Sovereign",
-      "Paper Crown": "Sovereign",
-      "Stalled Flame": "Sovereign",
-      "Blank Page": "Magician",
-      "Smoky Mirrors": "Magician",
-      "Mind Maze": "Magician",
-      "Emotional Lockdown": "Lover",
-      "Fantasy Fog": "Lover",
-      "Flooded Waters": "Lover",
-      Compliance: "Warrior",
-      Fortress: "Warrior",
-      "Barren Ground": "Warrior",
-    }
-
-    const loopToFormation: Record<
-      string,
-      "suppressionPercent" | "compensationPercent" | "collisionPercent"
-    > = {
-      "Dimmed Light": "suppressionPercent",
-      "Paper Crown": "compensationPercent",
-      "Stalled Flame": "collisionPercent",
-      "Blank Page": "suppressionPercent",
-      "Smoky Mirrors": "compensationPercent",
-      "Mind Maze": "collisionPercent",
-      "Emotional Lockdown": "suppressionPercent",
-      "Fantasy Fog": "compensationPercent",
-      "Flooded Waters": "collisionPercent",
-      Compliance: "suppressionPercent",
-      Fortress: "compensationPercent",
-      "Barren Ground": "collisionPercent",
-    }
-
-    const weightedLoopScores = Object.entries(loopScores).map(
-      ([loopName, rawScore]) => {
-        const archetype = loopToArchetype[loopName]
-        const formationKey = loopToFormation[loopName]
-        const archetypeScore = integratedScores.find(
-          (item) => item.archetype === archetype
-        )
-
-        const loopAverage = Math.round(rawScore / 3)
-        const formationScore = archetypeScore
-          ? archetypeScore[formationKey]
-          : loopAverage
-        const lowIntegrationPressure = archetypeScore
-          ? 100 - archetypeScore.integratedPercent
-          : 50
-
-        const finalScore = Math.round(
-          loopAverage * 0.5 +
-            formationScore * 0.3 +
-            lowIntegrationPressure * 0.2
-        )
-
-        return [loopName, finalScore] as [string, number]
-      }
-    )
-
-    const sortedLoops = weightedLoopScores.sort((a, b) => b[1] - a[1])
-
-    const loopLandscape = sortedLoops.map(([loop, score]) => ({
-      loop,
-      score,
-    }))
-
-    const primaryLoop = sortedLoops[0]
-    const secondaryLoop = sortedLoops[1]
-
-    const primaryLoopInfo = primaryLoop
-      ? loops[primaryLoop[0] as keyof typeof loops]
+    const primaryLoopInfo = result.primaryLoop
+      ? loops[result.primaryLoop.loop as keyof typeof loops]
       : null
 
-    const weakestHealthyArchetype = integratedScores.sort(
-      (a, b) => a.integratedPercent - b.integratedPercent
-    )[0]
-
-    const premiumDataReady = {
-      integratedScores,
-      elementalActivation,
-      elementalPercentages,
-      secondaryLoop,
-      weakestHealthyArchetype,
-    }
-
-    const computedReportData: PendingReportData | null = primaryLoop
+    // Report v2: save the complete AssessmentResult as a frozen snapshot,
+    // not just a hand-picked subset. Legacy-named aliases are layered on top
+    // so existing rendering code keeps working unchanged. This report is
+    // never recomputed after saving - reopening it always renders this exact
+    // snapshot (see components/FullReport.tsx, which never calls
+    // scoreAssessment()).
+    const computedReportData: PendingReportData | null = result.primaryLoop
       ? {
-          primaryLoop: primaryLoop[0],
-          integratedScores,
-          loopLandscape,
-          premiumDataReady,
+          ...result,
+          primaryLoop: result.primaryLoop.loop,
+          secondaryLoop: result.secondaryLoop?.loop ?? "",
+          confidence: result.resultClarity,
+          integratedScores: result.archetypeScores,
         }
       : null
 
@@ -811,6 +599,67 @@ Continue into ArcheLoop Integration to recognise your Shadow Loops in everyday l
             the Integrated Self your pattern points toward.
           </p>
 
+        </div>
+
+        <div className="al-card p-6 text-left">
+          <p className="al-kicker">How to Answer</p>
+
+          <p className="al-text mt-4">
+            Choose the response that best reflects how you usually think,
+            feel, or behave — particularly under pressure. Answer according
+            to what is most consistently true for you, not what you believe
+            should be true.
+          </p>
+
+          <p className="al-text mt-4">
+            You may recognise both Healthy and Protective expressions in
+            yourself. This is normal — choose the response that best
+            represents how strongly each statement applies to you. There are
+            no good or bad answers. This is educational, not diagnostic, and
+            more honest responses produce a clearer result.
+          </p>
+
+          <div className="al-soft-card mt-6 p-5">
+            <p className="al-kicker mb-3">The Scale</p>
+
+            <dl className="al-text space-y-1.5 text-sm">
+              <div>
+                <span className="font-semibold text-[var(--al-text)]">
+                  Strongly disagree
+                </span>{" "}
+                — rarely or almost never true for me.
+              </div>
+              <div>
+                <span className="font-semibold text-[var(--al-text)]">
+                  Disagree
+                </span>{" "}
+                — usually not true for me.
+              </div>
+              <div>
+                <span className="font-semibold text-[var(--al-text)]">
+                  Neutral
+                </span>{" "}
+                — sometimes true, depends on the situation, or I am unsure.
+              </div>
+              <div>
+                <span className="font-semibold text-[var(--al-text)]">
+                  Agree
+                </span>{" "}
+                — often true for me.
+              </div>
+              <div>
+                <span className="font-semibold text-[var(--al-text)]">
+                  Strongly agree
+                </span>{" "}
+                — consistently or strongly true for me.
+              </div>
+            </dl>
+
+            <p className="al-muted mt-4 text-xs">
+              When two answers feel possible, choose the one that describes
+              your more automatic response under pressure.
+            </p>
+          </div>
         </div>
 
           <div className="al-card p-5">

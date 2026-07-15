@@ -54,7 +54,7 @@ export default function ReportFeedback() {
           <h2 className="al-heading-lg">Thank you.</h2>
 
           <p className="al-text-lg mx-auto mt-5 max-w-2xl">
-            Your feedback helps refine ArcheLoop™ and improve the report experience for early users.
+            Your feedback helps refine ArcheLoop and improve the report experience for early users.
           </p>
         </div>
       </section>
@@ -67,10 +67,10 @@ export default function ReportFeedback() {
         <div className="text-center">
           <p className="al-kicker">Report Feedback</p>
 
-          <h2 className="al-heading-lg">Help shape ArcheLoop™.</h2>
+          <h2 className="al-heading-lg">Help shape ArcheLoop.</h2>
 
           <p className="al-text-lg mx-auto mt-5 max-w-3xl">
-            You are one of the first people experiencing the ArcheLoop Report™.
+            You are one of the first people experiencing the ArcheLoop Report.
             Your feedback helps refine the system and improve the experience for future users.
           </p>
         </div>
@@ -116,7 +116,7 @@ export default function ReportFeedback() {
 
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           <ChoiceGroup
-            label="Would you recommend ArcheLoop™?"
+            label="Would you recommend ArcheLoop?"
             options={["Yes", "Maybe", "No"]}
             value={recommend}
             onChange={setRecommend}

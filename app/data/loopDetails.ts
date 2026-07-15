@@ -186,7 +186,7 @@ export const loopDetails = {
     coreStructure: {
       dominantElement: "Air",
       suppressedElement: "Water",
-      weakArchetype: "Lover",
+      weakArchetype: "Magician",
       overactiveArchetype: "Magician",
       compensationPattern:
         "Perception reshapes reality to avoid emotional vulnerability.",
@@ -812,7 +812,7 @@ export const loopDetails = {
     coreStructure: {
       dominantElement: "Earth",
       suppressedElement: "Water",
-      weakArchetype: "Lover",
+      weakArchetype: "Warrior",
       overactiveArchetype: "Warrior",
       compensationPattern:
         "Control, distance, and self-containment compensate for unsafe vulnerability.",

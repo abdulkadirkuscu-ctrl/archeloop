@@ -64,19 +64,19 @@ export default function LoverPage() {
             <div className="grid gap-6 md:grid-cols-3">
               <ShadowCard
                 title="Emotional Lockdown Loop"
-                text="Suppressed Water. Feelings are numbed, hidden, or avoided because vulnerability feels unsafe."
+                text="Collapse (Water). Feelings are numbed, hidden, or avoided because vulnerability feels unsafe."
                 belief="Feeling is dangerous."
               />
 
               <ShadowCard
                 title="Fantasy Fog Loop"
-                text="Inflated Water. Imagination, longing, or idealisation replaces direct contact with reality."
+                text="Compensate (Water). Imagination, longing, or idealisation replaces direct contact with reality."
                 belief="It is safer in my inner world."
               />
 
               <ShadowCard
                 title="Flooded Waters Loop"
-                text="Colliding Water. Emotion becomes too intense to regulate, creating overwhelm, urgency, or collapse."
+                text="Collide (Water). Emotion becomes too intense to regulate, creating overwhelm, urgency, or collapse."
                 belief="My feelings are too much."
               />
             </div>

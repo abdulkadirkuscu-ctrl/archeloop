@@ -70,9 +70,9 @@ identityProtection:
       "You may rely on achievement, recognition, status, or control to feel worthy or secure.",
     loopBreaker:
       "Return to intrinsic worth. Name one value you hold even when nobody is watching.",
-    integrationKey: "Healthy Lover",
+    integrationKey: "Healthy Sovereign",
     integrationReason:
-      "Authentic emotional connection softens the need to perform for worth.",
+      "Authentic self-worth, grounded in Sovereign's own capacity for leadership, softens the need to perform for value.",
       signs: [
   "Feeling worth tied to achievement or image",
   "Pressure to prove, perform, or appear successful",
@@ -129,9 +129,9 @@ identityProtection:
       "You may feel vision or desire inside you, but hesitation, doubt, or overthinking prevents action.",
     loopBreaker:
       "Choose one small visible action. Do not wait for full confidence before beginning.",
-    integrationKey: "Healthy Warrior",
+    integrationKey: "Healthy Sovereign",
     integrationReason:
-      "Grounded action interrupts paralysis and restores movement.",
+      "Purposeful action restores Sovereign's own capacity to move from vision into embodied movement.",
       signs: [
   "Wanting to move forward but repeatedly delaying",
   "Waiting for certainty before acting",
@@ -247,9 +247,9 @@ identityProtection:
       "You may reshape, reinterpret, or rationalise reality to avoid vulnerability, uncertainty, or loss of control.",
     loopBreaker:
       "Ask: What is actually happening, and what story am I adding? Seek one grounded reality check.",
-    integrationKey: "Healthy Lover",
+    integrationKey: "Healthy Magician",
     integrationReason:
-      "Emotional honesty softens defensive mental control patterns.",
+      "Self-honesty restores Magician's own capacity for direct perception, softening the need to control or reshape the story.",
       signs: [
   "Losing trust in perception or interpretation",
   "Rationalising, over-explaining, or distorting reality",
@@ -306,9 +306,9 @@ identityProtection:
       "You may overthink, second-guess, or mentally rehearse until action becomes difficult.",
     loopBreaker:
       "Choose one small next action. Let clarity come through movement, not endless analysis.",
-    integrationKey: "Healthy Warrior",
+    integrationKey: "Healthy Magician",
     integrationReason:
-      "Grounded action interrupts excessive mental looping and restores movement.",
+      "Clear thinking restores Magician's own capacity to let insight resolve into decisive action.",
       signs: [
   "Overthinking instead of acting",
   "Rehearsing scenarios repeatedly",
@@ -432,9 +432,9 @@ integrationBlueprint:
       "You may retreat into fantasy, idealisation, or imagined connection instead of engaging with reality directly.",
     loopBreaker:
       "Ground the fantasy into one real action. Ask: What is true here, and what am I imagining?",
-    integrationKey: "Healthy Warrior",
+    integrationKey: "Healthy Lover",
     integrationReason:
-      "Grounded embodiment helps reconnect fantasy to reality and action.",
+      "Genuine connection restores Lover's own capacity for grounded intimacy, softening the need to retreat into fantasy.",
       signs: [
   "Idealising people or imagined futures",
   "Longing replacing grounded connection",
@@ -491,9 +491,9 @@ identityProtection:
       "You may become emotionally overwhelmed, flooded, or unable to regulate once feelings become intense.",
     loopBreaker:
       "Slow the emotional wave. Breathe, name the feeling, and take one grounding action before responding.",
-    integrationKey: "Healthy Warrior",
+    integrationKey: "Healthy Lover",
     integrationReason:
-      "Grounded structure and nervous system regulation stabilize emotional flooding.",
+      "Emotional flow restores Lover's own capacity to feel deeply while remaining regulated.",
       signs: [
   "Emotion feeling too intense to contain",
   "Relational fear becoming urgent or overwhelming",
@@ -612,9 +612,9 @@ identityProtection:
       "You may use emotional distance, rigid control, or hyper-independence to avoid vulnerability.",
     loopBreaker:
       "Soften one protective wall safely. Let someone support you in one small, low-risk way.",
-    integrationKey: "Healthy Lover",
+    integrationKey: "Healthy Warrior",
     integrationReason:
-      "Safe emotional connection softens defensive isolation and rigidity.",
+      "Connected strength restores Warrior's own capacity for trust, softening the need for rigid self-reliance.",
       signs: [
   "Emotional distance or guardedness",
   "Difficulty asking for help or receiving care",
@@ -671,9 +671,9 @@ identityProtection:
       "You may keep carrying responsibilities while becoming depleted, disconnected from joy, or undernourished.",
     loopBreaker:
       "Choose one act of restoration. Delegate, rest, ask for help, or remove one unnecessary burden.",
-    integrationKey: "Healthy Lover",
+    integrationKey: "Healthy Warrior",
     integrationReason:
-      "Restoration, nourishment, and emotional connection replenish exhausted Earth energy.",
+      "Inner vitality restores Warrior's own capacity for sustainable action, without requiring constant endurance.",
       signs: [
   "Feeling emotionally depleted or flat",
   "Functioning without vitality or joy",

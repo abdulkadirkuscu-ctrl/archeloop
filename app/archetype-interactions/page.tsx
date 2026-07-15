@@ -53,7 +53,7 @@ export default function ArchetypeInteractionsPage() {
       shadow:
         "When an archetype becomes deeply suppressed, people may unconsciously seek others to carry that energy for them instead of developing it internally.",
       loops:
-        "Collapsed Air may seek external Magicians. Weak Fire may attach to dominant Sovereigns. Suppressed Warrior may seek protectors instead of boundaries.",
+        "Collapse in Air may seek external Magicians. Lower Fire availability may attach to dominant Sovereigns. Collapse in Warrior may seek protectors instead of boundaries.",
       dynamic:
         "Projection creates temporary relief but long-term dependency if the energy is never integrated internally.",
     },

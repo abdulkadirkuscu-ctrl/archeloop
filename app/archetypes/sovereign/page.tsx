@@ -64,19 +64,19 @@ export default function SovereignPage() {
             <div className="grid gap-6 md:grid-cols-3">
               <ShadowCard
                 title="Dimmed Light Loop"
-                text="Suppressed Fire. You shrink, hide your gifts, or avoid being seen because visibility feels unsafe."
+                text="Collapse (Fire). You shrink, hide your gifts, or avoid being seen because visibility feels unsafe."
                 belief="If I shine, I will be rejected."
               />
 
               <ShadowCard
                 title="Paper Crown Loop"
-                text="Inflated Fire. You may rely on achievement, admiration, status, or control to feel worthy."
+                text="Compensate (Fire). You may rely on achievement, admiration, status, or control to feel worthy."
                 belief="I am only valuable if I appear impressive."
               />
 
               <ShadowCard
                 title="Stalled Flame Loop"
-                text="Colliding Fire. You have vision or desire, but hesitation, fear, or overthinking interrupts action."
+                text="Collide (Fire). You have vision or desire, but hesitation, fear, or overthinking interrupts action."
                 belief="I want to act, but I might fail."
               />
             </div>

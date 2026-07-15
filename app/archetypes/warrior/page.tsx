@@ -64,19 +64,19 @@ export default function WarriorPage() {
             <div className="grid gap-6 md:grid-cols-3">
               <ShadowCard
                 title="Compliance Loop"
-                text="Suppressed Earth. Boundaries collapse and you over-adapt to avoid conflict, rejection, or disapproval."
+                text="Collapse (Earth). Boundaries collapse and you over-adapt to avoid conflict, rejection, or disapproval."
                 belief="It is safer to go along."
               />
 
               <ShadowCard
                 title="Fortress Loop"
-                text="Inflated Earth. Protection becomes rigid control, hyper-independence, walls, or emotional distance."
+                text="Compensate (Earth). Protection becomes rigid control, hyper-independence, walls, or emotional distance."
                 belief="I must protect myself at all costs."
               />
 
               <ShadowCard
                 title="Barren Ground Loop"
-                text="Colliding Earth. You keep enduring responsibility while losing nourishment, rest, joy, or support."
+                text="Collide (Earth). You keep enduring responsibility while losing nourishment, rest, joy, or support."
                 belief="I must endure."
               />
             </div>

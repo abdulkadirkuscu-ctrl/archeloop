@@ -42,19 +42,19 @@ const archetypes = [
 const formations = [
   {
     title: "Collapse",
-    subtitle: "Suppression",
+    subtitle: "What becomes unavailable",
     belief: "This part of me is not allowed.",
     text: "A natural energy goes quiet, hidden, frozen, or unavailable. You may shrink, shut down, freeze, people please, or disconnect from a part of yourself.",
   },
   {
     title: "Compensate",
-    subtitle: "Compensation",
+    subtitle: "What becomes performative",
     belief: "I must become something else to stay safe.",
     text: "A protective strategy takes over. You may perform, control, idealise, overthink, achieve, distance, or create an identity that protects the more vulnerable part underneath.",
   },
   {
     title: "Collide",
-    subtitle: "Collision",
+    subtitle: "What becomes psychologically conflicted",
     belief: "Two inner forces are pulling me in opposite directions.",
     text: "Two energies become active at the same time but cannot integrate. This can create paralysis, overwhelm, emotional flooding, mental loops, or exhaustion.",
   },

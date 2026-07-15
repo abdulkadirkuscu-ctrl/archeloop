@@ -63,19 +63,19 @@ export default function MagicianPage() {
             <div className="grid gap-6 md:grid-cols-3">
               <ShadowCard
                 title="Blank Page Loop"
-                text="Suppressed Air. The mind freezes under pressure and thoughts disappear when needed most."
+                text="Collapse (Air). The mind freezes under pressure and thoughts disappear when needed most."
                 belief="Nothing comes to me when it matters."
               />
 
               <ShadowCard
                 title="Smoky Mirrors Loop"
-                text="Inflated Air. Reality becomes distorted through rationalisation, reinterpretation, or mental control."
+                text="Compensate (Air). Reality becomes distorted through rationalisation, reinterpretation, or mental control."
                 belief="If I control the story, I will be safe."
               />
 
               <ShadowCard
                 title="Mind Maze Loop"
-                text="Colliding Air. Overthinking blocks movement, creating endless mental rehearsal without action."
+                text="Collide (Air). Overthinking blocks movement, creating endless mental rehearsal without action."
                 belief="I must think more before acting."
               />
             </div>
