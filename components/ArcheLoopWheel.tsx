@@ -1,5 +1,7 @@
 "use client";
 
+import { buildWheelInterpretation } from "../app/data/reportInterpretations";
+
 // ArcheLoop Wheel — Report v2's replacement for the old point-radar
 // "Archetypal Compass". A radar/spider chart plots one blended number per
 // archetype, which cannot show Healthy Availability and Shadow Activation as
@@ -10,7 +12,11 @@
 //
 // Pure SVG + CSS, no charting dependency. Static paths only (no animation),
 // so it prints cleanly. A visible text table beneath the wheel repeats every
-// number for accessibility and for print/no-JS fallback.
+// number for accessibility and for print/no-JS fallback, and a one-sentence,
+// deterministic interpretation (built from the actual score leaders, never a
+// speculative reading of a minor difference) is rendered underneath so the
+// chart explains itself without requiring the reader to compare four sectors
+// by eye.
 
 export type WheelArchetypeScore = {
   archetype: string;
@@ -69,8 +75,10 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
     };
   });
 
+  const interpretation = buildWheelInterpretation(scores);
+
   return (
-    <div className="al-premium-card p-8">
+    <div className="al-feature-card">
       <p className="al-kicker text-center">ArcheLoop Wheel</p>
 
       <h3 className="mt-4 text-center text-3xl font-bold">
@@ -100,6 +108,7 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
               fill="none"
               stroke="rgba(245,243,238,0.10)"
               strokeWidth="1"
+              aria-hidden="true"
             />
           ))}
 
@@ -112,6 +121,7 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
               stroke={sector.colorVar}
               strokeOpacity="0.55"
               strokeWidth="1.5"
+              aria-hidden="true"
             />
           ))}
 
@@ -121,6 +131,7 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
               d={wedgePath(sector.centerAngleDeg, scaledRadius(sector.shadowActivation, SHADOW_MAX_RADIUS))}
               fill={sector.colorVar}
               fillOpacity="0.65"
+              aria-hidden="true"
             />
           ))}
 
@@ -172,7 +183,15 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
             );
           })}
 
-          <circle cx={CENTER} cy={CENTER} r={MIN_RADIUS - 6} fill="var(--al-surface)" stroke="var(--al-border-strong)" strokeWidth="1.5" />
+          <circle
+            cx={CENTER}
+            cy={CENTER}
+            r={MIN_RADIUS - 6}
+            fill="var(--al-surface)"
+            stroke="var(--al-border-strong)"
+            strokeWidth="1.5"
+            aria-hidden="true"
+          />
           <text
             x={CENTER}
             y={CENTER - 4}
@@ -232,6 +251,12 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
           Inner wedge — Shadow Activation
         </span>
       </div>
+
+      {interpretation && (
+        <p className="al-text-lg mx-auto mt-6 max-w-3xl text-center">
+          {interpretation}
+        </p>
+      )}
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {bySector.map((sector) => (

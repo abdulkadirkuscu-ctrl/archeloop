@@ -3,12 +3,24 @@
 // Pure, deterministic templating over already-computed report fields. Never
 // recomputes any score itself (see docs/ASSESSMENT_SCORING_SPECIFICATION.md -
 // this file only reads AssessmentResult output, it is not a second scoring
-// engine). Produces a short, specific, educational, non-diagnostic paragraph.
+// engine). Produces two to three short, specific, educational, non-diagnostic
+// paragraphs rather than one dense paragraph carrying every metric:
 //
-// Falls back to a simpler paragraph when v2-only fields (secondary loop,
-// Most Available Archetype, Growth Edge, capacity-level scores) are
-// unavailable - e.g. for legacy saved reports predating scoringVersion "2.0",
-// or an otherwise-v2 report missing an optional field.
+//   1. Primary structure   - Primary Loop, Developmental Capacity, Healthy
+//                             Availability, Shadow Activation, Formation.
+//   2. Supporting pattern   - Secondary Loop and how it may interact with the
+//                             Primary Loop, plus Most Available Archetype.
+//   3. Developmental direction - Growth Edge and Integration Direction,
+//                             framed as a current pattern rather than a
+//                             fixed identity.
+//
+// Falls back to a shorter one-or-two-paragraph version when v2-only fields
+// (secondary loop, Most Available Archetype, Growth Edge, capacity-level
+// scores) are unavailable - e.g. for legacy saved reports predating
+// scoringVersion "2.0", or an otherwise-v2 report missing an optional field.
+// buildPatternSynthesis() never implies Growth Edge caused the Primary Loop -
+// paragraph 3 only ever describes Growth Edge as "where growth may matter
+// most", never as an explanation for paragraph 1's pattern.
 
 export type PatternSynthesisInput = {
   primaryLoopTitle: string;
@@ -30,7 +42,7 @@ const FORMATION_DESCRIPTION: Record<string, string> = {
   Collide: "getting caught between two competing responses",
 };
 
-export function buildPatternSynthesis(input: PatternSynthesisInput): string {
+export function buildPatternSynthesis(input: PatternSynthesisInput): string[] {
   const {
     primaryLoopTitle,
     primaryArchetype,
@@ -52,36 +64,40 @@ export function buildPatternSynthesis(input: PatternSynthesisInput): string {
     !!mostAvailableArchetype;
 
   if (!hasFullV2Data) {
-    const sentences = [
+    const paragraphs: string[] = [
       `Your results point to ${primaryLoopTitle} as the strongest protective pattern currently active, centred in ${primaryArchetype}.`,
     ];
 
     if (secondaryLoopTitle) {
-      sentences.push(
-        `${secondaryLoopTitle} appears alongside it as a supporting pattern.`
+      paragraphs.push(
+        `${secondaryLoopTitle} appears alongside it as a supporting pattern, sometimes reinforcing it under pressure.`
       );
     }
 
-    sentences.push(
-      "As you build awareness of when this pattern activates, it gradually becomes something you can recognise and interrupt rather than something that runs automatically."
+    paragraphs.push(
+      "As you build awareness of when this pattern activates, it gradually becomes something you can recognise and interrupt rather than something that runs automatically. This is a description of your current pattern, not a fixed identity."
     );
 
-    return sentences.join(" ");
+    return paragraphs;
   }
 
+  // Paragraph 1 — primary structure.
   const formationClause = primaryFormation
     ? ` through ${primaryFormation.toLowerCase()} — ${
         FORMATION_DESCRIPTION[primaryFormation] ?? "a protective response"
       }`
     : "";
 
-  const sentences: string[] = [
+  const paragraphs: string[] = [
     `Your results suggest that ${primaryCapacityName} is currently protected${formationClause}, showing up as ${primaryLoopTitle} within ${primaryArchetype} (${primaryHealthyAvailability}% Healthy Availability alongside ${primaryShadowActivation}% Shadow Activation for this capacity).`,
   ];
 
+  // Paragraph 2 — supporting pattern.
+  const supportingSentences: string[] = [];
+
   if (secondaryLoopTitle) {
-    sentences.push(
-      `${secondaryLoopTitle} appears as a supporting pattern alongside it.`
+    supportingSentences.push(
+      `${secondaryLoopTitle} appears as a supporting pattern, and can reinforce ${primaryLoopTitle} rather than activating on its own.`
     );
   }
 
@@ -89,20 +105,30 @@ export function buildPatternSynthesis(input: PatternSynthesisInput): string {
     mostAvailableArchetype &&
     typeof mostAvailableHealthyAvailability === "number"
   ) {
-    sentences.push(
+    supportingSentences.push(
       `Meanwhile, healthy access to ${mostAvailableArchetype} capacities remains comparatively available (${mostAvailableHealthyAvailability}% Healthy Availability) — currently the most available of the four Archetypes.`
     );
   }
 
+  if (supportingSentences.length > 0) {
+    paragraphs.push(supportingSentences.join(" "));
+  }
+
+  // Paragraph 3 — developmental direction. Growth Edge is presented only as
+  // "where growth may matter most", never as a cause of the Primary Loop.
+  const directionSentences: string[] = [];
+
   if (growthEdgeCapacity && growthEdgeArchetype) {
-    sentences.push(
-      `${growthEdgeCapacity}, within ${growthEdgeArchetype}, is the capacity where increasing Healthy Availability may matter most right now.`
+    directionSentences.push(
+      `${growthEdgeCapacity}, within ${growthEdgeArchetype}, is the capacity where increasing Healthy Availability may matter most right now — this does not mean it caused ${primaryLoopTitle}.`
     );
   }
 
-  sentences.push(
+  directionSentences.push(
     "This is a description of your current pattern, not a fixed identity — it is educational information intended to support your own self-understanding, not a diagnosis."
   );
 
-  return sentences.join(" ");
+  paragraphs.push(directionSentences.join(" "));
+
+  return paragraphs;
 }

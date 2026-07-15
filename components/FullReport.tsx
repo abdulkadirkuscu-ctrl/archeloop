@@ -7,6 +7,17 @@ import { elementInsights } from "../app/data/elementInsights";
 import ReportFeedback from "./ReportFeedback";
 import { getLoopStructuralMetadata } from "../app/data/loopStructuralMetadata";
 import { buildPatternSynthesis } from "../app/data/reportSynthesis";
+import {
+  buildHeroInterpretation,
+  buildWheelInterpretation,
+  buildTwelveCapacityInterpretation,
+  buildFormationInterpretation,
+  buildLoopLandscapeInterpretation,
+  buildDevelopmentalDirectionSynthesis,
+  getActivationDescriptor,
+  joinWithAnd,
+  ARCHETYPE_ACCENT,
+} from "../app/data/reportInterpretations";
 import ArcheLoopWheel from "./ArcheLoopWheel";
 
 const loopPathMap: Record<string, { journey: string; integratedSelf: string }> = {
@@ -83,6 +94,19 @@ const SELF_COMPENSATING_SUMMARY: Record<string, string> = {
   Fortress:
     "Warrior protects its injured Trust capacity through intensified self-reliance, distance, and control.",
 };
+
+// Chapter Five Integration Timeline (Section 12 of this task): six generic
+// developmental stages, grouped under the three canonical Understand /
+// Interrupt / Integrate phases. Purely educational - not a promised linear
+// recovery process (see the "rarely linear" note rendered alongside it).
+const INTEGRATION_TIMELINE_STAGES: { label: string; phase: string }[] = [
+  { label: "Current Pattern", phase: "Understand" },
+  { label: "Awareness", phase: "Understand" },
+  { label: "Interruption", phase: "Interrupt" },
+  { label: "Practice", phase: "Interrupt" },
+  { label: "Integration", phase: "Integrate" },
+  { label: "Integrated Self", phase: "Integrate" },
+];
 
 // Report v2 replacement for the old integratedPercent-based "Archetype
 // Integration" copy (Section 1 of this task): concise, deterministic
@@ -206,7 +230,7 @@ export default function FullReport({
 
   const secondaryLoop = loops[secondaryLoopName as keyof typeof loops];
 
-  const bodyMapText = `Your results point to activation centred in the ${primaryLoop.body}. This is consistent with your ${formattedMechanism} response style — before ${primaryLoop.title.toLowerCase()} becomes a conscious thought, it is often felt here first, as tension, shutdown, urgency, or protective contraction.`;
+  const bodyMapText = `Under pressure, this activation can concentrate in the ${primaryLoop.body}. This is consistent with a ${formattedMechanism} response — before ${primaryLoop.title.toLowerCase()} becomes a conscious thought, it may be felt here first, as tension, shutdown, urgency, or protective contraction.`;
 
   const cascadeSteps: string[] =
     "cascade" in detail && Array.isArray(detail.cascade)
@@ -215,10 +239,25 @@ export default function FullReport({
 
   const integrationBlueprintText = `${detail.coreStructure.integrationShift} This process usually begins through small, repeatable moments of awareness, regulation, and behaviour change rather than forcing the system to transform all at once.`;
 
+  // Hero interpretation sentence: one deterministic sentence built from the
+  // primary loop's own canonical observable behaviours (loopFormulas.ts),
+  // applied through the same shared template for every loop - never a
+  // per-loop hard-coded phrase. structuralMetadata is canonical, fixed loop
+  // data (app/data/loopStructuralMetadata.ts) and is available regardless of
+  // scoringVersion. See app/data/reportInterpretations.ts.
+  const heroInterpretation = buildHeroInterpretation(
+    structuralMetadata.developmentalCapacity,
+    structuralMetadata.injuredArchetype,
+    formula.observableBehaviours
+  );
+
+  const primaryArchetypeAccent = ARCHETYPE_ACCENT[primaryLoop.archetype] ?? "var(--al-accent)";
+
   // Section 6 of this task: personalised synthesis built from real report
   // data, with graceful fallback copy when v2-only fields are unavailable
-  // (legacy reports, or a v2 report missing an optional field).
-  const patternSynthesis = buildPatternSynthesis({
+  // (legacy reports, or a v2 report missing an optional field). Now returns
+  // two-to-three short paragraphs rather than one dense paragraph.
+  const patternSynthesisParagraphs = buildPatternSynthesis({
     primaryLoopTitle: primaryLoop.title,
     primaryArchetype: primaryLoop.archetype,
     primaryFormation: isV2 ? structuralMetadata.formation : undefined,
@@ -234,6 +273,27 @@ export default function FullReport({
     growthEdgeArchetype: isV2 ? reportData?.growthEdge?.archetype : undefined,
   });
 
+  // Chapter Three, Developmental Direction (Section 10 of this task): the
+  // strongest one or two capacities within the Most Available Archetype -
+  // read directly from its own capacities array, never recomputed.
+  const mostAvailableStrongestCapacities: string[] = reportData?.mostAvailableArchetype?.capacities
+    ? [...reportData.mostAvailableArchetype.capacities]
+        .sort(
+          (a: any, b: any) => b.healthyAvailabilityScore - a.healthyAvailabilityScore
+        )
+        .slice(0, 2)
+        .map((c: any) => c.developmentalCapacity)
+    : [];
+
+  // The legacy archetype-level growthEdgeArchetype (derived from
+  // integratedPercent) is only surfaced when it names an Archetype distinct
+  // from both the capacity-level Growth Edge and the Most Available
+  // Archetype - i.e. only when it adds information neither already covers.
+  const showBroaderGrowthArea =
+    !!reportData?.growthEdgeArchetype &&
+    reportData.growthEdgeArchetype.archetype !== reportData?.growthEdge?.archetype &&
+    reportData.growthEdgeArchetype.archetype !== reportData?.mostAvailableArchetype?.archetype;
+
   function ScoreBar({ label, value }: { label: string; value: number }) {
     return (
       <div>
@@ -244,7 +304,14 @@ export default function FullReport({
           </span>
         </div>
 
-        <div className="h-3 overflow-hidden rounded-full bg-[var(--al-surface-deep)]">
+        <div
+          className="h-3 overflow-hidden rounded-full bg-[var(--al-surface-deep)]"
+          role="progressbar"
+          aria-valuenow={value}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={label}
+        >
           <div
             className="h-full rounded-full bg-[var(--al-accent)]"
             style={{ width: `${value}%` }}
@@ -313,6 +380,18 @@ export default function FullReport({
     );
   }
 
+  // Chapter Four cluster heading (Section 11 of this task): a small,
+  // non-emoji geometric marker plus an h3 - one level below the chapter's h2
+  // and one level above each card's own h4, keeping heading depth logical.
+  function ClusterHeading({ label }: { label: string }) {
+    return (
+      <div className="al-cluster-heading mb-6">
+        <span className="al-cluster-marker" aria-hidden="true" />
+        <h3 className="text-xl font-bold text-[var(--al-text)]">{label}</h3>
+      </div>
+    );
+  }
+
   // Report v2 chapter structure (Section 4 of this task): a visible number,
   // rule line, kicker, heading, and short intro mark the start of each of
   // the five chapters, so the (long, by design) report reads as five clear
@@ -329,7 +408,7 @@ export default function FullReport({
     intro?: string;
   }) {
     return (
-      <div className="al-container-wide pb-2 pt-16 md:pt-24">
+      <div className="al-chapter-start al-container-wide pb-2 pt-16 md:pt-24">
         <div className="al-chapter-divider">
           <span className="al-chapter-number" aria-hidden="true">
             {number}
@@ -543,10 +622,17 @@ export default function FullReport({
     const dominantFormation = [...formationEntries].sort((a, b) => b.value - a.value)[0];
 
     return (
-      <div className="al-card p-8">
+      <div className="al-panel-card p-8">
         <div className="mb-6 flex items-center justify-between gap-6">
           <div>
-            <h3 className="text-3xl font-bold">{item.archetype}</h3>
+            <h3 className="flex items-center gap-3 text-3xl font-bold">
+              <span
+                aria-hidden="true"
+                className="inline-block h-3 w-3 rounded-full"
+                style={{ background: ARCHETYPE_ACCENT[item.archetype] ?? "var(--al-accent)" }}
+              />
+              {item.archetype}
+            </h3>
             <p className="al-muted mt-1">{item.element}</p>
           </div>
 
@@ -656,7 +742,7 @@ export default function FullReport({
                     </span>
                   </h1>
 
-                  <p className="al-text-lg mt-8 max-w-3xl">
+                  <p className="al-text-lg mt-6 max-w-2xl">
                     Your responses did not produce one clearly dominant Shadow
                     Loop. Several patterns scored similarly, so this report is
                     best read as a broader map of your current protective
@@ -671,50 +757,58 @@ export default function FullReport({
                 </>
               ) : (
                 <>
-                  <h1 className="al-heading-xl">
-                    Your ArcheLoop Report
-                    <br />
-                    <span className="text-[var(--al-accent)]">
-                      {primaryLoop.title}
-                    </span>
-                  </h1>
-
-                  <p className="al-text-lg mt-8 max-w-3xl">
-                    Your results point to {primaryLoop.title} as your primary
-                    pattern. This report interprets what that means specifically
-                    for you — how it forms, how it shows up in your body and
-                    relationships, and where your Integration Direction leads
-                    from here.
+                  {/* Dominant result area: Primary Shadow Loop, one
+                      deterministic personalised sentence, then Developmental
+                      Capacity -> Integration Direction. Everything else below
+                      is restrained supporting metadata, not six equal cards. */}
+                  <p
+                    className="al-kicker"
+                    style={{ color: primaryArchetypeAccent }}
+                  >
+                    Primary Shadow Loop
                   </p>
+
+                  <h1 className="al-heading-xl">{primaryLoop.title}</h1>
+
+                  <p className="al-text-lg mt-5 max-w-2xl">
+                    {heroInterpretation}
+                  </p>
+
+                  {isV2 && (
+                    <div className="al-soft-card mt-8 inline-flex max-w-fit flex-wrap items-center gap-3 p-5">
+                      <span className="al-kicker">
+                        {structuralMetadata.developmentalCapacity}
+                      </span>
+                      <span aria-hidden="true" className="al-muted">
+                        →
+                      </span>
+                      <span className="font-semibold text-[var(--al-text)]">
+                        {archeLoopPath.journey}
+                      </span>
+                    </div>
+                  )}
                 </>
               )}
 
-              <div
-                className={`mt-10 grid max-w-4xl gap-4 ${
-                  isV2 ? "md:grid-cols-3 lg:grid-cols-5" : "md:grid-cols-3"
-                }`}
-              >
-                <InfoCard label="Archetype" value={primaryLoop.archetype} />
+              {/* Restrained supporting metadata row (Level D). */}
+              <div className="mt-8 flex flex-wrap items-center gap-3 text-sm">
+                <span className="al-pill">
+                  <span
+                    aria-hidden="true"
+                    className="mr-2 inline-block h-2 w-2 rounded-full"
+                    style={{ background: primaryArchetypeAccent }}
+                  />
+                  {primaryLoop.archetype}
+                </span>
 
-                <InfoCard label="Element" value={primaryLoop.element} />
+                <span className="al-pill">{primaryLoop.element}</span>
 
-                <InfoCard
-                  label="Protective Formation"
-                  value={formattedMechanism}
-                />
+                <span className="al-pill">{formattedMechanism}</span>
 
                 {isV2 && (
-                  <>
-                    <InfoCard
-                      label="Developmental Capacity"
-                      value={structuralMetadata.developmentalCapacity}
-                    />
-
-                    <InfoCard
-                      label="Injured Archetype"
-                      value={structuralMetadata.injuredArchetype}
-                    />
-                  </>
+                  <span className="al-pill">
+                    Injured: {structuralMetadata.injuredArchetype}
+                  </span>
                 )}
               </div>
 
@@ -761,7 +855,7 @@ export default function FullReport({
                 detail={
                   isLowDifferentiation
                     ? "One of several protective patterns that scored closely in your results."
-                    : "The protective pattern currently shaping your reactions."
+                    : "The protective pattern most active in your results right now."
                 }
               />
 
@@ -785,9 +879,9 @@ export default function FullReport({
             <div className="al-premium-card p-8 text-center">
               <p className="al-kicker">Remember</p>
 
-              <h2 className="al-heading-md">
+              <h3 className="al-heading-md">
                 Your Shadow Loop is not your identity.
-              </h2>
+              </h3>
 
               <p className="al-text-lg mx-auto mt-6 max-w-3xl">
                 It is a protective pattern your mind and nervous system developed
@@ -820,8 +914,12 @@ export default function FullReport({
               title="Putting the pieces together."
             />
 
-            <div className="al-premium-card mx-auto max-w-4xl p-10">
-              <p className="al-text-lg leading-relaxed">{patternSynthesis}</p>
+            <div className="al-feature-card mx-auto max-w-4xl space-y-5">
+              {patternSynthesisParagraphs.map((paragraph, index) => (
+                <p key={index} className="al-text-lg leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
         </section>
@@ -831,7 +929,7 @@ export default function FullReport({
             <SectionHeader
               kicker="Structural Dynamic"
               title="How this loop forms."
-              text="Your results point to this dynamic as currently active for you:"
+              text="Your results suggest this dynamic is currently active for you:"
             />
 
             {isV2 ? (
@@ -1065,8 +1163,8 @@ export default function FullReport({
 
             <div className="al-premium-card p-10 text-center">
               <p className="al-text-lg leading-relaxed">
-                Your results point to a core protective belief currently
-                shaping {primaryLoop.title.toLowerCase()}:
+                A core protective belief can appear underneath{" "}
+                {primaryLoop.title.toLowerCase()}:
               </p>
 
               <p className="mt-6 text-2xl font-semibold text-[var(--al-accent)] md:text-3xl">
@@ -1143,6 +1241,12 @@ export default function FullReport({
                 }
               />
 
+              {!isLowDifferentiation && loopLandscape.length > 1 && (
+                <p className="al-text-lg mx-auto mb-8 max-w-3xl text-center">
+                  {buildLoopLandscapeInterpretation(loopLandscape)}
+                </p>
+              )}
+
               {typeof reportData?.confidence === "number" && (
                 <p className="al-muted mb-8 text-center text-sm">
                   Pattern separation: {reportData.confidence}% — how clearly
@@ -1155,9 +1259,12 @@ export default function FullReport({
                 {loopLandscape.slice(0, 5).map((item: any, index: number) => (
                   <div
                     key={item.loop}
-                    className={`flex flex-col gap-6 rounded-[2rem] p-6 md:flex-row md:items-center md:justify-between md:p-8 ${
-                      index === 0 ? "al-premium-card" : "al-card"
-                    }`}
+                    className="al-panel-card flex flex-col gap-6 rounded-[2rem] p-6 md:flex-row md:items-center md:justify-between md:p-8"
+                    style={{
+                      borderLeft: `4px solid ${
+                        ARCHETYPE_ACCENT[item.archetype] ?? "var(--al-border-strong)"
+                      }`,
+                    }}
                   >
                     <div className="flex items-center gap-5">
                       <div
@@ -1198,22 +1305,33 @@ export default function FullReport({
                       <div className="mb-2 flex justify-between text-sm">
                         <span className="al-text">Activation Score</span>
                         <span className="font-semibold text-[var(--al-accent)]">
-                          {item.score}
+                          {item.score}%
                         </span>
                       </div>
 
-                      <div className="h-3 overflow-hidden rounded-full bg-[var(--al-surface-deep)]">
+                      <div
+                        className="h-3 overflow-hidden rounded-full bg-[var(--al-surface-deep)]"
+                        role="progressbar"
+                        aria-valuenow={item.score}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                        aria-label={`${item.loop} activation score`}
+                      >
                         <div
                           className="h-full rounded-full bg-[var(--al-accent)]"
                           style={{ width: `${item.score}%` }}
                         />
                       </div>
+
+                      <p className="al-muted mt-2 text-right text-xs">
+                        {getActivationDescriptor(item.score)}
+                      </p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="al-card mx-auto mt-12 max-w-4xl p-8">
+              <div className="al-narrative-block mx-auto mt-12 max-w-4xl">
                 <p className="al-kicker">Loop Family Insight</p>
 
                 <p className="al-text-lg mt-4">
@@ -1233,7 +1351,7 @@ export default function FullReport({
                 </p>
               </div>
 
-              <div className="al-card mx-auto mt-6 max-w-4xl p-8">
+              <div className="al-narrative-block mx-auto mt-6 max-w-4xl">
                 <p className="al-kicker">Primary + Secondary Interaction</p>
 
                 <p className="al-text-lg mt-4">
@@ -1345,7 +1463,13 @@ export default function FullReport({
 
               <div className="grid gap-6 md:grid-cols-2">
                 {["Sovereign", "Magician", "Lover", "Warrior"].map((archetypeName) => (
-                  <div key={archetypeName} className="al-card p-6">
+                  <div
+                    key={archetypeName}
+                    className="al-panel-card p-6"
+                    style={{
+                      borderLeft: `4px solid ${ARCHETYPE_ACCENT[archetypeName] ?? "var(--al-border-strong)"}`,
+                    }}
+                  >
                     <p className="al-kicker mb-4">{archetypeName}</p>
 
                     <div className="space-y-5">
@@ -1361,14 +1485,28 @@ export default function FullReport({
                               </span>
                             </div>
 
-                            <div className="flex gap-1">
-                              <div className="al-progress-track h-2 flex-1">
+                            <div className="flex gap-1.5">
+                              <div
+                                className="al-progress-track h-3 flex-1"
+                                role="progressbar"
+                                aria-valuenow={c.healthyAvailabilityScore}
+                                aria-valuemin={0}
+                                aria-valuemax={100}
+                                aria-label={`${c.developmentalCapacity} Healthy Availability`}
+                              >
                                 <div
                                   className="al-progress-fill h-full"
                                   style={{ width: `${c.healthyAvailabilityScore}%` }}
                                 />
                               </div>
-                              <div className="h-2 flex-1 overflow-hidden rounded-full bg-[var(--al-surface-deep)]">
+                              <div
+                                className="h-3 flex-1 overflow-hidden rounded-full bg-[var(--al-surface-deep)]"
+                                role="progressbar"
+                                aria-valuenow={c.shadowActivationScore}
+                                aria-valuemin={0}
+                                aria-valuemax={100}
+                                aria-label={`${c.developmentalCapacity} Shadow Activation`}
+                              >
                                 <div
                                   className="h-full rounded-full bg-[var(--al-secondary)]"
                                   style={{ width: `${c.shadowActivationScore}%` }}
@@ -1382,7 +1520,11 @@ export default function FullReport({
                 ))}
               </div>
 
-              <p className="al-muted mt-6 text-center text-sm">
+              <p className="al-text-lg mx-auto mt-8 max-w-3xl text-center">
+                {buildTwelveCapacityInterpretation(capacityScores)}
+              </p>
+
+              <p className="al-muted mt-3 text-center text-sm">
                 Left track: Healthy Availability. Right track: Shadow Activation.
               </p>
             </div>
@@ -1398,34 +1540,77 @@ export default function FullReport({
               />
 
               <div className="grid gap-6 md:grid-cols-3">
-                <div className="al-card p-8">
+                <div className="al-panel-card p-8">
                   <p className="al-kicker">Collapse</p>
                   <p className="mt-3 text-3xl font-bold text-[var(--al-accent)]">
                     {reportData.formationScores.collapse}%
                   </p>
+                  <div
+                    className="al-progress-track mt-4 h-3"
+                    role="progressbar"
+                    aria-valuenow={reportData.formationScores.collapse}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label="Collapse formation score"
+                  >
+                    <div
+                      className="al-progress-fill h-full"
+                      style={{ width: `${reportData.formationScores.collapse}%` }}
+                    />
+                  </div>
                   <p className="al-text mt-4 text-sm">What becomes unavailable.</p>
                 </div>
 
-                <div className="al-card p-8">
+                <div className="al-panel-card p-8">
                   <p className="al-kicker">Compensate</p>
                   <p className="mt-3 text-3xl font-bold text-[var(--al-accent)]">
                     {reportData.formationScores.compensate}%
                   </p>
+                  <div
+                    className="al-progress-track mt-4 h-3"
+                    role="progressbar"
+                    aria-valuenow={reportData.formationScores.compensate}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label="Compensate formation score"
+                  >
+                    <div
+                      className="al-progress-fill h-full"
+                      style={{ width: `${reportData.formationScores.compensate}%` }}
+                    />
+                  </div>
                   <p className="al-text mt-4 text-sm">
                     What becomes protectively substituted or performative.
                   </p>
                 </div>
 
-                <div className="al-card p-8">
+                <div className="al-panel-card p-8">
                   <p className="al-kicker">Collide</p>
                   <p className="mt-3 text-3xl font-bold text-[var(--al-accent)]">
                     {reportData.formationScores.collide}%
                   </p>
+                  <div
+                    className="al-progress-track mt-4 h-3"
+                    role="progressbar"
+                    aria-valuenow={reportData.formationScores.collide}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-label="Collide formation score"
+                  >
+                    <div
+                      className="al-progress-fill h-full"
+                      style={{ width: `${reportData.formationScores.collide}%` }}
+                    />
+                  </div>
                   <p className="al-text mt-4 text-sm">
                     What becomes caught in internal conflict.
                   </p>
                 </div>
               </div>
+
+              <p className="al-text-lg mx-auto mt-8 max-w-3xl text-center">
+                {buildFormationInterpretation(reportData.formationScores)}
+              </p>
             </div>
           </section>
         )}
@@ -1438,56 +1623,76 @@ export default function FullReport({
                 title="Where this points next."
               />
 
-              <div className="al-premium-card p-10 text-center">
-                <p className="al-kicker">Integration Direction</p>
-                <h3 className="mt-4 text-3xl font-bold text-[var(--al-accent)]">
-                  {archeLoopPath.journey}
-                </h3>
-                <p className="al-text-lg mx-auto mt-4 max-w-2xl">
-                  The fixed developmental pathway associated with{" "}
-                  {primaryLoop.title}, leading toward {archeLoopPath.integratedSelf}.
-                </p>
-              </div>
+              <div className="grid gap-6 md:grid-cols-3">
+                {reportData?.mostAvailableArchetype && (
+                  <div className="al-panel-card p-8">
+                    <p className="al-kicker">Your Current Strength</p>
+                    <h4 className="mt-3 text-2xl font-bold">
+                      {reportData.mostAvailableArchetype.archetype}
+                    </h4>
+                    <p className="al-text mt-3 text-sm">
+                      Highest Healthy Availability of the four Archetypes in
+                      this result ({reportData.mostAvailableArchetype.healthyAvailability}%)
+                      {mostAvailableStrongestCapacities.length > 0 && (
+                        <>
+                          , led by {joinWithAnd(mostAvailableStrongestCapacities)}
+                        </>
+                      )}
+                      .
+                    </p>
+                  </div>
+                )}
 
-              <div className="mt-6 grid gap-6 md:grid-cols-2">
                 {reportData?.growthEdge && (
-                  <div className="al-card p-8">
-                    <p className="al-kicker">Growth Edge</p>
+                  <div className="al-panel-card p-8">
+                    <p className="al-kicker">Your Current Growth Edge</p>
                     <h4 className="mt-3 text-2xl font-bold">
                       {reportData.growthEdge.developmentalCapacity}
                     </h4>
                     <p className="al-text mt-3 text-sm">
                       The Developmental Capacity with the lowest Healthy
                       Availability in this result ({reportData.growthEdge.healthyAvailabilityScore}%),
-                      within {reportData.growthEdge.archetype}.
+                      within {reportData.growthEdge.archetype}. Not the same
+                      as your Injured or Compensating Archetype.
                     </p>
                   </div>
                 )}
 
-                {reportData?.mostAvailableArchetype && (
-                  <div className="al-card p-8">
-                    <p className="al-kicker">Most Available Archetype</p>
-                    <h4 className="mt-3 text-2xl font-bold">
-                      {reportData.mostAvailableArchetype.archetype}
-                    </h4>
-                    <p className="al-text mt-3 text-sm">
-                      The Archetype with the highest Healthy Availability in
-                      this result ({reportData.mostAvailableArchetype.healthyAvailability}%).
-                    </p>
-                  </div>
-                )}
+                <div className="al-panel-card p-8">
+                  <p className="al-kicker">Your Integration Direction</p>
+                  <h4 className="mt-3 text-2xl font-bold text-[var(--al-accent)]">
+                    {archeLoopPath.journey}
+                  </h4>
+                  <p className="al-text mt-3 text-sm">
+                    Fixed by {primaryLoop.title} specifically, leading toward{" "}
+                    {archeLoopPath.integratedSelf}.
+                  </p>
+                </div>
               </div>
 
-              {reportData?.growthEdgeArchetype && (
-                <div className="al-soft-card mx-auto mt-6 max-w-xl p-5 text-center">
-                  <p className="al-kicker">Broader Archetypal Growth Area</p>
-                  <p className="al-text mt-2 text-sm">
-                    Across all three of its capacities,{" "}
-                    <span className="font-semibold text-[var(--al-text)]">
-                      {reportData.growthEdgeArchetype.archetype}
-                    </span>{" "}
-                    currently shows the lowest average Healthy Availability.
+              {reportData?.mostAvailableArchetype && reportData?.growthEdge && (
+                <div className="al-premium-card mx-auto mt-6 max-w-4xl p-10">
+                  <p className="al-kicker">Why This Matters</p>
+                  <p className="al-text-lg mt-4">
+                    {buildDevelopmentalDirectionSynthesis({
+                      mostAvailableArchetype: reportData.mostAvailableArchetype.archetype,
+                      growthEdgeCapacity: reportData.growthEdge.developmentalCapacity,
+                      growthEdgeArchetype: reportData.growthEdge.archetype,
+                      integrationPath: archeLoopPath.journey,
+                      integratedSelf: archeLoopPath.integratedSelf,
+                    })}
                   </p>
+
+                  {showBroaderGrowthArea && (
+                    <p className="al-muted mt-4 text-sm">
+                      Across all three of its capacities,{" "}
+                      <span className="font-semibold text-[var(--al-text)]">
+                        {reportData.growthEdgeArchetype.archetype}
+                      </span>{" "}
+                      also shows the lowest average Healthy Availability — a
+                      broader, Archetype-wide version of the same signal.
+                    </p>
+                  )}
                 </div>
               )}
             </div>
@@ -1540,142 +1745,122 @@ export default function FullReport({
             <SectionHeader
               kicker="Deeper Pattern Map"
               title="What this pattern reveals."
-              text="In relationships, this may become visible in the following ways:"
+              text="Grouped into three clusters: how it shows up with other people, how your body and nervous system respond under pressure, and how the pattern tends to escalate."
             />
 
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="al-card p-8">
-                <h3 className="mb-4 text-2xl font-bold">
-                  Relationship Pattern
-                </h3>
-                <p className="al-text">{primaryLoop.relationshipPattern}</p>
-              </div>
+            <div className="grid gap-10 lg:grid-cols-3">
+              <div>
+                <ClusterHeading label="In Relationships" />
 
-              <div className="al-card p-8">
-                <h3 className="mb-4 text-2xl font-bold">
-                  Communication Style
-                </h3>
-                <p className="al-text">{primaryLoop.communicationStyle}</p>
-              </div>
+                <div className="space-y-6">
+                  <div className="al-narrative-block">
+                    <h4 className="mb-3 text-xl font-bold">Relationship Pattern</h4>
+                    <p className="al-text">{primaryLoop.relationshipPattern}</p>
+                  </div>
 
-              <div className="al-card p-8">
-                <h3 className="mb-4 text-2xl font-bold">
-                  Escalation Pattern
-                </h3>
-                <p className="al-text">{primaryLoop.escalationPattern}</p>
-              </div>
+                  <div className="al-narrative-block">
+                    <h4 className="mb-3 text-xl font-bold">Communication Style</h4>
+                    <p className="al-text">{primaryLoop.communicationStyle}</p>
+                  </div>
 
-              <div className="al-card p-8">
-                <h3 className="mb-4 text-2xl font-bold">
-                  Identity Protection
-                </h3>
-                <p className="al-text">{primaryLoop.identityProtection}</p>
-              </div>
-            </div>
-
-            {primaryLoop.signs && primaryLoop.signs.length > 0 && (
-              <div className="al-card mt-6 p-8">
-                <h3 className="mb-6 text-2xl font-bold">Observable Behaviours</h3>
-
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {primaryLoop.signs.map((sign) => (
-                    <div key={sign} className="al-soft-card p-4 al-text text-sm">
-                      {sign}
+                  <div className="al-narrative-block">
+                    <h4 className="mb-3 text-xl font-bold">Relational Activators</h4>
+                    <div className="mt-3 space-y-3">
+                      {detail.relationalActivators.map((item) => (
+                        <div key={item} className="al-soft-card p-4 al-text text-sm">
+                          {item}
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
+
+                  <div className="al-narrative-block">
+                    <h4 className="mb-3 text-xl font-bold">Identity Protection</h4>
+                    <p className="al-text">{primaryLoop.identityProtection}</p>
+                  </div>
                 </div>
               </div>
-            )}
-          </div>
-        </section>
 
-        <section className="al-section">
-          <div className="al-container-wide grid gap-8 lg:grid-cols-2">
-            <div className="al-card p-8">
-              <p className="al-kicker">Nervous System</p>
+              <div>
+                <ClusterHeading label="Under Pressure" />
 
-              <h2 className="mt-5 text-3xl font-bold">
-                How your nervous system responds under pressure.
-              </h2>
-
-              <p className="al-text mt-6">{detail.nervousSystemDetails}</p>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                {detail.nervousSystemSigns.map((sign) => (
-                  <span key={sign} className="al-soft-card px-4 py-2 text-sm">
-                    {sign}
-                  </span>
-                ))}
-              </div>
-
-              <div className="al-premium-card mt-8 p-6">
-                <p className="font-semibold text-[var(--al-accent)]">
-                  Protection Mechanism
-                </p>
-
-                <p className="al-text mt-3">{primaryLoop.protection}</p>
-              </div>
-            </div>
-
-            <div className="al-card p-8">
-              <p className="al-kicker">Relational Activators</p>
-
-              <h2 className="mt-5 text-3xl font-bold">
-                What tends to activate this pattern for you.
-              </h2>
-
-              <div className="mt-6 space-y-4">
-                {detail.relationalActivators.map((item) => (
-                  <div key={item} className="al-soft-card p-4 al-text">
-                    {item}
+                <div className="space-y-6">
+                  <div className="al-narrative-block">
+                    <h4 className="mb-3 text-xl font-bold">Nervous System</h4>
+                    <p className="al-text">{detail.nervousSystemDetails}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {detail.nervousSystemSigns.map((sign) => (
+                        <span key={sign} className="al-soft-card px-4 py-2 text-sm">
+                          {sign}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                ))}
+
+                  <div className="al-narrative-block">
+                    <h4 className="mb-3 text-xl font-bold">Body Activation</h4>
+                    <p className="al-text">{bodyMapText}</p>
+                  </div>
+
+                  <div className="al-narrative-block">
+                    <h4 className="mb-3 text-xl font-bold">Protection Mechanism</h4>
+                    <p className="al-text">{primaryLoop.protection}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </section>
 
-        <section className="al-section">
-          <div className="al-container-wide grid gap-8 lg:grid-cols-2">
-            <div className="al-card p-8">
-              <p className="al-kicker">Body Activation</p>
+              <div>
+                <ClusterHeading label="How the Loop Escalates" />
 
-              <h2 className="mt-5 text-3xl font-bold">
-                Where this pattern lives in the body.
-              </h2>
+                <div className="space-y-6">
+                  <div className="al-narrative-block">
+                    <h4 className="mb-3 text-xl font-bold">Escalation Pattern</h4>
+                    <p className="al-text">{primaryLoop.escalationPattern}</p>
+                  </div>
 
-              <p className="al-text mt-6">{bodyMapText}</p>
-            </div>
+                  {primaryLoop.signs && primaryLoop.signs.length > 0 && (
+                    <div className="al-narrative-block">
+                      <h4 className="mb-3 text-xl font-bold">Observable Behaviours</h4>
+                      <div className="space-y-3">
+                        {primaryLoop.signs.map((sign) => (
+                          <div key={sign} className="al-soft-card p-4 al-text text-sm">
+                            {sign}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
-            <div className="al-card p-8">
-              <p className="al-kicker">Loop Interaction</p>
+                  <div className="al-narrative-block">
+                    <h4 className="mb-3 text-xl font-bold">Loop Interaction</h4>
 
-              <h2 className="mt-5 text-3xl font-bold">
-                How this pattern tends to escalate.
-              </h2>
+                    {cascadeSteps.length > 0 ? (
+                      <>
+                        <p className="al-text text-sm">
+                          When {primaryLoop.title} intensifies, your results
+                          suggest the pattern tends to move through a sequence
+                          like this:
+                        </p>
 
-              {cascadeSteps.length > 0 ? (
-                <>
-                  <p className="al-text mt-6 text-sm">
-                    When {primaryLoop.title} intensifies, your results suggest
-                    the pattern tends to move through a sequence like this:
-                  </p>
-
-                  <div className="mt-4 space-y-2">
-                    {cascadeSteps.map((step, index) => (
-                      <p key={step} className="al-text text-sm">
-                        {index + 1}. {step}
+                        <div className="mt-4 space-y-2">
+                          {cascadeSteps.map((step, index) => (
+                            <p key={step} className="al-text text-sm">
+                              {index + 1}. {step}
+                            </p>
+                          ))}
+                        </div>
+                      </>
+                    ) : (
+                      <p className="al-text">
+                        When {primaryLoop.title} combines with{" "}
+                        {secondaryLoop.title}, the two patterns tend to
+                        reinforce each other under pressure rather than
+                        activating separately.
                       </p>
-                    ))}
+                    )}
                   </div>
-                </>
-              ) : (
-                <p className="al-text mt-6">
-                  When {primaryLoop.title} combines with {secondaryLoop.title},
-                  the two patterns tend to reinforce each other under pressure
-                  rather than activating separately.
-                </p>
-              )}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -1698,7 +1883,7 @@ export default function FullReport({
               text="Your Integration Direction is not about becoming a different person — it is about strengthening what is already available to you."
             />
 
-            <div className="al-premium-card p-10">
+            <div className="al-feature-card">
               <p className="al-text-lg">{integrationBlueprintText}</p>
 
               <p className="al-text-lg mt-6">
@@ -1713,22 +1898,46 @@ export default function FullReport({
                 via your {archeLoopPath.journey}.
               </p>
 
-              <div className="mt-10 grid gap-6 md:grid-cols-3">
-                <InfoCard
-                  label="Current Loop"
-                  value={primaryLoop.title}
-                />
+              <div className="al-timeline al-timeline--row mt-12">
+                {INTEGRATION_TIMELINE_STAGES.map((stage, index) => (
+                  <div key={stage.label} className="al-timeline-step">
+                    <div className="al-timeline-connector" aria-hidden="true" />
+                    <div className="al-timeline-dot" aria-hidden="true">
+                      {index + 1}
+                    </div>
 
-                <InfoCard
-                  label="Integration Journey"
-                  value={archeLoopPath.journey}
-                />
+                    <div>
+                      <p className="al-muted text-xs font-bold uppercase tracking-wide">
+                        {stage.phase}
+                      </p>
+                      <p className="mt-1 font-semibold text-[var(--al-text)]">
+                        {stage.label}
+                      </p>
 
-                <InfoCard
-                  label="Integrated Self"
-                  value={archeLoopPath.integratedSelf}
-                />
+                      {stage.label === "Current Pattern" && (
+                        <p className="al-timeline-anchor mt-1 text-sm">
+                          {primaryLoop.title}
+                        </p>
+                      )}
+                      {stage.label === "Integration" && (
+                        <p className="al-timeline-anchor mt-1 text-sm">
+                          {archeLoopPath.journey}
+                        </p>
+                      )}
+                      {stage.label === "Integrated Self" && (
+                        <p className="al-timeline-anchor mt-1 text-sm">
+                          {archeLoopPath.integratedSelf}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
+
+              <p className="al-muted mx-auto mt-10 max-w-2xl text-center text-sm">
+                Integration is rarely linear. These stages may repeat as new
+                situations activate the pattern.
+              </p>
             </div>
           </div>
         </section>
@@ -1771,9 +1980,9 @@ export default function FullReport({
                 Continue Your Journey
               </p>
 
-              <h2 className="al-heading-lg">
+              <h3 className="al-heading-lg">
                 Understanding is the beginning.
-              </h2>
+              </h3>
 
               <p className="al-text-lg mx-auto mt-6 max-w-3xl">
                 Your report shows where your system currently protects you.

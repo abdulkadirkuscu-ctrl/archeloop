@@ -500,6 +500,11 @@ p {
   inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
+.al-button-primary:focus-visible {
+  outline: 3px solid var(--al-accent-soft);
+  outline-offset: 3px;
+}
+
 .al-button-secondary {
   display: inline-flex;
   align-items: center;
@@ -1863,6 +1868,169 @@ body {
 }
 
 /* =====================================================
+   REPORT v2 — CARD HIERARCHY
+   Four levels (see components/FullReport.tsx):
+     A. .al-feature-card    — signature visuals (hero, Wheel, Synthesis,
+                               final Integration Direction).
+     B. .al-panel-card      — analytical panels (Capacity Profile, Loop
+                               Landscape, Twelve-Capacity, Formation Profile).
+     C. .al-narrative-block — interpretation text (relationship pattern,
+                               nervous system, activators, body activation) -
+                               a soft divider and whitespace, not a bordered
+                               card, so narrative sections read as prose.
+     D. .al-soft-card / InfoCard — compact metadata chips (unchanged).
+===================================================== */
+
+.al-feature-card {
+  position: relative;
+  border: 1px solid var(--al-border-strong);
+  border-radius: 2.5rem;
+  background:
+    radial-gradient(circle at top, var(--al-glow), transparent 55%),
+    linear-gradient(180deg, var(--al-surface-soft), var(--al-surface));
+  box-shadow: 0 30px 90px var(--al-shadow);
+  padding: clamp(1.75rem, 4vw, 3rem);
+}
+
+.al-feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--al-accent),
+    var(--al-secondary),
+    var(--al-tertiary),
+    transparent
+  );
+  opacity: 0.7;
+}
+
+.al-panel-card {
+  border: 1px solid var(--al-border-strong);
+  border-radius: 2rem;
+  background: var(--al-surface);
+  color: var(--al-text);
+  box-shadow: 0 24px 70px var(--al-shadow);
+}
+
+.al-narrative-block {
+  border-top: 1px solid var(--al-border);
+  padding-top: 1.75rem;
+}
+
+/* =====================================================
+   REPORT v2 — CLUSTER MARKERS (Chapter Four)
+===================================================== */
+
+.al-cluster-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.al-cluster-marker {
+  flex-shrink: 0;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  background: var(--al-accent);
+}
+
+/* =====================================================
+   REPORT v2 — INTEGRATION TIMELINE (Chapter Five)
+===================================================== */
+
+.al-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.al-timeline-step {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+}
+
+.al-timeline-step:last-child {
+  padding-bottom: 0;
+}
+
+.al-timeline-dot {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--al-border-strong);
+  background: var(--al-surface-soft);
+  color: var(--al-accent);
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.al-timeline-step:not(:last-child) .al-timeline-dot::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 1px;
+  height: 2rem;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, var(--al-border-strong), transparent);
+}
+
+.al-timeline-anchor {
+  color: var(--al-accent);
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .al-timeline--row {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .al-timeline--row .al-timeline-step {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 0;
+  }
+
+  .al-timeline--row .al-timeline-dot::after {
+    display: none;
+  }
+
+  .al-timeline--row .al-timeline-connector {
+    position: absolute;
+    top: 1.35rem;
+    left: 50%;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--al-border-strong), transparent);
+    z-index: 0;
+  }
+
+  .al-timeline--row .al-timeline-step:last-child .al-timeline-connector {
+    display: none;
+  }
+}
+
+/* =====================================================
    REPORT v2 — PRINT
 ===================================================== */
 
@@ -1883,18 +2051,42 @@ body {
   .al-report .al-card,
   .al-report .al-soft-card,
   .al-report .al-premium-card,
-  .al-report .al-stone-card {
+  .al-report .al-stone-card,
+  .al-report .al-feature-card,
+  .al-report .al-panel-card {
     box-shadow: none !important;
     border: 1px solid #ccc !important;
     background: #fff !important;
     color: #111 !important;
   }
 
+  .al-report .al-feature-card::before {
+    display: none;
+  }
+
+  .al-report .al-narrative-block {
+    border-top-color: #ccc !important;
+  }
+
   .al-report section {
     break-inside: avoid-page;
   }
 
+  /* Every chapter after the first starts on a fresh printed page; Chapter
+     One never forces a leading blank page. .al-chapter-start is a direct
+     child of .al-report (see ChapterDivider in FullReport.tsx), so
+     :first-of-type reliably identifies Chapter One's wrapper only. */
+  .al-report .al-chapter-start:not(:first-of-type) {
+    break-before: page;
+  }
+
   .al-report svg text {
     fill: #111 !important;
+  }
+
+  .al-report .al-timeline-dot {
+    border-color: #ccc !important;
+    background: #fff !important;
+    color: #111 !important;
   }
 }
