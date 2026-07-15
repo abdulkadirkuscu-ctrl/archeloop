@@ -31,12 +31,25 @@ import {
   buildHeroInterpretation,
   getActivationDescriptor,
   buildWheelInterpretation,
+  getWheelLeaders,
   buildTwelveCapacityInterpretation,
   buildFormationInterpretation,
   buildLoopLandscapeInterpretation,
   buildDevelopmentalDirectionSynthesis,
+  buildPrimaryCapacityInterpretation,
+  buildArchetypeCapacityInterpretation,
+  buildEverydaySummary,
   joinWithAnd,
 } from "./reportInterpretations.ts";
+import {
+  DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE,
+  ARCHETYPE_CAPACITY_LABEL,
+  FORMATION_PLAIN_LANGUAGE,
+  describeHealthyAvailability,
+  describeShadowActivation,
+  describeInjuredArchetype,
+} from "./plainLanguageGlossary.ts";
+import { WHEEL_GEOMETRY, polarToCartesian } from "./wheelGeometry.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -591,6 +604,306 @@ assert(
   (wheelSource.match(/aria-hidden="true"/g) || []).length >= 3,
   "ArcheLoop Wheel must mark decorative shapes aria-hidden"
 );
+assert(
+  wheelSource.includes("On-wheel label shows the short Element name only"),
+  "ArcheLoop Wheel on-wheel label must use the short Element name, not the full Archetype name (mobile clipping fix)"
+);
+assert(
+  wheelSource.includes("getWheelLeaders("),
+  "ArcheLoop Wheel must mark Most Available / Most Protected leaders with a text badge, not colour alone"
+);
+
+// ---------------------------------------------------------------------------------
+// Part 8: plainLanguageGlossary.ts - static reference content
+// ---------------------------------------------------------------------------------
+
+console.log("Part 8: plainLanguageGlossary.ts - static reference content");
+
+const ALL_CAPACITIES = [
+  "Visibility", "Worth", "Action", "Expression", "Truth", "Clarity",
+  "Vulnerability", "Connection", "Emotional Regulation", "Boundaries", "Trust", "Vitality",
+] as const;
+for (const capacity of ALL_CAPACITIES) {
+  assert(
+    typeof DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE[capacity] === "string" &&
+      DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE[capacity].length > 0,
+    `expected a plain-language description for Developmental Capacity "${capacity}"`
+  );
+}
+assert(
+  DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE.Trust.includes(
+    "rely on other people while still feeling independent and safe"
+  ),
+  "Trust's plain-language description must match the task's own example"
+);
+
+for (const archetype of ["Sovereign", "Magician", "Lover", "Warrior"] as const) {
+  assert(
+    typeof ARCHETYPE_CAPACITY_LABEL[archetype] === "string" &&
+      ARCHETYPE_CAPACITY_LABEL[archetype].includes("·"),
+    `expected a three-capacity tagline for ${archetype}`
+  );
+}
+assert(
+  ARCHETYPE_CAPACITY_LABEL.Sovereign === "Visibility · Worth · Action",
+  "Sovereign's capacity tagline must be Visibility · Worth · Action"
+);
+
+assert(
+  FORMATION_PLAIN_LANGUAGE.Collapse === "the capacity becomes harder to access." &&
+    FORMATION_PLAIN_LANGUAGE.Compensate === "protection replaces direct expression." &&
+    FORMATION_PLAIN_LANGUAGE.Collide === "two inner needs pull in different directions.",
+  "Protective Formation plain-language definitions must match the task's exact wording"
+);
+
+// Score-banded phrasing: the task's own examples (25% Healthy Availability,
+// 100% Shadow Activation) must produce the task's own example sentences.
+assert(
+  describeHealthyAvailability(25) ===
+    "This capacity may currently feel harder to access consistently, especially under pressure.",
+  "describeHealthyAvailability(25) must match the task's own example"
+);
+assert(
+  describeShadowActivation(100) ===
+    "Protective reactions around this capacity appear strongly active in your current responses.",
+  "describeShadowActivation(100) must match the task's own example"
+);
+// Bands must be monotonic and exhaustive across 0-100.
+for (let score = 0; score <= 100; score += 5) {
+  assert(
+    typeof describeHealthyAvailability(score) === "string" &&
+      typeof describeShadowActivation(score) === "string",
+    `describeHealthyAvailability/describeShadowActivation must handle score ${score}`
+  );
+}
+
+assert(
+  describeInjuredArchetype("Warrior", "Trust") ===
+    "This means the Warrior capacity linked to Trust is currently being protected. It does not mean the Archetype is damaged or weak.",
+  "describeInjuredArchetype must match the task's own example when parameterised with Warrior/Trust"
+);
+assert(
+  describeInjuredArchetype("Magician", "Truth").includes("Magician") &&
+    describeInjuredArchetype("Magician", "Truth").includes("Truth"),
+  "describeInjuredArchetype must be genuinely parameterised, not hard-coded to Warrior/Trust"
+);
+
+// ---------------------------------------------------------------------------------
+// Part 9: reportInterpretations.ts - new plain-language sentence builders
+// ---------------------------------------------------------------------------------
+
+console.log("Part 9: reportInterpretations.ts - new plain-language sentence builders");
+
+const wheelLeaders = getWheelLeaders([
+  { archetype: "Sovereign", healthyAvailability: 40, shadowActivation: 30 },
+  { archetype: "Magician", healthyAvailability: 80, shadowActivation: 20 },
+  { archetype: "Lover", healthyAvailability: 55, shadowActivation: 45 },
+  { archetype: "Warrior", healthyAvailability: 50, shadowActivation: 90 },
+]);
+assert(
+  wheelLeaders.mostAvailable.includes("Magician") && wheelLeaders.mostProtected.includes("Warrior"),
+  "getWheelLeaders must correctly identify the actual Healthy/Shadow leaders"
+);
+
+const tiedLeaders = getWheelLeaders([
+  { archetype: "Sovereign", healthyAvailability: 60, shadowActivation: 10 },
+  { archetype: "Magician", healthyAvailability: 60, shadowActivation: 10 },
+  { archetype: "Lover", healthyAvailability: 40, shadowActivation: 10 },
+  { archetype: "Warrior", healthyAvailability: 30, shadowActivation: 10 },
+]);
+assert(
+  tiedLeaders.mostAvailable.length === 2 && tiedLeaders.mostProtected.length === 4,
+  "getWheelLeaders must handle ties by returning every tied Archetype, not picking one arbitrarily"
+);
+
+const enhancedCapacityInterpretation = buildTwelveCapacityInterpretation([
+  { developmentalCapacity: "Trust", healthyAvailabilityScore: 40, shadowActivationScore: 90 },
+  { developmentalCapacity: "Worth", healthyAvailabilityScore: 85, shadowActivationScore: 20 },
+  { developmentalCapacity: "Truth", healthyAvailabilityScore: 80, shadowActivationScore: 15 },
+  { developmentalCapacity: "Vitality", healthyAvailabilityScore: 30, shadowActivationScore: 10 },
+]);
+assert(
+  enhancedCapacityInterpretation.includes("Vitality"),
+  "Twelve-Capacity interpretation must now also name the lowest-available capacities, not only the strongest and most-protected"
+);
+assert(
+  enhancedCapacityInterpretation.includes("In everyday terms"),
+  "Twelve-Capacity interpretation must include a practical, capacity-grounded closing clause"
+);
+
+const primaryCapacityStronglyProtected = buildPrimaryCapacityInterpretation("Trust", 58, 82);
+assert(
+  primaryCapacityStronglyProtected.includes("Trust") &&
+    primaryCapacityStronglyProtected.toLowerCase().includes("protected"),
+  "Primary Capacity interpretation must name the capacity and describe it as protected when Shadow > Healthy"
+);
+const primaryCapacityAvailable = buildPrimaryCapacityInterpretation("Clarity", 85, 20);
+assert(
+  primaryCapacityAvailable.includes("Clarity") &&
+    primaryCapacityAvailable.toLowerCase().includes("available"),
+  "Primary Capacity interpretation must describe a capacity as available when Healthy > Shadow"
+);
+
+const archetypeCapacityInterpretation = buildArchetypeCapacityInterpretation("Warrior", [
+  { developmentalCapacity: "Boundaries", healthyAvailabilityScore: 80 },
+  { developmentalCapacity: "Trust", healthyAvailabilityScore: 35 },
+  { developmentalCapacity: "Vitality", healthyAvailabilityScore: 55 },
+]);
+assert(
+  archetypeCapacityInterpretation.includes("Warrior") &&
+    archetypeCapacityInterpretation.includes("Boundaries") &&
+    archetypeCapacityInterpretation.includes("Trust"),
+  "Archetype capacity interpretation must name the Archetype, its strongest capacity, and its most protected capacity"
+);
+
+const everydaySummaryFull = buildEverydaySummary({
+  primaryArchetype: "Warrior",
+  mostAvailableArchetype: "Magician",
+  mostAvailableCapacities: ["Truth", "Clarity"],
+  growthEdgeCapacity: "Trust",
+  growthEdgeArchetype: "Warrior",
+  integrationPath: "Trust Path",
+  integratedSelf: "Connected Strength",
+});
+assert(
+  everydaySummaryFull.strengths.includes("Truth") && everydaySummaryFull.strengths.includes("Clarity"),
+  "Everyday summary strengths must name the actual strongest capacities (handles ties via joinWithAnd)"
+);
+assert(
+  everydaySummaryFull.protectedText.includes("Trust") && everydaySummaryFull.protectedText.includes("Warrior"),
+  "Everyday summary 'what becomes protected' must name the actual Growth Edge capacity and Archetype"
+);
+assert(
+  everydaySummaryFull.mayHelp.includes("Trust Path") && everydaySummaryFull.mayHelp.includes("Connected Strength"),
+  "Everyday summary 'what may help' must name the actual Integration Direction path and Integrated Self"
+);
+for (const value of Object.values(everydaySummaryFull)) {
+  assert(!value.includes("undefined") && !value.includes("NaN"), "everyday summary must never leak undefined/NaN");
+}
+
+// Missing optional fields must degrade gracefully rather than throw or leak
+// undefined/NaN (legacy reports, or a v2 report missing an optional field).
+const everydaySummaryMinimal = buildEverydaySummary({ primaryArchetype: "Lover" });
+for (const value of Object.values(everydaySummaryMinimal)) {
+  assert(
+    typeof value === "string" && value.length > 0 && !value.includes("undefined") && !value.includes("NaN"),
+    "everyday summary must degrade gracefully when every optional field is missing"
+  );
+}
+
+// No interpretation anywhere in this file may call a person weak, bad,
+// deficient, or broken - or turn Growth Edge into an identity label. Word-
+// boundary matched (so the "weakest"-named local variable, used only for
+// internal ranking and never rendered, doesn't false-positive), and the
+// task's own approved reassurance phrase ("does not mean ... damaged or
+// weak" - an explicit negation, not a label applied to the person) is
+// excluded before checking.
+const reportInterpretationsSource = readFileSync(resolve(__dirname, "./reportInterpretations.ts"), "utf-8");
+const plainLanguageGlossarySource = readFileSync(resolve(__dirname, "./plainLanguageGlossary.ts"), "utf-8")
+  .replace(/does not mean the archetype is damaged or weak/gi, "");
+for (const bannedWord of ["weak", "bad", "deficient", "broken", "failed", "worst"]) {
+  const pattern = new RegExp(`\\b${bannedWord}\\b`, "i");
+  assert(
+    !pattern.test(reportInterpretationsSource) && !pattern.test(plainLanguageGlossarySource),
+    `plain-language interpretation copy must not use the word "${bannedWord}" as a label applied to the person`
+  );
+}
+assert(
+  !reportInterpretationsSource.includes("Growth Edge is") ||
+    reportInterpretationsSource.includes("did not cause"),
+  "Growth Edge must never be presented as an identity label without the causal disclaimer"
+);
+
+// ---------------------------------------------------------------------------------
+// Part 10: FullReport.tsx - plain-language layer guardrails
+// ---------------------------------------------------------------------------------
+
+console.log("Part 10: FullReport.tsx - plain-language layer guardrails");
+
+assert(
+  fullReportSource.includes('kicker="What This Means in Everyday Life"'),
+  "expected a 'What This Means in Everyday Life' section"
+);
+assert(
+  fullReportSource.includes("buildEverydaySummary("),
+  "'What This Means in Everyday Life' must be driven by buildEverydaySummary(), not static copy"
+);
+assert(
+  fullReportSource.includes("everydaySummary.strengths") &&
+    fullReportSource.includes("everydaySummary.protectedText") &&
+    fullReportSource.includes("everydaySummary.mayHelp"),
+  "the everyday-life summary must render all three areas (Strengths, What Becomes Protected, What May Help)"
+);
+
+assert(
+  fullReportSource.includes("FORMATION_PLAIN_LANGUAGE") &&
+    fullReportSource.includes("describeInjuredArchetype("),
+  "Structural Dynamic must render the Protective Formation glossary and a parameterised Injured Archetype explanation"
+);
+assert(
+  fullReportSource.includes("describeHealthyAvailability(") &&
+    fullReportSource.includes("describeShadowActivation("),
+  "Primary Capacity Profile must render plain-language Healthy Availability / Shadow Activation phrasing"
+);
+assert(
+  fullReportSource.includes("buildPrimaryCapacityInterpretation("),
+  "Primary Capacity Profile must render its own interpretation sentence (this chart previously had none)"
+);
+assert(
+  fullReportSource.includes("ARCHETYPE_CAPACITY_LABEL[") &&
+    fullReportSource.includes("buildArchetypeCapacityInterpretation("),
+  "Archetype summary cards must render the three-capacity tagline and a real-score interpretation sentence"
+);
+assert(
+  fullReportSource.includes(">Current Strength<") &&
+    fullReportSource.includes(">Growth Edge<") &&
+    fullReportSource.includes(">Highly Protected<"),
+  "Twelve-Capacity Profile must highlight Current Strength / Growth Edge / Highly Protected, not just raw numbers"
+);
+assert(
+  !fullReportSource.includes("protectively substituted or performative"),
+  "the academic phrase 'protectively substituted or performative' must be replaced with plain language"
+);
+
+// Low-differentiation language must remain non-definitive even with the new
+// plain-language layer added around it.
+assert(
+  fullReportSourceNormalised.includes("best read as a broader map of your current protective patterns"),
+  "low-differentiation framing must remain non-definitive after this pass"
+);
+
+// ---------------------------------------------------------------------------------
+// Part 11: ArcheLoop Wheel mobile geometry - no label coordinate outside the viewBox
+// ---------------------------------------------------------------------------------
+
+console.log("Part 11: ArcheLoop Wheel mobile geometry - no label outside the viewBox");
+
+// Conservative worst-case half-width, in the same SVG user-unit space as
+// the wheel's own fontSize="14" label text, for the longest Element name
+// used on the wheel ("Water", 5 characters). This is a deliberately
+// generous estimate (real glyph metrics are narrower), so a pass here is a
+// safety margin, not a tight fit.
+const WORST_CASE_LABEL_HALF_WIDTH = 24;
+
+for (const angleDeg of WHEEL_GEOMETRY.sectorAngles) {
+  const point = polarToCartesian(angleDeg, WHEEL_GEOMETRY.labelRadius);
+  const left = point.x - WORST_CASE_LABEL_HALF_WIDTH;
+  const right = point.x + WORST_CASE_LABEL_HALF_WIDTH;
+  const top = point.y - WORST_CASE_LABEL_HALF_WIDTH;
+  const bottom = point.y + WORST_CASE_LABEL_HALF_WIDTH;
+
+  const viewBoxRight = WHEEL_GEOMETRY.viewBox.minX + WHEEL_GEOMETRY.viewBox.width;
+  const viewBoxBottom = WHEEL_GEOMETRY.viewBox.minY + WHEEL_GEOMETRY.viewBox.height;
+
+  assert(
+    left >= WHEEL_GEOMETRY.viewBox.minX && right <= viewBoxRight,
+    `Wheel label at angle ${angleDeg}° must stay horizontally within the viewBox (left=${left.toFixed(1)}, right=${right.toFixed(1)}, bounds=[${WHEEL_GEOMETRY.viewBox.minX}, ${viewBoxRight}])`
+  );
+  assert(
+    top >= WHEEL_GEOMETRY.viewBox.minY && bottom <= viewBoxBottom,
+    `Wheel label at angle ${angleDeg}° must stay vertically within the viewBox (top=${top.toFixed(1)}, bottom=${bottom.toFixed(1)}, bounds=[${WHEEL_GEOMETRY.viewBox.minY}, ${viewBoxBottom}])`
+  );
+}
 
 console.log(`\n${passed} passed, ${failed} failed`);
 

@@ -14,10 +14,21 @@ import {
   buildFormationInterpretation,
   buildLoopLandscapeInterpretation,
   buildDevelopmentalDirectionSynthesis,
+  buildPrimaryCapacityInterpretation,
+  buildArchetypeCapacityInterpretation,
+  buildEverydaySummary,
   getActivationDescriptor,
   joinWithAnd,
   ARCHETYPE_ACCENT,
 } from "../app/data/reportInterpretations";
+import {
+  DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE,
+  ARCHETYPE_CAPACITY_LABEL,
+  FORMATION_PLAIN_LANGUAGE,
+  describeHealthyAvailability,
+  describeShadowActivation,
+  describeInjuredArchetype,
+} from "../app/data/plainLanguageGlossary";
 import ArcheLoopWheel from "./ArcheLoopWheel";
 
 const loopPathMap: Record<string, { journey: string; integratedSelf: string }> = {
@@ -273,6 +284,20 @@ export default function FullReport({
     growthEdgeArchetype: isV2 ? reportData?.growthEdge?.archetype : undefined,
   });
 
+  // Twelve-Capacity Profile highlight badges (Section 6 of this task): the
+  // single overall highest-Healthy capacity, shown as "Current Strength".
+  // "Growth Edge" and "Highly Protected" reuse the already-canonical
+  // reportData.growthEdge and structuralMetadata.developmentalCapacity
+  // fields directly (Primary Loop is, by definition, the capacity with the
+  // highest shadowActivationScore) rather than re-sorting independently,
+  // so these badges can never contradict the rest of the report.
+  const topHealthyCapacityOverall =
+    capacityScores.length > 0
+      ? [...capacityScores].sort(
+          (a: any, b: any) => b.healthyAvailabilityScore - a.healthyAvailabilityScore
+        )[0]
+      : null;
+
   // Chapter Three, Developmental Direction (Section 10 of this task): the
   // strongest one or two capacities within the Most Available Archetype -
   // read directly from its own capacities array, never recomputed.
@@ -293,6 +318,19 @@ export default function FullReport({
     !!reportData?.growthEdgeArchetype &&
     reportData.growthEdgeArchetype.archetype !== reportData?.growthEdge?.archetype &&
     reportData.growthEdgeArchetype.archetype !== reportData?.mostAvailableArchetype?.archetype;
+
+  // "What This Means in Everyday Life" (Section 3 of this task): a plain-
+  // language translation of the same data already computed above - never a
+  // second, independently-worded interpretation of the score.
+  const everydaySummary = buildEverydaySummary({
+    primaryArchetype: primaryLoop.archetype,
+    mostAvailableArchetype: isV2 ? reportData?.mostAvailableArchetype?.archetype : undefined,
+    mostAvailableCapacities: isV2 ? mostAvailableStrongestCapacities : undefined,
+    growthEdgeCapacity: isV2 ? reportData?.growthEdge?.developmentalCapacity : undefined,
+    growthEdgeArchetype: isV2 ? reportData?.growthEdge?.archetype : undefined,
+    integrationPath: archeLoopPath.journey,
+    integratedSelf: archeLoopPath.integratedSelf,
+  });
 
   function ScoreBar({ label, value }: { label: string; value: number }) {
     return (
@@ -634,6 +672,9 @@ export default function FullReport({
               {item.archetype}
             </h3>
             <p className="al-muted mt-1">{item.element}</p>
+            <p className="al-muted mt-1 text-sm">
+              {ARCHETYPE_CAPACITY_LABEL[item.archetype as keyof typeof ARCHETYPE_CAPACITY_LABEL]}
+            </p>
           </div>
 
           <div className="text-right">
@@ -677,6 +718,10 @@ export default function FullReport({
             {dominantFormation.label} ({dominantFormation.value}%)
           </p>
         </div>
+
+        <p className="al-text mt-4 text-sm">
+          {buildArchetypeCapacityInterpretation(item.archetype, capacities)}
+        </p>
       </div>
     );
   }
@@ -924,6 +969,33 @@ export default function FullReport({
           </div>
         </section>
 
+        <section className="al-section-tight">
+          <div className="al-container-wide">
+            <SectionHeader
+              kicker="What This Means in Everyday Life"
+              title="Your pattern, in plain language."
+              text="A short, practical translation of the same results above — into what you might notice day to day."
+            />
+
+            <div className="grid gap-6 md:grid-cols-3">
+              <div className="al-panel-card p-8">
+                <p className="al-kicker">Your Strengths</p>
+                <p className="al-text mt-4">{everydaySummary.strengths}</p>
+              </div>
+
+              <div className="al-panel-card p-8">
+                <p className="al-kicker">What Becomes Protected</p>
+                <p className="al-text mt-4">{everydaySummary.protectedText}</p>
+              </div>
+
+              <div className="al-panel-card p-8">
+                <p className="al-kicker">What May Help</p>
+                <p className="al-text mt-4">{everydaySummary.mayHelp}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="al-section">
           <div className="al-container-wide">
             <SectionHeader
@@ -965,6 +1037,15 @@ export default function FullReport({
                   ) : null}
                 </div>
 
+                <p className="al-text">
+                  <span className="font-semibold text-[var(--al-text)]">
+                    {structuralMetadata.developmentalCapacity}:
+                  </span>{" "}
+                  {DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE[
+                    structuralMetadata.developmentalCapacity as keyof typeof DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE
+                  ]}
+                </p>
+
                 <div className="al-card space-y-5 p-8">
                   <p className="al-text-lg">{structuralMetadata.structuralDynamic}</p>
 
@@ -974,6 +1055,31 @@ export default function FullReport({
                     </span>{" "}
                     {String(detail.coreStructure.coreFear)}
                   </p>
+                </div>
+
+                {/* Protective Formation, defined once in plain language here
+                    so Loop Formula / Loop Landscape / Formation Profile don't
+                    need to repeat the definition later (Section 1 of this
+                    task: "avoid repeating the same definition in every
+                    section"). */}
+                <div className="al-soft-card p-6">
+                  <p className="al-kicker">Protective Formation, in plain language</p>
+                  <div className="mt-3 space-y-2">
+                    {(["Collapse", "Compensate", "Collide"] as const).map((formationName) => (
+                      <p
+                        key={formationName}
+                        className={
+                          formationName === formattedMechanism
+                            ? "text-sm font-semibold text-[var(--al-text)]"
+                            : "al-muted text-sm"
+                        }
+                      >
+                        <span className="font-semibold">{formationName}</span> —{" "}
+                        {FORMATION_PLAIN_LANGUAGE[formationName]}
+                        {formationName === formattedMechanism && " (your current pattern)"}
+                      </p>
+                    ))}
+                  </div>
                 </div>
 
                 {structuralMetadata.formation === "Compensate" &&
@@ -988,9 +1094,10 @@ export default function FullReport({
                   )}
 
                 <p className="al-muted text-sm">
-                  “Injured” does not mean damaged or permanently weak. It
-                  identifies the archetypal capacity currently being protected
-                  by the Shadow Loop.
+                  {describeInjuredArchetype(
+                    structuralMetadata.injuredArchetype,
+                    structuralMetadata.developmentalCapacity
+                  )}
                 </p>
               </div>
             ) : (
@@ -1037,6 +1144,9 @@ export default function FullReport({
                     <p className="mt-2 text-2xl font-bold text-[var(--al-accent)]">
                       {primaryCapacityScore.healthyAvailabilityScore ?? 0}%
                     </p>
+                    <p className="al-muted mt-2 text-sm">
+                      {describeHealthyAvailability(primaryCapacityScore.healthyAvailabilityScore ?? 0)}
+                    </p>
                   </div>
                 </div>
 
@@ -1063,9 +1173,20 @@ export default function FullReport({
                     <p className="mt-2 text-2xl font-bold text-[var(--al-accent)]">
                       {primaryCapacityScore.shadowActivationScore ?? 0}%
                     </p>
+                    <p className="al-muted mt-2 text-sm">
+                      {describeShadowActivation(primaryCapacityScore.shadowActivationScore ?? 0)}
+                    </p>
                   </div>
                 </div>
               </div>
+
+              <p className="al-text-lg mx-auto mt-8 max-w-3xl text-center">
+                {buildPrimaryCapacityInterpretation(
+                  structuralMetadata.developmentalCapacity,
+                  primaryCapacityScore.healthyAvailabilityScore ?? 0,
+                  primaryCapacityScore.shadowActivationScore ?? 0
+                )}
+              </p>
             </div>
           </section>
         )}
@@ -1371,6 +1492,7 @@ export default function FullReport({
               <SectionHeader
                 kicker="Archetypal Availability"
                 title="Your archetypal availability at a glance."
+                text="In plain terms, this is how easily you can access each Archetype's healthier capacities right now."
               />
 
               <div className="mb-10">
@@ -1475,15 +1597,36 @@ export default function FullReport({
                     <div className="space-y-5">
                       {capacityScores
                         .filter((c: any) => c.archetype === archetypeName)
-                        .map((c: any) => (
-                          <div key={c.developmentalCapacity}>
-                            <div className="mb-2 flex items-center justify-between text-sm">
-                              <span className="al-text">{c.developmentalCapacity}</span>
-                              <span className="al-muted text-xs">
-                                Healthy {c.healthyAvailabilityScore}% · Shadow{" "}
-                                {c.shadowActivationScore}%
-                              </span>
-                            </div>
+                        .map((c: any) => {
+                          const isCurrentStrength =
+                            !!topHealthyCapacityOverall &&
+                            c.developmentalCapacity === topHealthyCapacityOverall.developmentalCapacity;
+                          const isGrowthEdge =
+                            !!reportData?.growthEdge &&
+                            c.developmentalCapacity === reportData.growthEdge.developmentalCapacity;
+                          const isHighlyProtected =
+                            c.developmentalCapacity === structuralMetadata.developmentalCapacity;
+
+                          return (
+                            <div key={c.developmentalCapacity}>
+                              <div className="mb-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-sm">
+                                <span className="al-text flex flex-wrap items-center gap-2">
+                                  {c.developmentalCapacity}
+                                  {isCurrentStrength && (
+                                    <span className="al-badge text-xs">Current Strength</span>
+                                  )}
+                                  {isGrowthEdge && (
+                                    <span className="al-badge text-xs">Growth Edge</span>
+                                  )}
+                                  {isHighlyProtected && (
+                                    <span className="al-badge text-xs">Highly Protected</span>
+                                  )}
+                                </span>
+                                <span className="al-muted text-xs">
+                                  Healthy {c.healthyAvailabilityScore}% · Shadow{" "}
+                                  {c.shadowActivationScore}%
+                                </span>
+                              </div>
 
                             <div className="flex gap-1.5">
                               <div
@@ -1514,7 +1657,8 @@ export default function FullReport({
                               </div>
                             </div>
                           </div>
-                        ))}
+                          );
+                        })}
                     </div>
                   </div>
                 ))}
@@ -1580,7 +1724,8 @@ export default function FullReport({
                     />
                   </div>
                   <p className="al-text mt-4 text-sm">
-                    What becomes protectively substituted or performative.
+                    In everyday terms: a safer, protective version may
+                    replace direct expression.
                   </p>
                 </div>
 
@@ -1621,6 +1766,7 @@ export default function FullReport({
               <SectionHeader
                 kicker="Developmental Direction"
                 title="Where this points next."
+                text="In plain terms: the area your results suggest may benefit most from attention and practice, and the fixed path your Primary Loop points toward — kept as two separate things below."
               />
 
               <div className="grid gap-6 md:grid-cols-3">

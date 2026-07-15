@@ -70,6 +70,18 @@
 --water: #8580D8;
 --earth: #718174;
 
+/* Report v2 archetype accents - slightly more visible/restrained variants
+   used only for Report v2 chart accents (ArcheLoop Wheel, Loop Landscape
+   accent borders, Archetype summary markers). Kept separate from the
+   shared --fire/--air/--water/--earth tokens above so other pages using
+   those directly (e.g. app/components/ElementalWheel.tsx) are unaffected.
+   Water is nudged toward teal per the recommended colour family - it reads
+   too close to violet/--al-secondary at the shared --water value. */
+--al-archetype-fire: #E0A868;
+--al-archetype-air: #7FA0F5;
+--al-archetype-water: #4FA8A0;
+--al-archetype-earth: #6B8F6E;
+
 /* Button text */
 
 --al-action-text: #FFFFFF;

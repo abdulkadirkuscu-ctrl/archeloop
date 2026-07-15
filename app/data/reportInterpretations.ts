@@ -8,6 +8,17 @@
 // of these functions recompute a score, re-rank loops/archetypes, or invent
 // a net/combined number - they only describe values that already exist,
 // side by side, in careful ("may", "currently", "can appear") language.
+//
+// Plain-language reference content (per-capacity meanings, Formation
+// definitions, score-banded phrasing) lives in
+// app/data/plainLanguageGlossary.ts and is imported below rather than
+// duplicated here.
+
+import {
+  DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE,
+  describeHealthyAvailability,
+  describeShadowActivation,
+} from "./plainLanguageGlossary.ts";
 
 // --- Hero interpretation ----------------------------------------------------------
 //
@@ -68,13 +79,16 @@ export function getActivationDescriptor(percent: number): ActivationDescriptor {
 
 // --- Archetype accent colours ------------------------------------------------------
 //
-// Restrained accent mapping onto the existing Fire/Air/Water/Earth tokens
-// already defined in app/globals.css - no new colours introduced.
+// Restrained accent mapping onto the centralised --al-archetype-* tokens in
+// app/globals.css (Section 5 of this task) - a slightly more visible
+// variant of the shared Fire/Air/Water/Earth tokens, scoped to Report v2
+// chart accents only so other pages using --fire/--air/--water/--earth
+// directly are unaffected.
 export const ARCHETYPE_ACCENT: Record<string, string> = {
-  Sovereign: "var(--fire)",
-  Magician: "var(--air)",
-  Lover: "var(--water)",
-  Warrior: "var(--earth)",
+  Sovereign: "var(--al-archetype-fire)",
+  Magician: "var(--al-archetype-air)",
+  Lover: "var(--al-archetype-water)",
+  Warrior: "var(--al-archetype-earth)",
 };
 
 // --- ArcheLoop Wheel interpretation -------------------------------------------------
@@ -112,6 +126,20 @@ export function buildWheelInterpretation(scores: WheelInterpretationInput): stri
   return `${topHealthyNames} currently shows the strongest Healthy Availability, while ${topShadowNames} carries the highest Shadow Activation.`;
 }
 
+// Which Archetype(s) currently lead Healthy Availability and Shadow
+// Activation - used to add a restrained visual/text marker ("Most
+// Available" / "Most Protected") rather than relying on colour or
+// brightness alone (Section 5 of this task).
+export function getWheelLeaders(scores: WheelInterpretationInput): {
+  mostAvailable: string[];
+  mostProtected: string[];
+} {
+  return {
+    mostAvailable: topByKey(scores, (s) => s.healthyAvailability).map((s) => s.archetype),
+    mostProtected: topByKey(scores, (s) => s.shadowActivation).map((s) => s.archetype),
+  };
+}
+
 // --- Twelve-Capacity Profile interpretation -----------------------------------------
 
 export type CapacityInterpretationInput = {
@@ -134,13 +162,101 @@ export function buildTwelveCapacityInterpretation(
     .filter((c) => c.developmentalCapacity !== mostProtected.developmentalCapacity)
     .slice(0, 2);
 
-  if (strongestTwo.length === 0) {
-    return `${mostProtected.developmentalCapacity} is currently the most protected capacity in this result.`;
+  const lowestTwo = [...rankedByHealthy]
+    .reverse()
+    .filter(
+      (c) =>
+        c.developmentalCapacity !== mostProtected.developmentalCapacity &&
+        !strongestTwo.some((s) => s.developmentalCapacity === c.developmentalCapacity)
+    )
+    .slice(0, 2);
+
+  const sentences: string[] = [];
+
+  if (strongestTwo.length > 0) {
+    sentences.push(
+      `${joinWithAnd(strongestTwo.map((c) => c.developmentalCapacity))} ${
+        strongestTwo.length === 1 ? "is" : "are"
+      } currently among your strongest capacities, suggesting ${
+        strongestTwo.length === 1 ? "it feels" : "these feel"
+      } comparatively easy to access.`
+    );
   }
 
-  return `${mostProtected.developmentalCapacity} is currently the most protected capacity, while ${joinWithAnd(
-    strongestTwo.map((c) => c.developmentalCapacity)
-  )} remain strongly available.`;
+  if (lowestTwo.length > 0) {
+    sentences.push(
+      `${joinWithAnd(lowestTwo.map((c) => c.developmentalCapacity))} ${
+        lowestTwo.length === 1 ? "is" : "are"
+      } less available right now, while ${mostProtected.developmentalCapacity} shows the strongest protective activity.`
+    );
+  } else {
+    sentences.push(
+      `${mostProtected.developmentalCapacity} is currently the most protected capacity in this result.`
+    );
+  }
+
+  const groundingCapacity = lowestTwo[0] ?? mostProtected;
+  const plainLanguage =
+    DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE[
+      groundingCapacity.developmentalCapacity as keyof typeof DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE
+    ];
+  if (plainLanguage) {
+    sentences.push(
+      `In everyday terms, ${groundingCapacity.developmentalCapacity} is about how easily you access it day to day — ${plainLanguage.charAt(0).toLowerCase()}${plainLanguage.slice(1)}`
+    );
+  }
+
+  return sentences.join(" ");
+}
+
+// --- Primary Capacity Profile interpretation (Section 2 of this task) --------------
+
+export function buildPrimaryCapacityInterpretation(
+  developmentalCapacity: string,
+  healthyAvailabilityScore: number,
+  shadowActivationScore: number
+): string {
+  const plainLanguage =
+    DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE[
+      developmentalCapacity as keyof typeof DEVELOPMENTAL_CAPACITY_PLAIN_LANGUAGE
+    ] ?? "";
+
+  if (shadowActivationScore - healthyAvailabilityScore > 15) {
+    return `${developmentalCapacity} is currently strongly protected. ${plainLanguage} You may still access this in some situations, but under pressure, protective patterns around it may become more automatic.`;
+  }
+
+  if (healthyAvailabilityScore - shadowActivationScore > 15) {
+    return `${developmentalCapacity} is currently one of your more available capacities. ${plainLanguage} This tends to hold up reasonably well, even under some pressure.`;
+  }
+
+  return `${developmentalCapacity} currently shows a mix of availability and protection. ${plainLanguage} Pressure can still activate protective patterns around it, even when it otherwise feels available.`;
+}
+
+// --- Archetype summary interpretation (Section 7 of this task) --------------------
+
+export function buildArchetypeCapacityInterpretation(
+  archetype: string,
+  capacities: { developmentalCapacity: string; healthyAvailabilityScore: number }[]
+): string {
+  if (capacities.length === 0) return "";
+
+  const ranked = [...capacities].sort(
+    (a, b) => b.healthyAvailabilityScore - a.healthyAvailabilityScore
+  );
+  const strongest = ranked[0];
+  const weakest = ranked[ranked.length - 1];
+  const middle = ranked.slice(1, -1);
+
+  if (ranked.length < 3 || strongest.developmentalCapacity === weakest.developmentalCapacity) {
+    return `Within ${archetype}, ${strongest.developmentalCapacity} currently shows ${strongest.healthyAvailabilityScore}% Healthy Availability.`;
+  }
+
+  const middleClause =
+    middle.length > 0
+      ? ` and ${joinWithAnd(middle.map((c) => c.developmentalCapacity))} shows mixed access`
+      : "";
+
+  return `Within ${archetype}, ${strongest.developmentalCapacity} remains strongly available, while ${weakest.developmentalCapacity} is more heavily protected${middleClause}.`;
 }
 
 // --- Formation Profile interpretation ------------------------------------------------
@@ -193,6 +309,52 @@ export function buildLoopLandscapeInterpretation(
   const relation = gap <= CLOSE_ACTIVATION_GAP ? "closely related supporting" : "supporting";
 
   return `${first.loop} leads the current pattern, with ${second.loop} operating as a ${relation} activation.`;
+}
+
+// --- "What This Means in Everyday Life" summary (Section 3 of this task) -----------
+//
+// One deterministic template applied regardless of which loop/Archetype the
+// person's result surfaces - never hard-coded to a specific loop. Every
+// clause degrades gracefully when its underlying v2-only field is missing
+// (legacy reports, or a v2 report missing an optional field).
+export function buildEverydaySummary(params: {
+  primaryArchetype: string;
+  mostAvailableArchetype?: string;
+  mostAvailableCapacities?: string[];
+  growthEdgeCapacity?: string;
+  growthEdgeArchetype?: string;
+  integrationPath?: string;
+  integratedSelf?: string;
+}): { strengths: string; protectedText: string; mayHelp: string } {
+  const {
+    primaryArchetype,
+    mostAvailableArchetype,
+    mostAvailableCapacities = [],
+    growthEdgeCapacity,
+    growthEdgeArchetype,
+    integrationPath,
+    integratedSelf,
+  } = params;
+
+  const strengths = mostAvailableArchetype
+    ? mostAvailableCapacities.length > 0
+      ? `You appear to have strong access to ${joinWithAnd(
+          mostAvailableCapacities
+        )}, within ${mostAvailableArchetype}. These capacities may feel comparatively natural, even under some pressure.`
+      : `Healthy expression currently feels most available to you within ${mostAvailableArchetype}.`
+    : `Your results highlight areas of healthy capacity alongside the pattern this report describes.`;
+
+  const protectedText =
+    growthEdgeCapacity && growthEdgeArchetype
+      ? `${growthEdgeCapacity}, within ${growthEdgeArchetype}, currently appears less available. Under pressure, protective patterns around it may become more automatic than direct expression.`
+      : `Some capacities linked to ${primaryArchetype} currently appear more protected than others.`;
+
+  const mayHelp =
+    integrationPath && integratedSelf
+      ? `Your ${integrationPath} points toward ${integratedSelf}. Integration does not require giving up what already works for you — it means allowing this capacity to grow alongside it.`
+      : `Awareness of this pattern is itself the beginning of integration — noticing it is often the first step toward change.`;
+
+  return { strengths, protectedText, mayHelp };
 }
 
 // --- Developmental Direction "why this matters" --------------------------------------

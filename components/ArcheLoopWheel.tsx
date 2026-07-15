@@ -1,6 +1,7 @@
 "use client";
 
-import { buildWheelInterpretation } from "../app/data/reportInterpretations";
+import { buildWheelInterpretation, getWheelLeaders, ARCHETYPE_ACCENT } from "../app/data/reportInterpretations";
+import { WHEEL_GEOMETRY, polarToCartesian } from "../app/data/wheelGeometry";
 
 // ArcheLoop Wheel — Report v2's replacement for the old point-radar
 // "Archetypal Compass". A radar/spider chart plots one blended number per
@@ -17,6 +18,20 @@ import { buildWheelInterpretation } from "../app/data/reportInterpretations";
 // speculative reading of a minor difference) is rendered underneath so the
 // chart explains itself without requiring the reader to compare four sectors
 // by eye.
+//
+// Mobile label fix: on-wheel labels show the short Element name (Fire/Air/
+// Water/Earth) rather than the full Archetype name. Full Archetype names
+// remain prominent in the legend/summary grid directly below the SVG. This
+// is necessary because a textAnchor="middle" label sits with its centre at
+// the sector's outer edge - for the longest Archetype names ("Sovereign",
+// "Warrior") the rendered text overflows the viewBox at any screen size
+// (the overflow is proportional to the viewBox, not the rendered pixel
+// size, so it clips identically on mobile and desktop; mobile only makes it
+// look worse because the whole chart is smaller). Element names are short
+// enough, combined with the widened viewBox and reduced label radius below,
+// to never overflow. WHEEL_GEOMETRY is exported so this claim is verified
+// by a deterministic test (app/data/reportSynthesis.test.ts) rather than
+// asserted only by inspection.
 
 export type WheelArchetypeScore = {
   archetype: string;
@@ -25,26 +40,18 @@ export type WheelArchetypeScore = {
   shadowActivation: number;
 };
 
-const SECTOR_ORDER: { archetype: string; centerAngleDeg: number; colorVar: string }[] = [
-  { archetype: "Magician", centerAngleDeg: -90, colorVar: "var(--air)" },
-  { archetype: "Sovereign", centerAngleDeg: 0, colorVar: "var(--fire)" },
-  { archetype: "Lover", centerAngleDeg: 90, colorVar: "var(--water)" },
-  { archetype: "Warrior", centerAngleDeg: 180, colorVar: "var(--earth)" },
-];
-
-const SECTOR_HALF_WIDTH_DEG = 36;
-const CENTER = 200;
+const CENTER = WHEEL_GEOMETRY.center;
+const MAX_RADIUS = WHEEL_GEOMETRY.maxRadius;
 const MIN_RADIUS = 46;
-const MAX_RADIUS = 168;
 const SHADOW_MAX_RADIUS = 118;
+const SECTOR_HALF_WIDTH_DEG = 36;
 
-function polarToCartesian(angleDeg: number, radius: number) {
-  const angleRad = (angleDeg * Math.PI) / 180;
-  return {
-    x: CENTER + radius * Math.cos(angleRad),
-    y: CENTER + radius * Math.sin(angleRad),
-  };
-}
+const SECTOR_ORDER: { archetype: string; centerAngleDeg: number; colorVar: string }[] = [
+  { archetype: "Magician", centerAngleDeg: WHEEL_GEOMETRY.sectorAngles[0], colorVar: ARCHETYPE_ACCENT.Magician },
+  { archetype: "Sovereign", centerAngleDeg: WHEEL_GEOMETRY.sectorAngles[1], colorVar: ARCHETYPE_ACCENT.Sovereign },
+  { archetype: "Lover", centerAngleDeg: WHEEL_GEOMETRY.sectorAngles[2], colorVar: ARCHETYPE_ACCENT.Lover },
+  { archetype: "Warrior", centerAngleDeg: WHEEL_GEOMETRY.sectorAngles[3], colorVar: ARCHETYPE_ACCENT.Warrior },
+];
 
 function wedgePath(centerAngleDeg: number, radius: number) {
   const start = polarToCartesian(centerAngleDeg - SECTOR_HALF_WIDTH_DEG, radius);
@@ -76,6 +83,7 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
   });
 
   const interpretation = buildWheelInterpretation(scores);
+  const leaders = getWheelLeaders(scores);
 
   return (
     <div className="al-feature-card">
@@ -89,15 +97,18 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
         Each sector shows two separate measurements for that Archetype: the
         outer, softer wedge is Healthy Availability, and the inner, stronger
         wedge is Shadow Activation. A person can have high availability and
-        high activation at the same time — these are not opposites.
+        high activation at the same time — these are not opposites. Full
+        Archetype names are shown in the legend below; the wheel itself
+        labels each sector by Element (Fire, Air, Water, Earth) to stay
+        readable on narrow screens.
       </p>
 
       <div className="mt-10 flex justify-center">
         <svg
-          viewBox="0 0 400 400"
+          viewBox={`${WHEEL_GEOMETRY.viewBox.minX} ${WHEEL_GEOMETRY.viewBox.minY} ${WHEEL_GEOMETRY.viewBox.width} ${WHEEL_GEOMETRY.viewBox.height}`}
           role="img"
           aria-label="ArcheLoop Wheel showing Healthy Availability and Shadow Activation for Sovereign, Magician, Lover, and Warrior"
-          className="h-[19rem] w-[19rem] max-w-full sm:h-[23rem] sm:w-[23rem] lg:h-[26rem] lg:w-[26rem]"
+          className="h-[15rem] w-[15rem] max-w-full sm:h-[19rem] sm:w-[19rem] lg:h-[26rem] lg:w-[26rem]"
         >
           {[MIN_RADIUS, (MIN_RADIUS + MAX_RADIUS) / 2, MAX_RADIUS].map((radius) => (
             <circle
@@ -112,28 +123,34 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
             />
           ))}
 
-          {bySector.map((sector) => (
-            <path
-              key={`${sector.archetype}-healthy`}
-              d={wedgePath(sector.centerAngleDeg, scaledRadius(sector.healthyAvailability, MAX_RADIUS))}
-              fill={sector.colorVar}
-              fillOpacity="0.22"
-              stroke={sector.colorVar}
-              strokeOpacity="0.55"
-              strokeWidth="1.5"
-              aria-hidden="true"
-            />
-          ))}
+          {bySector.map((sector) => {
+            const isMostAvailable = leaders.mostAvailable.includes(sector.archetype);
+            return (
+              <path
+                key={`${sector.archetype}-healthy`}
+                d={wedgePath(sector.centerAngleDeg, scaledRadius(sector.healthyAvailability, MAX_RADIUS))}
+                fill={sector.colorVar}
+                fillOpacity={isMostAvailable ? "0.34" : "0.22"}
+                stroke={sector.colorVar}
+                strokeOpacity={isMostAvailable ? "0.85" : "0.55"}
+                strokeWidth={isMostAvailable ? "2.5" : "1.5"}
+                aria-hidden="true"
+              />
+            );
+          })}
 
-          {bySector.map((sector) => (
-            <path
-              key={`${sector.archetype}-shadow`}
-              d={wedgePath(sector.centerAngleDeg, scaledRadius(sector.shadowActivation, SHADOW_MAX_RADIUS))}
-              fill={sector.colorVar}
-              fillOpacity="0.65"
-              aria-hidden="true"
-            />
-          ))}
+          {bySector.map((sector) => {
+            const isMostProtected = leaders.mostProtected.includes(sector.archetype);
+            return (
+              <path
+                key={`${sector.archetype}-shadow`}
+                d={wedgePath(sector.centerAngleDeg, scaledRadius(sector.shadowActivation, SHADOW_MAX_RADIUS))}
+                fill={sector.colorVar}
+                fillOpacity={isMostProtected ? "0.85" : "0.65"}
+                aria-hidden="true"
+              />
+            );
+          })}
 
           {/* Numeric values, always visible - never dependent on hover. Fixed
               annotation radii (independent of each wedge's own scaled size)
@@ -214,8 +231,13 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
             Integrated Self
           </text>
 
+          {/* On-wheel label shows the short Element name only - see the
+              file-header comment for why the full Archetype name (e.g.
+              "Sovereign", "Warrior") cannot be used here without clipping.
+              The colour-matched legend and summary grid below carry the
+              full Archetype name. */}
           {bySector.map((sector) => {
-            const labelPoint = polarToCartesian(sector.centerAngleDeg, MAX_RADIUS + 30);
+            const labelPoint = polarToCartesian(sector.centerAngleDeg, WHEEL_GEOMETRY.labelRadius);
             return (
               <text
                 key={`${sector.archetype}-label`}
@@ -226,7 +248,7 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
                 fontSize="14"
                 fontWeight="750"
               >
-                {sector.archetype}
+                {sector.element}
               </text>
             );
           })}
@@ -280,6 +302,18 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
                 </dd>
               </div>
             </dl>
+
+            {(leaders.mostAvailable.includes(sector.archetype) ||
+              leaders.mostProtected.includes(sector.archetype)) && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {leaders.mostAvailable.includes(sector.archetype) && (
+                  <span className="al-badge text-xs">Most Available</span>
+                )}
+                {leaders.mostProtected.includes(sector.archetype) && (
+                  <span className="al-badge text-xs">Most Protected</span>
+                )}
+              </div>
+            )}
           </div>
         ))}
       </div>
