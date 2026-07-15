@@ -89,7 +89,7 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
           viewBox="0 0 400 400"
           role="img"
           aria-label="ArcheLoop Wheel showing Healthy Availability and Shadow Activation for Sovereign, Magician, Lover, and Warrior"
-          className="h-[26rem] w-[26rem] max-w-full"
+          className="h-[19rem] w-[19rem] max-w-full sm:h-[23rem] sm:w-[23rem] lg:h-[26rem] lg:w-[26rem]"
         >
           {[MIN_RADIUS, (MIN_RADIUS + MAX_RADIUS) / 2, MAX_RADIUS].map((radius) => (
             <circle
@@ -124,7 +124,55 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
             />
           ))}
 
-          <circle cx={CENTER} cy={CENTER} r={MIN_RADIUS - 8} fill="var(--al-surface)" stroke="var(--al-border-strong)" />
+          {/* Numeric values, always visible - never dependent on hover. Fixed
+              annotation radii (independent of each wedge's own scaled size)
+              keep every label readable even when a value is near 0%. */}
+          {bySector.map((sector) => {
+            const healthyLabelPoint = polarToCartesian(sector.centerAngleDeg, MAX_RADIUS - 20);
+            return (
+              <text
+                key={`${sector.archetype}-healthy-value`}
+                x={healthyLabelPoint.x}
+                y={healthyLabelPoint.y}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fill="var(--al-text)"
+                stroke="var(--al-bg)"
+                strokeWidth="3"
+                paintOrder="stroke"
+                fontSize="12"
+                fontWeight="800"
+              >
+                {sector.healthyAvailability}%
+              </text>
+            );
+          })}
+
+          {bySector.map((sector) => {
+            const shadowLabelPoint = polarToCartesian(
+              sector.centerAngleDeg,
+              (MIN_RADIUS + SHADOW_MAX_RADIUS) / 2
+            );
+            return (
+              <text
+                key={`${sector.archetype}-shadow-value`}
+                x={shadowLabelPoint.x}
+                y={shadowLabelPoint.y}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fill="var(--al-text)"
+                stroke="var(--al-bg)"
+                strokeWidth="3"
+                paintOrder="stroke"
+                fontSize="11"
+                fontWeight="800"
+              >
+                {sector.shadowActivation}%
+              </text>
+            );
+          })}
+
+          <circle cx={CENTER} cy={CENTER} r={MIN_RADIUS - 6} fill="var(--al-surface)" stroke="var(--al-border-strong)" strokeWidth="1.5" />
           <text
             x={CENTER}
             y={CENTER - 4}
@@ -148,7 +196,7 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
           </text>
 
           {bySector.map((sector) => {
-            const labelPoint = polarToCartesian(sector.centerAngleDeg, MAX_RADIUS + 26);
+            const labelPoint = polarToCartesian(sector.centerAngleDeg, MAX_RADIUS + 30);
             return (
               <text
                 key={`${sector.archetype}-label`}
@@ -156,8 +204,8 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
                 y={labelPoint.y}
                 textAnchor="middle"
                 fill="var(--al-text)"
-                fontSize="13"
-                fontWeight="700"
+                fontSize="14"
+                fontWeight="750"
               >
                 {sector.archetype}
               </text>
@@ -166,22 +214,41 @@ export default function ArcheLoopWheel({ scores }: { scores: WheelArchetypeScore
         </svg>
       </div>
 
-      <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+        <span className="flex items-center gap-2 al-muted">
+          <span
+            aria-hidden="true"
+            className="inline-block h-3 w-3 rounded-full border border-[var(--al-border-strong)]"
+            style={{ background: "var(--al-text-muted)", opacity: 0.35 }}
+          />
+          Outer wedge — Healthy Availability
+        </span>
+        <span className="flex items-center gap-2 al-muted">
+          <span
+            aria-hidden="true"
+            className="inline-block h-3 w-3 rounded-full"
+            style={{ background: "var(--al-text-muted)", opacity: 0.75 }}
+          />
+          Inner wedge — Shadow Activation
+        </span>
+      </div>
+
+      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {bySector.map((sector) => (
-          <div key={sector.archetype} className="al-soft-card p-4">
+          <div key={sector.archetype} className="al-soft-card p-5">
             <p className="al-kicker" style={{ color: sector.colorVar }}>
               {sector.archetype} · {sector.element}
             </p>
 
-            <dl className="mt-3 space-y-1 text-sm">
-              <div className="flex items-center justify-between">
+            <dl className="mt-4 space-y-2 text-sm">
+              <div className="flex items-center justify-between gap-3">
                 <dt className="al-muted">Healthy Availability</dt>
                 <dd className="font-semibold text-[var(--al-text)]">
                   {sector.healthyAvailability}%
                 </dd>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-3">
                 <dt className="al-muted">Shadow Activation</dt>
                 <dd className="font-semibold text-[var(--al-text)]">
                   {sector.shadowActivation}%
