@@ -1,20 +1,29 @@
-async function getAdminStats() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-
-  const res = await fetch(`${baseUrl}/api/admin-stats`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
-    return null;
-  }
-
-  return res.json();
-}
+import { redirect, notFound } from "next/navigation";
+import { createSupabaseServerClient } from "../../lib/supabaseServerClient";
+import { isAdminEmail } from "../../lib/adminAuth";
+import { getAdminStatsData } from "../../lib/adminStats";
 
 export default async function AdminPage() {
-  const stats = await getAdminStats();
+  const supabaseAuth = await createSupabaseServerClient();
+
+  const {
+    data: { user },
+  } = await supabaseAuth.auth.getUser();
+
+  // Guest: no session at all - send to login, same pattern as
+  // app/report/[id]/page.tsx.
+  if (!user) {
+    redirect("/auth/login?redirectTo=/admin");
+  }
+
+  // Logged in, but not on the admin allowlist: deny without confirming
+  // that an admin panel exists at this URL.
+  if (!isAdminEmail(user.email)) {
+    notFound();
+  }
+
+  // Data is only ever queried after both checks above have passed.
+  const stats = await getAdminStatsData().catch(() => null);
 
   if (!stats) {
     return (

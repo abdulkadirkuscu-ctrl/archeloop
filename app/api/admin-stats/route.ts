@@ -1,83 +1,28 @@
 import { NextResponse } from "next/server";
-import { supabaseServer } from "../../../lib/supabaseServer";
-import { stripTrademark } from "../../../lib/text";
+import { createSupabaseServerClient } from "../../../lib/supabaseServerClient";
+import { isAdminEmail } from "../../../lib/adminAuth";
+import { getAdminStatsData } from "../../../lib/adminStats";
 
 export async function GET() {
+  // Authorization check runs before any admin data is queried - reuses the
+  // same Supabase session (lib/supabaseServerClient.ts) every other page in
+  // this app already relies on, plus the admin email allowlist
+  // (lib/adminAuth.ts). This route is reachable directly (not only via the
+  // /admin page), so it must perform this check independently rather than
+  // trusting the caller.
+  const supabaseAuth = await createSupabaseServerClient();
+
+  const {
+    data: { user },
+  } = await supabaseAuth.auth.getUser();
+
+  if (!user || !isAdminEmail(user.email)) {
+    return NextResponse.json({ error: "Not authorized" }, { status: 403 });
+  }
+
   try {
-    const { count: reportCount, error: reportError } = await supabaseServer
-      .from("archeloop_reports")
-      .select("*", { count: "exact", head: true });
-
-    const { count: feedbackCount, error: feedbackError } = await supabaseServer
-      .from("archeloop_feedback")
-      .select("*", { count: "exact", head: true });
-
-    const { count: waitlistCount, error: waitlistError } = await supabaseServer
-      .from("archeloop_waitlist")
-      .select("*", { count: "exact", head: true });
-
-    const { data: feedbackRows } = await supabaseServer
-      .from("archeloop_feedback")
-      .select("accuracy_score, recommend, testimonial_permission, primary_loop");
-
-    const { data: reportRows } = await supabaseServer
-      .from("archeloop_reports")
-      .select("report_data");
-
-    if (reportError || feedbackError || waitlistError) {
-      return NextResponse.json(
-        { error: "Could not load admin stats" },
-        { status: 500 }
-      );
-    }
-
-    const accuracyScores =
-      feedbackRows
-        ?.map((row) => row.accuracy_score)
-        .filter((score) => typeof score === "number") || [];
-
-    const averageAccuracy =
-      accuracyScores.length > 0
-        ? Number(
-            (
-              accuracyScores.reduce((sum, score) => sum + score, 0) /
-              accuracyScores.length
-            ).toFixed(1)
-          )
-        : null;
-
-    const recommendYes =
-      feedbackRows?.filter((row) => row.recommend === "Yes").length || 0;
-
-    const testimonialYes =
-      feedbackRows?.filter((row) => row.testimonial_permission === "Yes")
-        .length || 0;
-
-    const loopCounts: Record<string, number> = {};
-
-    reportRows?.forEach((row) => {
-      const loop = stripTrademark(row.report_data?.primaryLoop);
-
-      if (loop) {
-        loopCounts[loop] = (loopCounts[loop] || 0) + 1;
-      }
-    });
-
-    const topLoops = Object.entries(loopCounts)
-      .map(([loop, count]) => ({ loop, count }))
-      .sort((a, b) => b.count - a.count)
-      .slice(0, 5);
-
-    return NextResponse.json({
-      reportsGenerated: reportCount || 0,
-      feedbackReceived: feedbackCount || 0,
-      waitlistSignups: waitlistCount || 0,
-      averageAccuracy,
-      recommendYes,
-      testimonialYes,
-      topLoops,
-      foundingRemaining: Math.max(50 - (reportCount || 0), 0),
-    });
+    const stats = await getAdminStatsData();
+    return NextResponse.json(stats);
   } catch {
     return NextResponse.json(
       { error: "Unexpected admin stats error" },
