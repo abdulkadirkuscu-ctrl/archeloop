@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { supabaseServer } from "../../../lib/supabaseServer";
 import { createSupabaseServerClient } from "../../../lib/supabaseServerClient";
+import { hasIntegrationAccess } from "../../../lib/entitlements";
+import { stripTrademark } from "../../../lib/text";
 import FullReport from "../../../components/FullReport";
 import PageShell from "../../components/PageShell";
 
@@ -48,7 +50,7 @@ export default async function SavedReportPage({
     ) ?? false;
 
   if (!hasReportAccess) {
-    const primaryLoop = report.report_data?.primaryLoop || null;
+    const primaryLoop = stripTrademark(report.report_data?.primaryLoop) || null;
 
     return (
       <PageShell>
@@ -137,5 +139,10 @@ export default async function SavedReportPage({
     event_value: report.report_data?.primaryLoop || null,
   });
 
-  return <FullReport reportData={report.report_data} />;
+  return (
+    <FullReport
+      reportData={report.report_data}
+      hasIntegrationAccess={hasIntegrationAccess(orders)}
+    />
+  );
 }

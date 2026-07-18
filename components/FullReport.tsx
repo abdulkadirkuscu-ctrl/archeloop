@@ -1,8 +1,11 @@
+import Image from "next/image";
 import { loopFormulas } from "../app/data/loopFormulas";
 import { archetypeInsights } from "../app/data/archetypeInsights";
 import { loopDetails } from "../app/data/loopDetails";
 import PageShell from "../app/components/PageShell";
 import { loops } from "../app/data/loops";
+import { loopImages } from "../app/data/loopImages";
+import PrintReportLink from "./PrintReportLink";
 import { elementInsights } from "../app/data/elementInsights";
 import ReportFeedback from "./ReportFeedback";
 import { getLoopStructuralMetadata } from "../app/data/loopStructuralMetadata";
@@ -106,19 +109,6 @@ const SELF_COMPENSATING_SUMMARY: Record<string, string> = {
     "Warrior protects its injured Trust capacity through intensified self-reliance, distance, and control.",
 };
 
-// Chapter Five Integration Timeline (Section 12 of this task): six generic
-// developmental stages, grouped under the three canonical Understand /
-// Interrupt / Integrate phases. Purely educational - not a promised linear
-// recovery process (see the "rarely linear" note rendered alongside it).
-const INTEGRATION_TIMELINE_STAGES: { label: string; phase: string }[] = [
-  { label: "Current Pattern", phase: "Understand" },
-  { label: "Awareness", phase: "Understand" },
-  { label: "Interruption", phase: "Interrupt" },
-  { label: "Practice", phase: "Interrupt" },
-  { label: "Integration", phase: "Integrate" },
-  { label: "Integrated Self", phase: "Integrate" },
-];
-
 // Report v2 replacement for the old integratedPercent-based "Archetype
 // Integration" copy (Section 1 of this task): concise, deterministic
 // interpretive copy built from the two Archetype-level numbers, always
@@ -142,6 +132,7 @@ function buildArchetypeRelationshipCopy(
 
 export default function FullReport({
   reportData,
+  hasIntegrationAccess = false,
 }: {
   reportData: {
     primaryLoop?: string;
@@ -160,6 +151,7 @@ export default function FullReport({
     responseQuality?: any;
     primaryLoopStatus?: string;
   };
+  hasIntegrationAccess?: boolean;
 }) {
   const archetypeScores = reportData?.integratedScores || [];
   const loopLandscape = reportData?.loopLandscape || [];
@@ -248,7 +240,82 @@ export default function FullReport({
       ? [...detail.cascade]
       : [];
 
-  const integrationBlueprintText = `${detail.coreStructure.integrationShift} This process usually begins through small, repeatable moments of awareness, regulation, and behaviour change rather than forcing the system to transform all at once.`;
+  // Chapter Five intro (two paragraphs): fully dynamic per loop. The
+  // "protective behaviours" phrase reuses the same existing, complete
+  // per-loop mapping (loopFormulas.ts observableBehaviours) and the same
+  // joinWithAnd formatter already used for the Chapter One hero sentence —
+  // never a new or partial per-loop text table.
+  const primaryProtectiveBehaviours = joinWithAnd(
+    formula.observableBehaviours.slice(0, 3).map((behaviour) => behaviour.toLowerCase())
+  );
+
+  const integrationOpeningParagraph = `${primaryLoop.title} begins to soften when protection no longer requires ${
+    primaryProtectiveBehaviours || "the same protective response"
+  }. Integration usually happens through small, repeatable moments: recognising the pattern, regulating your response, experimenting with a different choice, and noticing what changes over time.`;
+
+  const integrationPathParagraph = `Your ${archeLoopPath.journey} guides that movement from ${primaryLoop.title} toward ${archeLoopPath.integratedSelf}. ArcheLoop can support each stage through your report, trigger logging, the ‘I Am Triggered’ process, integration practices, and progress tracking.`;
+
+  // Chapter Five journey stages: static copy per stage, with only the
+  // Primary Shadow Loop and Integrated Self values coming from report data
+  // (via existing mappings already used elsewhere in this component).
+  const integrationJourneyStages = [
+    {
+      phase: "Understand",
+      title: "Your Current Pattern",
+      dynamicValue: primaryLoop.title,
+      description:
+        "Begin by reviewing the report and noticing which parts feel familiar, uncomfortable, or especially accurate.",
+      actionLabel: "Review Your Report",
+      actionHref: "#report-top",
+    },
+    {
+      phase: "Become Aware",
+      title: "Recognise the Pattern",
+      description:
+        "Notice what activates the loop, what you feel in your body, what you believe in the moment, and how you respond.",
+      actionLabel: "Log a Trigger",
+      actionHref: "/triggered-intelligence",
+      requiresIntegration: true,
+    },
+    {
+      phase: "Interrupt",
+      title: "Create a Pause",
+      description:
+        "Use the ‘I Am Triggered’ process to regulate and choose a response rather than moving automatically into the loop.",
+      actionLabel: "I Am Triggered",
+      actionHref: "/triggered",
+      requiresIntegration: true,
+    },
+    {
+      phase: "Practise",
+      title: "Build a New Response",
+      description:
+        "Practise small behaviours connected to your Integration Path and Integrated Self.",
+      actionLabel: "Explore Practices",
+      actionHref: "/practices",
+      secondaryActionLabel: "Continue with Triggered Pro",
+      secondaryActionHref: "/triggered-intelligence",
+      requiresIntegration: true,
+    },
+    {
+      phase: "Integrate",
+      title: "Track What Is Changing",
+      description:
+        "Record moments when the loop was recognised earlier, interrupted, or expressed differently.",
+      actionLabel: "View Progress Dashboard",
+      actionHref: "/progress-dashboard",
+      requiresIntegration: true,
+    },
+    {
+      phase: "Embody",
+      title: "Integrated Self",
+      dynamicValue: archeLoopPath.integratedSelf,
+      description:
+        "Build a clearer picture of how this integrated expression thinks, feels, communicates, relates, and acts.",
+      actionLabel: "Meet Your Integrated Self",
+      actionHref: "#meet-your-integrated-self",
+    },
+  ];
 
   // Hero interpretation sentence: one deterministic sentence built from the
   // primary loop's own canonical observable behaviours (loopFormulas.ts),
@@ -749,7 +816,7 @@ export default function FullReport({
 
   return (
     <PageShell>
-      <div className="al-report">
+      <div id="report-top" className="al-report">
         {/* ============================================================
             CHAPTER 1 — YOUR RESULT
         ============================================================ */}
@@ -763,125 +830,144 @@ export default function FullReport({
         <section className="al-section">
           <div className="al-container-wide">
             <div className="al-hero-card text-left">
-              <p className="al-kicker">Your ArcheLoop Report</p>
+              <div className="al-primary-loop-hero-layout">
+                <div className="al-primary-loop-hero-art">
+                  <Image
+                    src={loopImages[selectedLoopName]}
+                    alt={`${selectedLoopName} illustration`}
+                    width={230}
+                    height={230}
+                    className="al-primary-loop-hero-art-image"
+                  />
+                </div>
 
-              <div className="al-soft-card my-10 p-6">
-                <p className="font-semibold text-[var(--al-accent)]">
-                  Your report has been saved.
-                </p>
+                <div className="al-primary-loop-hero-heading">
+                  {isLowDifferentiation ? (
+                    <h1 className="al-heading-xl">
+                      Your ArcheLoop Report
+                      <br />
+                      <span className="text-[var(--al-accent)]">
+                        A broader pattern map
+                      </span>
+                    </h1>
+                  ) : (
+                    <>
+                      {/* Dominant result area: Primary Shadow Loop, one
+                          deterministic personalised sentence, then Developmental
+                          Capacity -> Integration Direction. Everything else below
+                          is restrained supporting metadata, not six equal cards. */}
+                      <p
+                        className="al-kicker"
+                        style={{ color: primaryArchetypeAccent }}
+                      >
+                        Primary Shadow Loop
+                      </p>
 
-                <p className="al-text mt-3">
-                  You can return to this report from My Account whenever you log
-                  in. You can also save it as a PDF from your browser if you'd
-                  like an offline copy.
-                </p>
-              </div>
+                      <h1 className="al-heading-xl">{primaryLoop.title}</h1>
+                    </>
+                  )}
+                </div>
 
-              {isLowDifferentiation ? (
-                <>
-                  <h1 className="al-heading-xl">
-                    Your ArcheLoop Report
-                    <br />
-                    <span className="text-[var(--al-accent)]">
-                      A broader pattern map
+                <div className="al-primary-loop-hero-body">
+                  {isLowDifferentiation ? (
+                    <>
+                      <p className="al-text-lg mt-6 max-w-2xl">
+                        Your responses did not produce one clearly dominant Shadow
+                        Loop. Several patterns scored similarly, so this report is
+                        best read as a broader map of your current protective
+                        patterns rather than one definitive result.
+                      </p>
+
+                      {responseQuality?.explanation && (
+                        <p className="al-muted mt-4 max-w-3xl text-sm">
+                          {responseQuality.explanation}
+                        </p>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      <p className="al-text-lg mt-5 max-w-2xl">
+                        {heroInterpretation}
+                      </p>
+
+                      {isV2 && (
+                        <div className="al-soft-card mt-8 inline-flex max-w-fit flex-wrap items-center gap-3 p-5">
+                          <span className="al-kicker">
+                            {structuralMetadata.developmentalCapacity}
+                          </span>
+                          <span aria-hidden="true" className="al-muted">
+                            →
+                          </span>
+                          <span className="font-semibold text-[var(--al-text)]">
+                            {archeLoopPath.journey}
+                          </span>
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  {/* Restrained supporting metadata row (Level D). */}
+                  <div className="mt-8 flex flex-wrap items-center gap-3 text-sm">
+                    <span className="al-pill">
+                      <span
+                        aria-hidden="true"
+                        className="mr-2 inline-block h-2 w-2 rounded-full"
+                        style={{ background: primaryArchetypeAccent }}
+                      />
+                      {primaryLoop.archetype}
                     </span>
-                  </h1>
 
-                  <p className="al-text-lg mt-6 max-w-2xl">
-                    Your responses did not produce one clearly dominant Shadow
-                    Loop. Several patterns scored similarly, so this report is
-                    best read as a broader map of your current protective
-                    patterns rather than one definitive result.
-                  </p>
+                    <span className="al-pill">{primaryLoop.element}</span>
 
-                  {responseQuality?.explanation && (
+                    <span className="al-pill">{formattedMechanism}</span>
+
+                    {isV2 && (
+                      <span className="al-pill">
+                        Injured: {structuralMetadata.injuredArchetype}
+                      </span>
+                    )}
+                  </div>
+
+                  {isLowDifferentiation && (
                     <p className="al-muted mt-4 max-w-3xl text-sm">
-                      {responseQuality.explanation}
+                      These values reflect the single most prominent pattern in a
+                      closely-scored field — see your Loop Landscape in Chapter
+                      Three for the full picture.
                     </p>
                   )}
-                </>
-              ) : (
-                <>
-                  {/* Dominant result area: Primary Shadow Loop, one
-                      deterministic personalised sentence, then Developmental
-                      Capacity -> Integration Direction. Everything else below
-                      is restrained supporting metadata, not six equal cards. */}
-                  <p
-                    className="al-kicker"
-                    style={{ color: primaryArchetypeAccent }}
-                  >
-                    Primary Shadow Loop
-                  </p>
 
-                  <h1 className="al-heading-xl">{primaryLoop.title}</h1>
-
-                  <p className="al-text-lg mt-5 max-w-2xl">
-                    {heroInterpretation}
-                  </p>
-
-                  {isV2 && (
-                    <div className="al-soft-card mt-8 inline-flex max-w-fit flex-wrap items-center gap-3 p-5">
-                      <span className="al-kicker">
-                        {structuralMetadata.developmentalCapacity}
-                      </span>
-                      <span aria-hidden="true" className="al-muted">
-                        →
-                      </span>
-                      <span className="font-semibold text-[var(--al-text)]">
-                        {archeLoopPath.journey}
-                      </span>
-                    </div>
+                  {isV2 && typeof reportData?.resultClarity === "number" && (
+                    <p className="al-muted mt-6 max-w-3xl text-sm">
+                      Result Clarity: {reportData.resultClarity}% — how clearly your
+                      Primary Loop separates from your Secondary Loop in this
+                      result. This describes pattern separation, not a statistical
+                      or clinical certainty.
+                    </p>
                   )}
-                </>
-              )}
 
-              {/* Restrained supporting metadata row (Level D). */}
-              <div className="mt-8 flex flex-wrap items-center gap-3 text-sm">
-                <span className="al-pill">
-                  <span
-                    aria-hidden="true"
-                    className="mr-2 inline-block h-2 w-2 rounded-full"
-                    style={{ background: primaryArchetypeAccent }}
-                  />
-                  {primaryLoop.archetype}
-                </span>
-
-                <span className="al-pill">{primaryLoop.element}</span>
-
-                <span className="al-pill">{formattedMechanism}</span>
-
-                {isV2 && (
-                  <span className="al-pill">
-                    Injured: {structuralMetadata.injuredArchetype}
-                  </span>
-                )}
+                  {isV2 &&
+                    !isLowDifferentiation &&
+                    responseQuality &&
+                    responseQuality.status !== "Clear" && (
+                      <p className="al-muted mt-3 max-w-3xl text-sm">
+                        {responseQuality.explanation}
+                      </p>
+                    )}
+                </div>
               </div>
+            </div>
 
-              {isLowDifferentiation && (
-                <p className="al-muted mt-4 max-w-3xl text-sm">
-                  These values reflect the single most prominent pattern in a
-                  closely-scored field — see your Loop Landscape in Chapter
-                  Three for the full picture.
-                </p>
-              )}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center text-sm">
+              <span className="al-muted">✓ Saved to My Account</span>
 
-              {isV2 && typeof reportData?.resultClarity === "number" && (
-                <p className="al-muted mt-6 max-w-3xl text-sm">
-                  Result Clarity: {reportData.resultClarity}% — how clearly your
-                  Primary Loop separates from your Secondary Loop in this
-                  result. This describes pattern separation, not a statistical
-                  or clinical certainty.
-                </p>
-              )}
+              <a
+                href="/account"
+                className="al-muted underline-offset-4 hover:underline hover:text-[var(--al-accent)]"
+              >
+                View saved reports
+              </a>
 
-              {isV2 &&
-                !isLowDifferentiation &&
-                responseQuality &&
-                responseQuality.status !== "Clear" && (
-                  <p className="al-muted mt-3 max-w-3xl text-sm">
-                    {responseQuality.explanation}
-                  </p>
-                )}
+              <PrintReportLink />
             </div>
           </div>
         </section>
@@ -2030,65 +2116,76 @@ export default function FullReport({
             />
 
             <div className="al-feature-card">
-              <p className="al-text-lg">{integrationBlueprintText}</p>
+              <p className="al-text-lg">{integrationOpeningParagraph}</p>
 
-              <p className="al-text-lg mt-6">
-                For you, that direction moves from{" "}
-                <span className="font-semibold text-[var(--al-text)]">
-                  {primaryLoop.title}
-                </span>{" "}
-                toward{" "}
-                <span className="font-semibold text-[var(--al-text)]">
-                  {archeLoopPath.integratedSelf}
-                </span>{" "}
-                via your {archeLoopPath.journey}.
-              </p>
+              <p className="al-text-lg mt-6">{integrationPathParagraph}</p>
 
-              <div className="al-timeline al-timeline--row mt-12">
-                {INTEGRATION_TIMELINE_STAGES.map((stage, index) => (
-                  <div key={stage.label} className="al-timeline-step">
-                    <div className="al-timeline-connector" aria-hidden="true" />
-                    <div className="al-timeline-dot" aria-hidden="true">
-                      {index + 1}
+              {!hasIntegrationAccess && (
+                <p className="al-muted mt-6 max-w-3xl">
+                  You understand your pattern now. The later stages become
+                  available through the Integration Journey.
+                </p>
+              )}
+
+              <div className="mt-12 grid gap-5 md:grid-cols-3">
+                {integrationJourneyStages.map((stage, index) => {
+                  const locked = stage.requiresIntegration && !hasIntegrationAccess;
+
+                  return (
+                    <div key={stage.title} className="al-journey-card">
+                      <div className="al-number-badge">{index + 1}</div>
+
+                      <p className="al-kicker">{stage.phase}</p>
+
+                      <h3 className="al-journey-title mt-2">{stage.title}</h3>
+
+                      {stage.dynamicValue && (
+                        <p className="mt-2 font-semibold text-[var(--al-accent)]">
+                          {stage.dynamicValue}
+                        </p>
+                      )}
+
+                      <p className="al-text mt-3">{stage.description}</p>
+
+                      {locked ? (
+                        <p className="al-muted mt-5 text-sm italic">
+                          Included in the Integration Journey
+                        </p>
+                      ) : (
+                        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+                          <a
+                            href={stage.actionHref}
+                            className="al-button-secondary px-5 py-2.5 text-sm"
+                          >
+                            {stage.actionLabel}
+                          </a>
+
+                          {stage.secondaryActionLabel && (
+                            <a
+                              href={stage.secondaryActionHref}
+                              className="al-muted text-sm underline-offset-4 hover:underline hover:text-[var(--al-accent)]"
+                            >
+                              {stage.secondaryActionLabel}
+                            </a>
+                          )}
+                        </div>
+                      )}
                     </div>
-
-                    <div>
-                      <p className="al-muted text-xs font-bold uppercase tracking-wide">
-                        {stage.phase}
-                      </p>
-                      <p className="mt-1 font-semibold text-[var(--al-text)]">
-                        {stage.label}
-                      </p>
-
-                      {stage.label === "Current Pattern" && (
-                        <p className="al-timeline-anchor mt-1 text-sm">
-                          {primaryLoop.title}
-                        </p>
-                      )}
-                      {stage.label === "Integration" && (
-                        <p className="al-timeline-anchor mt-1 text-sm">
-                          {archeLoopPath.journey}
-                        </p>
-                      )}
-                      {stage.label === "Integrated Self" && (
-                        <p className="al-timeline-anchor mt-1 text-sm">
-                          {archeLoopPath.integratedSelf}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
               <p className="al-muted mx-auto mt-10 max-w-2xl text-center text-sm">
-                Integration is rarely linear. These stages may repeat as new
-                situations activate the pattern.
+                Integration is rarely linear. You may move back and forth
+                between awareness, interruption, and practice as different
+                situations activate the pattern. Returning to the process is
+                part of the work—not evidence that you have failed.
               </p>
             </div>
           </div>
         </section>
 
-        <section className="al-section">
+        <section id="meet-your-integrated-self" className="al-section">
           <div className="al-container">
             <SectionHeader
               kicker="Meet Your Integrated Self"
@@ -2121,45 +2218,40 @@ export default function FullReport({
 
         <section className="al-section">
           <div className="al-container">
-            <div className="al-premium-card p-10 text-center">
-              <p className="al-kicker">
-                Continue Your Journey
-              </p>
+            {hasIntegrationAccess ? (
+              <div className="al-premium-card p-10 text-center">
+                <p className="al-kicker">Continue Your Journey</p>
 
-              <h3 className="al-heading-lg">
-                Understanding is the beginning.
-              </h3>
+                <h3 className="al-heading-lg">Resume where you left off.</h3>
 
-              <p className="al-text-lg mx-auto mt-6 max-w-3xl">
-                Your report shows where your system currently protects you.
-                Integration happens through repeated awareness, recognising
-                activations in real time, and practising new responses until they
-                become familiar.
-              </p>
+                <div className="mt-8 flex flex-wrap justify-center gap-4">
+                  <a href="/triggered-intelligence" className="al-button-primary">
+                    Log a Trigger
+                  </a>
 
-              <div className="mt-10 flex flex-wrap justify-center gap-4">
-                <a
-                  href="/integration"
-                  className="al-button-primary"
-                >
-                  Continue With Integration
-                </a>
-
-                <a
-                  href="/triggered"
-                  className="al-button-secondary"
-                >
-                  I Am Triggered
-                </a>
-
-                <a
-                  href="/progress-dashboard"
-                  className="al-button-secondary"
-                >
-                  Progress Dashboard
-                </a>
+                  <a href="/progress-dashboard" className="al-button-secondary">
+                    Progress Dashboard
+                  </a>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="al-card p-10 text-center">
+                <p className="al-kicker">Continue Your Integration Journey</p>
+
+                <p className="al-text-lg mx-auto mt-6 max-w-3xl">
+                  Your report helps you understand your primary Shadow Loop.
+                  The Integration Journey helps you recognise triggers,
+                  interrupt automatic patterns, practise new responses, and
+                  track your progress over time.
+                </p>
+
+                <div className="mt-8 flex justify-center">
+                  <a href="/integration" className="al-button-primary">
+                    Explore Integration
+                  </a>
+                </div>
+              </div>
+            )}
           </div>
         </section>
 

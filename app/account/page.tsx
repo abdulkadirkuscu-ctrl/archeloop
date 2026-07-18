@@ -11,6 +11,7 @@ import PageTitle from "../../components/ui/PageTitle";
 
 import { createSupabaseServerClient } from "../../lib/supabaseServerClient";
 import { supabaseServer } from "../../lib/supabaseServer";
+import { stripTrademark } from "../../lib/text";
 
 type ReportSummary = {
   primaryLoop?: string;
@@ -120,22 +121,22 @@ export default async function AccountPage() {
                 <div className="mt-5 grid gap-3 text-sm">
                   <InfoCard
                     label="Primary Loop"
-                    value={reportSummary.primaryLoop}
+                    value={stripTrademark(reportSummary.primaryLoop)}
                   />
 
                   <InfoCard
                     label="Archetype"
-                    value={reportSummary.archetype}
+                    value={stripTrademark(reportSummary.archetype)}
                   />
 
                   <InfoCard
                     label="Current Journey"
-                    value={reportSummary.journey}
+                    value={stripTrademark(reportSummary.journey)}
                   />
 
                   <InfoCard
                     label="Integrated State"
-                    value={reportSummary.integratedState}
+                    value={stripTrademark(reportSummary.integratedState)}
                   />
                 </div>
               )}

@@ -341,7 +341,7 @@ export default function Home() {
                     alt={loop.name}
                     fill
                     sizes="(max-width: 1024px) 100vw, 25vw"
-                    className="object-cover opacity-90 transition duration-500 group-hover:scale-105"
+                    className="object-contain opacity-90 transition duration-500 group-hover:scale-105"
                   />
                 </div>
 

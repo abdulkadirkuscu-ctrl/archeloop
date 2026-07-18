@@ -1405,12 +1405,72 @@ body {
 .al-loop-image {
   position: relative;
   width: 100%;
-  height: 7rem;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  background: var(--al-surface-soft);
 }
 
 .al-loop-image img {
-  object-fit: cover;
+  object-fit: contain;
+}
+
+/* =====================================================
+   REPORT — PRIMARY SHADOW LOOP HERO ART
+   Scoped to the two-column layout inside the Chapter One
+   hero card only. Do not extend these selectors to
+   .al-hero-card itself (shared with the homepage hero) or
+   to any other report component.
+===================================================== */
+
+.al-primary-loop-hero-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  grid-template-areas:
+    "art heading"
+    "art body";
+  column-gap: 2.5rem;
+  align-items: center;
+}
+
+.al-primary-loop-hero-heading {
+  grid-area: heading;
+}
+
+.al-primary-loop-hero-body {
+  grid-area: body;
+}
+
+.al-primary-loop-hero-art {
+  grid-area: art;
+  width: 230px;
+  height: 230px;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  background: var(--al-surface-soft);
+  box-shadow: 0 8px 20px var(--al-shadow);
+}
+
+.al-primary-loop-hero-art-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .al-primary-loop-hero-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "heading"
+      "art"
+      "body";
+    row-gap: 1.75rem;
+  }
+
+  .al-primary-loop-hero-art {
+    margin-inline: auto;
+  }
 }
 
 .al-loop-card-title {

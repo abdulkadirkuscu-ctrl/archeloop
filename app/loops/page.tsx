@@ -163,13 +163,13 @@ export default function LoopsPage() {
                         href={`/loops/${loop.slug}`}
                         className="al-card group overflow-hidden transition duration-500 hover:-translate-y-1 hover:border-[var(--al-accent)]"
                       >
-                        <div className="relative h-64 overflow-hidden sm:h-72">
+                        <div className="relative aspect-square overflow-hidden">
                           <Image
                             src={loop.image}
                             alt={`${loop.name} Shadow Loop`}
                             fill
                             sizes="(max-width: 768px) 100vw, 33vw"
-                            className="object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
+                            className="object-contain opacity-90 transition-transform duration-700 group-hover:scale-105"
                           />
                         </div>
 

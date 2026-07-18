@@ -2,6 +2,7 @@ import Link from "next/link";
 import PageShell from "../components/PageShell";
 import { supabaseServer } from "../../lib/supabaseServer";
 import { createSupabaseServerClient } from "../../lib/supabaseServerClient";
+import { stripTrademark } from "../../lib/text";
 
 export default async function TriggerHistoryPage() {
   const supabaseAuth = await createSupabaseServerClient();
@@ -152,7 +153,7 @@ export default async function TriggerHistoryPage() {
                         </p>
 
                         <h2 className="mt-2 text-3xl font-bold text-[var(--al-accent)]">
-                          {activation.primaryLoop || "Unknown Loop"}
+                          {stripTrademark(activation.primaryLoop) || "Unknown Loop"}
                         </h2>
 
                         <p className="al-text mt-2">
@@ -172,8 +173,8 @@ export default async function TriggerHistoryPage() {
                     </div>
 
                     <div className="mt-6 grid gap-3 md:grid-cols-4">
-                      <MiniStat label="Archetype" value={activation.archetype} />
-                      <MiniStat label="Journey" value={activation.journey} />
+                      <MiniStat label="Archetype" value={stripTrademark(activation.archetype)} />
+                      <MiniStat label="Journey" value={stripTrademark(activation.journey)} />
                       <MiniStat
                         label="Response"
                         value={activation.responseStyle}

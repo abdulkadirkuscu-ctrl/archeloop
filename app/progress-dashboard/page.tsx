@@ -2,6 +2,7 @@ import Link from "next/link";
 import PageShell from "../components/PageShell";
 import { supabaseServer } from "../../lib/supabaseServer";
 import { createSupabaseServerClient } from "../../lib/supabaseServerClient";
+import { stripTrademark } from "../../lib/text";
 
 type Activation = {
   id: string;
@@ -403,7 +404,7 @@ if (!hasIntegrationAccess) {
                       <div className="mt-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                         <div>
                           <p className="text-xl font-semibold text-[var(--al-text)]">
-                            {activation.primaryLoop}
+                            {stripTrademark(activation.primaryLoop)}
                           </p>
 
                           <p className="mt-1 text-sm al-muted">
@@ -682,5 +683,5 @@ function topCommon(items: string[], limit: number) {
   return Object.entries(counts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, limit)
-    .map(([label, count]) => ({ label, count }));
+    .map(([label, count]) => ({ label: stripTrademark(label), count }));
 }

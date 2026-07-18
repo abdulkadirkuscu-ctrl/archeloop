@@ -2,6 +2,7 @@ import Link from "next/link";
 import { supabaseServer } from "../../lib/supabaseServer";
 import { createSupabaseServerClient } from "../../lib/supabaseServerClient";
 import PageShell from "../components/PageShell";
+import { stripTrademark } from "../../lib/text";
 
 type Activation = {
   id: string;
@@ -640,7 +641,7 @@ function topCommon(items: string[], limit: number) {
     .sort((a, b) => b[1] - a[1])
     .slice(0, limit)
     .map(([label, count]) => ({
-      label,
+      label: stripTrademark(label),
       count,
     }));
 }

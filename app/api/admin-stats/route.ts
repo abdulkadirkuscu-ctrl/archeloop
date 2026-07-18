@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseServer } from "../../../lib/supabaseServer";
+import { stripTrademark } from "../../../lib/text";
 
 export async function GET() {
   try {
@@ -55,7 +56,7 @@ export async function GET() {
     const loopCounts: Record<string, number> = {};
 
     reportRows?.forEach((row) => {
-      const loop = row.report_data?.primaryLoop;
+      const loop = stripTrademark(row.report_data?.primaryLoop);
 
       if (loop) {
         loopCounts[loop] = (loopCounts[loop] || 0) + 1;
